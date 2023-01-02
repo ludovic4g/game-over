@@ -14,13 +14,13 @@
     <a href="#" class="logo"><span aria-hidden="true">GameOver</span>GameOver<span
             aria-hidden="true">GameOver</span></a>
     <ul class="nav">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">E-Sport</a></li>
-        <li><a href="#">Games</a></li>
-        <li><a href="#">Carrello</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="esport.jsp">E-Sport</a></li>
+        <li><a href="shopgame.jsp">Games</a></li>
+        <li><a href="cart.jsp">Carrello</a></li>
         <li><a href="#">Prenotazioni</a></li>
         <li><a href="#">Ordini</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li><a href="login.jsp">Login</a></li>
     </ul>
     <div class="action">
         <div class="searchBx">
@@ -314,66 +314,7 @@
         </ul>
     </div>
 </footer>
-<script>
-    /* Sticky NavBar */
-    window.addEventListener('scroll', function () {
-        var header = document.querySelector('header');
-        header.classList.toggle('sticky', window.scrollY > 0);
-    });
-
-    /* Responsive NavBar */
-    function toggleMenu() {
-        const toggleMenu = document.querySelector('.toggleMenu');
-        const nav = document.querySelector('.nav')
-        toggleMenu.classList.toggle('active')
-        nav.classList.toggle('active')
-    }
-    /* Scrolling Animation Effects*/
-    window.addEventListener('scroll', function () {
-        var anime = document.querySelectorAll('.animeX');
-
-        for (var s = 0; s < anime.length; s++) {
-            var windowheight = window.innerHeight;
-            var animetop = anime[s].getBoundingClientRect().top;
-            var animepoint = 150;
-
-            if (animetop < windowheight - animepoint) {
-                anime[s].classList.add('active');
-            }
-            else {
-                anime[s].classList.remove('active');
-            }
-        }
-    })
-    /* Filterable Cards */
-    let list = document.querySelectorAll('.list');
-    let card = document.querySelectorAll('.card');
-
-    for (let i = 0; i < list.length; i++) {
-
-        list[i].addEventListener('click', function () {
-            for (let j = 0; j < list.length; j++) {
-                list[j].classList.remove('active');
-            }
-            this.classList.add('active');
-
-            let dataFilter = this.getAttribute('data-filter');
-
-            for (let k = 0; k < card.length; k++) {
-
-                card[k].classList.remove('active');
-                card[k].classList.add('hide');
-
-                if (card[k].getAttribute('data-item') == dataFilter || dataFilter == 'all') {
-
-                    card[k].classList.remove('hide');
-                    card[k].classList.add('active');
-                }
-            }
-        })
-    }
-</script>
-
+<script src="scripts/script.js"></script>
 </body>
 
 </html>
