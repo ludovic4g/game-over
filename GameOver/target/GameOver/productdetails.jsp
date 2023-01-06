@@ -82,10 +82,10 @@
         <div class="product-imgs">
             <div class="img-display">
                 <div class="img-showcase">
-                    <img class="imgproduct" src="" alt="image1">
-                    <img class="imgproduct" src="" alt="image2">
-                    <img class="imgproduct" src="" alt="image3">
-                    <img class="imgproduct" src="" alt="image4">
+                    <img  class="imgproduct" src="" alt="image1">
+                    <img  class="imgproduct" src="" alt="image2">
+                    <img  class="imgproduct" src="" alt="image3">
+                    <img  class="imgproduct" src="" alt="image4">
                 </div>
             </div>
             <div class="img-select">
@@ -129,25 +129,13 @@
                     <span class="price">$249.00</span>
                 </p>
                 <div class="purchase-info">
+                    <input type="number" min="1" value="1">
                     <select name="piattaforma" class="option">
-                        <option value="Default">Orario</option>
-                        <option value="Clock">17:30</option>
-                        <option value="Clock">18:30</option>
+                        <option value="PC">PC</option>
+                        <option value="PC">PlayStation 5</option>
+                        <option value="PC">Xbox One</option>
                     </select>
                     <br>
-                    <br>
-                    <select name="posti" class="option">
-                        <option value="Default">Posti</option>
-                        <option value="Posti">2</option>
-                        <option value="Posti">3</option>
-                        <option value="Posti">4</option>
-                        <option value="Posti">5</option>
-                        <option value="Posti">6</option>
-                        <option value="Posti">7</option>
-                        <option value="Posti">8</option>
-                        <option value="Posti">9</option>
-                        <option value="Posti">10</option>
-                    </select>
                     <button type="button" class="btn">
                         Aggiungi al carrello <i class="fas fa-shopping-cart"></i>
                     </button>

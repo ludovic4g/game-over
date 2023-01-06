@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameOver | Login</title>
+    <title>GameOver | E-Sport</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
 </head>
+
 <body>
 <!-- Header -->
 <header>
@@ -31,30 +33,37 @@
     </div>
     <div class="toggleMenu" onclick="toggleMenu();"></div>
 </header>
-<!-- Login -->
-<div class="containerlogin">
-    <div class="boxlogin">
-        <div class="formlogin">
-            <h2>
-                <a href="#" class="logo"><span aria-hidden="true">Login</span>Login<span
-                        aria-hidden="true"></span></a></h2></h2>
-            <div class="inputBox">
-                <input type="text" required="required">
-                <span>Username</span>
-                <i></i>
+<!-- Card Banner -->
+<div class="games" id="games">
+    <h2>E-Sports</h2>
+    <br>
+    <br>
+    <br>
+    <div class="containercard" id="cards">
+        <div class="cards1">
+            <div class="contentcards">
+                <h2>Postazioni Gioco</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eleifend diam a nisl viverra, non
+                    dignissim tortor molestie.
+                    Sed eget mi maximus, venenatis risus dignissim, placerat nunc.
+                </p>
+                <a href="postazionedetails.jsp">Dettagli</a>
             </div>
-            <div class="inputBox">
-                <input type="Password" required="required">
-                <span>Password</span>
-                <i></i>
+            <img src="images/computer.png"></img>
+        </div>
+        <div class="cards">
+            <div class="contentcards">
+                <h2>Tavolo da Gioco</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eleifend diam a nisl viverra, non
+                    dignissim tortor molestie.
+                    Sed eget mi maximus, venenatis risus dignissim, placerat nunc.
+                </p>
+                <a href="tavolodetails.jsp">Read More</a>
             </div>
-            <div class="links">
-                <a href="">Forgot Password</a>
-                <a href="register.jsp">Sign up</a>
-            </div>
-            <input type="submit" value="Login">
+            <img src="images/casa.png"></img>
         </div>
     </div>
+</div>
 </div>
 <!-- Footer -->
 <footer>
@@ -70,7 +79,6 @@
         </ul>
     </div>
 </footer>
-<script src="scripts/anime.min.js"></script>
 <script src="scripts/script.js"></script>
 </body>
 </html>
