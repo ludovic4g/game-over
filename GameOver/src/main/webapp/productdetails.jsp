@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameOver | Home</title>
+    <title>GameOver | Prodotto</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -128,6 +128,18 @@
                 <p class="new-price">Prezzo:
                     <span class="price">$249.00</span>
                 </p>
+                <div class="purchase-info">
+                    <input type="number" min="1" value="1">
+                    <select name="piattaforma" class="option">
+                        <option value="PC">PC</option>
+                        <option value="PC">PlayStation 5</option>
+                        <option value="PC">Xbox One</option>
+                    </select>
+                    <br>
+                    <button type="button" class="btn">
+                        Aggiungi al carrello <i class="fas fa-shopping-cart"></i>
+                    </button>
+                </div>
             </div>
 
             <div class="product-detail">
@@ -136,16 +148,9 @@
                     placeat sapiente architecto illum soluta consequuntur, aspernatur quidem at sequi ipsa!</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, perferendis eius.
                     Dignissimos, labore suscipit. Unde.</p>
-                <ul>
+                <!--                     <ul>
                     <li>Piattaforma: <span>PC/Console</span></li>
-                </ul>
-            </div>
-
-            <div class="purchase-info">
-                <input type="number" min="1" value="1">
-                <button type="button" class="btn">
-                    Aggiungi al carrello <i class="fas fa-shopping-cart"></i>
-                </button>
+                </ul> -->
             </div>
 
             <!-- <div class = "social-links">

@@ -1887,9 +1887,29 @@ img.imgproduct{
     margin-right: 0.2rem;
     margin-bottom: 1rem;
 }
-.purchase-info input{
+input[type="number"] {
+    width: 40px;
+    height: 30px;
+    padding: 5px;
+    border: 1px solid #d639c4;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    /* border-radius: 5px; */
+    color: #fff;
+    letter-spacing: 1px;
+    -webkit-box-reflect: below 0px linear-gradient(transparent, #0002);
+    background: transparent;
     width: 60px;
+    /* border: 1.5px solid #ddd; */
+    border-radius: 25px;
+    text-align: center;
+    /* padding: 0.45rem 0.8rem; */
+    outline: 0;
+    margin-right: 0.2rem;
+    margin-bottom: 1rem;
 }
+
 .purchase-info .btn{
     /* display: block;
     /* margin: 0 auto; */
@@ -1918,6 +1938,35 @@ img.imgproduct{
     background: transparent;
     width: 250px;
     cursor: pointer;
+}
+.purchase-info select.option {
+    border: 1px solid #d639c4;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 5px;
+    color: #fff;
+    letter-spacing: 1px;
+    -webkit-box-reflect: below 0px linear-gradient(transparent, #0002);
+    background: transparent;
+    width: 160px;
+    cursor: pointer;
+    padding: 10px 10px 10px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.purchase-info select.option:focus {
+    transition: 0.5s;
+    color: #050e2d;
+    box-shadow: 0 0 10px #d639c4,
+    0 0 20px #d639c4,
+    0 0 40px #d639c4,
+    0 0 80px #d639c4,
+    0 0 1600px #d639c4;
+    background: #d639c4;
+    color: #fff;
+    font-weight: bold;
 }
 .purchase-info .btn:hover{
     transition: 0.5s;
@@ -2114,6 +2163,7 @@ td.total-product-price{
 td:last-child{
 
     text-align: right;
+    font-weight: bold;
 
 }
 
