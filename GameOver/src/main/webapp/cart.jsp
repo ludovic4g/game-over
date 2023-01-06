@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameOver | Carrello</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -18,8 +18,8 @@
         <li><a href="esport.jsp">E-Sport</a></li>
         <li><a href="shopgame.jsp">Games</a></li>
         <li><a href="cart.jsp">Carrello</a></li>
-        <li><a href="#">Prenotazioni</a></li>
-        <li><a href="#">Ordini</a></li>
+        <li><a href="prenotazioni.jsp">Prenotazioni</a></li>
+        <li><a href="orders.jsp">Ordini</a></li>
         <li><a href="login.jsp">Login</a></li>
     </ul>
     <div class="action">
@@ -35,7 +35,7 @@
     <h2 class="title-page">Carrello</h2>
     <div class="small-container cart-page">
         <table>
-            <tr>
+            <tr class="column">
                 <th>Prodotti</th>
                 <th>Quantità</th>
                 <th>Piattaforma</th>
@@ -176,8 +176,8 @@
                     <td class ="total-product-price">$230,00</td>
                 </tr>
                 <tr>
-                    <td><a href="" class="btn">Acquista</a></td>
-                    <td><a href="" class="btn">Svuota</a></td>
+                    <td><br><a href="" class="btn">Acquista</a></td>
+                    <td><br><a href="" class="btn">Svuota</a></td>
                 </tr>
 
             </table>

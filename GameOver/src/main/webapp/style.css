@@ -262,9 +262,9 @@ header .action .searchBx input {
 }
 
 .banner .bg .content p {
+
     font-size: 1em;
-    /*color: #dbd9d9;*/
-    color: red;
+    color: #dbd9d9;
     letter-spacing: 1px;
 
 }
@@ -940,7 +940,7 @@ header .action .searchBx input {
 /*-----------Footer Part-----------*/
 footer {
     padding: 10px 100px;
-    margin-top: 80px;
+    margin-top: 100px;
     /* background: #1b2141; */
     /* position: absolute;
     bottom: 0;
@@ -2011,8 +2011,8 @@ select.option:focus {
 .small-container {
     max-width: 1080px;
     margin: auto;
-    padding-left: 25px;
-    padding-right: 25px;
+    /*padding-left: 25px;
+    padding-right: 25px;*/
     position: relative;
     top: 300px;
 }
@@ -2042,9 +2042,14 @@ table{
     display: flex;
     flex-wrap: wrap;
     position: relative;
-    top: 20px;
 }
 
+tr.column {
+    border-top: 2px solid #d639c4;
+    border-right: 2px solid #d639c4;
+    border-left: 2px solid #d639c4;
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);
+}
 th{
 
     text-align: left;
@@ -2052,13 +2057,14 @@ th{
     background: -webkit-linear-gradient(0deg, rgba(255, 0, 208, 1) 0%, rgba(140, 53, 232, 1) 40%, rgba(27, 105, 255, 1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    padding-bottom: 30px;
+    /*padding-bottom: 30px;*/
     font-weight: bold;
 }
 
 td{
 
     padding: 10px 5px;
+    border-top: 2px solid #d639c4;
 }
 
 td input{
@@ -2125,7 +2131,7 @@ td a.btn:hover{
 td img{
 
     width: 80px;
-    /* height: 80px; */
+    height: 80px;
     margin-right: 10px;
 }
 
@@ -2139,7 +2145,7 @@ td.subtitle,td.single-product-price ,small.single-product-price{
     -webkit-text-fill-color: transparent;
     font-weight: bold;
 }
-td.clock,td.platform,td.product-price{
+td.quantity,td.state,td.clock,td.platform,td.product-price{
     color: #fff;
     font-weight: bold;
 }

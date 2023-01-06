@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameOver | Registrazione</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -21,8 +21,8 @@
         <li><a href="esport.jsp">E-Sport</a></li>
         <li><a href="shopgame.jsp">Games</a></li>
         <li><a href="cart.jsp">Carrello</a></li>
-        <li><a href="#">Prenotazioni</a></li>
-        <li><a href="#">Ordini</a></li>
+        <li><a href="prenotazioni.jsp">Prenotazioni</a></li>
+        <li><a href="orders.jsp">Ordini</a></li>
         <li><a href="login.jsp">Login</a></li>
     </ul>
     <div class="action">
