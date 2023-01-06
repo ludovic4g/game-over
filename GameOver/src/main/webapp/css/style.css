@@ -263,7 +263,8 @@ header .action .searchBx input {
 
 .banner .bg .content p {
     font-size: 1em;
-    color: #dbd9d9;
+    /*color: #dbd9d9;*/
+    color: red;
     letter-spacing: 1px;
 
 }
