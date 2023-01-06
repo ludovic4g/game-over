@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="GameOver" />
+        <module name="gameOver" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="GameOver" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -11,6 +11,7 @@ function toggleMenu() {
     toggleMenu.classList.toggle('active')
     nav.classList.toggle('active')
 }
+
 /* Scrolling Animation Effects*/
 window.addEventListener('scroll', function () {
     var anime = document.querySelectorAll('.animeX');
@@ -22,8 +23,7 @@ window.addEventListener('scroll', function () {
 
         if (animetop < windowheight - animepoint) {
             anime[s].classList.add('active');
-        }
-        else {
+        } else {
             anime[s].classList.remove('active');
         }
     }
@@ -117,13 +117,16 @@ prevBtnFourth.addEventListener("click", function (event) {
     progressText[current - 2].classList.remove("active");
     current -= 1;
 });
+
 /* Slash/Unslash EyePSW */
 function _id(name) {
     return document.getElementById(name);
 }
+
 function _class(name) {
     return document.getElementsByClassName(name);
 }
+
 _class("toggle-password")[0].addEventListener("click", function () {
     _class("toggle-password")[0].classList.toggle("active");
     if (_id("password-field").getAttribute("type") == "password") {
@@ -179,7 +182,7 @@ imgBtns.forEach((imgItem) => {
 function slideImage() {
     const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
 
-    document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
+    document.querySelector('.img-showcase').style.transform = `translateX(${-(imgId - 1) * displayWidth}px)`;
 }
 
 window.addEventListener('resize', slideImage);

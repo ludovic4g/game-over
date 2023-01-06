@@ -51,6 +51,7 @@ a {
     text-align: center;
     line-height: 50px;
 }
+
 .sidebar .logo-details .logo_name {
     font-size: 30px;
     color: #fff;
@@ -214,7 +215,7 @@ a {
     transition: all 0.5s ease;
 }
 
-.sidebar.close~.home-section {
+.sidebar.close ~ .home-section {
     left: 78px;
     width: calc(100% - 78px);
 }
@@ -738,9 +739,9 @@ p {
     transition: all 0.3s ease;
 }
 
-.collapsible input:checked+.collapsible-head:after,
-.collapsible2 input:checked+.collapsible-head2:after,
-.collapsible3 input:checked+.collapsible-head3:after {
+.collapsible input:checked + .collapsible-head:after,
+.collapsible2 input:checked + .collapsible-head2:after,
+.collapsible3 input:checked + .collapsible-head3:after {
 
     content: '-';
 }
@@ -758,9 +759,9 @@ p {
     transition: all 0.3s ease;
 }
 
-.collapsible3 input:checked~.collapsible-text3,
-.collapsible2 input:checked~.collapsible-text2,
-.collapsible input:checked~.collapsible-text {
+.collapsible3 input:checked ~ .collapsible-text3,
+.collapsible2 input:checked ~ .collapsible-text2,
+.collapsible input:checked ~ .collapsible-text {
 
     max-height: 1900px;
     padding-bottom: 25px;
@@ -845,7 +846,7 @@ p {
 
 }
 
-.input-field input:is(:focus, :valid)~i {
+.input-field input:is(:focus, :valid) ~ i {
 
     color: #1b2141;
 
@@ -895,7 +896,7 @@ p {
 
 }
 
-.collapsible-text,.collapsible-text2,.collapsible-text3 .text-certificato{
+.collapsible-text, .collapsible-text2, .collapsible-text3 .text-certificato {
 
     padding: 10px;
 
@@ -935,7 +936,7 @@ p {
         z-index: 100;
     }
 
-    .sidebar.close~.home-section {
+    .sidebar.close ~ .home-section {
         width: 100%;
         left: 0;
     }
@@ -953,10 +954,12 @@ p {
 
         font-size: 18px;
     }
-    .home-section .home-content .text{
+
+    .home-section .home-content .text {
 
         font-size: 18px;
     }
+
     .sidebar.close .nav-links li .sub-menu {
         display: none;
     }
@@ -975,7 +978,7 @@ p {
         z-index: 100;
     }
 
-    .sidebar.close~.home-section {
+    .sidebar.close ~ .home-section {
         width: 100%;
         left: 0;
     }
@@ -1008,7 +1011,7 @@ p {
         z-index: 100;
     }
 
-    .sidebar.close~.home-section {
+    .sidebar.close ~ .home-section {
         width: 100%;
         left: 0;
     }
@@ -1018,11 +1021,13 @@ p {
         text-align: center;
 
     }
+
     .form .title {
 
         font-size: 18px;
     }
-    .home-section .home-content .text{
+
+    .home-section .home-content .text {
 
         font-size: 18px;
     }
