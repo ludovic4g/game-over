@@ -75,35 +75,35 @@
                                                 </p>
                                                 <div class="bullet">
                                                 </div>
-                                                <div class="check fas fa-check"></div>
+                                            <div class="check fas fa-check"></div>
                                         </div>
                                 </div>
                                 <div class="form-outer">
-                                        <form action="#">
+                                        <form action="RegisterServlet" method="post">
                                                 <div class="page slide-page">
                                                         <div class="field">
                                                                 <div class="label">
                                                                         Nome
                                                                 </div>
-                                                                <input type="text" required>
+                                                                <input type="text" name="nome" required />
                                                         </div>
                                                         <div class="field">
                                                                 <div class="label">
                                                                         Cognome
                                                                 </div>
-                                                                <input type="text" required>
+                                                                <input type="text" name="cognome" required />
                                                         </div>
                                                         <div class="field">
                                                                 <div class="label">
                                                                         Username
                                                                 </div>
-                                                                <input type="text" required>
+                                                                <input type="text" name="username" required />
                                                         </div>
                                                         <div class="field">
                                                                 <div class="label">
                                                                         E-mail
                                                                 </div>
-                                                                <input type="text" required>
+                                                                <input type="text"  name="mail" required />
                                                         </div>
                                                         <div class="field">
                                                                 <button class="firstNext next">Avanti</button>
@@ -114,7 +114,7 @@
                                                                 <div class="label">
                                                                         Genere
                                                                 </div>
-                                                                <select required>
+                                                                <select name="sesso" required>
                                                                         <option selected="selected">Preferisco non
                                                                                 specificarlo</option>
                                                                         <option>Maschio</option>
@@ -126,7 +126,7 @@
                                                                 <div class="label">
                                                                         Data di Nascita
                                                                 </div>
-                                                                <input type="date" required>
+                                                                <input type="date" name="ddn" required />
                                                         </div>
                                                         <div class="field btns">
                                                                 <button class="prev-1 prev">Indietro</button>
@@ -138,14 +138,14 @@
                                                                 <div class="label">
                                                                         Password
                                                                 </div>
-                                                                <input type="password" id="password-field" required>
+                                                                <input type="password" id="password-field" name="pass1" required />
                                                                 <div class="toggle-password">
                                                                         <i class="fa fa-eye"></i>
                                                                         <i class="fa fa-eye-slash"></i>
                                                                 </div>
                                                                 <div class="password-policies">
                                                                         <div class="policy-length">
-                                                                                Almeno 8caratteri(a-z)
+                                                                                Almeno 8 caratteri(a-z)
                                                                         </div>
                                                                         <div class="policy-number">
                                                                                 Contiene un numero(0-9)
@@ -169,7 +169,7 @@
                                                                 <div class="label">
                                                                         Conferma Password
                                                                 </div>
-                                                                <input type="password" id="password-field" required>
+                                                                <input type="password" id="password-field" name="pass2" required />
                                                         </div>
                                                         <div class="field btns">
                                                                 <button class="prev-2 prev">Indietro</button>
@@ -195,11 +195,11 @@
                                                                 <div class="label">
                                                                         Risposta
                                                                 </div>
-                                                                <input type="text" required>
+                                                                <input type="text" name="risposta" required />
                                                         </div>
                                                         <div class="field btns">
                                                                 <button class="prev-3 prev">Indietro</button>
-                                                                <button class="submit">Registrati</button>
+                                                                <button type="submit">Registrati</button>
                                                         </div>
                                                 </div>
                                         </form>
@@ -220,7 +220,7 @@
                                 </ul>
                         </div>
                 </footer>
-                <script src="anime.min.js"></script>
+                <script src="scripts/anime.min.js"></script>
                 <script src="scripts/script.js"></script>
         </body>
 
