@@ -29,6 +29,7 @@ public class PostazioneDAO {
                 b.setIdPostazione(rs.getInt("idPostazione"));
                 b.setOra(rs.getString("ora"));
                 b.setPrezzo(rs.getDouble("prezzo"));
+                b.setDisp(rs.getBoolean("disp"));
                 b.setImg(rs.getString("img"));
 
             }
@@ -60,6 +61,7 @@ public class PostazioneDAO {
                 b.setIdPostazione(rs.getInt("idPostazione"));
                 b.setOra(rs.getString("ora"));
                 b.setPrezzo(rs.getDouble("prezzo"));
+                b.setDisp(rs.getBoolean("disp"));
                 b.setImg(rs.getString("img"));
 
                 ab.add(b);
@@ -77,7 +79,7 @@ public class PostazioneDAO {
     }
 
     public void doSave(PostazioneBean utente) throws SQLException {
-        String query = "insert into Postazione values(?,?,?,?,);";
+        String query = "insert into Postazione values(?,?,?,?,?);";
 
         Connection con = null;
         PreparedStatement ps = null;
@@ -90,7 +92,8 @@ public class PostazioneDAO {
             ps.setInt(1, utente.getIdPostazione());
             ps.setString(2, utente.getOra());
             ps.setDouble(3, utente.getPrezzo());
-            ps.setString(4, utente.getImg());
+            ps.setBoolean(4, utente.isDisp());
+            ps.setString(5, utente.getImg());
 
             ps.executeUpdate();
 

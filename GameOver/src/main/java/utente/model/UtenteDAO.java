@@ -31,6 +31,7 @@ public class UtenteDAO {
                 b.setNome(rs.getString("nome"));
                 b.setCognome(rs.getString("cognome"));
                 b.setBday(rs.getDate("ddn"));
+                b.setSex((rs.getString("sex")));
                 b.setRisposta(rs.getString("risposta"));
                 b.setGestoreCatalogo(rs.getBoolean("ammin1"));
                 b.setGestorePrenotazioni(rs.getBoolean("ammin2"));
@@ -67,6 +68,7 @@ public class UtenteDAO {
                 b.setNome(rs.getString("nome"));
                 b.setCognome(rs.getString("cognome"));
                 b.setBday(rs.getDate("ddn"));
+                b.setSex((rs.getString("sex")));
                 b.setRisposta(rs.getString("risposta"));
                 b.setGestoreCatalogo(rs.getBoolean("ammin1"));
                 b.setGestorePrenotazioni(rs.getBoolean("ammin2"));
@@ -87,7 +89,7 @@ public class UtenteDAO {
     }
 
     public void doSave(UtenteBean utente) throws SQLException {
-        String query = "insert into utente values(?,?,?,?,?,?,?,?,?,?);";
+        String query = "insert into utente values(?,?,?,?,?,?,?,?,?,?,?);";
 
         Connection con = null;
         PreparedStatement ps = null;
@@ -103,10 +105,11 @@ public class UtenteDAO {
             ps.setString(4, utente.getNome());
             ps.setString(5, utente.getCognome());
             ps.setDate(6, (java.sql.Date) utente.getBday());
-            ps.setString(7, utente.getRisposta());
-            ps.setBoolean(8, utente.isGestoreCatalogo());
-            ps.setBoolean(9, utente.isGestorePrenotazioni());
-            ps.setBoolean(10, utente.isGestoreCatalogo());
+            ps.setString(7, utente.getSex());
+            ps.setString(8, utente.getRisposta());
+            ps.setBoolean(9, utente.isGestoreCatalogo());
+            ps.setBoolean(10, utente.isGestorePrenotazioni());
+            ps.setBoolean(11 ,utente.isGestoreCatalogo());
 
             ps.executeUpdate();
 
@@ -183,6 +186,7 @@ public class UtenteDAO {
                 utente.setNome(rs.getString("nome"));
                 utente.setCognome(rs.getString("cognome"));
                 utente.setBday(new java.util.Date(rs.getDate("ddn").getTime()));
+                utente.setSex(rs.getString("sex"));
                 utente.setRisposta(rs.getString("risposta"));
                 utente.setGestoreCatalogo(rs.getBoolean("ammin1"));
                 utente.setGestorePrenotazioni(rs.getBoolean("ammin2"));

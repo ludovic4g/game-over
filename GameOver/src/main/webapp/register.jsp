@@ -1,4 +1,11 @@
+<%@ page import= "utente.model.*" %>
+<%@ page import= "Connection.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% UtenteBean auth = (UtenteBean) request.getSession().getAttribute("auth");
+        if(auth!=null){
+                response.sendRedirect("index.jsp");
+        }
+%>
         <!DOCTYPE html>
         <html lang="en">
 
