@@ -43,13 +43,14 @@
                                 aria-hidden="true"></span></a>
                     </h2>
                     </h2>
+                <form action="LoginServlet" method="post">
                     <div class="inputBox">
-                        <input type="text" required="required">
+                        <input type="text" name="username" required="required">
                         <span>Username</span>
                         <i></i>
                     </div>
                     <div class="inputBox">
-                        <input type="Password" required="required">
+                        <input type="Password" name="password" required="required">
                         <span>Password</span>
                         <i></i>
                     </div>
@@ -58,6 +59,7 @@
                         <a href="register.jsp">Sign up</a>
                     </div>
                     <input type="submit" value="Login">
+                    </form>
                 </div>
             </div>
         </div>

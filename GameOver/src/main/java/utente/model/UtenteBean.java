@@ -2,6 +2,7 @@ package utente.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 public class UtenteBean implements Serializable {
     private String username;
@@ -98,5 +99,48 @@ public class UtenteBean implements Serializable {
     public void setGestoreOrdini(boolean amm3) {
         this.amm3 = amm3;
     }
+
+    public boolean passConferma(String s, String m) {
+        if(s.equals(m)) return true;
+
+        return false;
+    }
+
+    public boolean passControl(String f){
+        if (password.length() < 8) return false;
+
+        int charCount = 0;
+        int numCount = 0;
+        for (int i = 0; i < password.length(); i++) {
+
+            char ch = password.charAt(i);
+
+            if (is_Numeric(ch)) numCount++;
+            else if (is_LetterSp(ch)) charCount++;
+            else return false;
+        }
+
+
+        return (charCount >= 1 && numCount >= 1);
+    }
+
+    public boolean is_LetterSp(char ch) {
+        ch = Character.toUpperCase(ch);
+        return (ch >= '!' && ch <= '/') || (ch>= ':' && ch <= '@') || (ch>= '-' && ch<='.');
+    }
+
+
+    public boolean is_Numeric(char ch) {
+
+        return (ch >= '0' && ch <= '9');
+    }
+
+    public boolean mailIsValid(String m){
+        String pttrn = "^(.+)@(\\S+)$";
+        return Pattern.compile(pttrn)
+                .matcher(m)
+                .matches();
+    }
+
 
 }
