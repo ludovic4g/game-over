@@ -9,8 +9,5 @@
         <module name="gameOver" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="GameOver" target="1.5" />
-    </bytecodeTargetLevel>
   </component>
 </project>

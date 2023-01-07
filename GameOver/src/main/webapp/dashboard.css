@@ -215,7 +215,7 @@ a {
     transition: all 0.5s ease;
 }
 
-.sidebar.close ~ .home-section {
+.sidebar.close~.home-section {
     left: 78px;
     width: calc(100% - 78px);
 }
@@ -339,7 +339,8 @@ label {
     cursor: default;
 }
 
-select.option, .form-control {
+select.option,
+.form-control {
     display: block;
     width: 100%;
     height: calc(2.25rem + 2px);
@@ -391,10 +392,10 @@ textarea.form-control {
     transition: 0.5s;
     color: #050e2d;
     box-shadow: 0 0 10px #28a745,
-    0 0 20px #28a745,
-    0 0 40px #28a745,
-    0 0 80px #28a745,
-    0 0 1600px #28a745;
+        0 0 20px #28a745,
+        0 0 40px #28a745,
+        0 0 80px #28a745,
+        0 0 1600px #28a745;
     background: #28a745;
 
 }
@@ -739,9 +740,9 @@ p {
     transition: all 0.3s ease;
 }
 
-.collapsible input:checked + .collapsible-head:after,
-.collapsible2 input:checked + .collapsible-head2:after,
-.collapsible3 input:checked + .collapsible-head3:after {
+.collapsible input:checked+.collapsible-head:after,
+.collapsible2 input:checked+.collapsible-head2:after,
+.collapsible3 input:checked+.collapsible-head3:after {
 
     content: '-';
 }
@@ -759,9 +760,9 @@ p {
     transition: all 0.3s ease;
 }
 
-.collapsible3 input:checked ~ .collapsible-text3,
-.collapsible2 input:checked ~ .collapsible-text2,
-.collapsible input:checked ~ .collapsible-text {
+.collapsible3 input:checked~.collapsible-text3,
+.collapsible2 input:checked~.collapsible-text2,
+.collapsible input:checked~.collapsible-text {
 
     max-height: 1900px;
     padding-bottom: 25px;
@@ -846,7 +847,7 @@ p {
 
 }
 
-.input-field input:is(:focus, :valid) ~ i {
+.input-field input:is(:focus, :valid)~i {
 
     color: #1b2141;
 
@@ -896,7 +897,9 @@ p {
 
 }
 
-.collapsible-text, .collapsible-text2, .collapsible-text3 .text-certificato {
+.collapsible-text,
+.collapsible-text2,
+.collapsible-text3 .text-certificato {
 
     padding: 10px;
 
@@ -936,7 +939,7 @@ p {
         z-index: 100;
     }
 
-    .sidebar.close ~ .home-section {
+    .sidebar.close~.home-section {
         width: 100%;
         left: 0;
     }
@@ -978,7 +981,7 @@ p {
         z-index: 100;
     }
 
-    .sidebar.close ~ .home-section {
+    .sidebar.close~.home-section {
         width: 100%;
         left: 0;
     }
@@ -1011,7 +1014,7 @@ p {
         z-index: 100;
     }
 
-    .sidebar.close ~ .home-section {
+    .sidebar.close~.home-section {
         width: 100%;
         left: 0;
     }
