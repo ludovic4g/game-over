@@ -162,4 +162,38 @@ public class UtenteDAO {
         }
     }
 
+    public UtenteBean login(String username, String password) {
+        UtenteBean utente=null;
+        PreparedStatement pst;
+        ResultSet rs;
+        Connection con=null;
+
+        try {
+            con= DriverManagerConnectionPool.getConnection();
+            String query= "select * from utente where username=? and password=?";
+            pst= con.prepareStatement(query);
+            pst.setString(1, username);
+            pst.setString(2,password);
+            rs= pst.executeQuery();
+            if(rs.next()) {
+                utente = new UtenteBean();
+                utente.setUsername(rs.getString("username"));
+                utente.setPassword(rs.getString("password"));
+                utente.setEmail(rs.getString("email"));
+                utente.setNome(rs.getString("nome"));
+                utente.setCognome(rs.getString("cognome"));
+                utente.setBday(new java.util.Date(rs.getDate("ddn").getTime()));
+                utente.setRisposta(rs.getString("risposta"));
+                utente.setGestoreCatalogo(rs.getBoolean("ammin1"));
+                utente.setGestorePrenotazioni(rs.getBoolean("ammin2"));
+                utente.setGestoreOrdini(rs.getBoolean("ammin3"));
+            }
+
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+        return utente;
+    }
+
 }
