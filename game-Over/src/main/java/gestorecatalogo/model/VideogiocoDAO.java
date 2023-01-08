@@ -49,18 +49,19 @@ public class VideogiocoDAO {
     }
 
     public ArrayList<VideogiocoBean> doRetrieveAll() throws SQLException {
+    	ArrayList<VideogiocoBean> ab = new ArrayList<VideogiocoBean>();
+        String query=null;
         Connection con = null;
         PreparedStatement ps = null;
-        ArrayList<VideogiocoBean> ab = new ArrayList<VideogiocoBean>();
-        String query = "select * from Videogioco";
-
+        ResultSet rs=null;
         try {
             con = DriverManagerConnectionPool.getConnection();
-
+            query = "select * from Videogioco";
             ps = con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
-            VideogiocoBean b = new VideogiocoBean();
+            rs = ps.executeQuery();
             while (rs.next()) {
+            	VideogiocoBean b = new VideogiocoBean();
+            	b.setId(rs.getInt("id"));
                 b.setNome(rs.getString("nome"));
                 b.setPrezzo(rs.getDouble("prezzo"));
                 b.setAnno(rs.getInt("anno"));

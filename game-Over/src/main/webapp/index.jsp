@@ -22,7 +22,7 @@
 
         <body>
                 <!-- Header -->
-             <%@ include file="includes/header.jsp" %>
+                 <%@ include file="includes/header.jsp" %>
 
                 <!-- Home Banner -->
                 <div class="banner animeX" id="home">
@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="imgBx">
                                         <div class="ball"></div>
-                                        <img src="images/zyro-image.png">
+                                        <img src="images/ball1.png">
                                 </div>
                         </div>
                 </div>
@@ -304,19 +304,7 @@
 </div>
 </div> -->
                 <!-- Footer -->
-                <footer>
-                        <div class="info">
-                                <a href="#" class="logo"><span aria-hidden="true">GameOver</span>GameOver<span
-                                                aria-hidden="true">GameOver</span></a>
-                                <p><i class="bx bx-copyright"></i>2022 All Rights Reserved</p>
-                                <ul>
-                                        <li><a href=""><i class="bx bxl-facebook"></i></a></li>
-                                        <li><a href=""><i class="bx bxl-instagram"></i></a></li>
-                                        <li><a href=""><i class="bx bxl-twitter"></i></a></li>
-                                        <li><a href=""><i class="bx bxl-youtube"></i></a></li>
-                                </ul>
-                        </div>
-                </footer>
+                <%@ include file="includes/footer.jsp" %>
                 <script src="scripts/script.js"></script>
         </body>
 

@@ -9,6 +9,15 @@ public class OrdineBean implements Serializable {
     private Date dataAcquisto;
     private double prezzoTotale;
     private double iva;
+    private String lista;
+    
+    public String getListaProdotti() {
+    	return lista;
+    }
+    
+    public void setListaProdotti(String lista) {
+    	this.lista=lista;
+    }
 
     public int getIdOrdine() {
         return idOrdine;

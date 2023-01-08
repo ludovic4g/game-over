@@ -3,15 +3,21 @@ package gestorecatalogo.model;
 import java.io.Serializable;
 
 public class VideogiocoBean implements Serializable {
-    public int getId() {
-        return id;
-    }
+
 
     private int id;
     private String nome;
     private double prezzo;
     private int anno;
     private String tipo;
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;

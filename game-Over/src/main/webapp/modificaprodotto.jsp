@@ -1,4 +1,13 @@
+<%@ page import= "utente.model.*" %>
+<%@ page import= "java.util.ArrayList" %>
+<%@ page import= "connection.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<% UtenteBean auth = (UtenteBean) request.getSession().getAttribute("auth");
+        if(auth!=null){
+                request.setAttribute("auth", auth);
+        }
+        %>
   <!DOCTYPE html>
   <html lang="en">
 

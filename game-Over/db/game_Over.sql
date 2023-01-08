@@ -28,11 +28,11 @@ create table Videogioco
     anno        int           not null,
     tipo        varchar(15)   not null,
     descrizione varchar(1500) not null,
-    img1        varchar(50)   not null,
-    img2        varchar(50)   not null,
-    img3        varchar(50)   not null,
-    img4        varchar(50)   not null,
-    img5        varchar(50)   not null
+    img1        varchar(100)   not null,
+    img2        varchar(100)   not null,
+    img3        varchar(100)   not null,
+    img4        varchar(100)   not null,
+    img5        varchar(100)   not null
 );
 
 create table Compra

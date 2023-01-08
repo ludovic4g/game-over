@@ -1,4 +1,14 @@
+<%@ page import= "utente.model.*" %>
+<%@ page import= "gestorecatalogo.model.*" %>
+<%@ page import= "java.util.ArrayList" %>
+<%@ page import= "connection.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<% UtenteBean auth = (UtenteBean) request.getSession().getAttribute("auth");
+        if(auth!=null){
+                request.setAttribute("auth", auth);
+        }
+        %>
         <!DOCTYPE html>
         <html lang="en">
 
@@ -15,38 +25,49 @@
         <body>
                 <!--Header-->
                  <%@ include file="includes/header.jsp" %>
+                 <br>
+                <br>
+                <br>
+                
                 <!---------Single Product Details--------->
+		<% String id= request.getParameter("id");
+			int i = Integer.parseInt(id);
+			VideogiocoBean b = new VideogiocoBean();
+			VideogiocoDAO pdao= new VideogiocoDAO();
+			b= pdao.doRetriveByKey(i);
+
+                %>
                 <div class="card-wrapper">
                         <div class="card-details">
                                 <!--card left-->
                                 <div class="product-imgs">
                                         <div class="img-display">
                                                 <div class="img-showcase">
-                                                        <img class="imgproduct" src="" alt="image1">
-                                                        <img class="imgproduct" src="" alt="image2">
-                                                        <img class="imgproduct" src="" alt="image3">
-                                                        <img class="imgproduct" src="" alt="image4">
+                                                        <img class="imgproduct" src="<%=b.getImg1() %>" alt="image1">
+                                                        <img class="imgproduct" src="<%=b.getImg2() %>" alt="image2">
+                                                        <img class="imgproduct" src="<%=b.getImg3() %>" alt="image3">
+                                                        <img class="imgproduct" src="<%=b.getImg4() %>" alt="image4">
                                                 </div>
                                         </div>
                                         <div class="img-select">
                                                 <div class="img-item">
                                                         <a href="#" data-id="1">
-                                                                <img class="imgproduct" src="" alt="image1">
+                                                                <img class="imgproduct" src="<%=b.getImg1() %>" alt="image1">
                                                         </a>
                                                 </div>
                                                 <div class="img-item">
                                                         <a href="#" data-id="2">
-                                                                <img class="imgproduct" src="" alt="image2">
+                                                                <img class="imgproduct" src="<%=b.getImg2() %>" alt="image2">
                                                         </a>
                                                 </div>
                                                 <div class="img-item">
                                                         <a href="#" data-id="3">
-                                                                <img class="imgproduct" src="" alt="image3">
+                                                                <img class="imgproduct" src="<%=b.getImg3() %>" alt="image3">
                                                         </a>
                                                 </div>
                                                 <div class="img-item">
                                                         <a href="#" data-id="4">
-                                                                <img class="imgproduct" src="" alt="image4">
+                                                                <img class="imgproduct" src="<%=b.getImg4() %>" alt="image4">
                                                         </a>
                                                 </div>
                                         </div>
@@ -54,11 +75,11 @@
                                 <!--card right-->
                                 <div class="product-content">
                                         <a href="#" class="product-link">Giochi</a>
-                                        <h2 class="product-title">Battlefield 2042</h2>
+                                        <h2 class="product-title"><%=b.getNome() %></h2>
                                         <div class="product-price">
                                                 <!--<p class ="last-price">Old Price:<span>$257.00</span></p>-->
                                                 <p class="new-price">Prezzo:
-                                                        <span class="price">$249.00</span>
+                                                        <span class="price">€<%=b.getPrezzo() %></span>
                                                 </p>
                                                 <div class="purchase-info">
                                                         <input type="number" min="1" value="1">
@@ -68,21 +89,16 @@
                                                                 <option value="PC">Xbox One</option>
                                                         </select>
                                                         <br>
-                                                        <button type="button" class="btn">
+                                                        <a href="AddToCartServlet"><button type="button" class="btn">
                                                                 Aggiungi al carrello<i class="fas fa-shopping-cart"></i>
-                                                        </button>
+                                                        </button></a>
                                                 </div>
                                         </div>
 
                                         <div class="product-detail">
                                                 <h2>Dettagli prodotto:</h2>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Illo eveniet
-                                                        veniam tempora fuga tenetur
-                                                        placeat sapiente architecto illum soluta consequuntur,aspernatur
-                                                        quidem at sequi ipsa!</p>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing
-                                                        elit.Consequatur,perferendis eius.
-                                                        Dignissimos,labore suscipit.Unde.</p>
+                                                <p><%=b.getDescrizione() %></p>
+                                                
                                                 <!--<ul>
                                                 <li>Piattaforma:<span>PC/Console</span></li>
                                                 </ul>-->
@@ -92,19 +108,8 @@
                 </div>
                 </div>
                 <!--Footer-->
-                <footer>
-                        <div class="info">
-                                <a href="#" class="logo"><span aria-hidden="true">GameOver</span>GameOver<span
-                                                aria-hidden="true">GameOver</span></a>
-                                <p><i class="bx bx-copyright"></i>2022All Rights Reserved</p>
-                                <ul>
-                                        <li><a href=""><i class="bx bxl-facebook"></i></a></li>
-                                        <li><a href=""><i class="bx bxl-instagram"></i></a></li>
-                                        <li><a href=""><i class="bx bxl-twitter"></i></a></li>
-                                        <li><a href=""><i class="bx bxl-youtube"></i></a></li>
-                                </ul>
-                        </div>
-                </footer>
+                
+<%@ include file="includes/footer.jsp" %>
                 <script src="scripts/script.js"></script>
         </body>
 
