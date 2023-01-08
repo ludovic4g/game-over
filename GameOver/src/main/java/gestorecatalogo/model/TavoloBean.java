@@ -14,6 +14,16 @@ public class TavoloBean implements Serializable {
     private int idTavolo;
     private int numeroPosti;
 
+    public boolean isDisp() {
+        return disp;
+    }
+
+    public void setDisp(boolean disp) {
+        this.disp = disp;
+    }
+
+    private boolean disp;
+
     public int getNumeroPosti() {
         return numeroPosti;
     }

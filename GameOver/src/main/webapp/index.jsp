@@ -1,4 +1,13 @@
+<%@ page import= "utente.model.*" %>
+<%@ page import= "java.util.ArrayList" %>
+<%@ page import= "Connection.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<% UtenteBean auth = (UtenteBean) request.getSession().getAttribute("auth");
+        if(auth!=null){
+                request.setAttribute("auth", auth);
+        }
+        %>
         <!DOCTYPE html>
         <html lang="en">
 
@@ -27,8 +36,10 @@
                         </ul>
                         <div class="action">
                                 <div class="searchBx">
-                                        <a href="#"><i class='bx bx-search'></i></a>
-                                        <input type="text" placeholder="Search Games">
+                                        <form action="RicercaServlet" method="post">
+                                        <a href=""><i class='bx bx-search'></i></a>
+                                        <input type="text" name="cerca" placeholder="Search Games">
+                                        </form>
                                 </div>
                         </div>
                         <div class="toggleMenu" onclick="toggleMenu();"></div>

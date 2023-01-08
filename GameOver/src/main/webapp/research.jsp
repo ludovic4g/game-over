@@ -1,12 +1,18 @@
 <%@ page import= "utente.model.*" %>
 <%@ page import= "java.util.ArrayList" %>
 <%@ page import= "Connection.*" %>
+<%@ page import="java.io.*"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% UtenteBean auth = (UtenteBean) request.getSession().getAttribute("auth");
-        if(auth!=null){
+    if(auth!=null){
         request.setAttribute("auth", auth);
-        }
-        %>
+    }
+    String cerca = (String) request.getSession().getAttribute("cerca");
+    if(cerca!=null){
+        request.setAttribute("cerca", cerca);
+    }
+
+%>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -45,12 +51,7 @@
         <br>
         <!--Games-->
         <div class="games animeX" id="games">
-            <h2>Games</h2>
-            <ul>
-                <li class="list active" data-filter="all">All</li>
-                <li class="list" data-filter="pc">Pc Games</li>
-                <li class="list" data-filter="console">Console Games</li>
-            </ul>
+            <h2><%= "Risultati per "+ cerca %>  </h2>
             <div class="cardBx">
                 <div class="card" data-item="console">
                     <img src="game1.png" alt="">

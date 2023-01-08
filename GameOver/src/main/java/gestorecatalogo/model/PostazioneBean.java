@@ -6,6 +6,16 @@ public class PostazioneBean implements Serializable {
     private int idPostazione;
     private String ora;
 
+    public boolean isDisp() {
+        return disp;
+    }
+
+    public void setDisp(boolean disp) {
+        this.disp = disp;
+    }
+
+    private boolean disp;
+
     public int getIdPostazione() {
         return idPostazione;
     }

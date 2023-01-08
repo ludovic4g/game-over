@@ -16,6 +16,16 @@ public class UtenteBean implements Serializable {
     private boolean amm2;
     private boolean amm3;
 
+    private String sex;
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
     public UtenteBean() {
     }
 

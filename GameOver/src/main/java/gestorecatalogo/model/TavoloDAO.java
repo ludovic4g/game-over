@@ -29,6 +29,7 @@ public class TavoloDAO {
                 b.setNumeroPosti(rs.getInt("numeroPosti"));
                 b.setPrezzoPosto(rs.getDouble("prezzoPosto"));
                 b.setOra(rs.getString("ora"));
+                b.setDisp(rs.getBoolean("disp"));
                 b.setImg(rs.getString("img"));
 
             }
@@ -61,6 +62,7 @@ public class TavoloDAO {
                 b.setNumeroPosti(rs.getInt("numeroPosti"));
                 b.setPrezzoPosto(rs.getDouble("prezzoPosto"));
                 b.setOra(rs.getString("ora"));
+                b.setDisp(rs.getBoolean("disp"));
                 b.setImg(rs.getString("img"));
 
                 ab.add(b);
@@ -78,7 +80,7 @@ public class TavoloDAO {
     }
 
     public void doSave(TavoloBean utente) throws SQLException {
-        String query = "insert into Tavolo values(?,?,?,?,?);";
+        String query = "insert into Tavolo values(?,?,?,?,?,?);";
 
         Connection con = null;
         PreparedStatement ps = null;
@@ -92,7 +94,8 @@ public class TavoloDAO {
             ps.setInt(2, utente.getNumeroPosti());
             ps.setDouble(3, utente.getPrezzoPosto());
             ps.setString(4, utente.getOra());
-            ps.setString(5, utente.getImg());
+            ps.setBoolean(5, utente.isDisp());
+            ps.setString(6, utente.getImg());
 
 
             ps.executeUpdate();
