@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="imgBx">
                                         <div class="ball"></div>
-                                        <img src="images/zyro-image.png">
+                                        <img src="images/ball1.png">
                                 </div>
                         </div>
                 </div>

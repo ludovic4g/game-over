@@ -9,6 +9,7 @@
                 <title>Dashboard Admin|Catalogo Prodotti</title>
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
                 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+                <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
                 <link rel="stylesheet" href="dashboard.css">
         </head>
 
@@ -71,6 +72,15 @@
                                 <i class='bx bx-menu'></i>
                                 <span class="text">Benvenuto|Admin Dashboard</span>
                         </div>
+                        <div class="containersearch">
+                        <div class="input-box">
+                                <input type="text" placeholder="Search...">
+                                <span class="icon">
+                        <i class="uil uil-search search-icon"></i>
+                                 </span>
+                                <i class="uil uil-times close-icon"></i>
+                        </div>
+                        </div>
                         <div class="card">
                                 <div class="card-header">
                                         <h3 class="card-title">Lista Prodotti</h3>
@@ -124,6 +134,7 @@
                                                                 Modifica
                                                         </a></td>
                                         </tr>
+
                 </section>
                 <script>
                         /* Js For Animated SideBar */
@@ -140,6 +151,14 @@
                         sidebarBtn.addEventListener("click", () => {
                                 sidebar.classList.toggle("close");
                         });
+                </script>
+                <script>
+                        let inputBox = document.querySelector(".input-box"),
+                                searchIcon = document.querySelector(".icon"),
+                                closeIcon = document.querySelector(".close-icon");
+
+                        searchIcon.addEventListener("click", () => inputBox.classList.add("open"));
+                        closeIcon.addEventListener("click", () => inputBox.classList.remove("open"));
                 </script>
         </body>
 
