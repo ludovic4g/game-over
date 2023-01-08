@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="mysql-connector-java-8.0.29">
+    <CLASSES />
+    <JAVADOC />
+    <NATIVE>
+      <root url="jar://$PROJECT_DIR$/GameOver/lib/mysql-connector-java-8.0.29.jar!/" />
+    </NATIVE>
+    <SOURCES />
+  </library>
+</component>
