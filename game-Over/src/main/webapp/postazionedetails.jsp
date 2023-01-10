@@ -24,83 +24,109 @@
         <body>
                 <!--Header-->
                 <%@ include file="includes/header.jsp" %>
-                <div class="card-wrapper">
-                        <div class="card-details">
-                                <!--card left-->
-                                <div class="product-imgs">
-                                        <div class="img-display">
-                                                <div class="img-showcase">
-                                                        <img class="imgproduct" src="" alt="image1">
-                                                        <img class="imgproduct" src="" alt="image2">
-                                                        <img class="imgproduct" src="" alt="image3">
-                                                        <img class="imgproduct" src="" alt="image4">
-                                                </div>
-                                        </div>
-                                        <div class="img-select">
-                                                <div class="img-item">
-                                                        <a href="#" data-id="1">
-                                                                <img class="imgproduct" src="" alt="image1">
-                                                        </a>
-                                                </div>
-                                                <div class="img-item">
-                                                        <a href="#" data-id="2">
-                                                                <img class="imgproduct" src="" alt="image2">
-                                                        </a>
-                                                </div>
-                                                <div class="img-item">
-                                                        <a href="#" data-id="3">
-                                                                <img class="imgproduct" src="" alt="image3">
-                                                        </a>
-                                                </div>
-                                                <div class="img-item">
-                                                        <a href="#" data-id="4">
-                                                                <img class="imgproduct" src="" alt="image4">
-                                                        </a>
-                                                </div>
-                                        </div>
-                                </div>
-                                <!--card right-->
-                                <div class="product-content">
-                                        <a href="#" class="product-link">Giochi</a>
-                                        <h2 class="product-title">Battlefield 2042</h2>
-                                        <div class="product-price">
-                                                <!--<p class ="last-price">Old Price:<span>$257.00</span></p>-->
-                                                <p class="new-price">Prezzo:
-                                                        <span class="price">$249.00</span>
-                                                </p>
-                                                <div class="purchase-info">
-                                                        <select name="piattaforma" class="option">
-                                                                <option value="Default">Orario</option>
-                                                                <option value="Clock">17:30</option>
-                                                                <option value="Clock">18:30</option>
-                                                        </select>
-                                                        <br>
-                                                        <br>
-                                                        <button type="button" class="btn">
-                                                                Aggiungi al carrello<i class="fas fa-shopping-cart"></i>
-                                                        </button>
-                                                </div>
-                                        </div>
-
-                                        <div class="product-detail">
-                                                <h2>Dettagli prodotto:</h2>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Illo eveniet
-                                                        veniam tempora fuga tenetur
-                                                        placeat sapiente architecto illum soluta consequuntur,aspernatur
-                                                        quidem at sequi ipsa!</p>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing
-                                                        elit.Consequatur,perferendis eius.
-                                                        Dignissimos,labore suscipit.Unde.</p>
-                                                <!--<ul>
-                                                <li>Piattaforma:<span>PC/Console</span></li>
-                                                /ul>-->
-                                        </div>
-                                </div>
-                        </div>
-                </div>
+                <!--Postation -->
                 <!--Footer-->
                 <%@ include file="includes/footer.jsp" %>
                 <script src="scripts/script.js"></script>
+                <script>
+                /*Select Table*/
+
+                const container = document.querySelector(".container");
+                      const tables = document.querySelectorAll(".row .table:not(.sold)");
+                      const count = document.getElementById("count");
+                      const total = document.getElementById("total");
+                      const typeSelect = document.getElementById("type");
+
+                      populateUI();
+
+                      let ticketPrice = +typeSelect.value;
+
+                      // Save selected type index and price
+                      function settypeData(typeIndex, typePrice) {
+                        localStorage.setItem("selectedtypeIndex", typeIndex);
+                        localStorage.setItem("selectedtypePrice", typePrice);
+                      }
+
+                      // Update total and count
+                      function updateSelectedCount() {
+                        const selectedtables = document.querySelectorAll(".row .table.selected");
+
+                        const tablesIndex = [...selectedtables].map((table) => [...tables].indexOf(table));
+
+                        localStorage.setItem("selectedtables", JSON.stringify(tablesIndex));
+
+                        const selectedtablesCount = selectedtables.length;
+
+                        count.innerText = selectedtablesCount;
+                        total.innerText = selectedtablesCount * ticketPrice;
+
+                        settypeData(typeSelect.selectedIndex, typeSelect.value);
+                      }
+
+
+                      // Get data from localstorage and populate UI
+                      function populateUI() {
+                        const selectedtables = JSON.parse(localStorage.getItem("selectedtables"));
+
+                        if (selectedtables !== null && selectedtables.length > 0) {
+                          tables.forEach((table, index) => {
+                            if (selectedtables.indexOf(index) > -1) {
+                              console.log(table.classList.add("selected"));
+                            }
+                          });
+                        }
+
+                        const selectedtypeIndex = localStorage.getItem("selectedtypeIndex");
+
+                        if (selectedtypeIndex !== null) {
+                          typeSelect.selectedIndex = selectedtypeIndex;
+                          console.log(selectedtypeIndex)
+                        }
+                      }
+                      console.log(populateUI())
+                      // type select event
+                      typeSelect.addEventListener("change", (e) => {
+                        ticketPrice = +e.target.value;
+                        settypeData(e.target.selectedIndex, e.target.value);
+                        updateSelectedCount();
+                      });
+
+                      // table click event
+                      container.addEventListener("click", (e) => {
+                        if (
+                          e.target.classList.contains("table") &&
+                          !e.target.classList.contains("sold")
+                        ) {
+                          e.target.classList.toggle("selected");
+
+                          updateSelectedCount();
+                        }
+                      });
+
+                      // Initial count and total set
+                      updateSelectedCount();
+
+
+                      // Get the elements we need
+                      const numPeopleEl = document.getElementById('numPeople');
+                      const priceEl = document.querySelector('.price');
+
+                      // Set the initial price to 0
+                      let price = 0;
+
+                      // Calculate the price based on the number of people selected
+                      function calculatePrice() {
+                        const numPeople = numPeopleEl.value;
+                        price = numPeople * 5; // Assume the price is $5 per person
+                        priceEl.textContent = price;
+                      }
+
+                      // Calculate the price when the page loads
+                      calculatePrice();
+
+                      // Calculate the price when the number of people changes
+                      numPeopleEl.addEventListener('change', calculatePrice);
+                      </script>
         </body>
 
         </html>
