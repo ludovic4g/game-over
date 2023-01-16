@@ -10,6 +10,15 @@ public class OrdineBean implements Serializable {
     private double prezzoTotale;
     private double iva;
     private String lista;
+    private String stato;
+    
+    public String getStato() {
+    	return stato;
+    }
+    
+    public void setStato(String stato) {
+    	this.stato=stato;
+    }
     
     public String getListaProdotti() {
     	return lista;

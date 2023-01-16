@@ -10,15 +10,16 @@ import connection.DriverManagerConnectionPool;
 public class RiguardaDAO {
     private static final String TABLE_NAME = "Riguarda";
 
-    public RiguardaBean doRetriveByVideogioco(int codice) throws SQLException {
+    public ArrayList<RiguardaBean> doRetriveByVideogioco(int codice) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
         String query = "select * from " + RiguardaDAO.TABLE_NAME + " where id=?";
-        RiguardaBean b = new RiguardaBean();
+        ArrayList<RiguardaBean> ab = new ArrayList<RiguardaBean>();
+       
 
         try {
             con = DriverManagerConnectionPool.getConnection();
-
+            RiguardaBean b = new RiguardaBean();
             ps = con.prepareStatement(query);
             ps.setInt(1, codice);
             ResultSet rs = ps.executeQuery();
@@ -26,6 +27,7 @@ public class RiguardaDAO {
             while (rs.next()) {
                 b.setId(rs.getInt("id"));
                 b.setIdOrdine(rs.getInt("idOrdine"));
+                ab.add(b);
             }
             rs.close();
         } finally {
@@ -36,14 +38,14 @@ public class RiguardaDAO {
             }
 
         }
-        return b;
+        return ab;
     }
 
-    public RiguardaBean doRetriveByOrdine(int codice) throws SQLException {
+    public ArrayList<RiguardaBean> doRetriveByOrdine(int codice) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
         String query = "select * from " + RiguardaDAO.TABLE_NAME + " where idOrdine=?";
-        RiguardaBean b = new RiguardaBean();
+        ArrayList<RiguardaBean> ab = new ArrayList<RiguardaBean>();
 
         try {
             con = DriverManagerConnectionPool.getConnection();
@@ -51,10 +53,12 @@ public class RiguardaDAO {
             ps = con.prepareStatement(query);
             ps.setInt(1, codice);
             ResultSet rs = ps.executeQuery();
+            RiguardaBean b = new RiguardaBean();
 
             while (rs.next()) {
                 b.setId(rs.getInt("id"));
                 b.setIdOrdine(rs.getInt("idOrdine"));
+                ab.add(b);
             }
             rs.close();
         } finally {
@@ -65,7 +69,7 @@ public class RiguardaDAO {
             }
 
         }
-        return b;
+        return ab;
     }
 
     public ArrayList<RiguardaBean> doRetrieveAll() throws SQLException {

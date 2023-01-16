@@ -61,7 +61,7 @@
     
             </div>
     
-            <form action="">
+            <form action="CheckoutServlet" method="post">
                 <div class="inputCheckOut">
                     <span>Numero Carta</span>
                     <input type="text" maxlength="16" class="card-number-input">

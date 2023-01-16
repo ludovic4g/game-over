@@ -1,4 +1,5 @@
 <%@ page import= "utente.model.*" %>
+<%@ page import= "gestorecatalogo.model.*" %>
 <%@ page import= "java.util.ArrayList" %>
 <%@ page import= "connection.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -7,6 +8,16 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
+        
+        Carrello carrello = (Carrello) session.getAttribute("carrello");
+        ArrayList<VideogiocoBean> games =null;
+        
+        if(carrello== null){
+        	carrello = new Carrello();
+        }
+        boolean ctrl= carrello==null;
+        games= carrello.getGames();
+        request.setAttribute("carrello", carrello);
         %>
 
     <!DOCTYPE html>
@@ -55,128 +66,64 @@
                         <td class="platform">//</td>
                         <td class="product-price">$50.00</td>
                     </tr>
+                    <%if(games!=null) {
+                    for(VideogiocoBean v: games) {
+                    %>
                     <tr>
                         <td>
                             <div class="cart-info">
                                 <img
-                                    src="https://i.etsystatic.com/14246453/r/il/e0aa81/1218440768/il_794xN.1218440768_5k5u.jpg">
+                                    src=<%=v.getImg1() %>>
                                 <div class="resume">
-                                    <p>Pietra di luna</p>
-                                    <small class="single-product-price">Prezzo:$50.00</small>
+                                    <p><%=v.getNome() %></p>
+                                    <small class="single-product-price">Prezzo:<%out.println(String.format("%.2f&euro;", v.getPrezzo()));%></small>
                                     <br>
-                                    <a class="remove" href="">Remove</a>
+                                    <a class="remove" href="RemoveFromCartServlet?action=game&id=<%=v.getId()%>">Remove</a>
                                 </div>
                             </div>
                         </td>
-                        <td><input type="number" min="1" value="1"></td>
-                        <td class="platform">PC</td>
-                        <td class="product-price">$50.00</td>
+                        <td><input type="number" min="1" value="<%=v.getQuantita() %>"></td>
+                        <td class="platform"><%=v.getTipo() %></td>
+                        <td class="product-price">$<%out.println(String.format("%.2f&euro;", v.getPrezzo()* v.getQuantita()));%></td>
                     </tr>
-                    <tr>
-                        <td>
-                            <div class="cart-info">
-                                <img
-                                    src="https://i.etsystatic.com/6829831/r/il/d912d3/3255563537/il_794xN.3255563537_75og.jpg">
-                                <div class="resume">
-                                    <p>Anello in Quarzo Rosa</p>
-                                    <small class="single-product-price">Prezzo:$50.00</small>
-                                    <br>
-                                    <a class="remove" href="">Remove</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td><input type="number" min="1" value="1"></td>
-                        <td class="platform">PC</td>
-                        <td class="product-price">$50.00</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="cart-info">
-                                <img
-                                    src="https://i.etsystatic.com/6829831/r/il/d912d3/3255563537/il_794xN.3255563537_75og.jpg">
-                                <div class="resume">
-                                    <p>Anello in Quarzo Rosa</p>
-                                    <small class="single-product-price">Prezzo:$50.00</small>
-                                    <br>
-                                    <a class="remove" href="">Remove</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td><input type="number" min="1" value="1"></td>
-                        <td class="platform">PC</td>
-                        <td class="product-price">$50.00</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="cart-info">
-                                <img
-                                    src="https://i.etsystatic.com/6829831/r/il/d912d3/3255563537/il_794xN.3255563537_75og.jpg">
-                                <div class="resume">
-                                    <p>Anello in Quarzo Rosa</p>
-                                    <small class="single-product-price">Prezzo:$50.00</small>
-                                    <br>
-                                    <a class="remove" href="">Remove</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td><input type="number" min="1" value="1"></td>
-                        <td class="platform">PC</td>
-                        <td class="product-price">$50.00</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="cart-info">
-                                <img
-                                    src="https://i.etsystatic.com/6829831/r/il/d912d3/3255563537/il_794xN.3255563537_75og.jpg">
-                                <div class="resume">
-                                    <p>Anello in Quarzo Rosa</p>
-                                    <small class="platform">Prezzo:$50.00</small>
-                                    <br>
-                                    <a class="remove" href="">Remove</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td><input type="number" min="1" value="1"></td>
-                        <td class="platform">PC</td>
-                        <td class="product-price">$50.00</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="cart-info">
-                                <img
-                                    src="https://i.etsystatic.com/6829831/r/il/d912d3/3255563537/il_794xN.3255563537_75og.jpg">
-                                <div class="resume">
-                                    <p>Anello in Quarzo Rosa</p>
-                                    <small class="single-product-price">Prezzo:$50.00</small>
-                                    <br>
-                                    <a class="remove" href="">Remove</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td><input type="number" min="1" value="1"></td>
-                        <td class="platform">PC</td>
-                        <td class="product-price">$50.00</td>
-                    </tr>
-                </table>
+                    <% }
+                    }
+                    %>
+                   </table>
 
                 <div class="total-price">
 
                     <table>
                         <tr>
                             <td class="subtitle">Subtotal</td>
-                            <td class="total-product-price">$200.00</td>
+                            <td class="total-product-price"><td>Subtotal</td>
+                        <td><%if(!ctrl){
+                        out.println(String.format("%.2f&euro;", carrello.getTotal()));
+                        }else{
+                        	out.println("0.00");
+                        }
+                        %></td></td>
                         </tr>
                         <tr>
                             <td class="subtitle">Tax</td>
-                            <td class="total-product-price">$35.00</td>
+                            <td class="total-product-price">22%</td>
                         </tr>
                         <tr>
                             <td class="subtitle">Total</td>
-                            <td class="total-product-price">$230,00</td>
+                            <td class="total-product-price"><%if(!ctrl){
+                        out.println(String.format("%.2f&euro;", carrello.getTotal()*0.22+carrello.getTotal()));
+                        }else{
+                        	out.println("0.00");
+                        }
+                        %></td>
                         </tr>
                         <tr>
-                            <td><br><a href="" class="btn">Acquista</a></td>
-                            <td><br><a href="" class="btn">Svuota</a></td>
+                        	 <%if(ctrl){ %>
+                            <td><br><a href="cart.jsp" class="btn">Acquista</a></td>
+                            <%}else{ %>
+                            <td><br><a href="RedirectServlet" class="btn">Acquista</a></td>
+                            <%} %>
+                            <td><br><a href="RemoveFromCartServlet?action=clear" class="btn">Svuota</a></td>
                         </tr>
 
                     </table>

@@ -26,6 +26,8 @@ create table Videogioco
     nome        varchar(50)   not null,
     prezzo      double        not null,
     anno        int           not null,
+    quantita int not null,
+    magazzino int not null,
     tipo        varchar(15)   not null,
     descrizione varchar(1500) not null,
     img1        varchar(100)   not null,
@@ -51,9 +53,12 @@ create table Ordine
     idOrdine       integer primary key auto_increment,
     utente         varchar(30) not null,
     dataAcquisto   date        not null,
+    prodotti	varchar(100) not null,
     prezzoTotale   double      not null,
     iva            double      not null,
-    numeroProdotti integer     not null
+    numeroProdotti integer     not null,
+    stato varchar(20) not null
+    
 
 );
 

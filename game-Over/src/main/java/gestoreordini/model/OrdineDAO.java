@@ -27,10 +27,11 @@ public class OrdineDAO {
                 b.setIdOrdine(rs.getInt("idOrdine"));
                 b.setUtente(rs.getString("utente"));
                 b.setDataAcquisto(rs.getDate("dataAcquisto"));
+                b.setListaProdotti(rs.getString("prodotti"));
                 b.setPrezzoTotale(rs.getDouble("prezzoTotale"));
                 b.setIva(rs.getDouble("iva"));
                 b.setNumeroProdotti(rs.getInt("numeroProdotti"));
-
+                b.setStato(rs.getString("stato"));
             }
             rs.close();
         } finally {
@@ -60,9 +61,11 @@ public class OrdineDAO {
                 b.setIdOrdine(rs.getInt("idOrdine"));
                 b.setUtente(rs.getString("utente"));
                 b.setDataAcquisto(rs.getDate("dataAcquisto"));
+                b.setListaProdotti(rs.getString("prodotti"));
                 b.setPrezzoTotale(rs.getDouble("prezzoTotale"));
                 b.setIva(rs.getDouble("iva"));
                 b.setNumeroProdotti(rs.getInt("numeroProdotti"));
+                b.setStato(rs.getString("stato"));
 
                 ab.add(b);
             }
@@ -79,7 +82,7 @@ public class OrdineDAO {
     }
 
     public void doSave(OrdineBean utente) throws SQLException {
-        String query = "insert into Ordine values(?,?,?,?,?,?);";
+        String query = "insert into Ordine values(?,?,?,?,?,?,?,?);";
 
         Connection con = null;
         PreparedStatement ps = null;
@@ -92,9 +95,11 @@ public class OrdineDAO {
             ps.setInt(1, utente.getIdOrdine());
             ps.setString(2, utente.getUtente());
             ps.setDate(3, (java.sql.Date) utente.getDataAcquisto());
-            ps.setDouble(4, utente.getPrezzoTotale());
-            ps.setDouble(5, utente.getIva());
-            ps.setInt(5, utente.getNumeroProdotti());
+            ps.setString(4, utente.getListaProdotti());
+            ps.setDouble(5, utente.getPrezzoTotale());
+            ps.setDouble(6, utente.getIva());
+            ps.setInt(7, utente.getNumeroProdotti());
+            ps.setString(8, utente.getStato());
 
             ps.executeUpdate();
 
@@ -145,6 +150,45 @@ public class OrdineDAO {
                 DriverManagerConnectionPool.releaseConnection(con);
             }
         }
+    }
+    
+    
+    
+    public ArrayList<OrdineBean> doRetrieveAllbyUsername(String user) throws SQLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ArrayList<OrdineBean> ab = new ArrayList<OrdineBean>();
+        String query = "select * from Ordine where utente=?";
+
+        try {
+            con = DriverManagerConnectionPool.getConnection();
+
+            ps = con.prepareStatement(query);
+            ps.setString(1, user);
+            ResultSet rs = ps.executeQuery();
+            OrdineBean b = new OrdineBean();
+            while (rs.next()) {
+                b.setIdOrdine(rs.getInt("idOrdine"));
+                b.setUtente(rs.getString("utente"));
+                b.setDataAcquisto(rs.getDate("dataAcquisto"));
+                b.setListaProdotti(rs.getString("prodotti"));
+                b.setPrezzoTotale(rs.getDouble("prezzoTotale"));
+                b.setIva(rs.getDouble("iva"));
+                b.setNumeroProdotti(rs.getInt("numeroProdotti"));
+                b.setStato(rs.getString("stato"));
+
+                ab.add(b);
+            }
+            rs.close();
+        } finally {
+            try {
+                if (ps != null) ps.close();
+            } finally {
+                DriverManagerConnectionPool.releaseConnection(con);
+            }
+
+        }
+        return ab;
     }
 
 }
