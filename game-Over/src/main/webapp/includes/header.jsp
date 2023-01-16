@@ -17,7 +17,7 @@
                                 <div class="searchBx">
                                         <form action="RicercaServlet" method="post">
                                         <a href=""><i class='bx bx-search'></i></a>
-                                        <input type="text" name="cerca" placeholder="Search Games">
+                                        <input type="text" name="cerca" placeholder="Cerca il tuo gioco...">
                                         </form>
                                 </div>
                         </div>

@@ -25,7 +25,7 @@
                 <!--Header-->
                 <%@ include file="includes/header.jsp" %>
                 <!---------Table Select--------->
-                              <div class="bodycontain">
+                <div class="bodycontain">
       <div class="type-container">
         <label> Seleziona il tipo di giochi: </label>
         <select id="type">

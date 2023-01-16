@@ -31,8 +31,8 @@
     
                 <div class="front">
                     <div class="image">
-                        <img src="image/chip.png" alt="">
-                        <img src="image/visa.png" alt="">
+                        <img src="images/chip.png" alt="">
+                        <img src="images/visa.png" alt="">
                     </div>
                     <div class="card-number-CheckOut">################</div>
                     <div class="flexCheckOut">
@@ -41,7 +41,7 @@
                             <div class="card-holder-name">Nome Completo</div>
                         </div>
                         <div class="CheckOut">
-                            <span>Scadenza</span>
+                            <span class="deadline">Scadenza</span>
                             <div class="expiration">
                                 <span class="exp-month">mm</span>
                                 <span class="exp-year">yy</span>
@@ -49,30 +49,43 @@
                         </div>
                     </div>
                 </div>
-    
                 <div class="back">
                     <div class="stripe"></div>
                     <div class="CheckOut">
                         <span>CVV</span>
                         <div class="cvv-CheckOut"></div>
-                        <img src="image/visa.png" alt="">
+                        <img src="images/visa.png"  class="cvv-chip">
                     </div>
                 </div>
-    
             </div>
-    
-            <form action="CheckoutServlet" method="post">
+            <div class="total-price_checkout">
+                    <table class="checkout_table">
+                        <tr>
+                            <td class="subtitle-checkout">Subtotal</td>
+                            <td class="subtotal-product-price-checkout">$200.00</td>
+                        </tr>
+                        <tr>
+                            <td class="subtitle-checkout">Tax</td>
+                            <td class="tax-product-price-checkout">$35.00</td>
+                        </tr>
+                        <tr>
+                            <td class="subtitle-checkout">Totale</td>
+                            <td class="total-product-price-checkout">$230,00</td>
+                        </tr>
+                    </table>
+                </div>             
+            <form action="">
                 <div class="inputCheckOut">
-                    <span>Numero Carta</span>
+                    <span class="span_checkout">Numero Carta</span>
                     <input type="text" maxlength="16" class="card-number-input">
                 </div>
                 <div class="inputCheckOut">
-                    <span>Nome Completo</span>
-                    <input type="text" class="card-holder-input">
+                    <span class="span_checkout">Nome Completo</span>
+                    <input type="text" maxlength="40"class="card-holder-input">
                 </div>
                 <div class="flexCheckOut">
                     <div class="inputCheckOut">
-                        <span>Mese di scadenza</span>
+                        <span class="span_checkout">Mese di scadenza</span>
                         <select name="" id="" class="month-input">
                             <option value="month" selected disabled>Mese</option>
                             <option value="01">01</option>
@@ -90,7 +103,7 @@
                         </select>
                     </div>
                     <div class="inputCheckOut">
-                        <span>Anno di scadenza</span>
+                        <span class="span_checkout">Anno di scadenza</span>
                         <select name="" id="" class="year-input">
                             <option value="year" selected disabled>Anno</option>
                             <option value="2021">2021</option>
@@ -106,11 +119,11 @@
                         </select>
                     </div>
                     <div class="inputCheckOut">
-                        <span>CVV</span>
+                        <span class="span_checkout">CVV</span>
                         <input type="text" maxlength="3" class="cvv-input">
                     </div>
                 </div>
-                <input type="submit" value="submit" class="submit-btn">
+                <input type="submit" value="Procedi all'acquisto" class="submit-btn">
             </form>
     
         </div>    

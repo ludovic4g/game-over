@@ -113,8 +113,6 @@ a {
     font-weight: 600;
     transition: 0.3s ease;
     transition-delay: 0.1s;
-    position: relative;
-    right: -45px;
 }
 
 .sidebar.close .logo-details .logo_name {
@@ -438,7 +436,8 @@ textarea.form-control {
     letter-spacing: 1px;
     -webkit-box-reflect: below 0px linear-gradient(transparent, #0002);
     background: transparent;
-    width: 195px;
+    width: 225px;
+    cursor: pointer;
 
 }
 
