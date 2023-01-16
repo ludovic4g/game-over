@@ -15,7 +15,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Admin|Catalogo Prodotti</title>
+  <title>Dashboard Admin|Ordini</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
   <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -108,12 +108,10 @@
     
     <table>
       <tr>
-        <th>ID Prenotazione</th>
+        <th>N. Ordine</th>
         <th>Utente</th>
         <th>Data</th>
-        <th>Prezzo</th>
-        <th>Quantità</th>
-        <th>Orario</th>
+        <th>Totale</th>
         <th>Stato</th>
       </tr>
       <tr>
@@ -145,22 +143,10 @@
             </div>
           </div>
         </td>
-        <td>
-          <div class="cart-info">
-            <div>
-              <p>5</p>
-            </div>
-          </div>
-        </td>
-        <td><select class="orario">
-          <option value="" selected="selected">17:30</option>
-          <option value="">18:30</option>
-          <option value="">19:30</option>
-        </select></td>
         <td><select class="stato">
           <option value="" selected="selected">Stato di conferma</option>
-          <option value="">Conferma Prenotazione</option>
-          <option value="">Cambio Orario</option>
+          <option value="">Spedito</option>
+          <option value="">In fase di consegna</option>
         </select></td>
         </td>
         <td><a class="btn btn-danger btn-sm" href="#">

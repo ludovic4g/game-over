@@ -103,7 +103,7 @@
 </div>
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Lista Prenotazioni</h3>
+      <h3 class="card-title">Rimuovi Prenotazione</h3>
     </div>
     
     <table>
@@ -152,20 +152,21 @@
             </div>
           </div>
         </td>
-        <td><select class="orario">
-          <option value="" selected="selected">17:30</option>
-          <option value="">18:30</option>
-          <option value="">19:30</option>
-        </select></td>
-        <td><select class="stato">
-          <option value="" selected="selected">Stato di conferma</option>
-          <option value="">Conferma Prenotazione</option>
-          <option value="">Cambio Orario</option>
-        </select></td>
-        </td>
-        <td><a class="btn btn-danger btn-sm" href="#">
+        <td><div class="cart-info">
+            <div>
+              <p>DD/MM/YY</p>
+            </div>
+          </div></td>
+        <td><div class="cart-info">
+            <div>
+              <p>Confermato</p>
+            </div>
+          </div></td>
+        
+        <td>
+        <a class="btn btn-danger btn-sm" href="#">
           </i>
-          Modifica
+          Rimuovi
         </a></td>
       </tr>
       </tr>

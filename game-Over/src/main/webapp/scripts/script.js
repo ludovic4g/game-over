@@ -162,7 +162,6 @@ for (let i = 0; i < list.length; i++) {
                 _class("policy-length")[0].classList.remove("active");
             }
         });
-
 /* Product Gallery */
 const imgs = document.querySelectorAll('.img-select a');
 const imgBtns = [...imgs];
@@ -183,3 +182,6 @@ function slideImage() {
 }
 
 window.addEventListener('resize', slideImage);
+
+
+                     
