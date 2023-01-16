@@ -1,4 +1,6 @@
 <%@ page import= "utente.model.*" %>
+<%@ page import= "gestorecatalogo.model.*" %>
+<%@ page import= "gestoreordini.model.*" %>
 <%@ page import= "java.util.ArrayList" %>
 <%@ page import= "connection.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -7,7 +9,18 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
+        
+        OrdineDAO odao = new OrdineDAO();
+    	ArrayList<OrdineBean> o = odao.doRetrieveAllbyUsername(auth.getUsername());
+        if(auth!=null)
+        	request.setAttribute("ordine", o);
+        RiguardaDAO rdao = new RiguardaDAO();
+        ArrayList<RiguardaBean> riguarda = null;
+        VideogiocoBean game=null;
+        VideogiocoDAO vdao = new VideogiocoDAO();
         %>
+        
+  
         <!DOCTYPE html>
         <html lang="en">
 
@@ -54,15 +67,21 @@
                                                 <th>Piattaforma</th>
                                                 <th>Prezzo</th>
                                         </tr>
-                                        <tr>
+                                        
+                                        <%if(o!=null){
+                                        	for(OrdineBean f : o){
+                                        		riguarda= rdao.doRetriveByOrdine(f.getIdOrdine());
+                                        		game = vdao.doRetriveByKey(riguarda.get(0).getId());
+                                        	%>
+                                                                              <tr>
                                                 <td>
                                                         <div class="cart-info">
                                                                 <img
-                                                                        src="https://i.etsystatic.com/27612067/r/il/f086b9/3983570447/il_794xN.3983570447_95oe.jpg">
+                                                                        src=<%=game.getImg1()%>>
                                                                 <div class="resume">
-                                                                        <p>Bracciale tormalina nera grezza</p>
+                                                                        <p><%=f.getListaProdotti() %></p>
                                                                         <br>
-                                                                        <a class="remove" href="">Annulla</a>
+                                                                        <a class="remove" href="CancelOrderServlet">Annulla</a>
                                                                 </div>
                                                         </div>
                                                 </td>
@@ -71,108 +90,9 @@
                                                 <td class="platform">PC</td>
                                                 <td class="product-price">$50.00</td>
                                         </tr>
-                                        <tr>
-                                                <td>
-                                                        <div class="cart-info">
-                                                                <img
-                                                                        src="https://i.etsystatic.com/14246453/r/il/e0aa81/1218440768/il_794xN.1218440768_5k5u.jpg">
-                                                                <div class="resume">
-                                                                        <p>Pietra di luna</p>
-                                                                        <br>
-                                                                        <a class="remove" href="">Annulla</a>
-                                                                </div>
-                                                        </div>
-                                                </td>
-                                                <td class="state">In Consegna</td>
-                                                <td class="quantity">1</td>
-                                                <td class="platform">PC</td>
-                                                <td class="product-price">Annulla</td>
-                                        </tr>
-                                        <tr>
-                                                <td>
-                                                        <div class="cart-info">
-                                                                <img
-                                                                        src="https://i.etsystatic.com/6829831/r/il/d912d3/3255563537/il_794xN.3255563537_75og.jpg">
-                                                                <div class="resume">
-                                                                        <p>Anello in Quarzo Rosa</p>
-                                                                        <br>
-                                                                        <a class="remove" href="">Annulla</a>
-                                                                </div>
-                                                        </div>
-                                                </td>
-                                                <td class="state">In Consegna</td>
-                                                <td class="quantity">1</td>
-                                                <td class="platform">PC</td>
-                                                <td class="product-price">$50.00</td>
-                                        </tr>
-                                        <tr>
-                                                <td>
-                                                        <div class="cart-info">
-                                                                <img
-                                                                        src="https://i.etsystatic.com/6829831/r/il/d912d3/3255563537/il_794xN.3255563537_75og.jpg">
-                                                                <div class="resume">
-                                                                        <p>Anello in Quarzo Rosa</p>
-                                                                        <br>
-                                                                        <a class="remove" href="">Annulla</a>
-                                                                </div>
-                                                        </div>
-                                                </td>
-                                                <td class="state">In Consegna</td>
-                                                <<td class="quantity">1</td>
-                                                        <td class="platform">PC</td>
-                                                        <td class="product-price">$50.00</td>
-                                        </tr>
-                                        <tr>
-                                                <td>
-                                                        <div class="cart-info">
-                                                                <img
-                                                                        src="https://i.etsystatic.com/6829831/r/il/d912d3/3255563537/il_794xN.3255563537_75og.jpg">
-                                                                <div class="resume">
-                                                                        <p>Anello in Quarzo Rosa</p>
-                                                                        <br>
-                                                                        <a class="remove" href="">Annulla</a>
-                                                                </div>
-                                                        </div>
-                                                </td>
-                                                <td class="state">In Consegna</td>
-                                                <td class="quantity">1</td>
-                                                <td class="platform">PC</td>
-                                                <td class="product-price">$50.00</td>
-                                        </tr>
-                                        <tr>
-                                                <td>
-                                                        <div class="cart-info">
-                                                                <img
-                                                                        src="https://i.etsystatic.com/6829831/r/il/d912d3/3255563537/il_794xN.3255563537_75og.jpg">
-                                                                <div class="resume">
-                                                                        <p>Anello in Quarzo Rosa</p>
-                                                                        <br>
-                                                                        <a class="remove" href="">Annulla</a>
-                                                                </div>
-                                                        </div>
-                                                </td>
-                                                <td class="state">In Consegna</td>
-                                                <td class="quantity">1</td>
-                                                <td class="platform">PC</td>
-                                                <td class="product-price">$50.00</td>
-                                        </tr>
-                                        <tr>
-                                                <td>
-                                                        <div class="cart-info">
-                                                                <img
-                                                                        src="https://i.etsystatic.com/6829831/r/il/d912d3/3255563537/il_794xN.3255563537_75og.jpg">
-                                                                <div class="resume">
-                                                                        <p>Anello in Quarzo Rosa</p>
-                                                                        <br>
-                                                                        <a class="remove" href="">Annulla</a>
-                                                                </div>
-                                                        </div>
-                                                </td>
-                                                <td class="state">In Consegna</td>
-                                                <td class="quantity">1</td>
-                                                <td class="platform">PC</td>
-                                                <td class="product-price">$50.00</td>
-                                        </tr>
+                                        <% }
+                                        	}%>
+                                        
                                 </table>
                         </div>
                 </div>

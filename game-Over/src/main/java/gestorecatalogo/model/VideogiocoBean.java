@@ -7,9 +7,19 @@ public class VideogiocoBean implements Serializable {
 
     private int id;
     private String nome;
+    private int quantita;
     private double prezzo;
     private int anno;
     private String tipo;
+    private int magazzino;
+    
+    public int getMagazzino() {
+    	return magazzino;
+    }
+    
+    public void updateMagazzino(int q) {
+    	magazzino=q;
+    }
     
     public int getId() {
         return id;
@@ -17,6 +27,13 @@ public class VideogiocoBean implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+    public int getQuantita() {
+        return quantita;
+    }
+
+    public void setQuantita(int quantita) {
+        this.quantita = quantita;
     }
 
     public String getNome() {

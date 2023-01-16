@@ -82,16 +82,18 @@
                                                         <span class="price">€<%=b.getPrezzo() %></span>
                                                 </p>
                                                 <div class="purchase-info">
-                                                        <input type="number" min="1" value="1">
+                                                <form action="AddToCartServlet?id=<%=b.getId()%>&action=details" method="post">
+                                                        <input type="number" min="1" placeholder="1" name="quantita" required>
                                                         <select name="piattaforma" class="option">
                                                                 <option value="PC">PC</option>
-                                                                <option value="PC">PlayStation 5</option>
-                                                                <option value="PC">Xbox One</option>
+                                                                <option value="Console">PlayStation 5</option>
+                                                                <option value="Console">Xbox One</option>
                                                         </select>
                                                         <br>
-                                                        <a href="AddToCartServlet"><button type="button" class="btn">
+                                                        <a href=""><button type="submit" class="btn">
                                                                 Aggiungi al carrello<i class="fas fa-shopping-cart"></i>
                                                         </button></a>
+                                                        </form>
                                                 </div>
                                         </div>
 

@@ -65,6 +65,8 @@ values(
        "Pokemon",
        59.90,
        2012,
+       2,
+       30,
        "Console",
        "Un gioco molto bello",
        "https://as1.ftcdn.net/v2/jpg/04/34/72/82/1000_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg",
@@ -80,6 +82,8 @@ values(
        "Call of Duty",
        49.90,
        2022,
+       1,
+       34,
        "PC",
        "Un gioco molto bello",
        "https://as1.ftcdn.net/v2/jpg/04/34/72/82/1000_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg",
@@ -94,9 +98,11 @@ values(
       1001,
       "Tartaglia",
       20230104,
+      "Pokemon",
       54.89,
       0.22,
-      1
+      1,
+      "In preparazione"
 );
 
 insert into Indirizzo
