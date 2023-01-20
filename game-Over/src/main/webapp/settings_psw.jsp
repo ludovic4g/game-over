@@ -34,7 +34,7 @@
         <li>
           <div class="iocn-link">
             <a href="#">
-              <i class='bx bx-lock'></i>
+              <i class='bx bx-cog'></i>
               <span class="link_name">Impostazioni profilo</span>
             </a>
             <i class='bx bxs-chevron-down arrow'></i>
