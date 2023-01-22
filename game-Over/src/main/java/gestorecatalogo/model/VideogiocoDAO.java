@@ -191,5 +191,168 @@ public class VideogiocoDAO {
 		}
 		
 	}
+    
+    
+    /////////////////////////////////////////////
+    public void ModifyNome(int idpf, String nome) throws SQLException{
+		String query="update videogioco set nome=? where id=?"; 
+		Connection con=null; 
+		PreparedStatement ps=null; 
+		
+		try {
+			con= DriverManagerConnectionPool.getConnection(); 
+			
+			ps=con.prepareStatement(query); 
+			ps.setInt(2, idpf);
+			ps.setString(1, nome);
+			ps.executeUpdate();
 
+		}finally {
+			try {
+				if(ps!=null) ps.close(); 
+			}finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+	}
+
+    public void ModifyDescrizione(int idpf, String nome) throws SQLException{
+		String query="update videogioco set descrizione=? where id=?"; 
+		Connection con=null; 
+		PreparedStatement ps=null; 
+		
+		try {
+			con= DriverManagerConnectionPool.getConnection(); 
+			
+			ps=con.prepareStatement(query); 
+			ps.setInt(2, idpf);
+			ps.setString(1, nome);
+			ps.executeUpdate();
+
+		}finally {
+			try {
+				if(ps!=null) ps.close(); 
+			}finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+	}
+    public void ModifyAnno(int idpf, int nome) throws SQLException{
+		String query="update videogioco set anno=? where id=?"; 
+		Connection con=null; 
+		PreparedStatement ps=null; 
+		
+		try {
+			con= DriverManagerConnectionPool.getConnection(); 
+			
+			ps=con.prepareStatement(query); 
+			ps.setInt(2, idpf);
+			ps.setInt(1, nome);
+			ps.executeUpdate();
+
+		}finally {
+			try {
+				if(ps!=null) ps.close(); 
+			}finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+	}
+    
+    public void ModifyPrezzo(int idpf, double nome) throws SQLException{
+		String query="update videogioco set prezzo=? where id=?"; 
+		Connection con=null; 
+		PreparedStatement ps=null; 
+		
+		try {
+			con= DriverManagerConnectionPool.getConnection(); 
+			
+			ps=con.prepareStatement(query); 
+			ps.setInt(2, idpf);
+			ps.setDouble(1, nome);
+			ps.executeUpdate();
+
+		}finally {
+			try {
+				if(ps!=null) ps.close(); 
+			}finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+	}
+    
+    public void ModifyPiattaforma(int idpf, String nome) throws SQLException{
+		String query="update videogioco set piattaforma=? where id=?"; 
+		Connection con=null; 
+		PreparedStatement ps=null; 
+		
+		try {
+			con= DriverManagerConnectionPool.getConnection(); 
+			
+			ps=con.prepareStatement(query); 
+			ps.setInt(2, idpf);
+			ps.setString(1, nome);
+			ps.executeUpdate();
+
+		}finally {
+			try {
+				if(ps!=null) ps.close(); 
+			}finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+	}
+    
+    public void ModifyImg12(int idpf, String nome, String nome2) throws SQLException{
+		String query="update videogioco set img1=?, img2=? where id=?"; 
+		Connection con=null; 
+		PreparedStatement ps=null; 
+		
+		try {
+			con= DriverManagerConnectionPool.getConnection(); 
+			
+			ps=con.prepareStatement(query); 
+			ps.setInt(3, idpf);
+			ps.setString(2, nome2);
+			ps.setString(1, nome);
+			ps.executeUpdate();
+
+		}finally {
+			try {
+				if(ps!=null) ps.close(); 
+			}finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+	}
+    public void ModifyImg345(int idpf, String nome, String nome2, String nome3) throws SQLException{
+		String query="update videogioco set img1=?, img2=?, img3=? where id=?"; 
+		Connection con=null; 
+		PreparedStatement ps=null; 
+		
+		try {
+			con= DriverManagerConnectionPool.getConnection(); 
+			
+			ps=con.prepareStatement(query); 
+			ps.setInt(4, idpf);
+			ps.setString(3, nome3);
+			ps.setString(2, nome2);
+			ps.setString(1, nome);
+			ps.executeUpdate();
+
+		}finally {
+			try {
+				if(ps!=null) ps.close(); 
+			}finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+	}
 }

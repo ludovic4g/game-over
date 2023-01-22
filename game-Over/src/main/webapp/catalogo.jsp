@@ -1,4 +1,5 @@
 <%@ page import= "utente.model.*" %>
+<%@ page import= "gestorecatalogo.model.*" %>
 <%@ page import= "java.util.ArrayList" %>
 <%@ page import= "connection.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -7,6 +8,12 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
+        
+     VideogiocoDAO vdao = new VideogiocoDAO();
+     ArrayList<VideogiocoBean> games = vdao.doRetrieveAll();
+     
+     
+     
         %>
         <!DOCTYPE html>
         <html lang="en">
@@ -54,45 +61,49 @@
                                                 <th>Piattaforma</th>
                                                 <th></th>
                                         </tr>
+                                        
+                                        <%for(VideogiocoBean b : games){ %>
                                         <tr>
                                                 <td>
                                                         <div class="cart-info">
                                                                 <img
-                                                                        src="https://i.etsystatic.com/27612067/r/il/f086b9/3983570447/il_794xN.3983570447_95oe.jpg">
+                                                                        src="<%=b.getImg1()%>">
                                                         </div>
                                                 </td>
                                                 <td>
                                                         <div class="cart-info">
                                                                 <div>
-                                                                        <p>100</p>
+                                                                        <p><%=b.getId() %></p>
                                                                 </div>
                                                         </div>
                                                 </td>
                                                 <td>
                                                         <div class="cart-info">
                                                                 <div>
-                                                                        <p>Bracciale tormalina nera grezza</p>
+                                                                        <p><%=b.getNome() %> (<%=b.getAnno() %>)</p>
                                                                 </div>
                                                         </div>
                                                 </td>
                                                 <td>
                                                         <div class="cart-info">
                                                                 <div>
-                                                                        <p>9,99$</p>
+                                                                        <p>€<%=b.getPrezzo() %></p>
                                                                 </div>
                                                         </div>
                                                 </td>
                                                 <td>
                                                         <div class="cart-info">
                                                                 <div>
-                                                                        <p>PC</p>
+                                                                        <p><%=b.getTipo() %></p>
                                                                 </div>
                                                         </div>
                                                 </td>
-                                                <td><a class="btn btn-danger btn-sm" href="modificaprodotto.jsp">
+                                                <td><a class="btn btn-danger btn-sm" href="modificaprodotto.jsp?id=<%=b.getId()%>">
                                                                 </i>
                                                                 Modifica
                                                         </a></td>
+                                                        <tr>
+                                                        <%} %>
                                         </tr>
                 </section>
                 <script>

@@ -99,4 +99,34 @@
     <servlet-name>AggiungiTavoloServlet</servlet-name>
     <url-pattern>/AggiungiTavoloServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModificaGiocoServlet</display-name>
+    <servlet-name>ModificaGiocoServlet</servlet-name>
+    <servlet-class>gestorecatalogo.control.ModificaGiocoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModificaGiocoServlet</servlet-name>
+    <url-pattern>/ModificaGiocoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModificaPostazioneServlet</display-name>
+    <servlet-name>ModificaPostazioneServlet</servlet-name>
+    <servlet-class>gestorecatalogo.control.ModificaPostazioneServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModificaPostazioneServlet</servlet-name>
+    <url-pattern>/ModificaPostazioneServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModificaTavoloServlet</display-name>
+    <servlet-name>ModificaTavoloServlet</servlet-name>
+    <servlet-class>gestorecatalogo.control.ModificaTavoloServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModificaTavoloServlet</servlet-name>
+    <url-pattern>/ModificaTavoloServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
