@@ -1432,6 +1432,7 @@ form .page .btns button.next {
     margin-bottom: 8px;
 }
 
+.progress-bar .step .bullet_psw,
 .progress-bar .step .bullet {
     height: 25px;
     width: 25px;
@@ -1445,6 +1446,7 @@ form .page .btns button.next {
     line-height: 25px;
 }
 
+.progress-bar .step .bullet_psw.active,
 .progress-bar .step .bullet.active {
     border-color: #d639c4;
     background: #d639c4;
@@ -1455,12 +1457,14 @@ form .page .btns button.next {
 
 }
 
+.progress-bar .step .bullet_psw span,
 .progress-bar .step .bullet span {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
 }
 
+.progress-bar .step .bullet_psw.active span,
 .progress-bar .step .bullet.active span {
     display: none;
 }
@@ -1476,6 +1480,18 @@ form .page .btns button.next {
     background: black;
 }
 
+.progress-bar .step .bullet_psw:before,
+.progress-bar .step .bullet_psw:after {
+    position: absolute;
+    content: '';
+    bottom: 11px;
+    right: -144px;
+    height: 3px;
+    width: 142px;
+    background: black;
+}
+
+.progress-bar .step .bullet_psw.active:after,
 .progress-bar .step .bullet.active:after {
     background: #d639c4;
     box-shadow: 0 0 10px #d639c4,
@@ -1493,6 +1509,8 @@ form .page .btns button.next {
     }
 }
 
+.progress-bar .step:last-child .bullet_psw:before,
+.progress-bar .step:last-child .bullet_psw:after,
 .progress-bar .step:last-child .bullet:before,
 .progress-bar .step:last-child .bullet:after {
     display: none;
