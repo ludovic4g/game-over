@@ -40,7 +40,7 @@
             
             <%if(!lista.isEmpty()){
 		    		for(VideogiocoBean b: lista){ 
-		    			if((b.getTipo().equals("PC"))&&(b.getTipo().equals("Console"))){
+		    			
 		    		%>
             <div class="cardBx">
                 <div class="card" data-item="all">
@@ -56,8 +56,7 @@
                 </div>              
             </div>
             <%}
-		    		}
-            }%>
+		                }%>
             
             <%if(!lista.isEmpty()){
 		    		for(VideogiocoBean b: lista){

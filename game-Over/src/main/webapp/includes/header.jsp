@@ -10,8 +10,9 @@
                                 <li><a href="prenotazioni.jsp">Prenotazioni</a></li>
                                 <li><a href="orders.jsp">Ordini</a></li>
                                 <li><a href="LogoutServlet">Logout</a></li>
-                                <%}else %>
+                                <%}else {%>
                                 <li><a href="login.jsp">Login</a></li>
+                                <%} %>
                         </ul>
                         <div class="action">
                                 <div class="searchBx">

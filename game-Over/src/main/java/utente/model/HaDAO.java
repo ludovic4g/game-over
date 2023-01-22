@@ -101,6 +101,37 @@ public class HaDAO {
         return ab;
     }
 
+    public ArrayList<HaBean> doRetrieveAllbyUsername(String c) throws SQLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ArrayList<HaBean> ab = new ArrayList<HaBean>();
+        String query = "select * from Ha where username=?";
+
+        try {
+            con = DriverManagerConnectionPool.getConnection();
+
+            ps = con.prepareStatement(query);
+            ps.setString(1, c);
+            ResultSet rs = ps.executeQuery();
+            HaBean b = new HaBean();
+            while (rs.next()) {
+                b.setUsername(rs.getString("username"));
+                b.setIdIndirizzo(rs.getInt("idIndirizzo"));
+
+                ab.add(b);
+            }
+            rs.close();
+        } finally {
+            try {
+                if (ps != null) ps.close();
+            } finally {
+                DriverManagerConnectionPool.releaseConnection(con);
+            }
+
+        }
+        return ab;
+    }
+    
     public void doSave(HaBean utente) throws SQLException {
         String query = "insert into utente values(?,?)";
 
@@ -146,6 +177,42 @@ public class HaDAO {
                 DriverManagerConnectionPool.releaseConnection(con);
             }
         }
+    }
+    
+    
+    
+    public ArrayList<IndirizzoBean> getIndirizziByUsername(String c) throws SQLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ArrayList<IndirizzoBean> ab = new ArrayList<IndirizzoBean>();
+        String query = "select * from Ha natural join Indirizzo where ha.username=? AND ha.id=indirizzo.id ;";
+
+        try {
+            con = DriverManagerConnectionPool.getConnection();
+
+            ps = con.prepareStatement(query);
+            ps.setString(1, c);
+            ResultSet rs = ps.executeQuery();
+            IndirizzoBean b = new IndirizzoBean();
+            while (rs.next()) {
+            	 b.setId(rs.getInt("id"));
+                 b.setVia(rs.getString("indirizzo"));
+                 b.setCAP(rs.getInt("CAP"));
+                 b.setCitta(rs.getString("citta"));
+                 b.setProvincia(rs.getString("provincia"));
+
+                ab.add(b);
+            }
+            rs.close();
+        } finally {
+            try {
+                if (ps != null) ps.close();
+            } finally {
+                DriverManagerConnectionPool.releaseConnection(con);
+            }
+
+        }
+        return ab;
     }
 
 }

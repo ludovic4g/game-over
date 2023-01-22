@@ -80,7 +80,7 @@ public class TavoloDAO {
     }
 
     public void doSave(TavoloBean utente) throws SQLException {
-        String query = "insert into Tavolo values(?,?,?,?,?,?);";
+        String query = "INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (?,?,?,?,?,?);";
 
         Connection con = null;
         PreparedStatement ps = null;
@@ -90,10 +90,10 @@ public class TavoloDAO {
             con = DriverManagerConnectionPool.getConnection();
 
             ps = con.prepareStatement(query);
-            ps.setInt(1, utente.getIdTavolo());
-            ps.setInt(2, utente.getNumeroPosti());
-            ps.setDouble(3, utente.getPrezzoPosto());
-            ps.setString(4, utente.getOra());
+            ps.setInt(1, utente.getNumeroPosti());
+            ps.setDouble(2, utente.getPrezzoPosto());
+            ps.setString(3, utente.getOra());
+            ps.setString(4, utente.getTipo());
             ps.setBoolean(5, utente.isDisp());
             ps.setString(6, utente.getImg());
 

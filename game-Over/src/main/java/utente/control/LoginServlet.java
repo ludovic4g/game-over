@@ -27,7 +27,10 @@ public class LoginServlet extends HttpServlet {
         }
 
         request.getSession().setAttribute("ctrl", ctrl);
-        response.sendRedirect("index.jsp");
+        request.getSession().setAttribute("auth", utente);
+        if(utente.isGestoreCatalogo() || utente.isGestoreOrdini() || utente.isGestorePrenotazioni()) response.sendRedirect("dashboard_admin.jsp");
+        else 
+        	response.sendRedirect("index.jsp");
 
 
     }

@@ -79,7 +79,7 @@ public class PostazioneDAO {
     }
 
     public void doSave(PostazioneBean utente) throws SQLException {
-        String query = "insert into Postazione values(?,?,?,?,?);";
+        String query = "INSERT INTO Postazione(ora, prezzo, disp, img) values(?,?,?,?);";
 
         Connection con = null;
         PreparedStatement ps = null;
@@ -89,11 +89,10 @@ public class PostazioneDAO {
             con = DriverManagerConnectionPool.getConnection();
 
             ps = con.prepareStatement(query);
-            ps.setInt(1, utente.getIdPostazione());
-            ps.setString(2, utente.getOra());
-            ps.setDouble(3, utente.getPrezzo());
-            ps.setBoolean(4, utente.isDisp());
-            ps.setString(5, utente.getImg());
+            ps.setString(1, utente.getOra());
+            ps.setDouble(2, utente.getPrezzo());
+            ps.setBoolean(3, utente.isDisp());
+            ps.setString(4, utente.getImg());
 
             ps.executeUpdate();
 

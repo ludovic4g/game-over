@@ -26,7 +26,7 @@ public class IndirizzoDAO {
 
             while (rs.next()) {
                 b.setId(rs.getInt("idIndirizzo"));
-                b.setVia(rs.getString("via"));
+                b.setVia(rs.getString("indirizzo"));
                 b.setCAP(rs.getInt("CAP"));
                 b.setCitta(rs.getString("citta"));
                 b.setProvincia(rs.getString("provincia"));
@@ -57,7 +57,7 @@ public class IndirizzoDAO {
             IndirizzoBean b = new IndirizzoBean();
             while (rs.next()) {
                 b.setId(rs.getInt("idIndirizzo"));
-                b.setVia(rs.getString("via"));
+                b.setVia(rs.getString("indirizzo"));
                 b.setCAP(rs.getInt("CAP"));
                 b.setCitta(rs.getString("citta"));
                 b.setProvincia(rs.getString("provincia"));
@@ -76,6 +76,39 @@ public class IndirizzoDAO {
         return ab;
     }
 
+    public ArrayList<IndirizzoBean> doRetrieveAllById(int c) throws SQLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ArrayList<IndirizzoBean> ab = new ArrayList<IndirizzoBean>();
+        String query = "select * from Indirizzo where id=?";
+
+        try {
+            con = DriverManagerConnectionPool.getConnection();
+
+            ps = con.prepareStatement(query);
+            ps.setInt(1, c);
+            ResultSet rs = ps.executeQuery();
+            IndirizzoBean b = new IndirizzoBean();
+            while (rs.next()) {
+                b.setId(rs.getInt("idIndirizzo"));
+                b.setVia(rs.getString("indirizzo"));
+                b.setCAP(rs.getInt("CAP"));
+                b.setCitta(rs.getString("citta"));
+                b.setProvincia(rs.getString("provincia"));
+
+                ab.add(b);
+            }
+            rs.close();
+        } finally {
+            try {
+                if (ps != null) ps.close();
+            } finally {
+                DriverManagerConnectionPool.releaseConnection(con);
+            }
+
+        }
+        return ab;
+    }
     public void doSave(IndirizzoBean utente) throws SQLException {
         String query = "insert into Indirizzo values(?,?,?,?,?);";
 

@@ -1,4 +1,5 @@
 <%@ page import= "utente.model.*" %>
+<%@ page import= "gestorecatalogo.model.*" %>
 <%@ page import= "java.util.ArrayList" %>
 <%@ page import= "connection.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -7,6 +8,15 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
+        Carrello carrello = (Carrello) session.getAttribute("carrello");
+        ArrayList<VideogiocoBean> games =null;
+        
+        if(carrello== null){
+        	carrello = new Carrello();
+        }
+        boolean ctrl= carrello==null;
+        games= carrello.getGames();
+        request.setAttribute("carrello", carrello);
         %>
     <!DOCTYPE html>
     <html lang="en">

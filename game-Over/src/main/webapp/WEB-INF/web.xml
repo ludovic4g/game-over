@@ -59,4 +59,44 @@
     <servlet-name>CancelOrderServlet</servlet-name>
     <url-pattern>/CancelOrderServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddAddressServlet</display-name>
+    <servlet-name>AddAddressServlet</servlet-name>
+    <servlet-class>utente.control.AddAddressServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddAddressServlet</servlet-name>
+    <url-pattern>/AddAddressServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AggiungiGiocoServlet</display-name>
+    <servlet-name>AggiungiGiocoServlet</servlet-name>
+    <servlet-class>gestorecatalogo.control.AggiungiGiocoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AggiungiGiocoServlet</servlet-name>
+    <url-pattern>/AggiungiGiocoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AggiungiPostazioneServlet</display-name>
+    <servlet-name>AggiungiPostazioneServlet</servlet-name>
+    <servlet-class>gestorecatalogo.control.AggiungiPostazioneServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AggiungiPostazioneServlet</servlet-name>
+    <url-pattern>/AggiungiPostazioneServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AggiungiTavoloServlet</display-name>
+    <servlet-name>AggiungiTavoloServlet</servlet-name>
+    <servlet-class>gestorecatalogo.control.AggiungiTavoloServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AggiungiTavoloServlet</servlet-name>
+    <url-pattern>/AggiungiTavoloServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

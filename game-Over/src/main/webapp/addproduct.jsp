@@ -1,3 +1,13 @@
+<%@ page import= "utente.model.*" %>
+<%@ page import= "java.util.ArrayList" %>
+<%@ page import= "connection.*" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<% UtenteBean auth = (UtenteBean) request.getSession().getAttribute("auth");
+        if(auth!=null){
+                request.setAttribute("auth", auth);
+        }
+        %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
   <!DOCTYPE html>
   <html lang="en">
@@ -14,58 +24,8 @@
 
   <body>
     <!---------SideBar--------->
-    <div class="sidebar close">
-      <div class="logo-details">
-        <i class='bx bxs-joystick'></i>
-        <span class="logo_name">GameOver</span>
-      </div>
-      <ul class="nav-links">
-        <li>
-          <a href="#">
-            <i class='bx bx-grid-alt'></i>
-            <span class="link_name">Dashboard</span>
-          </a>
-          <ul class="sub-menu blank">
-            <li><a class="link_name" href="dashboard_admin.jsp">Dashboard</a></li>
-          </ul>
-        </li>
-        <li>
-          <div class="iocn-link">
-            <a href="#">
-              <i class='bx bx-collection'></i>
-              <span class="link_name">Prodotti</span>
-            </a>
-            <i class='bx bxs-chevron-down arrow'></i>
-          </div>
-          <ul class="sub-menu">
-            <li><a class="link_name" href="#">Prodotto</a></li>
-            <li><a href="addproduct.jsp">Aggiungi Prodotto</a></li>
-            <li><a href="catalogo.jsp">Modifica Prodotto</a></li>
-            <li><a href="rimuoviprodotto.jsp">Rimuovi Prodotto</a></li>
-          </ul>
-        </li>
-        <li>
-        <li>
-          <a href="orderlist.jsp">
-            <i class='bx bx-cart'></i>
-            <span class="link_name">Lista Ordini</span>
-          </a>
-          <ul class="sub-menu blank">
-            <li><a class="link_name" href="orderlist.jsp">Ordini</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="index.jsp">
-            <i class='bx bx-home'></i>
-            <span class="link_name">Home</span>
-          </a>
-          <ul class="sub-menu blank">
-            <li><a class="link_name" href="index.jsp">Home</a></li>
-          </ul>
-        </li>
-      </ul>
-      <!---------Home Section--------->
-    </div>
+    <%@ include file="includes/sidebar-admin.jsp" %>
+    <!--  -->
     <section class="home-section">
       <div class="home-content">
         <i class='bx bx-menu'></i>
@@ -78,40 +38,45 @@
           <label class="collapsible-head" for="collapsible-head">Aggiungi Prodotto</label>
           <div class="collapsible-text">
             <div class="card-body">
+            <form action="AggiungiGiocoServlet" method="post">
               <div class="form-group">
                 <label for="inputName">Nome Prodotto</label>
-                <input type="text" id="inputName" class="form-control">
+                <input type="text" id="inputName" class="form-control" name="name">
+              </div>
+               <div class="form-group">
+                <label for="inputName">Quantita' da Aggiungere</label>
+                <input type="text" id="inputName" class="form-control" name="quantita">
               </div>
               <div class="form-group">
-                <label for="inputName">ID Prodotto</label>
-                <input type="text" id="inputName" class="form-control">
+                <label for="inputName">Anno</label>
+                <input type="text" id="inputName" class="form-control" name="anno">
               </div>
               <div class="form-group">
                 <label for="inputDescription">Descrizione Prodotto</label>
-                <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                <textarea id="inputDescription" class="form-control" rows="4" name="descrizione"></textarea>
               </div>
               <div class="form-group">
                 <label for="inputPrice">Prezzo</label>
-                <input type="number" id="inputPrice" class="form-control">
+                <input type="number" id="inputPrice" class="form-control" name="prezzo">
               </div>
               <div class="form-group">
                 <label for="inputName">Piattaforma</label>
                 <select name="piattaforma" class="option">
                   <option value="PC">PC</option>
-                  <option value="PC">PlayStation 5</option>
-                  <option value="PC">Xbox One</option>
+                  <option value="Console">PlayStation 5</option>
+                  <option value="Console">Xbox One</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">Immagine Principale</label>
                 <br>
-                <input type="link" id="inputName" class="form-control">
-                <input type="link" id="inputName" class="form-control">
+                <input type="link" id="inputName" class="form-control" name="img1">
+                <input type="link" id="inputName" class="form-control" name="img2">
                 <div class="form-group">
                   <label for="inputProjectLeader">Immagini Secondarie</label>
-                  <input type="link" id="inputName" class="form-control">
-                  <input type="link" id="inputName" class="form-control">
-                  <input type="link" id="inputName" class="form-control">
+                  <input type="link" id="inputName" class="form-control" name="img3">
+                  <input type="link" id="inputName" class="form-control" name="img4">
+                  <input type="link" id="inputName" class="form-control" name="img5">
                 </div>
               </div>
               <div class="row">
@@ -119,10 +84,91 @@
                   <input type="submit" value="Aggiungi Prodotto" class="right button">
                 </div>
               </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
+      <!-- Aggiungi Postazione -->
+       <div class="wrapper">
+        <div class="collapsible2">
+          <input class="check2" type="checkbox" id="collapsible-head2">
+          <label class="collapsible-head2" for="collapsible-head2">Aggiungi Postazione</label>
+          <div class="collapsible-text2">
+            <div class="card-body">
+            <form action="AggiungiPostazioneServlet" method="post">
+              <div class="form-group">
+                <label for="inputPrice">Prezzo</label>
+                <input type="number" id="inputPrice" class="form-control" name="prezzo">
+              </div>
+              <div class="form-group">
+                <label for="inputName">Ora</label>
+                <select name="ora" class="option">
+                  <option value="9:30 - 11:30">9:30 - 11:30</option>
+                  <option value="14:30 - 16:30">14:30 - 16:30</option>
+                  <option value="18:30 - 20:30">18:30 - 20:30</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="inputProjectLeader">Immagine Principale</label>
+                <br>
+                <input type="link" id="inputName" class="form-control" name="img1">
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <input type="submit" value="Aggiungi Postazione" class="right button">
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <!-- Add Tavoli -->
+       <div class="wrapper">
+        <div class="collapsible3">
+          <input class="check3" type="checkbox" id="collapsible-head3">
+          <label class="collapsible-head3" for="collapsible-head3">Aggiungi Tavolo da Gioco</label>
+          <div class="collapsible-text3">
+            <div class="card-body">
+            <form action="AggiungiTavoloServlet" method="post">
+              <div class="form-group">
+                <label for="inputPrice">Numero Posti</label>
+                <input type="number" id="inputPrice" class="form-control" name="posto">
+              </div>
+               <div class="form-group">
+                <label for="inputName">Tipo Tavolo</label>
+                <input type="text" id="inputPrice" class="form-control" name="tavolo">
+              </div>
+              <div class="form-group">
+                <label for="inputPrice">Prezzo per Posto</label>
+                <input type="number" id="inputPrice" class="form-control" name="prezzo">
+              </div>
+              <div class="form-group">
+                <label for="inputName">Ora</label>
+                <select name="ora" class="option">
+                  <option value="9:30 - 11:30">9:30 - 11:30</option>
+                  <option value="14:30 - 16:30">14:30 - 16:30</option>
+                  <option value="18:30 - 20:30">18:30 - 20:30</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="inputProjectLeader">Immagine Principale</label>
+                <br>
+                <input type="link" id="inputName" class="form-control" name="img1">
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <input type="submit" value="Aggiungi Tavolo" class="right button">
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
     </section>
     <script>
       /* Js For Animated SideBar */

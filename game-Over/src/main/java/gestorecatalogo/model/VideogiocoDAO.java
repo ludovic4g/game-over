@@ -93,7 +93,7 @@ public class VideogiocoDAO {
     }
 
     public void doSave(VideogiocoBean utente) throws SQLException {
-        String query = "insert into Videogioco values(?,?,?,?,?,?,?,?,?,?,?,?,?);";
+        String query = "INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
 
         Connection con = null;
         PreparedStatement ps = null;
@@ -103,19 +103,18 @@ public class VideogiocoDAO {
             con = DriverManagerConnectionPool.getConnection();
 
             ps = con.prepareStatement(query);
-            ps.setInt(1, utente.getId());
-            ps.setString(2, utente.getNome());
-            ps.setDouble(3, utente.getPrezzo());
-            ps.setInt(4, utente.getAnno());
-            ps.setInt(5, utente.getQuantita());
-            ps.setInt(6, utente.getMagazzino());
-            ps.setString(7, utente.getTipo());
-            ps.setString(8, utente.getDescrizione());
-            ps.setString(9, utente.getImg1());
-            ps.setString(10, utente.getImg2());
-            ps.setString(11, utente.getImg3());
-            ps.setString(12, utente.getImg4());
-            ps.setString(13, utente.getImg5());
+            ps.setString(1, utente.getNome());
+            ps.setDouble(2, utente.getPrezzo());
+            ps.setInt(3, utente.getAnno());
+            ps.setInt(4, utente.getQuantita());
+            ps.setInt(5, utente.getMagazzino());
+            ps.setString(6, utente.getTipo());
+            ps.setString(7, utente.getDescrizione());
+            ps.setString(8, utente.getImg1());
+            ps.setString(9, utente.getImg2());
+            ps.setString(10, utente.getImg3());
+            ps.setString(11, utente.getImg4());
+            ps.setString(12, utente.getImg5());
 
             ps.executeUpdate();
 
