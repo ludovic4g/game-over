@@ -129,4 +129,44 @@
     <servlet-name>ModificaTavoloServlet</servlet-name>
     <url-pattern>/ModificaTavoloServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RicercaCatalogoServlet</display-name>
+    <servlet-name>RicercaCatalogoServlet</servlet-name>
+    <servlet-class>gestorecatalogo.control.RicercaCatalogoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RicercaCatalogoServlet</servlet-name>
+    <url-pattern>/RicercaCatalogoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RimuoviCatalogoServlet</display-name>
+    <servlet-name>RimuoviCatalogoServlet</servlet-name>
+    <servlet-class>gestorecatalogo.control.RimuoviCatalogoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RimuoviCatalogoServlet</servlet-name>
+    <url-pattern>/RimuoviCatalogoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModificaOrdineServlet</display-name>
+    <servlet-name>ModificaOrdineServlet</servlet-name>
+    <servlet-class>gestoreordini.control.ModificaOrdineServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModificaOrdineServlet</servlet-name>
+    <url-pattern>/ModificaOrdineServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FiltraOrdiniAlfabeticoServlet</display-name>
+    <servlet-name>FiltraOrdiniAlfabeticoServlet</servlet-name>
+    <servlet-class>gestoreordini.control.FiltraOrdiniAlfabeticoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FiltraOrdiniAlfabeticoServlet</servlet-name>
+    <url-pattern>/FiltraOrdiniAlfabeticoServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

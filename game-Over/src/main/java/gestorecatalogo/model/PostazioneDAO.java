@@ -15,7 +15,7 @@ public class PostazioneDAO {
     public PostazioneBean doRetriveByKey(int codice) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
-        String query = "select * from " + PostazioneDAO.TABLE_NAME + " where idPostazione=?";
+        String query = "select * from " + PostazioneDAO.TABLE_NAME + " where id=?";
         PostazioneBean b = new PostazioneBean();
 
         try {
@@ -26,7 +26,7 @@ public class PostazioneDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                b.setIdPostazione(rs.getInt("idPostazione"));
+                b.setIdPostazione(rs.getInt("id"));
                 b.setOra(rs.getString("ora"));
                 b.setPrezzo(rs.getDouble("prezzo"));
                 b.setDisp(rs.getBoolean("disp"));
@@ -56,9 +56,10 @@ public class PostazioneDAO {
 
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
-            PostazioneBean b = new PostazioneBean();
+            
             while (rs.next()) {
-                b.setIdPostazione(rs.getInt("idPostazione"));
+            	PostazioneBean b = new PostazioneBean();
+                b.setIdPostazione(rs.getInt("id"));
                 b.setOra(rs.getString("ora"));
                 b.setPrezzo(rs.getDouble("prezzo"));
                 b.setDisp(rs.getBoolean("disp"));
@@ -126,15 +127,15 @@ public class PostazioneDAO {
         }
     }
 
-    public void doDelete(PostazioneBean utente) throws SQLException {
-        String query = "delete from " + PostazioneDAO.TABLE_NAME + " where idPostazione=?";
+    public void doDelete(int id) throws SQLException {
+        String query = "delete from " + PostazioneDAO.TABLE_NAME + " where id=?";
         Connection con = null;
         PreparedStatement ps = null;
 
         try {
             con = DriverManagerConnectionPool.getConnection();
             ps = con.prepareStatement(query);
-            ps.setInt(1, utente.getIdPostazione());
+            ps.setInt(1, id);
             ps.execute();
         } finally {
             try {
@@ -144,5 +145,98 @@ public class PostazioneDAO {
             }
         }
     }
+    
+    //////////////////////////////////////////////////
+    public void ModifyPrezzo(int idpf, double nome) throws SQLException{
+		String query="update postazione set prezzo=? where id=?"; 
+		Connection con=null; 
+		PreparedStatement ps=null; 
+		
+		try {
+			con= DriverManagerConnectionPool.getConnection(); 
+			
+			ps=con.prepareStatement(query); 
+			ps.setInt(2, idpf);
+			ps.setDouble(1, nome);
+			ps.executeUpdate();
+
+		}finally {
+			try {
+				if(ps!=null) ps.close(); 
+			}finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+	}
+    
+    public void ModifyOra(int idpf, String nome) throws SQLException{
+		String query="update postazione set ora=? where id=?"; 
+		Connection con=null; 
+		PreparedStatement ps=null; 
+		
+		try {
+			con= DriverManagerConnectionPool.getConnection(); 
+			
+			ps=con.prepareStatement(query); 
+			ps.setInt(2, idpf);
+			ps.setString(1, nome);
+			ps.executeUpdate();
+
+		}finally {
+			try {
+				if(ps!=null) ps.close(); 
+			}finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+	}
+    
+    public void ModifyDisp(int idpf, boolean nome) throws SQLException{
+		String query="update postazione set disp=? where id=?"; 
+		Connection con=null; 
+		PreparedStatement ps=null; 
+		
+		try {
+			con= DriverManagerConnectionPool.getConnection(); 
+			
+			ps=con.prepareStatement(query); 
+			ps.setInt(2, idpf);
+			ps.setBoolean(1, nome);
+			ps.executeUpdate();
+
+		}finally {
+			try {
+				if(ps!=null) ps.close(); 
+			}finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+	}
+    
+    public void ModifyImg(int idpf, String nome) throws SQLException{
+		String query="update postazione set img=? where id=?"; 
+		Connection con=null; 
+		PreparedStatement ps=null; 
+		
+		try {
+			con= DriverManagerConnectionPool.getConnection(); 
+			
+			ps=con.prepareStatement(query); 
+			ps.setInt(2, idpf);
+			ps.setString(1, nome);
+			ps.executeUpdate();
+
+		}finally {
+			try {
+				if(ps!=null) ps.close(); 
+			}finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+	}
 
 }

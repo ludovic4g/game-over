@@ -9,13 +9,10 @@
                 request.setAttribute("auth", auth);
         }
         
-     VideogiocoDAO vdao = new VideogiocoDAO();
-     ArrayList<VideogiocoBean> games = vdao.doRetrieveAll();
-     PostazioneDAO pdao = new PostazioneDAO();
-     ArrayList<PostazioneBean> postazioni = pdao.doRetrieveAll();
-     TavoloDAO tdao = new TavoloDAO();
-     ArrayList<TavoloBean> tavoli = tdao.doRetrieveAll();
-     
+    ArrayList<VideogiocoBean> games = (ArrayList<VideogiocoBean>) request.getSession().getAttribute("lista1");
+    ArrayList<PostazioneBean> post = (ArrayList<PostazioneBean>) request.getSession().getAttribute("lista2");
+    ArrayList<TavoloBean> tavs = (ArrayList<TavoloBean>) request.getSession().getAttribute("lista3");
+       
      
      
         %>
@@ -44,13 +41,11 @@
                                 
                         </div>
                         <div class="input-box">
-                        <form action ="RicercaCatalogoServlet" method="post">
-            <input type="text" placeholder="Cerca..." name="cerca">
+            <input type="text" placeholder="Cerca...">
             <span class="icon">
                 <i class="uil uil-search search-icon"></i>
             </span>
             <i class="uil uil-times close-icon"></i>
-            </form>
         </div>
         
                         <div class="card">
@@ -59,6 +54,7 @@
                                         
                                 </div>
                                 <table>
+                                <%if(!games.isEmpty()){ %>
                                         <tr>
                                                 <th></th>
                                                 <th>ID Prodotto</th>
@@ -68,7 +64,8 @@
                                                 <th></th>
                                         </tr>
                                         
-                                        <%for(VideogiocoBean b : games){ %>
+                                        <%
+                                        for(VideogiocoBean b : games){ %>
                                         <tr>
                                                 <td>
                                                         <div class="cart-info">
@@ -109,10 +106,12 @@
                                                                 Modifica
                                                         </a></td>
                                                         <tr>
-                                                        <%} %>
+                                                        <%} 
+                                                        }%>
                                         </tr>
                                         
                                         <table>
+                                        <%if(!post.isEmpty()){ %>
                                         <div class="card2">
                                          <div class="card-header2">
                                         <h3 class="card-title2">Lista Postazioni</h3>
@@ -128,7 +127,8 @@
                                                 <th></th>
                                         </tr>
                                         
-                                        <%for(PostazioneBean b : postazioni){ %>
+                                        <%
+                                        for(PostazioneBean b : post){ %>
                                         <tr>
                                                 <td>
                                                         <div class="cart-info">
@@ -172,12 +172,15 @@
                                                                 Modifica
                                                         </a></td>
                                                         <tr>
-                                                        <%} %>
+                                                        <%} 
+                                                        }%>
                                         </tr>
                                          
                                         <table>
+                                        <%if(!tavs.isEmpty()){ %>
                                         <div class="card2">
                                          <div class="card-header2">
+                                      
                                         <h3 class="card-title2">Lista Tavoli</h3>
                                         
                                 </div>
@@ -193,7 +196,8 @@
                                                 <th></th>
                                         </tr>
                                         
-                                        <%for(TavoloBean b : tavoli){ %>
+                                        <%
+                                        for(TavoloBean b : tavs){ %>
                                         <tr>
                                                 <td>
                                                         <div class="cart-info">
@@ -251,7 +255,8 @@
                                                                 Modifica
                                                         </a></td>
                                                         <tr>
-                                                        <%} %>
+                                                        <%}
+                                        }%>
                                         </tr>
                                         
                                         

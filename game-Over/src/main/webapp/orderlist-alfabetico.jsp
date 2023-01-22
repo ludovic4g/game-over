@@ -8,9 +8,7 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
-        
-        OrdineDAO odao = new OrdineDAO();
-        ArrayList<OrdineBean> ordini = odao.doRetrieveAll();
+        ArrayList<OrdineBean> ordini = (ArrayList<OrdineBean>) request.getSession().getAttribute("lista");
         %>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,10 +53,10 @@
 	<button type="submit" class="btn btn-danger btn-sm">-></button>
 	</form>
 <form action ="FiltraOrdiniServlet?action=data" method="post">
-<!-- <div class="filter_title">Data da:</div> -->
-<input class="data_filter" type="date" id="sort-date" name="inizio" required>
-<!--  <div class="filter_title">Data a:</div> -->
-<input class="data_filter" type="date" id="sort-date" name="fine" required>
+<div class="filter_title">Data da:</div>
+<input class="data_filter" type="date" id="sort-date" name="inizio">
+<div class="filter_title">Data a:</div>
+<input class="data_filter" type="date" id="sort-date" name="fine">
 <button type="submit" class="btn btn-danger btn-sm">-></button>
 </form>
 </div>

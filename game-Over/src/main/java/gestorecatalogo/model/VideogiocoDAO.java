@@ -150,7 +150,7 @@ public class VideogiocoDAO {
         }
     }
 
-    public void doDelete(VideogiocoBean utente) throws SQLException {
+    public void doDelete(int id) throws SQLException {
         String query = "delete from " + VideogiocoDAO.TABLE_NAME + " where id=?";
         Connection con = null;
         PreparedStatement ps = null;
@@ -158,7 +158,7 @@ public class VideogiocoDAO {
         try {
             con = DriverManagerConnectionPool.getConnection();
             ps = con.prepareStatement(query);
-            ps.setInt(1, utente.getId());
+            ps.setInt(1, id);
             ps.execute();
         } finally {
             try {

@@ -1,4 +1,5 @@
 <%@ page import= "utente.model.*" %>
+<%@ page import= "gestorecatalogo.model.*" %>
 <%@ page import= "java.util.ArrayList" %>
 <%@ page import= "connection.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -7,6 +8,13 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
+        VideogiocoDAO vdao = new VideogiocoDAO();
+        ArrayList<VideogiocoBean> games = vdao.doRetrieveAll();
+        PostazioneDAO pdao = new PostazioneDAO();
+        ArrayList<PostazioneBean> postazioni = pdao.doRetrieveAll();
+        TavoloDAO tdao = new TavoloDAO();
+        ArrayList<TavoloBean> tavoli = tdao.doRetrieveAll();      
+        
         %>
         <!DOCTYPE html>
         <html lang="en">
@@ -15,7 +23,7 @@
                 <meta charset="UTF-8">
                 <meta http-equiv="X-UA-Compatible" content="IE=edge">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Dashboard Admin|Modifica Prodotto</title>
+                <title>Dashboard Admin|Rimuovi Prodotto</title>
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
                 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
                 <link rel="stylesheet" href="dashboard.css">
@@ -30,9 +38,10 @@
                                 <i class='bx bx-menu'></i>
                                 <span class="text">Benvenuto|Admin Dashboard</span>
                         </div>
-                        <div class="card">
+                         <div class="card">
                                 <div class="card-header">
                                         <h3 class="card-title">Lista Prodotti</h3>
+                                        
                                 </div>
                                 <table>
                                         <tr>
@@ -43,47 +52,196 @@
                                                 <th>Piattaforma</th>
                                                 <th></th>
                                         </tr>
+                                        
+                                        <%for(VideogiocoBean b : games){ %>
                                         <tr>
                                                 <td>
                                                         <div class="cart-info">
                                                                 <img
-                                                                        src="https://i.etsystatic.com/27612067/r/il/f086b9/3983570447/il_794xN.3983570447_95oe.jpg">
+                                                                        src="<%=b.getImg1()%>">
                                                         </div>
                                                 </td>
                                                 <td>
                                                         <div class="cart-info">
                                                                 <div>
-                                                                        <p>100</p>
+                                                                        <p><%=b.getId() %></p>
                                                                 </div>
                                                         </div>
                                                 </td>
                                                 <td>
                                                         <div class="cart-info">
                                                                 <div>
-                                                                        <p>Bracciale tormalina nera grezza</p>
+                                                                        <p><%=b.getNome() %> (<%=b.getAnno() %>)</p>
                                                                 </div>
                                                         </div>
                                                 </td>
                                                 <td>
                                                         <div class="cart-info">
                                                                 <div>
-                                                                        <p>9,99$</p>
+                                                                        <p>€<%=b.getPrezzo() %></p>
                                                                 </div>
                                                         </div>
                                                 </td>
                                                 <td>
                                                         <div class="cart-info">
                                                                 <div>
-                                                                        <p>PC</p>
+                                                                        <p><%=b.getTipo() %></p>
                                                                 </div>
                                                         </div>
                                                 </td>
-                                                <td><a class="btn btn-danger btn-sm" href="#">
+                                                <td><a class="btn btn-danger btn-sm" href="RimuoviCatalogoServlet?id=<%=b.getId()%>&action=gioco">
                                                                 <i class='bx bx-trash'>
                                                                 </i>
                                                                 Rimuovi
                                                         </a></td>
+                                                                  <tr>
+                                                        <%} %>
                                         </tr>
+                                        
+                                        <table>
+                                        <div class="card2">
+                                         <div class="card-header2">
+                                        <h3 class="card-title2">Lista Postazioni</h3>
+                                        
+                                </div>
+                                         <table>
+                                        <tr>
+                                                <th></th>
+                                                <th>ID Postazione</th>
+                                                <th>Ora</th>
+                                                <th>Prezzo</th>
+                                                <th>Disponibilità</th>
+                                                <th></th>
+                                        </tr>
+                                        
+                                        <%for(PostazioneBean b : postazioni){ %>
+                                        <tr>
+                                                <td>
+                                                        <div class="cart-info">
+                                                                <img
+                                                                        src="<%=b.getImg()%>">
+                                                        </div>
+                                                </td>
+                                                <td>
+                                                        <div class="cart-info">
+                                                                <div>
+                                                                        <p><%=b.getIdPostazione() %></p>
+                                                                </div>
+                                                        </div>
+                                                </td>
+                                                <td>
+                                                        <div class="cart-info">
+                                                                <div>
+                                                                        <p><%=b.getOra() %></p>
+                                                                </div>
+                                                        </div>
+                                                </td>
+                                                <td>
+                                                        <div class="cart-info">
+                                                                <div>
+                                                                        <p>€<%=b.getPrezzo() %></p>
+                                                                </div>
+                                                        </div>
+                                                </td>
+                                                <td>
+                                                        <div class="cart-info">
+                                                                <div>
+                                                                        <p><%if(b.isDisp()) {
+                                                                        	out.println("Disponibile");
+                                                                        }
+                                                                        else out.println("Non Disponibile");%></p>
+                                                                </div>
+                                                        </div>
+                                                </td>       
+                                                        <td><a class="btn btn-danger btn-sm" href="RimuoviCatalogoServlet?id=<%=b.getIdPostazione()%>&action=post">
+                                                                <i class='bx bx-trash'>
+                                                                </i>
+                                                                Rimuovi
+                                                        </a></td>
+                                                          <tr>
+                                                        <%} %>
+                                        </tr>
+                                         
+                                        <table>
+                                        <div class="card2">
+                                         <div class="card-header2">
+                                        <h3 class="card-title2">Lista Tavoli</h3>
+                                        
+                                </div>
+                                         <table>
+                                        <tr>
+                                                <th></th>
+                                                <th>ID Postazione</th>
+                                                <th>Numero Posti</th>
+                                                <th>Prezzo Posto</th>
+                                                <th>Ora</th>
+                                                <th>Tipo</th>
+                                                <th>Disponibilità</th>
+                                                <th></th>
+                                        </tr>
+                                        
+                                        <%for(TavoloBean b : tavoli){ %>
+                                        <tr>
+                                                <td>
+                                                        <div class="cart-info">
+                                                                <img
+                                                                        src="<%=b.getImg()%>">
+                                                        </div>
+                                                </td>
+                                                <td>
+                                                        <div class="cart-info">
+                                                                <div>
+                                                                        <p><%=b.getIdTavolo() %></p>
+                                                                </div>
+                                                        </div>
+                                                </td>
+                                                <td>
+                                                        <div class="cart-info">
+                                                                <div>
+                                                                        <p><%=b.getNumeroPosti() %></p>
+                                                                </div>
+                                                        </div>
+                                                </td>
+                                                <td>
+                                                        <div class="cart-info">
+                                                                <div>
+                                                                        <p>€<%=b.getPrezzoPosto()%></p>
+                                                                </div>
+                                                        </div>
+                                                </td>
+                                                <td>
+                                                        <div class="cart-info">
+                                                                <div>
+                                                                        <p><%=b.getOra() %></p>
+                                                                </div>
+                                                        </div>
+                                                </td>
+                                                 <td>
+                                                        <div class="cart-info">
+                                                                <div>
+                                                                        <p><%=b.getTipo() %></p>
+                                                                </div>
+                                                        </div>
+                                                </td>
+                                                <td>
+                                                        <div class="cart-info">
+                                                                <div>
+                                                                        <p><%if(b.isDisp()) {
+                                                                        	out.println("Disponibile");
+                                                                        }
+                                                                        else out.println("Non Disponibile");%></p>
+                                                                </div>
+                                                        </div>
+                                                </td>
+                                                        <td><a class="btn btn-danger btn-sm" href="RimuoviCatalogoServlet?id=<%=b.getIdTavolo()%>&action=tav">
+                                                                <i class='bx bx-trash'>
+                                                                </i>
+                                                                Rimuovi
+                                                        </a></td>
+                                                        <tr>
+                                                        <%} %>
+                                        </tr>
+                                       
                 </section>
                 <script>
                         /* Js For Animated SideBar */

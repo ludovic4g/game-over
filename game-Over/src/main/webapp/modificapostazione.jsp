@@ -29,8 +29,8 @@
    
    <% String id= request.getParameter("id");
 	int i = Integer.parseInt(id);
-	VideogiocoBean b = new VideogiocoBean();
-	VideogiocoDAO pdao= new VideogiocoDAO();
+	PostazioneBean b = new PostazioneBean();
+	PostazioneDAO pdao= new PostazioneDAO();
 	b= pdao.doRetriveByKey(i);
    %>
     <section class="home-section">
@@ -41,43 +41,10 @@
       <div class="wrapper">
         <div class="collapsible">
           <input class="check" type="checkbox" id="collapsible-head">
-          <label class="collapsible-head" for="collapsible-head">Modifica Prodotto</label>
+          <label class="collapsible-head" for="collapsible-head">Modifica Informazioni Postazione</label>
           <div class="collapsible-text">
             <div class="card-body">
-            <form action="ModificaGiocoServlet?action=nome&id=<%=b.getId() %>" method="post">
-              <div class="form-group">
-                <label for="inputName">Nome Prodotto</label>
-                <input type="text" id="inputName" class="form-control"  placeholder ="<%=b.getNome() %>" name="nome" required>
-                <div class="row">
-                  <div class="col-12">
-                    <input type="submit" value="Conferma" class="right button">
-                  </div>
-                </div>
-              </div>
-              </form>
-              <form action="ModificaGiocoServlet?action=anno&id=<%=b.getId() %>" method="post">
-              <div class="form-group">
-                <label for="inputName">Anno Prodotto</label>
-                <input type="text" id="inputName" class="form-control" name="anno" placeholder=<%=b.getAnno() %> required>
-                <div class="row">
-                  <div class="col-12">
-                    <input type="submit" value="Conferma" class="right button">
-                  </div>
-                </div>
-              </div>
-              </form>
-              <form action="ModificaGiocoServlet?action=descrizione&id=<%=b.getId() %>" method="post">
-              <div class="form-group">
-                <label for="inputDescription">Descrizione Prodotto</label>
-                <textarea id="inputDescription" class="form-control" rows="4" name="desc" placeholder="<%=b.getDescrizione()%>" required></textarea>
-                <div class="row">
-                  <div class="col-12">
-                    <input type="submit" value="Conferma" class="right button">
-                  </div>
-                </div>
-              </div>
-              </form>
-              <form action="ModificaGiocoServlet?action=prezzo&id=<%=b.getId() %>" method="post">
+              <form action="ModificaPostazioneServlet?action=prezzo&id=<%=b.getIdPostazione() %>" method="post">
               <div class="form-group">
                 <label for="inputPrice">Prezzo</label>
                 <input type="number" id="inputPrice" class="form-control" name="prezzo" placeholder="<%=b.getPrezzo()%>" required>
@@ -88,13 +55,13 @@
                 </div>
               </div>
               </form>
-              <form action="ModificaGiocoServlet?action=piattaforma&id=<%=b.getId() %>" method="post">
+              <form action="ModificaPostazioneServlet?action=ora&id=<%=b.getIdPostazione() %>" method="post">
               <div class="form-group">
-                <label for="inputName">Piattaforma</label>
-                <select name="piattaforma" class="option">
-                  <option value="PC">PC</option>
-                  <option value="Console">PlayStation 5</option>
-                  <option value="Console">Xbox One</option>
+                <label for="inputName">Ora</label>
+                <select name="ora" class="option">
+                  <option value="9:30 - 11:30">9:30 - 11:30</option>
+                  <option value="14:30 - 16:30">14:30 - 16:30</option>
+                  <option value="18:30 - 20:30">18:30 - 20:30</option>
                 </select>
                 <div class="row">
                   <div class="col-12">
@@ -103,25 +70,24 @@
                 </div>
               </div>
               </form>
-              <form action="ModificaGiocoServlet?action=img&id=<%=b.getId() %>" method="post">
+              <form action="ModificaPostazioneServlet?action=disp&id=<%=b.getIdPostazione() %>" method="post">
               <div class="form-group">
-                <label for="inputProjectLeader">Immagine Principale</label>
-                <br>
-                <input type="link" id="inputName" class="form-control" name="img1" required>
-                <input type="link" id="inputName" class="form-control" name="img2" required>
+                <label for="inputName">Disponibilità</label>
+                <select name="disp" class="option">
+                  <option value="false">Non Disponibile</option>
+                  <option value="true">Disponibile</option>
+                </select>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
                   </div>
                 </div>
-               </div>
-               </form>
-               <form action="ModificaGiocoServlet?action=img2&id=<%=b.getId() %>" method="post">
+              </div>
+              </form>
+               <form action="ModificaPostazioneServlet?action=img&id=<%=b.getIdPostazione() %>" method="post">
                 <div class="form-group">
-                  <label for="inputProjectLeader">Immagini Secondarie</label>
-                  <input type="link" id="inputName" class="form-control" name="img3" required>
-                  <input type="link" id="inputName" class="form-control" name="img4" required>
-                  <input type="link" id="inputName" class="form-control" name="img5" required>
+                  <label for="inputProjectLeader">Immagine</label>
+                  <input type="link" id="inputName" class="form-control" name="img" required>
                   <div class="row">
                     <div class="col-12">
                       <input type="submit" value="Conferma" class="right button">

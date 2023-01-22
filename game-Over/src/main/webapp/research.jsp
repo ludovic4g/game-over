@@ -1,4 +1,5 @@
 <%@ page import= "utente.model.*" %>
+<%@ page import= "gestorecatalogo.model.*" %>
 <%@ page import= "java.util.ArrayList" %>
 <%@ page import= "connection.*" %>
 <%@ page import="java.io.*"%>
@@ -11,6 +12,9 @@
     if(cerca!=null){
         request.setAttribute("cerca", cerca);
     }
+    
+    ArrayList<VideogiocoBean> games = (ArrayList<VideogiocoBean>) request.getSession().getAttribute("lista");
+    
 
 %>
     <!DOCTYPE html>
@@ -32,104 +36,21 @@
         <br>
         <!--Games-->
         <div class="games animeX" id="games">
-            <h2><%= "Risultati per "+ cerca %>  </h2>
+            <h2><%= "Risultati per '"+ cerca + "'" %>  </h2>
             <div class="cardBx">
+            <%for(VideogiocoBean b : games){ %>
                 <div class="card" data-item="console">
-                    <img src="game1.png" alt="">
+                    <img src="<%=b.getImg1() %>" alt="<%=b.getImg2()%>">
                     <div class="content">
-                        <h4>Game Name</h4>
-                        <p class="price">Pricing<span>$10</span></p>
+                        <h4><%=b.getNome() %></h4>
+                        <p class="price">Pricing<span>€<%=b.getPrezzo() %></span></p>
                         <div class="info">
-                            <a href=""><i class='bx bx-cart-add'></i></a>
-                            <a href="productdetails.jsp">Dettagli</a>
+                            <a href="AddToCartServlet?id=<%=b.getId()%>&action=lista"><i class='bx bx-cart-add'></i></a>
+                            <a href="productdetails.jsp?id=<%=b.getId()%>">Dettagli</a>
                         </div>
                     </div>
                 </div>
-
-                <div class="card" data-item="console">
-                    <img src="game1.png" alt="">
-                    <div class="content">
-                        <h4>Game Name</h4>
-                        <p class="price">Pricing<span>$10</span></p>
-                        <div class="info">
-                            <a href=""><i class='bx bx-cart-add'></i></a>
-                            <a href="productdetails.jsp">Dettagli</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-item="console">
-                    <img src="game1.png" alt="">
-                    <div class="content">
-                        <h4>Game Name</h4>
-                        <p class="price">Pricing<span>$10</span></p>
-                        <div class="info">
-                            <a href=""><i class='bx bx-cart-add'></i></a>
-                            <a href="productdetails.jsp">Dettagli</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-item="console">
-                    <img src="game1.png" alt="">
-                    <div class="content">
-                        <h4>Game Name</h4>
-                        <p class="price">Pricing<span>$10</span></p>
-                        <div class="info">
-                            <a href=""><i class='bx bx-cart-add'></i></a>
-                            <a href=productdetails.jsp"">Dettagli</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="card" data-item="console">
-                    <img src="game1.png" alt="">
-                    <div class="content">
-                        <h4>Game Name</h4>
-                        <p class="price">Pricing<span>$10</span></p>
-                        <div class="info">
-                            <a href=""><i class='bx bx-cart-add'></i></a>
-                            <a href="">Dettagli</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-item="console">
-                    <img src="game1.png" alt="">
-                    <div class="content">
-                        <h4>Game Name</h4>
-                        <p class="price">Pricing<span>$10</span></p>
-                        <div class="info">
-                            <a href=""><i class='bx bx-cart-add'></i></a>
-                            <a href="">Dettagli</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-item="console">
-                    <img src="game1.png" alt="">
-                    <div class="content">
-                        <h4>Game Name</h4>
-                        <p class="price">Pricing<span>$10</span></p>
-                        <div class="info">
-                            <a href=""><i class='bx bx-cart-add'></i></a>
-                            <a href="">Dettagli</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-item="console">
-                    <img src="game1.png" alt="">
-                    <div class="content">
-                        <h4>Game Name</h4>
-                        <p class="price">Pricing<span>$10</span></p>
-                        <div class="info">
-                            <a href=""><i class='bx bx-cart-add'></i></a>
-                            <a href="">Dettagli</a>
-                        </div>
-                    </div>
-                </div>
+                <%} %>
             </div>
         </div>
         <!--Footer-->
