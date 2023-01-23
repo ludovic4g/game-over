@@ -27,6 +27,7 @@ public class RegisterServlet extends HttpServlet {
             String pass1 = request.getParameter("pass1");
             String pass2= request.getParameter("pass2");
             String risposta = request.getParameter("risposta");
+            String domanda = request.getParameter("domanda");
             UtenteBean utente = new UtenteBean();
 
 
@@ -38,11 +39,13 @@ public class RegisterServlet extends HttpServlet {
             utente.setBday(ddn);
             utente.setPassword(pass1);
             utente.setRisposta(risposta);
+            utente.setDomanda(domanda);
             utente.setGestoreCatalogo(false);
             utente.setGestorePrenotazioni(false);
             utente.setGestoreOrdini(false);
 
             UtenteDAO udao = new UtenteDAO();
+            udao.saveDomanda(domanda);
             udao.doSave(utente);
             response.sendRedirect("login.jsp");
                

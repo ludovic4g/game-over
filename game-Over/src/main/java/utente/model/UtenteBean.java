@@ -15,8 +15,16 @@ public class UtenteBean implements Serializable {
     private boolean amm1;
     private boolean amm2;
     private boolean amm3;
+    private String domanda;
+    public String getDomanda() {
+		return domanda;
+	}
 
-    private String sex;
+	public void setDomanda(String domanda) {
+		this.domanda = domanda;
+	}
+
+	private String sex;
 
     public String getSex() {
         return sex;

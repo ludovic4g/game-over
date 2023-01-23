@@ -192,42 +192,6 @@ public class OrdineDAO {
     
     
     ///////////////////////////////////
-    public ArrayList<OrdineBean> doRetriveByFrom(String codice) throws SQLException {
-        Connection con = null;
-        PreparedStatement ps = null;
-        String query = "select * from ordine where dataAcquisto>? ";
-        ArrayList<OrdineBean> ab = new ArrayList<OrdineBean>();
-
-        try {
-            con = DriverManagerConnectionPool.getConnection();
-
-            ps = con.prepareStatement(query);
-            ps.setString(1, codice);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-            	OrdineBean b = new OrdineBean();
-                b.setIdOrdine(rs.getInt("idOrdine"));
-                b.setUtente(rs.getString("utente"));
-                b.setDataAcquisto(new java.util.Date(rs.getDate("dataAcquisto").getTime()));
-                b.setPrezzoTotale(rs.getDouble("prezzoTotale"));
-                b.setIva(rs.getDouble("iva"));
-                b.setNumeroProdotti(rs.getInt("numeroProdotti"));
-                b.setStato(rs.getString("stato"));
-                ab.add(b);
-            }
-            rs.close();
-        } finally {
-            try {
-                if (ps != null) ps.close();
-            } finally {
-                DriverManagerConnectionPool.releaseConnection(con);
-            }
-
-        }
-        return ab;
-    }
-
     
     public ArrayList<OrdineBean> doRetriveByDates(String codice1, String d2) throws SQLException {
         Connection con = null;

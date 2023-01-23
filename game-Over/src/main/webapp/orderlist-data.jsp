@@ -34,12 +34,14 @@
     <i class='bx bx-menu'></i>
     <span class="text">Benvenuto|Admin Dashboard</span>
   </div>
-  <div class="input-box">
-            <input type="text" placeholder="Cerca...">
+   <div class="input-box">
+                        <form action ="RicercaCatalogoServlet" method="post">
+            <input type="text" placeholder="Cerca..." name="cerca">
             <span class="icon">
                 <i class="uil uil-search search-icon"></i>
             </span>
             <i class="uil uil-times close-icon"></i>
+            </form>
         </div>
         
         <div class="filter_container"> 

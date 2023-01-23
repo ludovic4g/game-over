@@ -14,6 +14,7 @@
           </ul>
         </li>
         <li>
+         <%if(auth.isGestoreCatalogo()!=false){ %>
           <div class="iocn-link">
             <a href="#">
               <i class='bx bx-collection'></i>
@@ -21,15 +22,14 @@
             </a>
             <i class='bx bxs-chevron-down arrow'></i>
           </div>
-          <%if(auth.isGestoreCatalogo()!=false){ %>
           <ul class="sub-menu">
             <li><a class="link_name" href="#">Prodotto</a></li>
             <li><a href="addproduct.jsp">Aggiungi Prodotto</a></li>
             <li><a href="catalogo.jsp">Modifica Prodotto</a></li>
             <li><a href="rimuoviprodotto.jsp">Rimuovi Prodotto</a></li>
           </ul>
-           <% }%>
         </li>
+        <% }%>
         <li>
         <%if(auth.isGestoreOrdini()!=false) {%>
         <li>
@@ -44,12 +44,12 @@
         <%} %>
         <%if(auth.isGestorePrenotazioni()!=false){ %>
          <li>
-          <a href="prenotazioni_list.jsp">
+          <a href="modify_prenotazioni.jsp">
             <i class='bx bx-cart'></i>
             <span class="link_name">Lista Prenotazioni</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="prenotazioni_list.jsp">Prenotazioni</a></li>
+            <li><a class="link_name" href="modify_prenotazioni.jsp">Prenotazioni</a></li>
           </ul>
         </li>
         <%} %>

@@ -8,8 +8,17 @@ public class IndirizzoBean implements Serializable {
     private int CAP;
     private String citta;
     private String Provincia;
+    private String nome;
 
-    public IndirizzoBean() {
+    public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public IndirizzoBean() {
 
     }
 

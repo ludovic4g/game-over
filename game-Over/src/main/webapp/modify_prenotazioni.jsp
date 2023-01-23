@@ -1,4 +1,5 @@
 <%@ page import= "utente.model.*" %>
+<%@ page import= "gestorepren.model.*" %>
 <%@ page import= "java.util.ArrayList" %>
 <%@ page import= "connection.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -7,6 +8,9 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
+       PrenotazioneDAO pdao = new PrenotazioneDAO();
+       ArrayList<PrenotazioneBean> prenotazioni = pdao.doRetrieveAll();
+        
         %>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +19,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Admin|Catalogo Prodotti</title>
+  <title>Dashboard Admin|Prenotazioni</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
   <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -32,37 +36,46 @@
     <span class="text">Benvenuto|Admin Dashboard</span>
   </div>
   <div class="input-box">
-            <input type="text" placeholder="Cerca...">
+                        <form action ="RicercaCatalogoServlet" method="post">
+            <input type="text" placeholder="Cerca..." name="cerca">
             <span class="icon">
                 <i class="uil uil-search search-icon"></i>
             </span>
             <i class="uil uil-times close-icon"></i>
+            </form>
         </div>
         
         <div class="filter_container"> 
         <div class="filter_title">Filtra per utente</div>
-        <select id="sort-users">
+     <form action ="FiltraPrenotazioniServlet?action=alfabetico" method="post">   
+        <select id="sort-users" name="tipo">
         <option selected="selected">-</option>
   <option value="az">Utenti dalla A-Z</option>
   <option value="za">Utenti dalla Z-A</option>
 </select>
+<button type="submit" class="btn btn-danger btn-sm">-></button>
+</form>
+<form action ="FiltraPrenotazioniServlet?action=data" method="post">
 <div class="filter_title">Data da:</div>
-<input class="data_filter" type="date" id="sort-date">
+<input class="data_filter" type="date" id="sort-date" name="inizio">
 <div class="filter_title">Data a:</div>
-<input class="data_filter" type="date" id="sort-date">
+<input class="data_filter" type="date" id="sort-date" name="fine">
+<button type="submit" class="btn btn-danger btn-sm">-></button>
+</form>
 </div>
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Rimuovi Prenotazione</h3>
+      <h3 class="card-title">Gestisci Prenotazione</h3>
     </div>
     
     <table>
+    <%for(PrenotazioneBean b : prenotazioni){ %>
       <tr>
         <th>ID Prenotazione</th>
         <th>Utente</th>
         <th>Data</th>
         <th>Prezzo</th>
-        <th>Quantità</th>
+        <th>Posti Prenotati</th>
         <th>Orario</th>
         <th>Stato</th>
       </tr>
@@ -70,61 +83,59 @@
         <td>
           <div class="cart-info">
             <div>
-              <p>100</p>
+              <p><%=b.getIdPrenotazione() %></p>
             </div>
           </div>
         </td>
         <td>
           <div class="cart-info">
             <div>
-              <p>Tizio</p>
+              <p><%=b.getUtente() %></p>
             </div>
           </div>
         </td>
         <td>
           <div class="cart-info">
             <div>
-              <p>DD/MM/YY</p>
+              <p><%=b.getDataprenotazione() %></p>
             </div>
           </div>
         </td>
         <td>
           <div class="cart-info">
             <div>
-              <p>9,99$</p>
+              <p>€<%=b.getPrezzo() %></p>
+              <h5>Prezzo per posto: <%out.println(b.getPrezzo()/b.getPostiPrenotati()); %></h5>
             </div>
           </div>
         </td>
         <td>
           <div class="cart-info">
             <div>
-              <p>5</p>
+              <p><%=b.getPostiPrenotati() %></p>
             </div>
           </div>
         </td>
         <td><div class="cart-info">
             <div>
-              <p>DD/MM/YY</p>
+              <p><%=b.getOra() %></p>
             </div>
           </div></td>
           <td>
-        <td><div class="cart-info">
-            <div>
-              <p>Confermato</p>
-            </div>
-          </div></td>
-        
-        <td>
-        <a class="btn btn-danger btn-sm" href="#">
-          </i>
-          Modifica
-        </a>
-        <a class="btn btn-danger btn-sm" href="#">
-          </i>
-          Rimuovi
-        </a></td>
+          <td><form action="ModificaOrdineServlet?id=<%=b.getIdPrenotazione()%>" method="post">
+        <td><select class="stato" name="stato"  required>
+        	<option value="" disabled selected><%=b.getStato() %></option>
+          <option value="In attesa di Conferma">In attesa di conferma</option>
+          <option value="Confermato">Confermato</option>
+          <option value="Annullato">Annullato</option>
+        </select>
+        <td><input type="submit" class="btn btn-danger btn-sm" value ="Modifica"></td>
+        </form>
+        </td>
+  
       </tr>
       </tr>
+      <%}%>
     </table>
 </section>
 <script>

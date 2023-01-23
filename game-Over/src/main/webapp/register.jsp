@@ -177,10 +177,10 @@
                             <div class="label">
                                 Domanda di sicurezza
                             </div>
-                            <select required>
+                            <select name="domanda " required>
                                 <option selected="selected">Città preferita</option>
                                 <option>Nome dell’amico del cuore</option>
-                                <option>Qual'era il cognome da nubile di tua madre</option>
+                                <option>Qual'era il cognome da nubile di tua madre?</option>
                                 <option>Il nome del tuo primo animale domestico</option>
                             </select>
                         </div>

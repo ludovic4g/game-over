@@ -1,3 +1,13 @@
+<%@ page import= "utente.model.*" %>
+<%@ page import= "java.util.ArrayList" %>
+<%@ page import= "connection.*" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<% UtenteBean auth = (UtenteBean) request.getSession().getAttribute("auth");
+        if(auth!=null){
+                request.setAttribute("auth", auth);
+        }
+        %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,31 +20,29 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
+        <script>
+            $(document).ready(function(){
+                 $("#sub").change(function(){
+                     var mail = $(this).val();
+                     $.get("data.jsp",{q:value},function(data){
+                      $("#msg").html(data);
+                     });
+                 });
+             });
+        </script>
+        
 </head>
 
 <body>
   <!-- Header -->
-  <header>
-    <a href="#" class="logo"><span aria-hidden="true">GameOver</span>GameOver<span
-        aria-hidden="true">GameOver</span></a>
-    <ul class="nav">
-      <li><a href="gamebar.html">Home</a></li>
-      <li><a href="#">E-Sport</a></li>
-      <li><a href="#">Games</a></li>
-      <li><a href="#">Carrello</a></li>
-      <li><a href="#">Prenotazioni</a></li>
-      <li><a href="#">Ordini</a></li>
-      <li><a href="login.html">Login</a></li>
-    </ul>
-    <div class="action">
-      <div class="searchBx">
-        <a href="#"><i class='bx bx-search'></i></a>
-        <input type="text" placeholder="Search Games">
-      </div>
-    </div>
-    <div class="toggleMenu" onclick="toggleMenu();"></div>
-  </header>
+  <%@ include file="includes/header.jsp" %>
   <!-- Register -->
+<%String mail = request.getParameter("Email");
+  UtenteDAO udao = new UtenteDAO();
+  String domanda = udao.doRetrieveDomanda(mail);
+  out.println("eiiiii");
+  %>
   <div class="fakebody">
     <div class="containerbody">
       <h2>
@@ -62,16 +70,16 @@
         </div>
       </div>
       <div class="form-outer">
-        <form action="#">
+        <form action="RecoveryPasswordServlet?action=first" method="post">
           <div class="page slide-page">
             <div class="field">
               <div class="label">
                 E-mail
               </div>
-              <input type="text" required>
+              <input type="text" name="mail" required>
             </div>
             <div class="field">
-              <button class="firstNext next">Avanti</button>
+              <button class="firstNext next" id="sub" type="submit">Avanti</button>
             </div>
           </div>
           <div class="page">
@@ -79,42 +87,25 @@
               <div class="label">
                 Domanda di sicurezza
               </div>
-              <select required>
-                <option selected="selected">Città preferita</option>
-                <option>Nome dell’amico del cuore</option>
-                <option>Qual'era il cognome da nubile di tua madre</option>
-                <option>Il nome del tuo primo animale domestico</option>
-              </select>
+              <div id="msg" style="" ><b></b></div>
             </div>
             <div class="field">
               <div class="label">
                 Risposta
               </div>
-              <input type="text" required>
+              <input type="text" name="risposta" required>
             </div>
             <div class="field btns">
-              <button class="">Conferma</button>
+              <button class="" type="submit">Conferma</button>
             </div>
           </div>
+         </form>
       </div>
-      </form>
     </div>
   </div>
   </div>
   <!-- Footer -->
-  <footer>
-    <div class="info">
-      <a href="#" class="logo"><span aria-hidden="true">GameOver</span>GameOver<span
-          aria-hidden="true">GameOver</span></a>
-      <p><i class="bx bx-copyright"></i>2022 All Rights Reserved</p>
-      <ul>
-        <li><a href=""><i class="bx bxl-facebook"></i></a></li>
-        <li><a href=""><i class="bx bxl-instagram"></i></a></li>
-        <li><a href=""><i class="bx bxl-twitter"></i></a></li>
-        <li><a href=""><i class="bx bxl-youtube"></i></a></li>
-      </ul>
-    </div>
-  </footer>
+  <%@ include file="includes/footer.jsp" %>
   <script src="anime.min.js"></script>
   <script>
     /* Sticky NavBar */

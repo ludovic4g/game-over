@@ -169,4 +169,54 @@
     <servlet-name>FiltraOrdiniAlfabeticoServlet</servlet-name>
     <url-pattern>/FiltraOrdiniAlfabeticoServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FiltraPrenotazioniServlet</display-name>
+    <servlet-name>FiltraPrenotazioniServlet</servlet-name>
+    <servlet-class>gestorepren.control.FiltraPrenotazioniServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FiltraPrenotazioniServlet</servlet-name>
+    <url-pattern>/FiltraPrenotazioniServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModificaPrenotazioneServlet</display-name>
+    <servlet-name>ModificaPrenotazioneServlet</servlet-name>
+    <servlet-class>gestorepren.control.ModificaPrenotazioneServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModificaPrenotazioneServlet</servlet-name>
+    <url-pattern>/ModificaPrenotazioneServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RecoveryPasswordServlet</display-name>
+    <servlet-name>RecoveryPasswordServlet</servlet-name>
+    <servlet-class>utente.control.RecoveryPasswordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RecoveryPasswordServlet</servlet-name>
+    <url-pattern>/RecoveryPasswordServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FindQuestionServlet</display-name>
+    <servlet-name>FindQuestionServlet</servlet-name>
+    <servlet-class>utente.control.FindQuestionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FindQuestionServlet</servlet-name>
+    <url-pattern>/FindQuestionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModificaInfoServlet</display-name>
+    <servlet-name>ModificaInfoServlet</servlet-name>
+    <servlet-class>utente.control.ModificaInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModificaInfoServlet</servlet-name>
+    <url-pattern>/ModificaInfoServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -14,7 +14,7 @@ public class IndirizzoDAO {
     public IndirizzoBean doRetrieveByKey(int codice) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
-        String query = "select * from " + IndirizzoDAO.TABLE_NAME + " where idIndirizzo=?";
+        String query = "select * from " + IndirizzoDAO.TABLE_NAME + " where id=?";
         IndirizzoBean b = new IndirizzoBean();
 
         try {
@@ -25,9 +25,10 @@ public class IndirizzoDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                b.setId(rs.getInt("idIndirizzo"));
+                b.setId(rs.getInt("id"));
+                b.setNome(rs.getString("nome"));
                 b.setVia(rs.getString("indirizzo"));
-                b.setCAP(rs.getInt("CAP"));
+                b.setCAP(rs.getInt("cap"));
                 b.setCitta(rs.getString("citta"));
                 b.setProvincia(rs.getString("provincia"));
             }
@@ -54,13 +55,15 @@ public class IndirizzoDAO {
 
             ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
-            IndirizzoBean b = new IndirizzoBean();
+            
             while (rs.next()) {
-                b.setId(rs.getInt("idIndirizzo"));
-                b.setVia(rs.getString("indirizzo"));
-                b.setCAP(rs.getInt("CAP"));
-                b.setCitta(rs.getString("citta"));
-                b.setProvincia(rs.getString("provincia"));
+            	IndirizzoBean b = new IndirizzoBean();
+            	 b.setId(rs.getInt("id"));
+                 b.setNome(rs.getString("nome"));
+                 b.setVia(rs.getString("indirizzo"));
+                 b.setCAP(rs.getInt("cap"));
+                 b.setCitta(rs.getString("citta"));
+                 b.setProvincia(rs.getString("provincia"));
 
                 ab.add(b);
             }
@@ -88,13 +91,15 @@ public class IndirizzoDAO {
             ps = con.prepareStatement(query);
             ps.setInt(1, c);
             ResultSet rs = ps.executeQuery();
-            IndirizzoBean b = new IndirizzoBean();
+            
             while (rs.next()) {
-                b.setId(rs.getInt("idIndirizzo"));
-                b.setVia(rs.getString("indirizzo"));
-                b.setCAP(rs.getInt("CAP"));
-                b.setCitta(rs.getString("citta"));
-                b.setProvincia(rs.getString("provincia"));
+            	IndirizzoBean b = new IndirizzoBean();
+            	 b.setId(rs.getInt("id"));
+                 b.setNome(rs.getString("nome"));
+                 b.setVia(rs.getString("indirizzo"));
+                 b.setCAP(rs.getInt("cap"));
+                 b.setCitta(rs.getString("citta"));
+                 b.setProvincia(rs.getString("provincia"));
 
                 ab.add(b);
             }
@@ -110,7 +115,7 @@ public class IndirizzoDAO {
         return ab;
     }
     public void doSave(IndirizzoBean utente) throws SQLException {
-        String query = "insert into Indirizzo values(?,?,?,?,?);";
+        String query = "insert into Indirizzo values(?,?,?,?,?,?);";
 
         Connection con = null;
         PreparedStatement ps = null;
@@ -121,10 +126,11 @@ public class IndirizzoDAO {
 
             ps = con.prepareStatement(query);
             ps.setInt(1, utente.getId());
-            ps.setString(2, utente.getVia());
-            ps.setInt(3, utente.getCAP());
-            ps.setString(4, utente.getCitta());
-            ps.setString(5, utente.getProvincia());
+            ps.setString(2, utente.getNome());
+            ps.setString(3, utente.getVia());
+            ps.setInt(4, utente.getCAP());
+            ps.setString(5, utente.getCitta());
+            ps.setString(6, utente.getProvincia());
 
             ps.executeUpdate();
 
@@ -138,8 +144,8 @@ public class IndirizzoDAO {
         }
     }
 
-    public void doUpdate(IndirizzoBean utente) throws SQLException {
-        String query = "???????";
+    public void doUpdate(int id, String s1, String s2, int s3, String s4, String s5) throws SQLException {
+        String query = "update utente set nome=?, indirizzo=?, cap=?, citta=?, provincia=? where id=?";
         Connection con = null;
         PreparedStatement ps = null;
 
@@ -147,6 +153,12 @@ public class IndirizzoDAO {
             con = DriverManagerConnectionPool.getConnection();
 
             ps = con.prepareStatement(query);
+            ps.setInt(6, id);
+            ps.setString(1, s1);
+            ps.setString(2, s2);
+            ps.setInt(3, s3);
+            ps.setString(4, s4);
+            ps.setString(5, s5);
 
             ps.execute();
 

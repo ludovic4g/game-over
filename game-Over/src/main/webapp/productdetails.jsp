@@ -90,10 +90,18 @@
                                                                 <option value="Console">Xbox One</option>
                                                         </select>
                                                         <br>
+                                                <%if(auth!= null && (auth.isGestoreCatalogo()|| auth.isGestorePrenotazioni()|| auth.isGestoreOrdini())==false) {%>
                                                         <a href=""><button type="submit" class="btn">
                                                                 Aggiungi al carrello<i class="fas fa-shopping-cart"></i>
                                                         </button></a>
-                                                        </form>
+                                                        
+                                                        <%} %>
+                                                         </form>
+                                                         <%if(auth!= null && (auth.isGestoreCatalogo()|| auth.isGestorePrenotazioni()|| auth.isGestoreOrdini())==true){  %>
+                                                          <a href="catalogo.jsp"><button type="submit" class="btn">
+                                                                Vai al Catalogo dei Giochi<i class="fas fa-shopping-cart"></i>
+                                                        </button></a>
+                                                        <%} %>
                                                 </div>
                                         </div>
 

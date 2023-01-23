@@ -13,7 +13,8 @@ create table Utente(
     risposta varchar(30) not null,
     ammin1 boolean not null,
     ammin2 boolean not null,
-    ammin3 boolean not null
+    ammin3 boolean not null,
+    domanda varchar(20) not null
 );
 
 create table Videogioco(
@@ -66,7 +67,9 @@ create table Prenotazione(
     utente varchar(30) not null,
     prezzoTotale double not null,
     postiPrenotati int not null,
-    ora time not null
+    ora varchar(20) not null,
+    dataprenotazione date not null,
+    stato varchar(20) not null
  
 );
 
@@ -100,6 +103,7 @@ create table PrenotazioneTavolo(
 
 create table Indirizzo(
     id integer primary key auto_increment,
+    nome varchar(20) not null,
     indirizzo varchar(50) not null,
     cap char(6) not null,
     citta varchar(30),
@@ -136,28 +140,28 @@ create table PrenotazionePostazione(
 
 
 /* modificare risposta e controlla formato data*/
-INSERT INTO Utente VALUES ("lucger", "MorningStar9.", "luuvifer@gmail.com", "Luciel", "Spexiato", "1990-12-07", "Femmina","", true, false, true);
-INSERT INTO Utente VALUES ("tansat", "Piango2.", "sxtans@gmail.com", "Sally", "Acido", "1994-09-01", "Maschio","", false, true, false);
-INSERT INTO Utente VALUES ("honejmoon", "Benedetta7.", "benedetta@gmail.com", "Benedetta", "Rossetti", "2001-11-07", "Femmina","", false, false, false);
-INSERT INTO Utente VALUES ("manuelito", "Manuelsica1.", "manuel@gmail.com", "Manuel", "Sica", "2001-05-24","Maschio", "", false, false, false);
-INSERT INTO Utente VALUES ("luds", "Ludovica2.", "ludovica@gmail.com", "Ludovica", "Genovese", "2001-07-16","Femmina", "", false, false, false);
-INSERT INTO Utente VALUES ("marja", "Mariarossi5.", "maria@gmail.com", "Maria", "Rossi", "1996-03-07", "Femmina","", false, false, false);
-INSERT INTO Utente VALUES ("lucas", "Lucaverdi6.", "luca@gmail.com", "Luca", "Verdi", "2003-01-20","Maschio", "", false, false, false);
-INSERT INTO Utente VALUES ("giovanni69", "Giovanni3.", "giovanni@gmail.com", "Giovanni", "Bianchi", "1999-12-25","Maschio", "", false, false, false);
-INSERT INTO Utente VALUES ("marcella_", "Marcella1.", "marcella@gmail.com", "Marcella", "Vitale", "2000-04-03", "Non-Binary","", false, false, false);
-INSERT INTO Utente VALUES ("valecri", "Valeriacrispo9.", "valeria@gmail.com", "Valeria", "Crispo", "1994-11-10","Femmina", "", false, false, false);
-INSERT INTO Utente VALUES ("saetta", "Amedeosae2.", "amedeo@gmail.com", "Amedeo", "Saetta", "2001-07-15","Maschio", "", false, false, false);
-INSERT INTO Utente VALUES ("vince", "Vincenzo9.", "vincenzo@gmail.com", "Vincenzo", "Sorrentino", "2001-11-06","Non-Binary", "", false, false, false);
-INSERT INTO Utente VALUES ("consi03", "Consiglia6.", "consiglia@gmail.com", "Consiglia", "Lamberi", "1995-07-01","Femmina", "", false, false, false);
-INSERT INTO Utente VALUES ("dima7", "Dimitrika16.", "dimitri@gmail.com", "Dimitri", "Kambulatov", "1992-10-16", "Maschio","", false, false, false);
-INSERT INTO Utente VALUES ("enzos", "Enzoverdi4.", "enzo@gmail.com", "Vincenzo", "Verdi", "1995-12-29","Maschio", "", false, false, false);
-INSERT INTO Utente VALUES ("fabbb", "Fabioava5.", "fabio@gmail.com", "Fabio", "Avagliano", "1996-11-11", "maschio","", false, false, false);
-INSERT INTO Utente VALUES ("nancy99", "Nunziatorre8.", "nunzia@gmail.com", "Nunzia", "Torre", "2002-04-18", "Femmina","", false, false, false);
-INSERT INTO Utente VALUES ("cateMary", "Caterina4.", "cayerina@gmail.com", "Caterina Maria", "Di Giacomo", "1993-07-23","Non-Binary", "", false, false, false);
-INSERT INTO Utente VALUES ("francs", "Francesca0.", "francesca@gmail.com", "Francesca", "D'Aloia", "1987-04-03","Non-Binary", "", false, false, false);
-INSERT INTO Utente VALUES ("davjde", "Davideanno5.", "davide@gmail.com", "Davide", "Dell'Anno", "1990-05-24", "Non-Binary","", false, false, false);
-INSERT INTO Utente VALUES ("ross_", "Rossella2.", "rossella@gmail.com", "Rossella", "Senatore", "1998-08-20", "Femmina","", false, false, false);
-INSERT INTO Utente VALUES ("ilarya", "Ilariasalvo0.", "ilaria@gmail.com", "Ilaria", "Salvo", "1999-09-26", "Femmina","", false, false, false);
+INSERT INTO Utente VALUES ("lucger", "MorningStar9.", "luuvifer@gmail.com", "Luciel", "Spexiato", "1990-12-07", "Femmina","", true, false, true,"");
+INSERT INTO Utente VALUES ("tansat", "Piango2.", "sxtans@gmail.com", "Sally", "Acido", "1994-09-01", "Maschio","", false, true, false,"");
+INSERT INTO Utente VALUES ("honejmoon", "Benedetta7.", "benedetta@gmail.com", "Benedetta", "Rossetti", "2001-11-07", "Femmina","", false, false, false,"");
+INSERT INTO Utente VALUES ("manuelito", "Manuelsica1.", "manuel@gmail.com", "Manuel", "Sica", "2001-05-24","Maschio", "Benevento", false, false, false,"Città preferita");
+INSERT INTO Utente VALUES ("luds", "Ludovica2.", "ludovica@gmail.com", "Ludovica", "Genovese", "2001-07-16","Femmina", "", false, false, false,"");
+INSERT INTO Utente VALUES ("marja", "Mariarossi5.", "maria@gmail.com", "Maria", "Rossi", "1996-03-07", "Femmina","", false, false, false,"");
+INSERT INTO Utente VALUES ("lucas", "Lucaverdi6.", "luca@gmail.com", "Luca", "Verdi", "2003-01-20","Maschio", "", false, false, false,"");
+INSERT INTO Utente VALUES ("giovanni69", "Giovanni3.", "giovanni@gmail.com", "Giovanni", "Bianchi", "1999-12-25","Maschio", "", false, false, false,"");
+INSERT INTO Utente VALUES ("marcella_", "Marcella1.", "marcella@gmail.com", "Marcella", "Vitale", "2000-04-03", "Non-Binary","", false, false, false,"");
+INSERT INTO Utente VALUES ("valecri", "Valeriacrispo9.", "valeria@gmail.com", "Valeria", "Crispo", "1994-11-10","Femmina", "", false, false, false,"");
+INSERT INTO Utente VALUES ("saetta", "Amedeosae2.", "amedeo@gmail.com", "Amedeo", "Saetta", "2001-07-15","Maschio", "", false, false, false,"");
+INSERT INTO Utente VALUES ("vince", "Vincenzo9.", "vincenzo@gmail.com", "Vincenzo", "Sorrentino", "2001-11-06","Non-Binary", "", false, false, false,"");
+INSERT INTO Utente VALUES ("consi03", "Consiglia6.", "consiglia@gmail.com", "Consiglia", "Lamberi", "1995-07-01","Femmina", "", false, false, false,"");
+INSERT INTO Utente VALUES ("dima7", "Dimitrika16.", "dimitri@gmail.com", "Dimitri", "Kambulatov", "1992-10-16", "Maschio","", false, false, false,"");
+INSERT INTO Utente VALUES ("enzos", "Enzoverdi4.", "enzo@gmail.com", "Vincenzo", "Verdi", "1995-12-29","Maschio", "", false, false, false,"");
+INSERT INTO Utente VALUES ("fabbb", "Fabioava5.", "fabio@gmail.com", "Fabio", "Avagliano", "1996-11-11", "maschio","", false, false, false,"");
+INSERT INTO Utente VALUES ("nancy99", "Nunziatorre8.", "nunzia@gmail.com", "Nunzia", "Torre", "2002-04-18", "Femmina","", false, false, false,"");
+INSERT INTO Utente VALUES ("cateMary", "Caterina4.", "cayerina@gmail.com", "Caterina Maria", "Di Giacomo", "1993-07-23","Non-Binary", "", false, false, false,"Citta' preferita");
+INSERT INTO Utente VALUES ("francs", "Francesca0.", "francesca@gmail.com", "Francesca", "D'Aloia", "1987-04-03","Non-Binary", "", false, false, false,"");
+INSERT INTO Utente VALUES ("davjde", "Davideanno5.", "davide@gmail.com", "Davide", "Dell'Anno", "1990-05-24", "Non-Binary","", false, false, false,"");
+INSERT INTO Utente VALUES ("ross_", "Rossella2.", "rossella@gmail.com", "Rossella", "Senatore", "1998-08-20", "Femmina","", false, false, false,"");
+INSERT INTO Utente VALUES ("ilarya", "Ilariasalvo0.", "ilaria@gmail.com", "Ilaria", "Salvo", "1999-09-26", "Femmina","", false, false, false,"");
 
 /*modifica immagini*/
 INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("FIFA 23 Legacy Edition", 40, 2022, 2, 50, "Nintendo Switch", "FIFA 23 Legacy Edition include divise, club e rose originali di alcuni dei principali campionati del mondo. Conterra' inoltre diverse tra le migliori squadre di club femminili e alcuni dei piu' famosi stadi al mondo, compresi alcuni inediti, una veste grafica rinnovata e un nuovo pacchetto che comprende telecronaca e grafiche aggiornate durante le partite. FIFA 23 Legacy Edition presentera' le stesse modalita'  e caratteristiche a livello di gameplay gia'  viste in FIFA 22 Legacy Edition, senza novita'  o migliorie di rilievo.", "", "", "", "", "");
@@ -240,20 +244,20 @@ INSERT INTO Riguarda VALUES (14, 10);
 INSERT INTO Riguarda VALUES (16, 11);
 INSERT INTO Riguarda VALUES (20, 12);
 
-INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora) VALUES ("vince", 44, 4, "20:30:03");
-INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora) VALUES ("dima7", 30, 3, "14:23:00");
-INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora) VALUES ("saetta", 60, 5, "18:11:09");
-INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora) VALUES ("ilarya", 98, 7, "11:05:29");
-INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora) VALUES ("francs", 200, 10, "22:48:56");
-INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora) VALUES ("cateMary", 120, 8, "15:19:33");
-INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora) VALUES ("davjde", 60, 6, "19:56:02");
-INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora) VALUES ("honejmoon", 30, 1, "20:30:03");
-INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora) VALUES ("dima7", 30, 1, "18:23:00");
-INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora) VALUES ("ross_", 30, 1, "10:11:09");
-INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora) VALUES ("manuelito", 30, 1, "19:05:29");
-INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora) VALUES ("giovanni69", 30, 1, "23:48:56");
-INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora) VALUES ("marja", 30, 1, "11:19:33");
-INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora) VALUES ("luds", 30, 1, "18:56:02");
+INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora, dataprenotazione, stato) VALUES ("vince", 44, 4, "20:30:03", "2022-08-10","");
+INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora, dataprenotazione, stato) VALUES ("dima7", 30, 3, "14:23:00","2023-01-20","");
+INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora, dataprenotazione, stato) VALUES ("saetta", 60, 5, "18:11:09","2023-01-20","");
+INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora, dataprenotazione, stato) VALUES ("ilarya", 98, 7, "11:05:29","2022-08-10","");
+INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora, dataprenotazione, stato) VALUES ("francs", 200, 10, "22:48:56","2022-08-10","");
+INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora, dataprenotazione, stato) VALUES ("cateMary", 120, 8, "15:19:33","2022-10-29","");
+INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora, dataprenotazione, stato) VALUES ("davjde", 60, 6, "19:56:02","2022-10-29","");
+INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora, dataprenotazione, stato) VALUES ("honejmoon", 30, 1, "20:30:03","2023-01-20","");
+INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora, dataprenotazione, stato) VALUES ("dima7", 30, 1, "18:23:00","2022-08-10","");
+INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora, dataprenotazione, stato) VALUES ("ross_", 30, 1, "10:11:09","2023-01-20","");
+INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora, dataprenotazione, stato) VALUES ("manuelito", 30, 1, "19:05:29","2022-08-10","");
+INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora, dataprenotazione, stato) VALUES ("giovanni69", 30, 1, "23:48:56","2023-01-20","");
+INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora, dataprenotazione, stato) VALUES ("marja", 30, 1, "11:19:33","2022-08-10","");
+INSERT INTO Prenotazione(utente, prezzoTotale, postiPrenotati, ora, dataprenotazione, stato) VALUES ("luds", 30, 1, "18:56:02","2022-10-29","");
 
 
 INSERT INTO OrdinePrenotazione VALUES (1, 2);
@@ -302,26 +306,26 @@ INSERT INTO PrenotazioneTavolo VALUES (6, 20);
 INSERT INTO PrenotazioneTavolo VALUES (7, 9);
 
 
-INSERT INTO Indirizzo(indirizzo, cap, citta, provincia) VALUES ("Via Alfonso D'amico 8", "84013", "Cava De' Tirreni", "SA");
-INSERT INTO Indirizzo(indirizzo, cap, citta, provincia) VALUES ("Via Roma 128", "84121", " Salerno", "SA");
-INSERT INTO Indirizzo(indirizzo, cap, citta, provincia) VALUES ("Via Eduardo Russo 13", "20019", " Milano", "MI");
-INSERT INTO Indirizzo(indirizzo, cap, citta, provincia) VALUES ("Via Umbero I", "00118", "Roma", "RM");
-INSERT INTO Indirizzo(indirizzo, cap, citta, provincia) VALUES ("Via Celeste 43", "84013", "Fisciano", "SA");
-INSERT INTO Indirizzo(indirizzo, cap, citta, provincia) VALUES ("Via Michele Di Gioia 3", "84084", "Cava De' Tirreni", "SA");
-INSERT INTO Indirizzo(indirizzo, cap, citta, provincia) VALUES ("Via San Gennaro 54", "80016", "Napoli", "NA");
-INSERT INTO Indirizzo(indirizzo, cap, citta, provincia) VALUES ("Via San Nicola 121", "100024", "Torino", "TO");
-INSERT INTO Indirizzo(indirizzo, cap, citta, provincia) VALUES ("Via Monticelli 10", "94100", "Enna", "EN");
-INSERT INTO Indirizzo(indirizzo, cap, citta, provincia) VALUES ("Via Giovanni Manci 88", "07100", "Sassari", "SS");
-INSERT INTO Indirizzo(indirizzo, cap, citta, provincia) VALUES ("Via Stefano D'Autore 42", "53100", "Siena", "SI");
-INSERT INTO Indirizzo(indirizzo, cap, citta, provincia) VALUES ("Via Bruno Orlandi 65", "17100", "Savona", "SV");
-INSERT INTO Indirizzo(indirizzo, cap, citta, provincia) VALUES ("Via Loredana Dandi 298", "35100", "Padova", "PD");
-INSERT INTO Indirizzo(indirizzo, cap, citta, provincia) VALUES ("Via Roma 200", "86100", "Campobasso", "CB");
-INSERT INTO Indirizzo(indirizzo, cap, citta, provincia) VALUES ("Via San Nicola 12", "81100", "Caserta", "CE");
-INSERT INTO Indirizzo(indirizzo, cap, citta, provincia) VALUES ("Via San Franco 11", "48121", "Ravenna", "RA");
-INSERT INTO Indirizzo(indirizzo, cap, citta, provincia) VALUES ("Via Domenico Linci 34", "20019", "Milano", "MI");
-INSERT INTO Indirizzo(indirizzo, cap, citta, provincia) VALUES ("Via San Fabio Ruocco 78", "00118", "Roma", "RM");
-INSERT INTO Indirizzo(indirizzo, cap, citta, provincia) VALUES ("Via Maria Immacolata 44", "80016", "Napoli", "NA");
-INSERT INTO Indirizzo(indirizzo, cap, citta, provincia) VALUES ("Via Fatima Delmo 56", "35100", "Padona", "PD");
+INSERT INTO Indirizzo(nome, indirizzo, cap, citta, provincia) VALUES ("", "Via Alfonso D'amico 8", "84013", "Cava De' Tirreni", "SA");
+INSERT INTO Indirizzo(nome, indirizzo, cap, citta, provincia) VALUES ("","Via Roma 128", "84121", " Salerno", "SA");
+INSERT INTO Indirizzo(nome, indirizzo, cap, citta, provincia) VALUES ("","Via Eduardo Russo 13", "20019", " Milano", "MI");
+INSERT INTO Indirizzo(nome, indirizzo, cap, citta, provincia) VALUES ("","Via Umbero I", "00118", "Roma", "RM");
+INSERT INTO Indirizzo(nome, indirizzo, cap, citta, provincia) VALUES ("","Via Celeste 43", "84013", "Fisciano", "SA");
+INSERT INTO Indirizzo(nome, indirizzo, cap, citta, provincia) VALUES ("","Via Michele Di Gioia 3", "84084", "Cava De' Tirreni", "SA");
+INSERT INTO Indirizzo(nome, indirizzo, cap, citta, provincia) VALUES ("","Via San Gennaro 54", "80016", "Napoli", "NA");
+INSERT INTO Indirizzo(nome, indirizzo, cap, citta, provincia) VALUES ("","Via San Nicola 121", "100024", "Torino", "TO");
+INSERT INTO Indirizzo(nome, indirizzo, cap, citta, provincia) VALUES ("","Via Monticelli 10", "94100", "Enna", "EN");
+INSERT INTO Indirizzo(nome, indirizzo, cap, citta, provincia) VALUES ("","Via Giovanni Manci 88", "07100", "Sassari", "SS");
+INSERT INTO Indirizzo(nome, indirizzo, cap, citta, provincia) VALUES ("","Via Stefano D'Autore 42", "53100", "Siena", "SI");
+INSERT INTO Indirizzo(nome, indirizzo, cap, citta, provincia) VALUES ("","Via Bruno Orlandi 65", "17100", "Savona", "SV");
+INSERT INTO Indirizzo(nome, indirizzo, cap, citta, provincia) VALUES ("","Via Loredana Dandi 298", "35100", "Padova", "PD");
+INSERT INTO Indirizzo(nome, indirizzo, cap, citta, provincia) VALUES ("","Via Roma 200", "86100", "Campobasso", "CB");
+INSERT INTO Indirizzo(nome, indirizzo, cap, citta, provincia) VALUES ("","Via San Nicola 12", "81100", "Caserta", "CE");
+INSERT INTO Indirizzo(nome, indirizzo, cap, citta, provincia) VALUES ("","Via San Franco 11", "48121", "Ravenna", "RA");
+INSERT INTO Indirizzo(nome, indirizzo, cap, citta, provincia) VALUES ("","Via Domenico Linci 34", "20019", "Milano", "MI");
+INSERT INTO Indirizzo(nome, indirizzo, cap, citta, provincia) VALUES ("","Via San Fabio Ruocco 78", "00118", "Roma", "RM");
+INSERT INTO Indirizzo(nome, indirizzo, cap, citta, provincia) VALUES ("","Via Maria Immacolata 44", "80016", "Napoli", "NA");
+INSERT INTO Indirizzo(nome, indirizzo, cap, citta, provincia) VALUES ("","Via Fatima Delmo 56", "35100", "Padona", "PD");
 
 INSERT INTO Ha VALUES (1, "honejmoon");
 INSERT INTO Ha VALUES (2, "manuelito");

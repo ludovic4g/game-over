@@ -1,3 +1,15 @@
+<%@ page import= "utente.model.*" %>
+<%@ page import= "java.util.ArrayList" %>
+<%@ page import= "connection.*" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<% UtenteBean auth = (UtenteBean) request.getSession().getAttribute("auth");
+        if(auth!=null){
+                request.setAttribute("auth", auth);
+        }
+        
+       UtenteBean utente = (UtenteBean) request.getSession().getAttribute("utente");
+        %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,26 +26,7 @@
 
 <body>
   <!-- Header -->
-  <header>
-    <a href="#" class="logo"><span aria-hidden="true">GameOver</span>GameOver<span
-        aria-hidden="true">GameOver</span></a>
-    <ul class="nav">
-      <li><a href="gamebar.html">Home</a></li>
-      <li><a href="#">E-Sport</a></li>
-      <li><a href="#">Games</a></li>
-      <li><a href="#">Carrello</a></li>
-      <li><a href="#">Prenotazioni</a></li>
-      <li><a href="#">Ordini</a></li>
-      <li><a href="login.html">Login</a></li>
-    </ul>
-    <div class="action">
-      <div class="searchBx">
-        <a href="#"><i class='bx bx-search'></i></a>
-        <input type="text" placeholder="Search Games">
-      </div>
-    </div>
-    <div class="toggleMenu" onclick="toggleMenu();"></div>
-  </header>
+  <%@ include file="includes/header.jsp" %>
   <!-- Register -->
   <div class="fakebody">
     <div class="containerbody">
@@ -44,13 +37,13 @@
           aria-hidden="true"></span></a>
       </h2>
       <div class="form-outer">
-        <form action="#">
+        <form action="RecoveryPasswordServlet?action=field&id=<%=utente.getUsername() %>" method="post">
           <div class="page">
             <div class="field">
                 <div class="label">
                     Password
                 </div>
-                <input type="password" id="password-field" required>
+                <input type="password" id="password-field" name="pass1" required>
                 <div class="toggle-password">
                     <i class="fa fa-eye"></i>
                     <i class="fa fa-eye-slash"></i>
@@ -81,32 +74,21 @@
                 <div class="label">
                     Conferma Password
                 </div>
-                <input type="password" id="password-field" required>
+                <input type="password" id="password-field" name="pass2" required>
             </div>
                           
             <div class="field">
               <button class="">Reset</button>
             </div>
           </div>
+           </form>
       </div>
-      </form>
+     
     </div>
   </div>
   </div>
   <!-- Footer -->
-  <footer>
-    <div class="info">
-      <a href="#" class="logo"><span aria-hidden="true">GameOver</span>GameOver<span
-          aria-hidden="true">GameOver</span></a>
-      <p><i class="bx bx-copyright"></i>2022 All Rights Reserved</p>
-      <ul>
-        <li><a href=""><i class="bx bxl-facebook"></i></a></li>
-        <li><a href=""><i class="bx bxl-instagram"></i></a></li>
-        <li><a href=""><i class="bx bxl-twitter"></i></a></li>
-        <li><a href=""><i class="bx bxl-youtube"></i></a></li>
-      </ul>
-    </div>
-  </footer>
+ <%@ include file="includes/footer.jsp" %>
   <script src="anime.min.js"></script>
   <script>
     /* Sticky NavBar */
