@@ -1,10 +1,20 @@
 package gestorecatalogo.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class PostazioneBean implements Serializable {
     private int idPostazione;
-    private String ora;
+    private Date data;
+    public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	private String ora;
 
     public boolean isDisp() {
         return disp;

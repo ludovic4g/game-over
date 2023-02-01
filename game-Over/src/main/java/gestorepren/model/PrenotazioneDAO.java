@@ -259,5 +259,42 @@ public class PrenotazioneDAO {
         }
         return ab;
     }
+    
+    public ArrayList<PrenotazioneBean> doRetriveAllByKey(String name) throws SQLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        String query = "select * from prenotazione where utente=?;";
+       ArrayList<PrenotazioneBean> ab = new ArrayList<PrenotazioneBean>();
+
+        try {
+            con = DriverManagerConnectionPool.getConnection();
+
+            ps = con.prepareStatement(query);
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+            	PrenotazioneBean b = new PrenotazioneBean();
+            	 b.setIdPrenotazione(rs.getInt("id"));
+                 b.setUtente(rs.getString("utente"));
+                 b.setPrezzo(rs.getDouble("prezzoTotale"));
+                 b.setPostiPrenotati(rs.getInt("postiPrenotati"));
+                 b.setOra(rs.getString("ora"));
+                 b.setDataprenotazione(new java.util.Date(rs.getDate("dataprenotazione").getTime()));
+                 b.setStato(rs.getString("stato"));
+                ab.add(b);
+            }
+            rs.close();
+        } finally {
+            try {
+                if (ps != null) ps.close();
+            } finally {
+                DriverManagerConnectionPool.releaseConnection(con);
+            }
+
+        }
+        return ab;
+    }
+    
 
 }

@@ -23,7 +23,7 @@ public class ModificaGiocoServlet extends HttpServlet {
 			String nome= request.getParameter("nome");
 			String descrizione = request.getParameter("desc");
 			String p = request.getParameter("prezzo");
-			
+			String m = request.getParameter("magazzino");
 			String plat = request.getParameter("piattaforma");
 			String a = request.getParameter("anno");
 		
@@ -44,6 +44,12 @@ public class ModificaGiocoServlet extends HttpServlet {
 			if(action.equals("anno")) {
 				int anno = Integer.parseInt(a);
 				vdao.ModifyAnno(id, anno);
+				response.sendRedirect("catalogo.jsp");
+			}
+			
+			if(action.equals("magazzino")) {
+				int mag = Integer.parseInt(m);
+				vdao.ModifyMagazzino(id, mag);
 				response.sendRedirect("catalogo.jsp");
 			}
 			

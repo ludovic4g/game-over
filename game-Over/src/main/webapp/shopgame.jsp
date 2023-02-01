@@ -38,32 +38,11 @@
                 <li class="list" data-filter="console">Console Games</li>
             </ul>
             
-            <%if(!lista.isEmpty()){
-		    		for(VideogiocoBean b: lista){ 
-		    			
-		    		%>
-            <div class="cardBx">
-                <div class="card" data-item="all">
-                    <img src="game1.png" alt="">
-                    <div class="content">
-                        <h4><%=b.getNome()%></h4>
-                        <p class="price">Pricing<span> €<%=b.getPrezzo()%></span></p>
-                        <div class="info">
-                    <%if(auth!= null && (auth.isGestoreCatalogo()|| auth.isGestorePrenotazioni()|| auth.isGestoreOrdini())==false) {%>
-                            <a href="AddToCartServlet?id=<%=b.getId()%>&action=lista"><i class='bx bx-cart-add'></i></a>
-                            <%} %>
-                            <a href="productdetails.jsp?id=<%=b.getId()%>">Dettagli</a>
-                        </div>
-                    </div>
-                </div>              
-            </div>
-            <%}
-		                }%>
             
+                        <div class="cardBx">
             <%if(!lista.isEmpty()){
 		    		for(VideogiocoBean b: lista){
-		    			if(b.getTipo().equals("Console")){%>
-            <div class="cardBx">
+		    			if(b.getTipo().contains("PS4")||b.getTipo().contains("Nintendo")){%>
                 <div class="card" data-item="console">
                     <img src="game1.png" alt="">
                     <div class="content">
@@ -77,15 +56,14 @@
                         </div>
                     </div>
                 </div>              
-            </div>
             <%}
 		    		}
             }%>
-            
+                       </div>
+              <div class="cardBx">
             <%if(!lista.isEmpty()){
 		    		for(VideogiocoBean b: lista){
-		    			if(b.getTipo().equals("PC")){%>
-            <div class="cardBx">
+		    			if(b.getTipo().contains("PC")){%>
                 <div class="card" data-item="pc">
                     <img src="game1.png" alt="">
                     <div class="content">
@@ -99,10 +77,10 @@
                         </div>
                     </div>
                 </div>              
-            </div>
             <%}
 		    		}
             }%>
+                        </div>
         </div>
         <!--Footer-->
         <%@ include file="includes/footer.jsp" %>

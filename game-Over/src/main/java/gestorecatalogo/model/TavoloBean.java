@@ -1,10 +1,20 @@
 package gestorecatalogo.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class TavoloBean implements Serializable {
 	private String tipo;
-    public int getIdTavolo() {
+	public Date data;
+    public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public int getIdTavolo() {
         return idTavolo;
     }
 

@@ -1,5 +1,6 @@
 <%@ page import= "utente.model.*" %>
 <%@ page import= "gestorepren.model.*" %>
+<%@ page import= "java.text.*" %>
 <%@ page import= "java.util.ArrayList" %>
 <%@ page import= "connection.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -96,7 +97,9 @@
         <td>
           <div class="cart-info">
             <div>
-              <p><%=b.getDataprenotazione() %></p>
+              <p><%Format f = new SimpleDateFormat("MM/dd/yy");
+              String strDate = f.format(b.getDataprenotazione()); 
+              out.print(strDate);%></p>
             </div>
           </div>
         </td>

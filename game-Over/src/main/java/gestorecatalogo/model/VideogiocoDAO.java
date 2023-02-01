@@ -355,4 +355,28 @@ public class VideogiocoDAO {
 		}
 		
 	}
+    
+    
+    public void ModifyMagazzino(int idpf, int nome) throws SQLException{
+		String query="update videogioco set magazzino=? where id=?"; 
+		Connection con=null; 
+		PreparedStatement ps=null; 
+		
+		try {
+			con= DriverManagerConnectionPool.getConnection(); 
+			
+			ps=con.prepareStatement(query); 
+			ps.setInt(2, idpf);
+			ps.setDouble(1, nome);
+			ps.executeUpdate();
+
+		}finally {
+			try {
+				if(ps!=null) ps.close(); 
+			}finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+	}
 }

@@ -64,7 +64,7 @@
                                                 <th>Prodotti</th>
                                                 <th>Stato</th>
                                                 <th>Quantità</th>
-                                                <th>Piattaforma</th>
+                                                <th>Data</th>
                                                 <th>Prezzo</th>
                                         </tr>
                                         
@@ -81,14 +81,14 @@
                                                                 <div class="resume">
                                                                         <p><%=f.getListaProdotti() %></p>
                                                                         <br>
-                                                                        <a class="remove" href="CancelOrderServlet">Annulla</a>
+                                                                        <a class="remove" href="CancelOrderServlet?id=<%=f.getIdOrdine()%>">Annulla</a>
                                                                 </div>
                                                         </div>
                                                 </td>
-                                                <td class="state">In Consegna</td>
-                                                <td class="quantity">1</td>
-                                                <td class="platform">PC</td>
-                                                <td class="product-price">$50.00</td>
+                                                <td class="state"><%=f.getStato() %></td>
+                                                <td class="quantity"><%=f.getNumeroProdotti() %></td>
+                                                <td class="platform"><%=f.getDataAcquisto() %></td>
+                                                <td class="product-price">€ <%=f.getPrezzoTotale() %></td>
                                         </tr>
                                         <% }
                                         	}%>

@@ -219,4 +219,14 @@
     <servlet-name>ModificaInfoServlet</servlet-name>
     <url-pattern>/ModificaInfoServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CancelPrenotazioneServlet</display-name>
+    <servlet-name>CancelPrenotazioneServlet</servlet-name>
+    <servlet-class>gestorepren.control.CancelPrenotazioneServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CancelPrenotazioneServlet</servlet-name>
+    <url-pattern>/CancelPrenotazioneServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

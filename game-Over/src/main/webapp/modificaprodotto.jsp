@@ -58,7 +58,18 @@
               <form action="ModificaGiocoServlet?action=anno&id=<%=b.getId() %>" method="post">
               <div class="form-group">
                 <label for="inputName">Anno Prodotto</label>
-                <input type="text" id="inputName" class="form-control" name="anno" placeholder=<%=b.getAnno() %> required>
+                <input type="number" id="inputName" class="form-control" name="anno" placeholder=<%=b.getAnno() %> required>
+                <div class="row">
+                  <div class="col-12">
+                    <input type="submit" value="Conferma" class="right button">
+                  </div>
+                </div>
+              </div>
+              </form>
+               <form action="ModificaGiocoServlet?action=magazzino&id=<%=b.getId() %>" method="post">
+              <div class="form-group">
+                <label for="inputName">Quantità in Magazzino</label>
+                <input type="number" id="inputName" class="form-control" name="magazzino" placeholder=<%=b.getMagazzino()%> required>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">

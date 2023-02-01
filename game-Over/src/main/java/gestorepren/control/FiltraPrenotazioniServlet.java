@@ -30,14 +30,14 @@ public class FiltraPrenotazioniServlet extends HttpServlet {
 			prenotazioni= pdao.doRetriveByDates(data1, data2);		
 			
 			request.getSession().setAttribute("lista", prenotazioni);
-			response.sendRedirect("prenotazioni-data.jsp");
+			response.sendRedirect("pren-data.jsp");
 		}
 		if(action.equals("alfabetico")) {
 			if(modo.equals("za")) prenotazioni= pdao.doRetriveUsernameZA(); 
 			else prenotazioni= pdao.doRetriveUsernameAZ(); 
 			
 			request.getSession().setAttribute("lista", prenotazioni);
-			response.sendRedirect("prenotazioni-alfabetico.jsp");
+			response.sendRedirect("pren-alfabetico.jsp");
 		}
 		
 		
