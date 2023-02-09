@@ -2,8 +2,6 @@
 <%@ page import= "gestorecatalogo.model.*" %>
 <%@ page import= "gestoreordini.model.*" %>
 <%@ page import= "java.util.ArrayList" %>
-
-<%@ page import= "java.text.*" %>
 <%@ page import= "connection.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -37,39 +35,26 @@
 
         <body>
                 <!--Header-->
-                 <header>
- <a href="#" class="logo"><span aria-hidden="true">GameOver</span>GameOver<span
+                <header>
+                        <a href="#" class="logo"><span aria-hidden="true">GameOver</span>GameOver<span
                                         aria-hidden="true">GameOver</span></a>
                         <ul class="nav">
-                        <%if(auth!= null && (auth.isGestoreCatalogo()|| auth.isGestorePrenotazioni()|| auth.isGestoreOrdini())==true) {%>
-                        		 <li><a href="dashboard_admin.jsp">Admin</a></li>
-                        		 <%}%>
                                 <li><a href="index.jsp">Home</a></li>
-                                <li><a href="esport.jsp">ESport</a></li>
+                                <li><a href="esport.jsp">E-Sport</a></li>
                                 <li><a href="shopgame.jsp">Games</a></li>
                                 <li><a href="cart.jsp">Carrello</a></li>
-                                <%if(auth!= null && (auth.isGestoreCatalogo()|| auth.isGestorePrenotazioni()|| auth.isGestoreOrdini())==false) {%>
                                 <li><a href="prenotazioni.jsp">Prenotazioni</a></li>
                                 <li><a href="orders.jsp">Ordini</a></li>
-                                 <li><a href="dashboard_user.jsp">Profilo</a></li>
-                                <%}
-                                if(auth!=null){%>
-                                <li><a href="LogoutServlet">Logout</a></li>
-                                <%}else {%>
                                 <li><a href="login.jsp">Login</a></li>
-                                <%} %>
-                               
                         </ul>
                         <div class="action">
                                 <div class="searchBx">
-                                        <form action="RicercaServlet" method="post">
-                                        <a href=""><i class='bx bx-search'></i></a>
-                                        <input type="text" name="cerca" placeholder="Cerca il tuo gioco...">
-                                        </form>
+                                        <a href="#"><i class='bx bx-search'></i></a>
+                                        <input type="text" placeholder="Search Games">
                                 </div>
                         </div>
                         <div class="toggleMenu" onclick="toggleMenu();"></div>
-      </header>
+                </header>
                 <!--Carrello-->
                 <div class="containercart">
                         <h2 class="title-page">Ordini</h2>
@@ -102,9 +87,7 @@
                                                 </td>
                                                 <td class="state"><%=f.getStato() %></td>
                                                 <td class="quantity"><%=f.getNumeroProdotti() %></td>
-                                                <td class="platform"><%Format fi = new SimpleDateFormat("dd/MM/yy");
-              String strDate = fi.format(f.getDataAcquisto()); 
-              out.print(strDate);%></td>
+                                                <td class="platform"><%=f.getDataAcquisto() %></td>
                                                 <td class="product-price">€ <%=f.getPrezzoTotale() %></td>
                                         </tr>
                                         <% }

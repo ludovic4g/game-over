@@ -229,4 +229,14 @@
     <servlet-name>CancelPrenotazioneServlet</servlet-name>
     <url-pattern>/CancelPrenotazioneServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FilterServlet</display-name>
+    <servlet-name>FilterServlet</servlet-name>
+    <servlet-class>utente.control.FilterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FilterServlet</servlet-name>
+    <url-pattern>/FilterServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

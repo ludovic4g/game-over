@@ -88,8 +88,8 @@ public class UtenteDAO {
         return ab;
     }
 
-    public void doSave(UtenteBean utente) throws SQLException {
-        String query = "insert into utente values(?,?,?,?,?,?,?,?,?,?,?,?);";
+    public boolean doSave(UtenteBean utente) throws SQLException {
+        String query = "insert into utente values(?,?,?,?,?,?,?,?,?,?,?);";
 
         Connection con = null;
         PreparedStatement ps = null;
@@ -110,18 +110,21 @@ public class UtenteDAO {
             ps.setBoolean(9, utente.isGestoreCatalogo());
             ps.setBoolean(10, utente.isGestorePrenotazioni());
             ps.setBoolean(11 ,utente.isGestoreCatalogo());
-            ps.setString(12, utente.getDomanda());
 
             ps.executeUpdate();
 
 
-        } finally {
+        }catch(Exception e) {
+        	e.printStackTrace();
+        	return false;
+    }finally {
             try {
                 if (ps != null) ps.close();
             } finally {
                 DriverManagerConnectionPool.releaseConnection(con);
             }
         }
+        return true;
     }
 
     public void doUpdate(UtenteBean utente) throws SQLException {

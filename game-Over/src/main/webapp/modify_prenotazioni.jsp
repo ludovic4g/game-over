@@ -98,7 +98,7 @@
         <td>
           <div class="cart-info">
             <div>
-              <p><%Format f = new SimpleDateFormat("MM/dd/yy");
+              <p><%Format f = new SimpleDateFormat("dd/MM/yy");
               String strDate = f.format(b.getDataprenotazione()); 
               out.print(strDate);%></p>
             </div>
@@ -125,6 +125,10 @@
             </div>
           </div></td>
           <td>
+          <%if(b.getStato().equals("Annullato")){ %>
+         <td><select class="stato" name="stato"  required>
+        	<option value="" disabled selected>Annullato</option> </select>
+         <%}else{ %>
           <td><form action="ModificaOrdineServlet?id=<%=b.getIdPrenotazione()%>" method="post">
         <td><select class="stato" name="stato"  required>
         	<option value="" disabled selected><%=b.getStato() %></option>
@@ -135,7 +139,7 @@
         <td><input type="submit" class="btn btn-danger btn-sm" value ="Modifica"></td>
         </form>
         </td>
-  
+  <%} %>
       </tr>
       </tr>
       <%}%>

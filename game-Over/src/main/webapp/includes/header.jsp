@@ -1,11 +1,10 @@
  <header>
- <a href="#" class="logo"><span aria-hidden="true">GameOver</span>GameOver<span
+ <a href="index.jsp" class="logo"><span aria-hidden="true">GameOver</span>GameOver<span
                                         aria-hidden="true">GameOver</span></a>
                         <ul class="nav">
                         <%if(auth!= null && (auth.isGestoreCatalogo()|| auth.isGestorePrenotazioni()|| auth.isGestoreOrdini())==true) {%>
                         		 <li><a href="dashboard_admin.jsp">Admin</a></li>
                         		 <%}%>
-                                <li><a href="index.jsp">Home</a></li>
                                 <li><a href="esport.jsp">ESport</a></li>
                                 <li><a href="shopgame.jsp">Games</a></li>
                                 <li><a href="cart.jsp">Carrello</a></li>

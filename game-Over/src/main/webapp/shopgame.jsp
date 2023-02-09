@@ -51,8 +51,10 @@
                         <div class="info">
                          <%if(auth!= null && (auth.isGestoreCatalogo()|| auth.isGestorePrenotazioni()|| auth.isGestoreOrdini())==false) {%>
                             <a href="AddToCartServlet?id=<%=b.getId()%>&action=lista"><i class='bx bx-cart-add'></i></a>
+                            <%}else if (auth==null){ %>
+                           <a href="AddToCartServlet?id=<%=b.getId()%>&action=lista"><i class='bx bx-cart-add'></i></a>
                             <%} %>
-                            <a href="productdetails.jsp?id=<%=b.getId()%>">Dettagli</a>
+                             <a href="productdetails.jsp?id=<%=b.getId()%>">Dettagli</a>
                         </div>
                     </div>
                 </div>              
@@ -72,8 +74,10 @@
                         <div class="info">
                          <%if(auth!= null && (auth.isGestoreCatalogo()|| auth.isGestorePrenotazioni()|| auth.isGestoreOrdini())==false) {%>
                             <a href="AddToCartServlet?id=<%=b.getId()%>&action=lista"><i class='bx bx-cart-add'></i></a>
+                            <%}else if (auth==null){ %>
+                            <a href="AddToCartServlet?id=<%=b.getId()%>&action=lista"><i class='bx bx-cart-add'></i></a>
                             <%} %>
-                            <a href="productdetails.jsp?id=<%=b.getId()%>">Dettagli</a>
+                             <a href="productdetails.jsp?id=<%=b.getId()%>">Dettagli</a>
                         </div>
                     </div>
                 </div>              

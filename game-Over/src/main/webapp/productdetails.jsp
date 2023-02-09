@@ -96,6 +96,13 @@
                                                         </button></a>
                                                         
                                                         <%} %>
+                                                         <%if(auth== null) {%>
+                                                        <a href=""><button type="submit" class="btn">
+                                                                Aggiungi al carrello<i class="fas fa-shopping-cart"></i>
+                                                        </button></a>
+                                                        
+                                                        <%} %>
+            
                                                          </form>
                                                          <%if(auth!= null && (auth.isGestoreCatalogo()|| auth.isGestorePrenotazioni()|| auth.isGestoreOrdini())==true){  %>
                                                           <a href="catalogo.jsp"><button type="submit" class="btn">

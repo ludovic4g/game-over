@@ -13,8 +13,7 @@ create table Utente(
     risposta varchar(30) not null,
     ammin1 boolean not null,
     ammin2 boolean not null,
-    ammin3 boolean not null,
-    domanda varchar(20) not null
+    ammin3 boolean not null
 );
 
 create table Videogioco(
@@ -143,28 +142,28 @@ create table PrenotazionePostazione(
 
 
 /* modificare risposta e controlla formato data*/
-INSERT INTO Utente VALUES ("lucger", "MorningStar9.", "luuvifer@gmail.com", "Luciel", "Spexiato", "1990-12-07", "Femmina","", true, false, true,"");
-INSERT INTO Utente VALUES ("tansat", "Piango2.", "sxtans@gmail.com", "Sally", "Acido", "1994-09-01", "Maschio","", false, true, false,"");
-INSERT INTO Utente VALUES ("honejmoon", "Benedetta7.", "benedetta@gmail.com", "Benedetta", "Rossetti", "2001-11-07", "Femmina","", false, false, false,"");
-INSERT INTO Utente VALUES ("manuelito", "Manuelsica1.", "manuel@gmail.com", "Manuel", "Sica", "2001-05-24","Maschio", "Benevento", false, false, false,"Città preferita");
-INSERT INTO Utente VALUES ("luds", "Ludovica2.", "ludovica@gmail.com", "Ludovica", "Genovese", "2001-07-16","Femmina", "", false, false, false,"");
-INSERT INTO Utente VALUES ("marja", "Mariarossi5.", "maria@gmail.com", "Maria", "Rossi", "1996-03-07", "Femmina","", false, false, false,"");
-INSERT INTO Utente VALUES ("lucas", "Lucaverdi6.", "luca@gmail.com", "Luca", "Verdi", "2003-01-20","Maschio", "", false, false, false,"");
-INSERT INTO Utente VALUES ("giovanni69", "Giovanni3.", "giovanni@gmail.com", "Giovanni", "Bianchi", "1999-12-25","Maschio", "", false, false, false,"");
-INSERT INTO Utente VALUES ("marcella_", "Marcella1.", "marcella@gmail.com", "Marcella", "Vitale", "2000-04-03", "Non-Binary","", false, false, false,"");
-INSERT INTO Utente VALUES ("valecri", "Valeriacrispo9.", "valeria@gmail.com", "Valeria", "Crispo", "1994-11-10","Femmina", "", false, false, false,"");
-INSERT INTO Utente VALUES ("saetta", "Amedeosae2.", "amedeo@gmail.com", "Amedeo", "Saetta", "2001-07-15","Maschio", "", false, false, false,"");
-INSERT INTO Utente VALUES ("vince", "Vincenzo9.", "vincenzo@gmail.com", "Vincenzo", "Sorrentino", "2001-11-06","Non-Binary", "", false, false, false,"");
-INSERT INTO Utente VALUES ("consi03", "Consiglia6.", "consiglia@gmail.com", "Consiglia", "Lamberi", "1995-07-01","Femmina", "", false, false, false,"");
-INSERT INTO Utente VALUES ("dima7", "Dimitrika16.", "dimitri@gmail.com", "Dimitri", "Kambulatov", "1992-10-16", "Maschio","", false, false, false,"");
-INSERT INTO Utente VALUES ("enzos", "Enzoverdi4.", "enzo@gmail.com", "Vincenzo", "Verdi", "1995-12-29","Maschio", "", false, false, false,"");
-INSERT INTO Utente VALUES ("fabbb", "Fabioava5.", "fabio@gmail.com", "Fabio", "Avagliano", "1996-11-11", "maschio","", false, false, false,"");
-INSERT INTO Utente VALUES ("nancy99", "Nunziatorre8.", "nunzia@gmail.com", "Nunzia", "Torre", "2002-04-18", "Femmina","", false, false, false,"");
-INSERT INTO Utente VALUES ("cateMary", "Caterina4.", "cayerina@gmail.com", "Caterina Maria", "Di Giacomo", "1993-07-23","Non-Binary", "", false, false, false,"Citta' preferita");
-INSERT INTO Utente VALUES ("francs", "Francesca0.", "francesca@gmail.com", "Francesca", "D'Aloia", "1987-04-03","Non-Binary", "", false, false, false,"");
-INSERT INTO Utente VALUES ("davjde", "Davideanno5.", "davide@gmail.com", "Davide", "Dell'Anno", "1990-05-24", "Non-Binary","", false, false, false,"");
-INSERT INTO Utente VALUES ("ross_", "Rossella2.", "rossella@gmail.com", "Rossella", "Senatore", "1998-08-20", "Femmina","", false, false, false,"");
-INSERT INTO Utente VALUES ("ilarya", "Ilariasalvo0.", "ilaria@gmail.com", "Ilaria", "Salvo", "1999-09-26", "Femmina","", false, false, false,"");
+INSERT INTO Utente VALUES ("lucger", "MorningStar9.", "luuvifer@gmail.com", "Luciel", "Spexiato", "1990-12-07", "Femmina","", true, false, true);
+INSERT INTO Utente VALUES ("tansat", "Piango2.", "sxtans@gmail.com", "Sally", "Acido", "1994-09-01", "Maschio","", false, true, false);
+INSERT INTO Utente VALUES ("honejmoon", "Benedetta7.", "benedetta@gmail.com", "Benedetta", "Rossetti", "2001-11-07", "Femmina","", false, false, false);
+INSERT INTO Utente VALUES ("manuelito", "Manuelsica1.", "manuel@gmail.com", "Manuel", "Sica", "2001-05-24","Maschio", "Benevento", false, false, false);
+INSERT INTO Utente VALUES ("luds", "Ludovica2.", "ludovica@gmail.com", "Ludovica", "Genovese", "2001-07-16","Femmina", "", false, false, false);
+INSERT INTO Utente VALUES ("marja", "Mariarossi5.", "maria@gmail.com", "Maria", "Rossi", "1996-03-07", "Femmina","", false, false, false);
+INSERT INTO Utente VALUES ("lucas", "Lucaverdi6.", "luca@gmail.com", "Luca", "Verdi", "2003-01-20","Maschio", "", false, false, false);
+INSERT INTO Utente VALUES ("giovanni69", "Giovanni3.", "giovanni@gmail.com", "Giovanni", "Bianchi", "1999-12-25","Maschio", "", false, false, false);
+INSERT INTO Utente VALUES ("marcella_", "Marcella1.", "marcella@gmail.com", "Marcella", "Vitale", "2000-04-03", "Non-Binary","", false, false, false);
+INSERT INTO Utente VALUES ("valecri", "Valeriacrispo9.", "valeria@gmail.com", "Valeria", "Crispo", "1994-11-10","Femmina", "", false, false, false);
+INSERT INTO Utente VALUES ("saetta", "Amedeosae2.", "amedeo@gmail.com", "Amedeo", "Saetta", "2001-07-15","Maschio", "", false, false, false);
+INSERT INTO Utente VALUES ("vince", "Vincenzo9.", "vincenzo@gmail.com", "Vincenzo", "Sorrentino", "2001-11-06","Non-Binary", "", false, false, false);
+INSERT INTO Utente VALUES ("consi03", "Consiglia6.", "consiglia@gmail.com", "Consiglia", "Lamberi", "1995-07-01","Femmina", "", false, false, false);
+INSERT INTO Utente VALUES ("dima7", "Dimitrika16.", "dimitri@gmail.com", "Dimitri", "Kambulatov", "1992-10-16", "Maschio","", false, false, false);
+INSERT INTO Utente VALUES ("enzos", "Enzoverdi4.", "enzo@gmail.com", "Vincenzo", "Verdi", "1995-12-29","Maschio", "", false, false, false);
+INSERT INTO Utente VALUES ("fabbb", "Fabioava5.", "fabio@gmail.com", "Fabio", "Avagliano", "1996-11-11", "maschio","", false, false, false);
+INSERT INTO Utente VALUES ("nancy99", "Nunziatorre8.", "nunzia@gmail.com", "Nunzia", "Torre", "2002-04-18", "Femmina","", false, false, false);
+INSERT INTO Utente VALUES ("cateMary", "Caterina4.", "cayerina@gmail.com", "Caterina Maria", "Di Giacomo", "1993-07-23","Non-Binary", "", false, false, false);
+INSERT INTO Utente VALUES ("francs", "Francesca0.", "francesca@gmail.com", "Francesca", "D'Aloia", "1987-04-03","Non-Binary", "", false, false, false);
+INSERT INTO Utente VALUES ("davjde", "Davideanno5.", "davide@gmail.com", "Davide", "Dell'Anno", "1990-05-24", "Non-Binary","", false, false, false);
+INSERT INTO Utente VALUES ("ross_", "Rossella2.", "rossella@gmail.com", "Rossella", "Senatore", "1998-08-20", "Femmina","", false, false, false);
+INSERT INTO Utente VALUES ("ilarya", "Ilariasalvo0.", "ilaria@gmail.com", "Ilaria", "Salvo", "1999-09-26", "Femmina","", false, false, false);
 
 /*modifica immagini*/
 INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("FIFA 23 Legacy Edition", 40, 2022, 2, 50, "Nintendo Switch", "FIFA 23 Legacy Edition include divise, club e rose originali di alcuni dei principali campionati del mondo. Conterra' inoltre diverse tra le migliori squadre di club femminili e alcuni dei piu' famosi stadi al mondo, compresi alcuni inediti, una veste grafica rinnovata e un nuovo pacchetto che comprende telecronaca e grafiche aggiornate durante le partite. FIFA 23 Legacy Edition presentera' le stesse modalita'  e caratteristiche a livello di gameplay gia'  viste in FIFA 22 Legacy Edition, senza novita'  o migliorie di rilievo.", "", "", "", "", "");
@@ -283,7 +282,7 @@ INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, data, tipo, disp, img) VALUES 
 INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, data, tipo, disp, img) VALUES (10, 20, "22:30","","", true,"");
 INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, data, tipo, disp, img) VALUES (5, 12, "12:00","","", true,"");
 INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, data, tipo, disp, img) VALUES (5, 12, "11:30","","", true,"");
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, data,tipo, disp, img) VALUES (3, 10, "11:00","","", true,"");
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, data, tipo, disp, img) VALUES (3, 10, "11:00","","", true,"");
 INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, data, tipo, disp, img) VALUES (7, 14, "18:30","","", true,"");
 INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, data, tipo, disp, img) VALUES (7, 14, "19:30","","", true,"");
 INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, data, tipo, disp, img) VALUES (6, 13, "21:30","","", true,"");
