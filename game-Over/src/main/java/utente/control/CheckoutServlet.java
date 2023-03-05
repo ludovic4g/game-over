@@ -83,6 +83,8 @@ public class CheckoutServlet extends HttpServlet {
 		o.setListaProdotti(m);
 		o.setNumeroProdotti(size);
 		odao.doSave(o);
+		ArrayList<OrdineBean> lista = odao.doRetrieveAll();
+		riguarda.setIdOrdine(lista.size());
 		
 		
 		carrello.clear();

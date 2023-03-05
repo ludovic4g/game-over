@@ -379,4 +379,45 @@ public class VideogiocoDAO {
 		}
 		
 	}
+    
+    public VideogiocoBean doRetriveByName(String codice) throws SQLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        String query = "select * from " + VideogiocoDAO.TABLE_NAME + " where id=?";
+        VideogiocoBean b = new VideogiocoBean();
+
+        try {
+            con = DriverManagerConnectionPool.getConnection();
+
+            ps = con.prepareStatement(query);
+            ps.setString(1, codice);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+            	b.setId(rs.getInt("id"));
+                b.setNome(rs.getString("nome"));
+                b.setPrezzo(rs.getDouble("prezzo"));
+                b.setAnno(rs.getInt("anno"));
+                b.setQuantita(rs.getInt("quantita"));
+                b.updateMagazzino(rs.getInt("magazzino"));
+                b.setTipo(rs.getString("tipo"));
+                b.setDescrizione(rs.getString("descrizione"));
+                b.setImg1(rs.getString("img1"));
+                b.setImg2(rs.getString("img2"));
+                b.setImg3(rs.getString("img3"));
+                b.setImg4(rs.getString("img4"));
+                b.setImg5(rs.getString("img5"));
+
+            }
+            rs.close();
+        } finally {
+            try {
+                if (ps != null) ps.close();
+            } finally {
+                DriverManagerConnectionPool.releaseConnection(con);
+            }
+
+        }
+        return b;
+    }
 }

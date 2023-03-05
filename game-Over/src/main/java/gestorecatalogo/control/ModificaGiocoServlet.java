@@ -1,6 +1,7 @@
 package gestorecatalogo.control;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import gestorecatalogo.model.VideogiocoDAO;
 import jakarta.servlet.ServletException;
@@ -15,7 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet(name = "ModificaGiocoServlet", value = "/ModificaGiocoServlet")
 public class ModificaGiocoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			String i = request.getParameter("id");
 			int id = Integer.parseInt(i);
@@ -26,7 +27,7 @@ public class ModificaGiocoServlet extends HttpServlet {
 			String m = request.getParameter("magazzino");
 			String plat = request.getParameter("piattaforma");
 			String a = request.getParameter("anno");
-		
+			PrintWriter out = response.getWriter();
 			String img1 = request.getParameter("img1");
 			String img2 = request.getParameter("img2");
 			String img3 = request.getParameter("img3");
@@ -37,8 +38,14 @@ public class ModificaGiocoServlet extends HttpServlet {
 			
 			String action= request.getParameter("action");
 			if(action.equals("nome")) {
+				if((vdao.doRetriveByName(nome).getNome()!=null)) {
+					out.print("Nome già esistente.");
+					return;
+				}else {
+				out.print("Modifica del gioco avvenuta correttamente.");
 				vdao.ModifyNome(id, nome);
 				response.sendRedirect("catalogo.jsp");
+				}
 			}
 			
 			if(action.equals("anno")) {
@@ -68,12 +75,24 @@ public class ModificaGiocoServlet extends HttpServlet {
 				response.sendRedirect("catalogo.jsp");
 			}
 			if(action.equals("img1")) {
+				if(!(img1.startsWith("http") && img1.startsWith("http"))) {
+					out.print("Formato immagine non corretto.");
+					return;
+				}else {
+					out.print("Modifica del gioco avvenuta correttamente.");
 				vdao.ModifyImg12(id, img1,img2);
 				response.sendRedirect("catalogo.jsp");
+				}
 			}
 			if(action.equals("img2")) {
+				if(!(img3.startsWith("http") && img4.startsWith("http") && img5.startsWith("http"))) {
+					out.print("Formato immagine non corretto.");
+					return;
+				}else {
+					out.print("Modifica del gioco avvenuta correttamente.");
 				vdao.ModifyImg345(id, img3,img4,img5);
 				response.sendRedirect("catalogo.jsp");
+			}
 			}
 			
 			

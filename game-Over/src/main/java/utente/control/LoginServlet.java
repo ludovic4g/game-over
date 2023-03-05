@@ -1,37 +1,52 @@
 package utente.control;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import utente.model.UtenteBean;
 import utente.model.UtenteDAO;
-
-import java.io.IOException;
 
 @WebServlet(name = "LoginServlet", value = "/LoginServlet")
 public class LoginServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+    	String username = request.getParameter("username");
         String password = request.getParameter("password");
         UtenteDAO udao= new UtenteDAO();
         UtenteBean utente = new UtenteBean();
-
-        boolean ctrl = false;
+        PrintWriter out = response.getWriter();
+        
+        if(udao.doRetrieveByKey(username).getUsername()==null) {
+        	out.print("Username non valido.");
+        	 response.sendRedirect("login.jsp");
+        	 return;
+        }
+        
         utente= udao.login(username,password);
 
         if(utente==null){
-            ctrl=true;
-            request.getSession().setAttribute("ctrl", ctrl);
+        	request.setAttribute("errorPassword",true);
+        	out.print("Password non valida.");
             response.sendRedirect("login.jsp");
+            return;
         }
 
-        request.getSession().setAttribute("ctrl", ctrl);
         request.getSession().setAttribute("auth", utente);
         if(utente.isGestoreCatalogo() || utente.isGestoreOrdini() || utente.isGestorePrenotazioni()) response.sendRedirect("dashboard_admin.jsp");
-        else 
+        else {
+        	out.print("Login effettuato con successo.");
         	response.sendRedirect("index.jsp");
-
+        }
+        
+        }catch(Exception e) {
+        	e.printStackTrace();
+        }
 
     }
 }

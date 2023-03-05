@@ -135,7 +135,6 @@ public class UtenteBean implements Serializable {
 
             if (is_Numeric(ch)) numCount++;
             else if (is_LetterSp(ch)) charCount++;
-            else return false;
         }
 
 
@@ -154,10 +153,32 @@ public class UtenteBean implements Serializable {
     }
 
     public boolean mailIsValid(String m){
-        String pttrn = "^(.+)@(\\S+)$";
-        return Pattern.compile(pttrn)
-                .matcher(m)
-                .matches();
+        //String pttrn = "^(.+)@(\\S+)$";
+        return m.contains("@") && m.contains(".");
+    }
+    
+    public boolean isValid(String g) {
+    	for(int i=0; i<g.length(); i++) {
+    		if(is_Numeric(g.charAt(i))) return false;
+    		if(is_LetterSp(g.charAt(i))) return false;
+    	}
+    	
+    	return true;
+    }
+    
+    public boolean existLetterSp(String f) {
+    	for(int i =0; i<f.length(); i++) {
+    		if((f.charAt(i) >= '!' && f.charAt(i) <= '/') || (f.charAt(i)>= ':' && f.charAt(i) <= '@') || (f.charAt(i)>= '-' && f.charAt(i)<='.')) return true; 
+    	}
+    	
+    	return false;
+    }
+    
+    public boolean existLetter(String f) {
+    	for(int i =0; i<f.length(); i++) {
+    		if((f.charAt(i)>='a' && f.charAt(i)<='z') || (f.charAt(i)>='A' && f.charAt(i)<='Z')) return true;
+    	}
+    	return false;
     }
 
 

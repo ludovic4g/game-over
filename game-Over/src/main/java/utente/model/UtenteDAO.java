@@ -275,37 +275,32 @@ public class UtenteDAO {
         return b;
     }
     
-    public String doRetrieveRisposta(String email) {
-  	  Connection con = null;
-        PreparedStatement ps = null;
-        String query = "select risposta from " + UtenteDAO.TABLE_NAME + " where username=?";
-        String risposta=null;
+    public String doRetrieveRisposta(String email) throws SQLException{
+    	        Connection con = null;
+    	        PreparedStatement ps = null;
+    	        String query = "select risposta from " + UtenteDAO.TABLE_NAME + " where username=?";
+    	        String risposta=null;
 
-        try {
-            con = DriverManagerConnectionPool.getConnection();
+    	        try {
+    	            con = DriverManagerConnectionPool.getConnection();
 
-            ps = con.prepareStatement(query);
-            ps.setString(1, email);
-            ResultSet rs = ps.executeQuery();
+    	            ps = con.prepareStatement(query);
+    	            ps.setString(1, email);
+    	            ResultSet rs = ps.executeQuery();
 
-            while (rs.next()) {
-                risposta=rs.getString("risposta");
-               
-            }
-            rs.close();
-        }catch(Exception e) {
-      	  e.printStackTrace();
-  }finally {
-            try {
-                if (ps != null) ps.close();
-            }catch(Exception e) {
-          	  e.printStackTrace();
-            } finally {
-            }
-                DriverManagerConnectionPool.releaseConnection(con);
-            }
+    	            while (rs.next()) {
+    	                risposta=rs.getString("risposta");
+    	            }
+    	            rs.close();
+    	        } finally {
+    	            try {
+    	                if (ps != null) ps.close();
+    	            } finally {
+    	                DriverManagerConnectionPool.releaseConnection(con);
+    	            }
 
-        return risposta;
+    	        }
+    	        return risposta;
   }
     
     public void ModifyPassword(String id, String nome) throws SQLException{
@@ -499,7 +494,7 @@ public class UtenteDAO {
 		            ResultSet rs = ps.executeQuery();
 
 		            while (rs.next()) {
-		                risposta=rs.getString("risposta");
+		                risposta=rs.getString("password");
 		               
 		            }
 		            rs.close();

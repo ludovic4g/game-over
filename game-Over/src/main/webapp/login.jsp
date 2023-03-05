@@ -34,18 +34,38 @@
                     </h2>
                     </h2>
                 <form action="LoginServlet" method="post">
+                <%if(request.getSession().getAttribute("errorUsername")!=null){ %>
+                    <div class="inputBox">
+                        <input type="text" style="color:red" name="username" required="required">
+                        <span>Username Errato!</span>
+                        <i></i>
+                    
+                    </div>
+                    <% }else{%>
                     <div class="inputBox">
                         <input type="text" name="username" required="required">
                         <span>Username</span>
                         <i></i>
+                    
                     </div>
+                    <%} %>
+                    
+                    <%if(request.getSession().getAttribute("errorPassword")!=null){ %>
                     <div class="inputBox">
-                        <input type="Password" name="password" required="required">
+                         <input type="Password" name="password" required="required">
+                        <span>Password Errata!</span>
+                        <i></i>
+                    </div>
+                    <%}else{ %>
+                    <div class="inputBox">
+                         <input type="Password" name="password" required="required">
                         <span>Password</span>
                         <i></i>
                     </div>
+                    <% }%>
+                    
                     <div class="links">
-                        <a href="">Forgot Password</a>
+                        <a href="recovery_psw_first.jsp">Forgot Password</a>
                         <a href="register.jsp">Sign up</a>
                     </div>
                     <input type="submit" value="Login">

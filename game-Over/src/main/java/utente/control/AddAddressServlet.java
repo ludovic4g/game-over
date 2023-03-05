@@ -1,6 +1,7 @@
 package utente.control;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import jakarta.servlet.ServletException;
@@ -23,43 +24,71 @@ public class AddAddressServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String checkedIds = request.getParameter("address-checkbox");
-		System.out.println(checkedIds);
-		int indice=5;
-		IndirizzoBean scelto = new IndirizzoBean();
-		ArrayList<IndirizzoBean> indirizzi = (ArrayList<IndirizzoBean>) request.getSession().getAttribute("indirizzi");
-		if(indice==5) response.sendRedirect("checkout_address.jsp");
-		else {
-			request.getSession().setAttribute("scelto", scelto);
-			response.sendRedirect("checkout_final.jsp");
+		int indice = Integer.parseInt(checkedIds);
+		IndirizzoDAO idao = new IndirizzoDAO();
+		try {
+			IndirizzoBean scelto = idao.doRetrieveByKey(indice);
+			if(scelto==null) response.sendRedirect("checkout_address.jsp");
+			else {
+				request.getSession().setAttribute("scelto", scelto);
+				response.sendRedirect("checkout_final.jsp");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 		UtenteBean auth = (UtenteBean) request.getSession().getAttribute("auth");
 		String nome = request.getParameter("nome");
-		String cognome = request.getParameter("cognome");
 		String citta = request.getParameter("citta"); 
 		String paese = request.getParameter("paese"); 
 		String provincia = request.getParameter("provincia"); 
 		String c = request.getParameter("cap");
-		int cap = Integer.parseInt(c);
+		
 		String indirizzo = request.getParameter("indirizzo");
-		String tel = request.getParameter("telefono");
-		long telefono = Long.parseLong(tel);
 		HaDAO hdao = new HaDAO();
 		HaBean ha = new HaBean();
-		int num= (int) Math.floor(Math.random() *(400 - 20 + 1) + 20);
+		UtenteBean ctrl = new UtenteBean();
+		PrintWriter out = response.getWriter();
 		
 		IndirizzoBean scelto = new IndirizzoBean();
 		IndirizzoDAO idao = new IndirizzoDAO();
-		scelto.setCAP(cap);
+		if(!ctrl.isValid(nome)) {
+			out.print("Nome non valido.");
+			return;
+			
+		}
+		scelto.setNome(nome);
+		if(!ctrl.existLetter(c)) {
+			int cap = Integer.parseInt(c);
+			scelto.setCAP(cap);
+		}else {
+			out.print("CAP non valido.");
+			return;
+		}
+		
+		if(citta==null || citta.equals("")) {
+			out.print("Citta' non valida.");
+			return;
+		}
 		scelto.setCitta(citta);
-		scelto.setId(num);
+		if(provincia==null || provincia.equals("") || provincia.length()!=2) {
+			out.print("Provincia non valida.");
+			return;
+		}
 		scelto.setProvincia(provincia);
+		
+		if(ctrl.existLetterSp(indirizzo)) {
+			out.print("Indirizzo non valido.");
+			return;
+		}
 		scelto.setVia(indirizzo);
+		out.print("Aggiunta indirizzo avvenuta correttamente.");
 		idao.doSave(scelto);
-		ha.setIdIndirizzo(num);
+		ArrayList<IndirizzoBean> lista = idao.doRetrieveAll();
+		ha.setIdIndirizzo(lista.size());
 		ha.setUsername(auth.getUsername());
 		hdao.doSave(ha);
 		

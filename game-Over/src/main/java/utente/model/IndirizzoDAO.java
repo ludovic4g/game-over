@@ -115,7 +115,7 @@ public class IndirizzoDAO {
         return ab;
     }
     public void doSave(IndirizzoBean utente) throws SQLException {
-        String query = "insert into Indirizzo values(?,?,?,?,?,?);";
+        String query = "insert into Indirizzo(nome, indirizzo, cap, citta, provincia) values(?,?,?,?,?);";
 
         Connection con = null;
         PreparedStatement ps = null;
@@ -125,12 +125,11 @@ public class IndirizzoDAO {
             con = DriverManagerConnectionPool.getConnection();
 
             ps = con.prepareStatement(query);
-            ps.setInt(1, utente.getId());
-            ps.setString(2, utente.getNome());
-            ps.setString(3, utente.getVia());
-            ps.setInt(4, utente.getCAP());
-            ps.setString(5, utente.getCitta());
-            ps.setString(6, utente.getProvincia());
+            ps.setString(1, utente.getNome());
+            ps.setString(2, utente.getVia());
+            ps.setInt(3, utente.getCAP());
+            ps.setString(4, utente.getCitta());
+            ps.setString(5, utente.getProvincia());
 
             ps.executeUpdate();
 

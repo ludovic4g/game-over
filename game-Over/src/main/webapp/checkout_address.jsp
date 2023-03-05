@@ -46,6 +46,7 @@
     <div class="container_address">
         <div class="box_address" id="box-address">
         <div class="address_form">
+        <form action="AddAddressServlet" method="get">
          <%for(IndirizzoBean b : indirizzi){ %>
             <div class="center">
                 <div class="address-box">
@@ -55,13 +56,15 @@
                     <button id="show-address">Modifica</button>
                 </div>
             </div>
-            <% }%>
+           
             <div class="center">
                 <div class="address-box">
                     <button id="add-address">+ Aggiungi Indirizzo</button>
                 </div>
+                 <% }%>
             </div>
-            <a href="AddAddressServlet"><button class="address-box-submit">Avanti</button></a>
+            <button class="address-box-submit">Avanti</button>
+            </form>
         </div>
 </div>
         <div class="popup">

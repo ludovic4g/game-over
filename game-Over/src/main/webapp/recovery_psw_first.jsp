@@ -21,16 +21,6 @@
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <script src="http://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
-        <script>
-            $(document).ready(function(){
-                 $("#sub").change(function(){
-                     var mail = $(this).val();
-                     $.get("data.jsp",{q:value},function(data){
-                      $("#msg").html(data);
-                     });
-                 });
-             });
-        </script>
         
 </head>
 
@@ -83,12 +73,6 @@
             </div>
           </div>
           <div class="page">
-            <div class="field">
-              <div class="label">
-                Domanda di sicurezza
-              </div>
-              <div id="msg" style="" ><b></b></div>
-            </div>
             <div class="field">
               <div class="label">
                 Risposta

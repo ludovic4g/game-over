@@ -1,15 +1,17 @@
 package utente.control;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
-import utente.model.UtenteBean;
-import utente.model.UtenteDAO;
-
 import java.io.IOException;
-import java.sql.SQLException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import utente.model.UtenteBean;
+import utente.model.UtenteDAO;
 
 @WebServlet(name = "RegisterServlet", value = "/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
@@ -34,51 +36,61 @@ public class RegisterServlet extends HttpServlet {
             String risposta = request.getParameter("risposta");
             UtenteBean utente = new UtenteBean();
             UtenteDAO udao = new UtenteDAO();
+            PrintWriter out=response.getWriter();
            
-            if(udao.doRetrieveByKey(username)==null)
+            if(udao.doRetrieveByKey(username)==null && username!= null)
             	utente.setUsername(username);
-            if(udao.doRetrieveByKey(username)!=null) {
-            	request.setAttribute("existUsername", "true");
+            else if(udao.doRetrieveByKey(username).getUsername()!=null) {
+            	out.print("Username esistente.");
             	response.sendRedirect("register.jsp");
             	return;
             	
-            }if(username.equals("")) {
-            	request.setAttribute("errorUsername", "true");
+            }if(username.equals("") || username==null) {
+            	out.print("Username non valido.");
             	response.sendRedirect("register.jsp");
             	return;
             }
             
 
-            if(nome.equals("")) {
-            	 utente.setNome(nome);
-            }else {
-            	request.setAttribute("errorNome", "true");
+            if(nome==null || !utente.isValid(nome)) {
+            	out.print("Nome non valido.");
             	response.sendRedirect("register.jsp");
             	return;
+            }else {
+            	utente.setNome(nome);
             }
            
-            if(cognome.equals("")) {
-            	utente.setCognome(cognome);
+            if(cognome==null || !utente.isValid(cognome)) {
+            	out.print("Cognome non valido.");
+            	response.sendRedirect("register.jsp");
+            	return;
             }else {
-            	request.setAttribute("errorCognome", "true");
+            	utente.setCognome(cognome);
+            }
+        	
+            if(udao.doRetrieveByMail(mail)==null){
+            if(utente.mailIsValid(mail)) {
+            	utente.setEmail(mail);
+            }
+            }
+            
+            else if(udao.doRetrieveByMail(mail).getEmail()!=null){
+            	out.print("Mail esistente.");
             	response.sendRedirect("register.jsp");
             	return;
             }
-        	
-            if(utente.mailIsValid(mail)) {
-            	utente.setEmail(mail);
-            }else {
-            	request.setAttribute("errorMail", "true");
+            else if(!(mail.contains("@") && mail.contains("."))){
+            	out.print("Mail non valida.");
             	response.sendRedirect("register.jsp");
             	return;
             }
             
             if(sesso.equals("")) {
-            	 utente.setSex(sesso);
-            }else {
-            	request.setAttribute("errorSex", "true");
+            	out.print("Genere non valido.");
             	response.sendRedirect("register.jsp");
-            	return;
+            	return;   	
+            }else {
+            	 utente.setSex(sesso);
             }
            
             utente.setBday(ddn);
@@ -86,21 +98,24 @@ public class RegisterServlet extends HttpServlet {
             	if(utente.passConferma(pass1, pass2)) {
             		utente.setPassword(pass1);
             	}else {
-            		request.setAttribute("notEquals", "true");
+            		out.print("Password non coincidono.");
                 	response.sendRedirect("register.jsp");
                 	return;
             	}
-            }else{
-            	request.setAttribute("errorPassword", "true");
+            }else {
+            	out.print("Password non valida.");
             	response.sendRedirect("register.jsp");
             	return;
             }
-            if(risposta.equals("")) {
-            	utente.setRisposta(risposta);
-            }else {
-            	request.setAttribute("errorRisposta", "true");
+            
+            
+            if(risposta==null) {
+            	out.print("Risposta non valida.");
             	response.sendRedirect("register.jsp");
             	return;
+            }else {
+            	utente.setRisposta(risposta);
+            	
             }
             
             utente.setGestoreCatalogo(false);
@@ -108,6 +123,7 @@ public class RegisterServlet extends HttpServlet {
             utente.setGestoreOrdini(false);
             
             udao.doSave(utente);
+            out.print("Registrazione effettuata con successo.");
             response.sendRedirect("login.jsp");
         }catch(Exception e){
             e.printStackTrace();

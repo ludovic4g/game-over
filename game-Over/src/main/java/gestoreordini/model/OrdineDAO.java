@@ -81,7 +81,7 @@ public class OrdineDAO {
     }
 
     public void doSave(OrdineBean utente) throws SQLException {
-        String query = "insert into Ordine values(?,?,?,?,?,?,?);";
+        String query = "insert into Ordine(utente, dataAcquisto, prezzoTotale, iva, numeroProdotti, stato) values (?,?,?,?,?,?) ";
 
         Connection con = null;
         PreparedStatement ps = null;
@@ -91,13 +91,12 @@ public class OrdineDAO {
             con = DriverManagerConnectionPool.getConnection();
 
             ps = con.prepareStatement(query);
-            ps.setInt(1, utente.getIdOrdine());
-            ps.setString(2, utente.getUtente());
-            ps.setDate(3, (java.sql.Date) utente.getDataAcquisto());
-            ps.setDouble(4, utente.getPrezzoTotale());
-            ps.setDouble(5, utente.getIva());
-            ps.setInt(6, utente.getNumeroProdotti());
-            ps.setString(7, utente.getStato());
+            ps.setString(1, utente.getUtente());
+            ps.setDate(2, (java.sql.Date) utente.getDataAcquisto());
+            ps.setDouble(3, utente.getPrezzoTotale());
+            ps.setDouble(4, utente.getIva());
+            ps.setInt(5, utente.getNumeroProdotti());
+            ps.setString(6, utente.getStato());
 
             ps.executeUpdate();
 

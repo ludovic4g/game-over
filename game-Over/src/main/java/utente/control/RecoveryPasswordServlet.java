@@ -1,6 +1,7 @@
 package utente.control;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,7 +19,7 @@ import utente.model.UtenteDAO;
 public class RecoveryPasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 		String mail = request.getParameter("mail");
 		String risposta = request.getParameter("risposta");
@@ -28,23 +29,42 @@ public class RecoveryPasswordServlet extends HttpServlet {
 		UtenteBean utente = new UtenteBean();
 		UtenteDAO udao = new UtenteDAO();
 		String u =null;
+		PrintWriter out = response.getWriter();
 		
 		if(action.equals("first")) {
 			utente=udao.doRetrieveByMail(mail);
+			if(utente.getEmail()==null) {
+				out.print("Mail non esistente.");
+				return;
+			}else {
 			if(utente!=null) {
-				if(risposta.equals(udao.doRetrieveRisposta(utente.getUsername()))) {
+				if(!risposta.equals(udao.doRetrieveRisposta(utente.getUsername()))) {
+					out.print("Risposta non corrispondente.");
+					return;
+				}else {
+					out.print("Identificazione avvenuta correttamente.");
 					request.getSession().setAttribute("utente", utente);
 					response.sendRedirect("recovery_psw_field.jsp");
 				}
 			}
 		}
+		}
 		
 		if(action.equals("field")) {
 			u = request.getParameter("id");
-					if(pass1.equals(pass2)) {
-				udao.ModifyPassword(u, pass1);
-				response.sendRedirect("login.jsp");
+			if(utente.passControl(pass1)) {
+					if(utente.passConferma(pass1,pass2)) {
+						out.print("Recupero della password avvenuto correttamente.");
+						udao.ModifyPassword(u, pass1);
+						response.sendRedirect("login.jsp");
+			}else {
+				out.print("Password non coincidono.");
+				return;
 			}
+		}else {
+			out.print("Password non valida.");
+			return;
+		}
 		}
 		}catch(Exception e) {
 			e.printStackTrace();
