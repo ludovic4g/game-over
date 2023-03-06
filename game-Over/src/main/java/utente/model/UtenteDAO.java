@@ -204,38 +204,7 @@ public class UtenteDAO {
         return utente;
     }
  ////////////////////////////////////////////////////////////////////////////////////////////   
-    public String doRetrieveDomanda(String email) {
-    	  Connection con = null;
-          PreparedStatement ps = null;
-          String query = "select domanda from " + UtenteDAO.TABLE_NAME + " where email=?";
-          String domanda=null;
-
-          try {
-              con = DriverManagerConnectionPool.getConnection();
-
-              ps = con.prepareStatement(query);
-              ps.setString(1, email);
-              ResultSet rs = ps.executeQuery();
-
-              while (rs.next()) {
-                  domanda=rs.getString("domanda");
-                 
-              }
-              rs.close();
-          }catch(Exception e) {
-        	  e.printStackTrace();
-    }finally {
-              try {
-                  if (ps != null) ps.close();
-              }catch(Exception e) {
-            	  e.printStackTrace();
-              } finally {
-              }
-                  DriverManagerConnectionPool.releaseConnection(con);
-              }
-
-          return domanda;
-    }
+ 
     
     public UtenteBean doRetrieveByMail(String codice) throws SQLException {
         Connection con = null;
@@ -262,7 +231,7 @@ public class UtenteDAO {
                 b.setGestoreCatalogo(rs.getBoolean("ammin1"));
                 b.setGestorePrenotazioni(rs.getBoolean("ammin2"));
                 b.setGestoreOrdini(rs.getBoolean("ammin3"));
-            }
+                    }
             rs.close();
         } finally {
             try {
@@ -513,28 +482,4 @@ public class UtenteDAO {
 		        return risposta;
 		  }
 
-		 public void saveDomanda(String risposta) throws SQLException {
-		        String query = "insert into utente values(?);";
-
-		        Connection con = null;
-		        PreparedStatement ps = null;
-
-
-		        try {
-		            con = DriverManagerConnectionPool.getConnection();
-
-		            ps = con.prepareStatement(query);
-		            ps.setString(1, risposta);
-
-		            ps.executeUpdate();
-
-
-		        } finally {
-		            try {
-		                if (ps != null) ps.close();
-		            } finally {
-		                DriverManagerConnectionPool.releaseConnection(con);
-		            }
-		        }
-		    }
 }

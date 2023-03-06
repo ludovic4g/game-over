@@ -383,7 +383,7 @@ public class VideogiocoDAO {
     public VideogiocoBean doRetriveByName(String codice) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
-        String query = "select * from " + VideogiocoDAO.TABLE_NAME + " where id=?";
+        String query = "select * from " + VideogiocoDAO.TABLE_NAME + " where nome=?";
         VideogiocoBean b = new VideogiocoBean();
 
         try {

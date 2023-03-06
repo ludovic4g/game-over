@@ -9,6 +9,20 @@ public class PostazioneBean implements Serializable {
     public Date getData() {
 		return data;
 	}
+    
+    
+
+	public PostazioneBean(int idPostazione, Date data, String ora, boolean disp, double prezzo, String img) {
+		super();
+		this.idPostazione = idPostazione;
+		this.data = data;
+		this.ora = ora;
+		this.disp = disp;
+		this.prezzo = prezzo;
+		this.img = img;
+	}
+
+
 
 	public void setData(Date data) {
 		this.data = data;

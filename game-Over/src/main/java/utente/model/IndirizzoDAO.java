@@ -171,7 +171,7 @@ public class IndirizzoDAO {
     }
 
     public void doDelete(IndirizzoBean utente) throws SQLException {
-        String query = "delete from " + IndirizzoDAO.TABLE_NAME + " where idIndirizzo=?";
+        String query = "delete from " + IndirizzoDAO.TABLE_NAME + " where id=?";
         Connection con = null;
         PreparedStatement ps = null;
 

@@ -14,6 +14,18 @@ public class IndirizzoBean implements Serializable {
 		return nome;
 	}
 
+   
+	public IndirizzoBean(int id, String via, int cAP, String citta, String provincia, String nome) {
+		super();
+		this.id = id;
+		this.via = via;
+		CAP = cAP;
+		this.citta = citta;
+		Provincia = provincia;
+		this.nome = nome;
+	}
+
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}

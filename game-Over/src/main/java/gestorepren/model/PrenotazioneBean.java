@@ -75,5 +75,20 @@ public class PrenotazioneBean implements Serializable {
 
     }
 
+	public PrenotazioneBean(int idPrenotazione, String utente, double prezzo, int postiPrenotati, String ora,
+			Date dataprenotazione, String stato) {
+		super();
+		this.idPrenotazione = idPrenotazione;
+		this.utente = utente;
+		this.prezzo = prezzo;
+		this.postiPrenotati = postiPrenotati;
+		this.ora = ora;
+		this.dataprenotazione = dataprenotazione;
+		this.stato = stato;
+	}
+    
+    
+    
+
 
 }

@@ -25,9 +25,9 @@ public class PrenotazioneDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                b.setIdPrenotazione(rs.getInt("idPrenotazione"));
+                b.setIdPrenotazione(rs.getInt("id"));
                 b.setUtente(rs.getString("utente"));
-                b.setPrezzo(rs.getDouble("prezzo"));
+                b.setPrezzo(rs.getDouble("prezzoTotale"));
                 b.setPostiPrenotati(rs.getInt("postiPrenotati"));
                 b.setOra(rs.getString("ora"));
                 b.setDataprenotazione(new java.util.Date(rs.getDate("dataprenotazione").getTime()));
@@ -97,7 +97,9 @@ public class PrenotazioneDAO {
             ps.setDouble(3, utente.getPrezzo());
             ps.setInt(4, utente.getPostiPrenotati());
             ps.setString(5, utente.getOra());
-
+            ps.setDate(6, new java.sql.Date(utente.getDataprenotazione().getTime()));
+            ps.setString(7, utente.getStato());
+            
             ps.executeUpdate();
 
 

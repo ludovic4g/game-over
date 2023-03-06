@@ -24,6 +24,22 @@ public class UtenteBean implements Serializable {
 		this.domanda = domanda;
 	}
 
+	public UtenteBean(String username, String password, String email, String nome, String cognome, Date bday,
+			String risposta, boolean amm1, boolean amm2, boolean amm3, String sex) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.bday = bday;
+		this.risposta = risposta;
+		this.amm1 = amm1;
+		this.amm2 = amm2;
+		this.amm3 = amm3;
+		this.sex = sex;
+	}
+
 	private String sex;
 
     public String getSex() {

@@ -83,4 +83,19 @@ public class TavoloBean implements Serializable {
 
     }
 
+	public TavoloBean(String tipo, Date data, int idTavolo, int numeroPosti, boolean disp, double prezzoPosto,
+			String ora, String img) {
+		super();
+		this.tipo = tipo;
+		this.data = data;
+		this.idTavolo = idTavolo;
+		this.numeroPosti = numeroPosti;
+		this.disp = disp;
+		this.prezzoPosto = prezzoPosto;
+		this.ora = ora;
+		this.img = img;
+	}
+    
+    
+
 }

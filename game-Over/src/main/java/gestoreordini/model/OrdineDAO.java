@@ -1,6 +1,7 @@
 package gestoreordini.model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -92,7 +93,7 @@ public class OrdineDAO {
 
             ps = con.prepareStatement(query);
             ps.setString(1, utente.getUtente());
-            ps.setDate(2, (java.sql.Date) utente.getDataAcquisto());
+            ps.setDate(2, new java.sql.Date(utente.getDataAcquisto().getTime()));
             ps.setDouble(3, utente.getPrezzoTotale());
             ps.setDouble(4, utente.getIva());
             ps.setInt(5, utente.getNumeroProdotti());
