@@ -36,7 +36,7 @@ public class IndirizzoDAOTest {
 	@Test
 	public void retrieveAllTest(){	
 		try {
-		assertTrue(dao.doRetrieveAll()!=null);
+		assertTrue(!dao.doRetrieveAll().isEmpty());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -45,7 +45,7 @@ public class IndirizzoDAOTest {
 	@Test
 	public void retrieveAllByIdTest(){	
 		try {
-		assertTrue(dao.doRetrieveAllById(bean.getId())!=null);
+		assertTrue(!dao.doRetrieveAllById(bean.getId()).isEmpty());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

@@ -38,7 +38,7 @@ public class TavoloDAOTest {
 	@Test
 	public void retrieveAllTest(){	
 		try {
-		assertTrue(dao.doRetrieveAll()!=null);
+		assertTrue(!dao.doRetrieveAll().isEmpty());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
