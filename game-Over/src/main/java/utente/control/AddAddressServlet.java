@@ -43,7 +43,6 @@ public class AddAddressServlet extends HttpServlet {
 		UtenteBean auth = (UtenteBean) request.getSession().getAttribute("auth");
 		String nome = request.getParameter("nome");
 		String citta = request.getParameter("citta"); 
-		String paese = request.getParameter("paese"); 
 		String provincia = request.getParameter("provincia"); 
 		String c = request.getParameter("cap");
 		

@@ -38,18 +38,16 @@ public class ModificaGiocoServlet extends HttpServlet {
 			
 			String action= request.getParameter("action");
 			if(action.equals("nome")) {
-				if((vdao.doRetriveByName(nome).getNome()!=null)) {
-					if(vdao.doRetriveByName(nome).getNome().equals(nome)){
+				if((vdao.doRetriveByName(nome).getNome()==null)) {
+					out.print("Modifica del gioco avvenuta correttamente.");
+					vdao.ModifyNome(id, nome);
+					response.sendRedirect("catalogo.jsp");
+				
+				}else if(vdao.doRetriveByName(nome).getNome()!=null){
 					out.print("Nome già esistente.");
 					return;
-					}
-				}else {
-				out.print("Modifica del gioco avvenuta correttamente.");
-				vdao.ModifyNome(id, nome);
-				response.sendRedirect("catalogo.jsp");
 				}
-			}
-			
+		}
 			if(action.equals("anno")) {
 				int anno = Integer.parseInt(a);
 				vdao.ModifyAnno(id, anno);

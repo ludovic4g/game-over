@@ -70,8 +70,8 @@ public class ModificaGiocoTest {
 
     @Test
     public void nomeNO() throws SQLException, ServletException, IOException, ParseException{
-    	String nome="Minecraft";
-    	String id = "7";
+    	String nome="The Last of Us Part I";
+    	String id = "14";
   	   String action="nome";
          
         PrintWriter out = Mockito.mock(PrintWriter.class);

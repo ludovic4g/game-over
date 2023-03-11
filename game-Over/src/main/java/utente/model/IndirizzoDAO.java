@@ -144,7 +144,7 @@ public class IndirizzoDAO {
     }
 
     public void doUpdate(int id, String s1, String s2, int s3, String s4, String s5) throws SQLException {
-        String query = "update utente set nome=?, indirizzo=?, cap=?, citta=?, provincia=? where id=?";
+        String query = "update indirizzo set nome=?, indirizzo=?, cap=?, citta=?, provincia=? where id=?";
         Connection con = null;
         PreparedStatement ps = null;
 

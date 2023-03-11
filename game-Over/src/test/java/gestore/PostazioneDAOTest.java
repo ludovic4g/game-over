@@ -2,6 +2,8 @@ package gestore;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.Date;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +13,7 @@ import gestorecatalogo.model.PostazioneDAO;
 
 public class PostazioneDAOTest {
 	private PostazioneDAO  dao=new PostazioneDAO();
-	private PostazioneBean bean = new PostazioneBean(); 
+	private PostazioneBean bean = new PostazioneBean(56, "9:30 - 11:30",true, 30.00,"Console",""); 
 	
 	@BeforeEach
 	public void setUp() throws Exception{

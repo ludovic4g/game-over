@@ -164,7 +164,7 @@ public class ModificaProfiloServletTest {
     public void modificaMailEsistente() throws SQLException, ServletException, IOException, ParseException{
     	String action= "mail";
     	String id="honejmoon";
-    	String nome="benedetta@gmail.com";
+    	String nome="manuel@gmail.com";
     	PrintWriter out = Mockito.mock(PrintWriter.class);
     	ArgumentCaptor<String> argument = ArgumentCaptor.forClass(String.class);
        

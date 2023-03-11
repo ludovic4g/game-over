@@ -45,7 +45,7 @@ public class RegisterServlet extends HttpServlet {
             	response.sendRedirect("register.jsp");
             	return;
             	
-            }if(username.equals("") || username==null) {
+            }else if(username.equals("") || username==null) {
             	out.print("Username non valido.");
             	response.sendRedirect("register.jsp");
             	return;

@@ -53,10 +53,8 @@ public class ModificaInfoServlet extends HttpServlet {
 		IndirizzoDAO idao = new IndirizzoDAO();
 		HaDAO hdao = new HaDAO();
 		HaBean ha = null;
-		/*Pattern p = Pattern.compile("[!@#$%&*()_+=|<>?{}\\\\\\\\[\\\\\\\\]~-]", Pattern.CASE_INSENSITIVE);
-	    Matcher m = p.matcher(via);
-	    Boolean bb = m.find();*/
 		PrintWriter out = response.getWriter();
+		int i=0;
 		
 		if(action.equals("nome")) {
 			if(!utente.isValid(nome)) {
@@ -86,24 +84,18 @@ public class ModificaInfoServlet extends HttpServlet {
 				out.print("Mail non valida.");
 				response.sendRedirect("settings.jsp");
 				return;
-			}else { 
-				ArrayList<UtenteBean> mails = udao.doRetrieveAll();
-				int i=0;;
-				for(UtenteBean b : mails) {
-					if(b.getEmail().equals(mail)) i++;
-					break;
-				}
-				if(i>0) {
+			}else if(udao.doRetrieveByMail(mail).getEmail()!=null) {
 					out.print("Mail già esistente.");
 					response.sendRedirect("settings.jsp");
 					return;
+				
 			}else {
 				udao.ModifyMail(id, mail);
 				out.print("Modifica del profilo avvenuta correttamente.");
 				response.sendRedirect("settings.jsp");
 				}
 			}
-		}
+		
 		if(action.equals("ddn")) {
 			SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
 	        Date ddn = f.parse(data);
