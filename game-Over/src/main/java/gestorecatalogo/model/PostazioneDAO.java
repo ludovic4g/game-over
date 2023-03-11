@@ -28,9 +28,10 @@ public class PostazioneDAO {
             while (rs.next()) {
                 b.setIdPostazione(rs.getInt("id"));
                 b.setOra(rs.getString("ora"));
-                b.setData(rs.getDate("data"));
+
                 b.setPrezzo(rs.getDouble("prezzo"));
                 b.setDisp(rs.getBoolean("disp"));
+                b.setTipo(rs.getString("tipo"));
                 b.setImg(rs.getString("img"));
 
             }
@@ -62,9 +63,10 @@ public class PostazioneDAO {
             	PostazioneBean b = new PostazioneBean();
                 b.setIdPostazione(rs.getInt("id"));
                 b.setOra(rs.getString("ora"));
-                b.setData(rs.getDate("data"));
+
                 b.setPrezzo(rs.getDouble("prezzo"));
                 b.setDisp(rs.getBoolean("disp"));
+                b.setTipo(rs.getString("tipo"));
                 b.setImg(rs.getString("img"));
 
                 ab.add(b);
@@ -82,7 +84,7 @@ public class PostazioneDAO {
     }
 
     public void doSave(PostazioneBean utente) throws SQLException {
-        String query = "INSERT INTO Postazione(ora, data, prezzo, disp, img) values(?,?,?,?,?);";
+        String query = "INSERT INTO Postazione(ora,tipo, prezzo, disp, img) values(?,?,?,?,?);";
 
         Connection con = null;
         PreparedStatement ps = null;
@@ -93,7 +95,7 @@ public class PostazioneDAO {
 
             ps = con.prepareStatement(query);
             ps.setString(1, utente.getOra());
-            ps.setDate(2, new java.sql.Date(utente.getData().getTime()));
+            ps.setString(2, utente.getTipo());
             ps.setDouble(3, utente.getPrezzo());
             ps.setBoolean(4, utente.isDisp());
             ps.setString(5, utente.getImg());

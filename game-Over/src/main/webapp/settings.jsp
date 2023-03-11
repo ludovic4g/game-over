@@ -103,7 +103,7 @@
                 <div class="form-group">
                   <label for="inputProjectLeader">Domanda di Sicurezza</label>
                             <select name="domanda " class="form-control" required>
-                               <option value="" disabled selected><%out.println(udao.doRetrieveDomanda(auth.getEmail())); %></option>
+                               <option value="" disabled selected></option>
                                <option>Citta' preferita</option>
                                 <option>Nome dell’amico del cuore</option>
                                 <option>Qual'era il cognome da nubile di tua madre?</option>

@@ -48,7 +48,7 @@ public class AggiuntaGiocoTest {
 
     @Test
     public void aggiuntaConSuccesso() throws SQLException, ServletException, IOException, ParseException{
- 	   String nome="Genshin Impact";
+ 	   String nome="Persona 5 Royal";
  	   String prezzo="59.99";
  	   String anno="2023";
  	   String magazzino="30";

@@ -87,7 +87,7 @@ create table Tavolo(
     prezzoPosto double not null,
     ora varchar(20) not null,
 	data varchar(20) not null,
-    tipo varchar(10) not null,
+    tipo varchar(20) not null,
     disp boolean not null,
     img varchar(50) not null
 );
@@ -123,7 +123,6 @@ create table Ha(
 create table Postazione(
 	id integer not null primary key auto_increment,
     ora varchar(20) not null,
-	data varchar(20) not null,
     tipo varchar(20) not null,
     prezzo double not null,
     disp boolean not null,
@@ -351,38 +350,38 @@ INSERT INTO Ha VALUES (19, "ross_");
 INSERT INTO Ha VALUES (10, "ilarya");
 
 /*modifica img*/
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","","PC", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","","Console", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","","Console", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","","PC", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","","Console", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","","PC", 30, false,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","","Console", 30, false,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","","PC", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","","PC", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","","PC", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","","Console", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","","PC", 30, false,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","","PC", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","","PC", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","","PC", 30, false,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","","Console", 30, false,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","", "Console", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","", "Console", 30, false,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","", "PC", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","", "PC", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","", "Console", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","", "PC", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","","Console", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","","PC", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","","Console", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","","PC", 30, false,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","","PC", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","","Console", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","","Console", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","","PC", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","","PC", 30, true,"");
-INSERT INTO Postazione(ora, data, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","","Console", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","PC", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","Console", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","Console", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","PC", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","Console", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","PC", 30, false,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","Console", 30, false,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","PC", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","PC", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","PC", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","Console", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","PC", 30, false,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","PC", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","PC", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","PC", 30, false,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","Console", 30, false,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("18:30 - 20:30", "Console", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("14:30 - 16:30", "Console", 30, false,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("18:30 - 20:30", "PC", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("18:30 - 20:30", "PC", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30", "Console", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("18:30 - 20:30", "PC", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","Console", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","PC", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","Console", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","PC", 30, false,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","PC", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","Console", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","Console", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","PC", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","PC", 30, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","Console", 30, true,"");
 
 INSERT INTO PrenotazionePostazione VALUES(8, 1);
 INSERT INTO PrenotazionePostazione VALUES(9, 2);

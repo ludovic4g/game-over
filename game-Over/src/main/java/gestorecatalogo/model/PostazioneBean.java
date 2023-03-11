@@ -5,28 +5,36 @@ import java.util.Date;
 
 public class PostazioneBean implements Serializable {
     private int idPostazione;
-    private Date data;
-    public Date getData() {
-		return data;
+    private String tipo;
+    public String getTipo() {
+		return tipo;
 	}
-    
+
+
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+
+
+
     
 
-	public PostazioneBean(int idPostazione, Date data, String ora, boolean disp, double prezzo, String img) {
+	public PostazioneBean(int idPostazione, String ora, boolean disp, double prezzo,String tipo, String img) {
 		super();
 		this.idPostazione = idPostazione;
-		this.data = data;
+
 		this.ora = ora;
 		this.disp = disp;
 		this.prezzo = prezzo;
+		this.tipo=tipo;
 		this.img = img;
 	}
 
 
 
-	public void setData(Date data) {
-		this.data = data;
-	}
+
 
 	private String ora;
 

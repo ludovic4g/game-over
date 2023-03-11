@@ -38,7 +38,7 @@ public class PrenotazioneDAOTest {
 	@Test
 	public void retrieveAllTest(){	
 		try {
-		assertTrue(dao.doRetrieveAll()!=null);
+		assertTrue(!dao.doRetrieveAll().isEmpty());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -47,7 +47,7 @@ public class PrenotazioneDAOTest {
 	@Test
 	public void retrieveByDatesTest(){	
 		try {
-		assertTrue(dao.doRetriveByDates("2021-09-03", "2023-08-16")!=null);
+		assertTrue(!dao.doRetriveByDates("2021-09-03", "2023-08-16").isEmpty());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -56,7 +56,7 @@ public class PrenotazioneDAOTest {
 	@Test
 	public void retrieveUsernamAZTest(){	
 		try {
-		assertTrue(dao.doRetriveUsernameAZ()!=null);
+		assertTrue(!dao.doRetriveUsernameAZ().isEmpty());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -65,7 +65,7 @@ public class PrenotazioneDAOTest {
 	@Test
 	public void retrieveUsernamZATest(){	
 		try {
-		assertTrue(dao.doRetriveUsernameZA()!=null);
+		assertTrue(!dao.doRetriveUsernameZA().isEmpty());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -74,7 +74,7 @@ public class PrenotazioneDAOTest {
 	@Test
 	public void retrieveAllByKeyTest(){	
 		try {
-		assertTrue(dao.doRetriveAllByKey(bean.getUtente())!=null);
+		assertTrue(!dao.doRetriveAllByKey(bean.getUtente()).isEmpty());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

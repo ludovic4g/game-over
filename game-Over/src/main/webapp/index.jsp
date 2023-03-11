@@ -54,7 +54,7 @@
                                 <h2>About Us</h2>
                                 <p>GameOver è un progetto dedicato agli appassionati di videogiochi e giochi da tavolo, che mira a creare uno spazio accogliente dove incontrarsi, socializzare e divertirsi insieme. Offriamo un ambiente confortevole, dotato di postazioni di gioco attrezzate con computer o adatte a giochi da tavolo, accompagnate da snack e bevande per rendere l'esperienza ancora più piacevole. Inoltre, proponiamo la vendita e la prenotazione di videogiochi, giochi da tavolo e bustine di carte collezionabili per coloro che vogliono provare i nuovi titoli sul mercato. Siamo il punto d'incontro perfetto per tutti gli appassionati di videogiochi e giochi da tavolo, indipendentemente dall'età, dal genere o dalla classe sociale. Venite a trovarci per vivere insieme la passione per i giochi!
                                 </p>
-                                <a href="#">Read More</a>
+                              <!--   <a href="#">Read More</a> -->
                         </div>
                 </div>
                 <!-- Games -->
@@ -70,7 +70,7 @@
 		    		for(VideogiocoBean b: lista){
 		    			if(b.getTipo().contains("PS4")||b.getTipo().contains("Nintendo")){%>
                 <div class="card" data-item="console">
-                    <img src="game1.png" alt="">
+                     <img src="<%=b.getImg1() %>" alt="game1.png">
                     <div class="content">
                         <h4><%=b.getNome()%></h4>
                         <p class="price">Pricing<span> €<%=b.getPrezzo()%></span></p>
@@ -91,7 +91,7 @@
 		    		for(VideogiocoBean b: lista){
 		    			if(b.getTipo().contains("PC")){%>
                 <div class="card" data-item="pc">
-                    <img src="game1.png" alt="">
+                    <img src="<%=b.getImg1() %>" alt="game1.png">
                     <div class="content">
                         <h4><%=b.getNome()%></h4>
                         <p class="price">Pricing<span> €<%=b.getPrezzo()%></span></p>
