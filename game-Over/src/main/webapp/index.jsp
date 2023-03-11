@@ -65,7 +65,7 @@
                                         Nulla facilisi. Etiam arcu sem, ultrices quis dolor vel, fringilla ultrices
                                         augue.
                                 </p>
-                                <a href="#">Read More</a>
+                              <!--   <a href="#">Read More</a> -->
                         </div>
                 </div>
                 <!-- Games -->
@@ -81,7 +81,7 @@
 		    		for(VideogiocoBean b: lista){
 		    			if(b.getTipo().contains("PS4")||b.getTipo().contains("Nintendo")){%>
                 <div class="card" data-item="console">
-                    <img src="game1.png" alt="">
+                     <img src="<%=b.getImg1() %>" alt="game1.png">
                     <div class="content">
                         <h4><%=b.getNome()%></h4>
                         <p class="price">Pricing<span> €<%=b.getPrezzo()%></span></p>
@@ -102,7 +102,7 @@
 		    		for(VideogiocoBean b: lista){
 		    			if(b.getTipo().contains("PC")){%>
                 <div class="card" data-item="pc">
-                    <img src="game1.png" alt="">
+                    <img src="<%=b.getImg1() %>" alt="game1.png">
                     <div class="content">
                         <h4><%=b.getNome()%></h4>
                         <p class="price">Pricing<span> €<%=b.getPrezzo()%></span></p>

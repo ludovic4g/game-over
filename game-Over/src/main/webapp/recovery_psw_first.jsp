@@ -28,11 +28,7 @@
   <!-- Header -->
   <%@ include file="includes/header.jsp" %>
   <!-- Register -->
-<%String mail = request.getParameter("Email");
-  UtenteDAO udao = new UtenteDAO();
-  String domanda = udao.doRetrieveDomanda(mail);
-  out.println("eiiiii");
-  %>
+
   <div class="fakebody">
     <div class="containerbody">
       <h2>

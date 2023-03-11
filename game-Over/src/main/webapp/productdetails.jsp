@@ -35,6 +35,8 @@
 			VideogiocoBean b = new VideogiocoBean();
 			VideogiocoDAO pdao= new VideogiocoDAO();
 			b= pdao.doRetriveByKey(i);
+			
+			String[] tipi = b.getTipo().split(",");
 
                 %>
                 <div class="card-wrapper">
@@ -85,9 +87,10 @@
                                                 <form action="AddToCartServlet?id=<%=b.getId()%>&action=details" method="post">
                                                         <input type="number" min="1" placeholder="1" name="quantita" required>
                                                         <select name="piattaforma" class="option">
-                                                                <option value="PC">PC</option>
-                                                                <option value="Console">PlayStation 5</option>
-                                                                <option value="Console">Xbox One</option>
+                                                        <%for(int k=0; k<tipi.length ; k++ ){ %>
+                                                                <option value=<%=tipi[k] %>> <%=tipi[k]%></option>
+                                                                
+                                                                <%} %>
                                                         </select>
                                                         <br>
                                                 <%if(auth!= null && (auth.isGestoreCatalogo()|| auth.isGestorePrenotazioni()|| auth.isGestoreOrdini())==false) {%>
