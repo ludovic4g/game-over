@@ -37,7 +37,7 @@
                                         <p> La forma di competizione che coinvolge videogiochi competitivi, dove i giocatori si sfidano tra loro per raggiungere gli obiettivi del gioco e divertirsi con gli amici.
                                         Per chi non ha possibilità di permettersi un PC da gaming o vuole passare del tempo con dei propri amici in compagnia attorno a un tavolo da giochi.
                                         In più avrai la possibilità di acquistare direttamente i giochi offerti nelle postazioni da gaming direttamente sul nostro sito!</p>
-                                        <a href="shopgame.jsp" class="btn">Explore</a>
+                                        <a href="shopgame.jsp" class="btn">Esplora</a>
                                 </div>
                                 <div class="imgBx">
                                         <div class="ball"></div>
@@ -54,7 +54,7 @@
                                 <h2>About Us</h2>
                                 <p>GameOver è un progetto dedicato agli appassionati di videogiochi e giochi da tavolo, che mira a creare uno spazio accogliente dove incontrarsi, socializzare e divertirsi insieme. Offriamo un ambiente confortevole, dotato di postazioni di gioco attrezzate con computer o adatte a giochi da tavolo, accompagnate da snack e bevande per rendere l'esperienza ancora più piacevole. Inoltre, proponiamo la vendita e la prenotazione di videogiochi, giochi da tavolo e bustine di carte collezionabili per coloro che vogliono provare i nuovi titoli sul mercato. Siamo il punto d'incontro perfetto per tutti gli appassionati di videogiochi e giochi da tavolo, indipendentemente dall'età, dal genere o dalla classe sociale. Venite a trovarci per vivere insieme la passione per i giochi!
                                 </p>
-                              <!--   <a href="#">Read More</a> -->
+                              <a href="aboutus.jsp">Leggi di più</a>
                         </div>
                 </div>
                 <!-- Games -->
