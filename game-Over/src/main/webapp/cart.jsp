@@ -96,13 +96,12 @@
                     <table>
                         <tr>
                             <td class="subtitle">Subtotal</td>
-                            <td class="total-product-price"><td>Subtotal</td>
-                        <td><%if(!ctrl){
+                            <td class="total-product-price"><%if(!ctrl){
                         out.println(String.format("%.2f&euro;", carrello.getTotal()));
                         }else{
                         	out.println("0.00");
                         }
-                        %></td></td>
+                        %></td>
                         </tr>
                         <tr>
                             <td class="subtitle">Tax</td>

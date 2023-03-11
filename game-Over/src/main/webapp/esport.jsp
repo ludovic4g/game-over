@@ -38,7 +38,7 @@
                                                         dignissim tortor molestie.
                                                         Sed eget mi maximus,venenatis risus dignissim,placerat nunc.
                                                 </p>
-                                                <a href="postazionedetails.jsp">Dettagli</a>
+                                                <a href="postazione_clock.jsp">Dettagli</a>
                                         </div>
                                         <img src="images/computer.png"></img>
                                 </div>
@@ -50,7 +50,7 @@
                                                         dignissim tortor molestie.
                                                         Sed eget mi maximus,venenatis risus dignissim,placerat nunc.
                                                 </p>
-                                                <a href="tavolodetails.jsp">Read More</a>
+                                                <a href="tavolo_clock.jsp">Read More</a>
                                         </div>
                                         <img src="images/casa.png"></img>
                                 </div>

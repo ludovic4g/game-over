@@ -1966,6 +1966,14 @@ select.option:focus {
     margin: 0;
 }
 
+.bodycontain .h2_title{
+	
+		background: -webkit-linear-gradient(0deg, rgba(255, 0, 208, 1) 0%, rgba(140, 53, 232, 1) 40%, rgba(27, 105, 255, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 10px 0;
+}
+
 .price-container select:focus,
 .clock-container select:focus,
 .type-container select:focus {
@@ -2230,7 +2238,6 @@ td a.btn {
     letter-spacing: 1px;
     -webkit-box-reflect: below 0px linear-gradient(transparent, #0002);
     background: transparent;
-    width: 150px;
 }
 
 td a.btn:hover {

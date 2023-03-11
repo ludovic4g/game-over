@@ -26,115 +26,17 @@
                 <%@ include file="includes/header.jsp" %>
                 <!---------Table Select--------->
                 <div class="bodycontain">
-                <h2 class="h2_title">Scegli il tuo tavolo</h2>
-                <div class="type-container">
-        <label> Seleziona il tipo di giochi: </label>
-        <select id="type">
-          <option value="5">Giochi da tavolo ( 5 €)</option>
-          <option value="3">Giochi di carte ( 3 €)</option>
+      <div class="clock-container">
+        <label> Seleziona orario: </label>
+        <select id="clock">
+          <option>10:30</option>
+          <option>11:30</option>
         </select>
       </div>
       <br>
-      <div class="price-container">
-        <label for="numPeople">Numero di persone:</label>
-        <select id="numPeople">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-      </div>
       <br>
-      <ul class="showcase">
-        <li>
-          <div class="table"></div>
-          <small>Available</small>
-        </li>
-        <li>
-          <div class="table selected"></div>
-          <small>Selected</small>
-        </li>
-        <li>
-          <div class="table sold"></div>
-          <small>Sold</small>
-        </li>
-      </ul>
-      <div class="container">
-
-        <div class="row">
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-        </div>
-
-        <div class="row">
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table sold"></div>
-          <div class="table sold"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-        </div>
-        <div class="row">
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table sold"></div>
-          <div class="table sold"></div>
-        </div>
-        <div class="row">
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-        </div>
-        <div class="row">
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table sold"></div>
-          <div class="table sold"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-        </div>
-        <div class="row">
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table sold"></div>
-          <div class="table sold"></div>
-          <div class="table sold"></div>
-          <div class="table"></div>
-        </div>
-      </div>
-            <p class="text">
-        <div class="warning">Il totale viene calcolato nel CARRELLO!!</div>
-      </p>
-      <p class="text">
-        Hai selezionato <span id="count">0</span> tavoli prezzo totale <span id="total">0</span>€
-      </p>
-      <p class="text">
-        Prezzo totale persone <span class="price">0</span>€
-      </p>
-      <a href="AddToCartServlet"><button type="button" class="btn">
-                                                                Aggiungi al carrello<i class="fas fa-shopping-cart"></i>
+      <a href="tavolodetails.jsp"><button type="button" class="btn">
+                                                                Avanti
                                                         </button></a>
     </div>
                 <!--Footer-->

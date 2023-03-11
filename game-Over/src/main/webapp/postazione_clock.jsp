@@ -23,91 +23,19 @@
             <%@ include file="includes/header.jsp" %>
               <!---------seat Select--------->
               <div class="bodycontain">
-                <div class="type-container">
-                  <label> Seleziona il tipo di Postazione: </label>
-                  <select id="type">
-                    <option value="10">PC ( 10 €)</option>
-                    <option value="8">PlayStation 5 ( 8 €)</option>
-                    <option value="8">XBox One ( 8 €)</option>
+                <div class="clock-container">
+                  <label> Seleziona fascia oraria: </label>
+                  <select id="clock">
+                    <option>9:30 - 11:30</option>
+                    <option>14:30 - 16:30</option>
+                    <option>18:30 - 20:30</option>
                   </select>
                 </div>
                 <br>
                 <br>
-                <ul class="showcase">
-                  <li>
-                    <div class="seat"></div>
-                    <small>Available</small>
-                  </li>
-                  <li>
-                    <div class="seat selected"></div>
-                    <small>Selected</small>
-                  </li>
-                  <li>
-                    <div class="seat sold"></div>
-                    <small>Sold</small>
-                  </li>
-                </ul>
-                <div class="container">
-                  <div class="row">
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat sold"></div>
-                    <div class="seat sold"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                  </div>
-                  <div class="row">
-                   	<br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                  </div>
-                  <div class="row">
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                  </div>
-                  <div class="row">
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                  </div>
-                  <div class="row">
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat sold"></div>
-                    <div class="seat sold"></div>
-                    <div class="seat sold"></div>
-                    <div class="seat"></div>
-                  </div>
-                </div>
-                <p class="text">
-                <div class="warning">Il totale viene calcolato nel CARRELLO!!</div>
-                </p>
-                <p class="text">
-                  Hai selezionato <span id="count">0</span> postazione prezzo totale <span id="total">0</span>€
-                </p>
-                <a href="AddToCartServlet"><button type="button" class="btn">
-                    Aggiungi al carrello<i class="fas fa-shopping-cart"></i>
-                  </button></a>
+                <a href="postazionedetails.jsp"><button type="button" class="btn">
+                                                                Avanti
+                                                        </button></a>
               </div>
               <!--Footer-->
               <%@ include file="includes/footer.jsp" %>
