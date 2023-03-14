@@ -1,3 +1,16 @@
+<%@ page import= "utente.model.*" %>
+<%@ page import= "gestorecatalogo.model.*" %>
+<%@ page import= "java.util.ArrayList" %>
+<%@ page import= "connection.*" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<% UtenteBean auth = (UtenteBean) request.getSession().getAttribute("auth");
+        if(auth!=null){
+                request.setAttribute("auth", auth);
+        }
+        
+        
+        %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,26 +27,7 @@
 
 <body>
     <!-- Header -->
-    <header>
-        <a href="#" class="logo"><span aria-hidden="true">GameOver</span>GameOver<span
-                aria-hidden="true">GameOver</span></a>
-        <ul class="nav">
-            <li><a href="gamebar.html">Home</a></li>
-            <li><a href="#">E-Sport</a></li>
-            <li><a href="#">Games</a></li>
-            <li><a href="#">Carrello</a></li>
-            <li><a href="#">Prenotazioni</a></li>
-            <li><a href="#">Ordini</a></li>
-            <li><a href="login.html">Login</a></li>
-        </ul>
-        <div class="action">
-            <div class="searchBx">
-                <a href="#"><i class='bx bx-search'></i></a>
-                <input type="text" placeholder="Search Games">
-            </div>
-        </div>
-        <div class="toggleMenu" onclick="toggleMenu();"></div>
-    </header>
+       <%@ include file="includes/header.jsp" %>
     <!-- Register -->
     <div class="fakebody">
         <div class="containerbody">
@@ -76,31 +70,51 @@
                 </div>
             </div>
             <div class="form-outer">
-                <form action="#">
+                <form action="RegisterServlet" method= "post">
                     <div class="page slide-page">
                         <div class="field">
                             <div class="label">
                                 Nome
                             </div>
-                            <input type="text" required>
+                            <% if(request.getAttribute("errorNome")!=null){ %>
+                             <input type="text" class="form-control is-invalid" name="nome" placeholder="Errore Nome" required>
+                             <%}else{ %>
+                             <input type="text" name="nome" required>
+                             <%} %>
                         </div>
                         <div class="field">
                             <div class="label">
                                 Cognome
                             </div>
-                            <input type="text" required>
+                             <% if(request.getAttribute("errorCognome")!=null){ %>
+                             <input type="text" class="form-control is-invalid" name="nome" placeholder="Errore Cognome" required>
+                             <%}else{ %>
+                            <input type="text" name="cognome" required>
+                            <%} %>
                         </div>
                         <div class="field">
                             <div class="label">
                                 Username
                             </div>
-                            <input type="text" required>
+                            <% if(request.getAttribute("existUsername")!=null){ %>
+                            <input type="text" class="form-control is-invalid" name="username" placeholder="Username già esistente" required>
+                            <%}else if(request.getAttribute("errorUsername")!=null){ %>
+                            <input type="text" class="form-control is-invalid" name="username" placeholder="Errore username" required>
+                            <%} else {%>
+                            <input type="text" name="username" required>
+                            <%} %>
                         </div>
                         <div class="field">
                             <div class="label">
                                 E-mail
                             </div>
-                            <input type="text" required>
+                            <% if(request.getAttribute("errorMail")!=null){ %>
+                             <input type="text" class="form-control is-invalid" name="mail" placeholder="Errore E-Mail" required>
+                              <%}else if(request.getAttribute("existUsername")!=null){ %>
+                            <input type="text" class="form-control is-invalid" name="username" placeholder="Email già esistente" required>
+                             <%}else{ %>
+                            <input type="text" name="mail" required>
+                            <%} %>
                         </div>
                         <div class="field">
                             <button class="firstNext next">Avanti</button>
@@ -111,18 +125,22 @@
                             <div class="label">
                                 Genere
                             </div>
-                            <select required>
+                            <select name="sesso" required>
                                 <option selected="selected">Preferisco non specificarlo</option>
-                                <option>Maschio</option>
-                                <option>Femmina</option>
-                                <option>Altro</option>
+                                <option value="Maschio">Maschio</option>
+                                <option value ="Femmina">Femmina</option>
+                                <option value ="Altro">Altro</option>
                             </select>
                         </div>
                         <div class="field">
                             <div class="label">
                                 Data di Nascita
                             </div>
-                            <input type="date" required>
+                            <% if(request.getAttribute("errorCognome")!=null){ %>
+                             <input type="date" class="form-control is-invalid" name="ddn" placeholder="Errore Formato Data" required>
+                             <%}else{ %>
+                            <input type="date" name="ddn" required>
+                            <%} %>
                         </div>
                         <div class="field btns">
                             <button class="prev-1 prev">Indietro</button>
@@ -134,7 +152,11 @@
                             <div class="label">
                                 Password
                             </div>
-                            <input type="password" id="password-field" required>
+                            <% if(request.getAttribute("errorPassword")!=null){ %>
+                             <input type="password" class="form-control is-invalid" name="pass1" placeholder="Errore Password" required>
+                             <%}else{ %>
+                            <input type="password" id="password-field" name="pass1" required>
+                            <%} %>
                             <div class="toggle-password">
                                 <i class="fa fa-eye"></i>
                                 <i class="fa fa-eye-slash"></i>
@@ -165,7 +187,11 @@
                             <div class="label">
                                 Conferma Password
                             </div>
-                            <input type="password" id="password-field" required>
+                            <% if(request.getAttribute("notEquals")!=null){ %>
+                             <input type="password" class="form-control is-invalid" name="pass2" placeholder="Password non Coincidono" required>
+                             <%}else{ %>
+                            <input type="password" id="password-field" name="pass2" required>
+                            <%} %>
                         </div>
                         <div class="field btns">
                             <button class="prev-2 prev">Indietro</button>
@@ -177,10 +203,10 @@
                             <div class="label">
                                 Domanda di sicurezza
                             </div>
-                            <select required>
+                            <select name="domanda " required>
                                 <option selected="selected">Città preferita</option>
                                 <option>Nome dell’amico del cuore</option>
-                                <option>Qual'era il cognome da nubile di tua madre</option>
+                                <option>Qual'era il cognome da nubile di tua madre?</option>
                                 <option>Il nome del tuo primo animale domestico</option>
                             </select>
                         </div>
@@ -188,7 +214,11 @@
                             <div class="label">
                                 Risposta
                             </div>
-                            <input type="text" required>
+                            <% if(request.getAttribute("errorPassword")!=null){ %>
+                             <input type="text" class="form-control is-invalid" name="risposta" placeholder="Errore Risposta" required>
+                             <%}else{ %>
+                            <input type="text" name="risposta" required>
+                            <%} %>
                         </div>
                         <div class="field btns">
                             <button class="prev-3 prev">Indietro</button>

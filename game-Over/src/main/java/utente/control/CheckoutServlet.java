@@ -33,6 +33,7 @@ public class CheckoutServlet extends HttpServlet {
 		try {
 		Carrello carrello = (Carrello) request.getSession().getAttribute("carrello");
 		UtenteBean auth = (UtenteBean) request.getSession().getAttribute("auth");
+		if(auth==null) response.sendRedirect("login.jsp");
 		UtenteDAO udao = new UtenteDAO();
 		VideogiocoBean v = new VideogiocoBean();
 		VideogiocoDAO vdao = new VideogiocoDAO();
@@ -82,10 +83,12 @@ public class CheckoutServlet extends HttpServlet {
 		o.setListaProdotti(m);
 		o.setNumeroProdotti(size);
 		odao.doSave(o);
+		ArrayList<OrdineBean> lista = odao.doRetrieveAll();
+		riguarda.setIdOrdine(lista.size());
 		
 		
 		carrello.clear();
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("checkout_address.jsp");
 		
 		
 		

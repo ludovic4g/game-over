@@ -1,6 +1,7 @@
 package gestorepren.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class PrenotazioneBean implements Serializable {
     private int idPrenotazione;
@@ -8,6 +9,26 @@ public class PrenotazioneBean implements Serializable {
     private double prezzo;
     private int postiPrenotati;
     private String ora;
+    private Date dataprenotazione;
+    
+    public Date getDataprenotazione() {
+		return dataprenotazione;
+	}
+
+	public void setDataprenotazione(Date dataprenotazione) {
+		this.dataprenotazione = dataprenotazione;
+	}
+
+	public String getStato() {
+		return stato;
+	}
+
+	public void setStato(String stato) {
+		this.stato = stato;
+	}
+
+
+	private String stato;
 
     public int getIdPrenotazione() {
         return idPrenotazione;
@@ -53,6 +74,21 @@ public class PrenotazioneBean implements Serializable {
     public PrenotazioneBean() {
 
     }
+
+	public PrenotazioneBean(int idPrenotazione, String utente, double prezzo, int postiPrenotati, String ora,
+			Date dataprenotazione, String stato) {
+		super();
+		this.idPrenotazione = idPrenotazione;
+		this.utente = utente;
+		this.prezzo = prezzo;
+		this.postiPrenotati = postiPrenotati;
+		this.ora = ora;
+		this.dataprenotazione = dataprenotazione;
+		this.stato = stato;
+	}
+    
+    
+    
 
 
 }

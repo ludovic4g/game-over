@@ -1,132 +1,191 @@
-<%@ page import= "utente.model.*" %>
-<%@ page import= "java.util.ArrayList" %>
-<%@ page import= "connection.*" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="utente.model.*" %>
+  <%@ page import="java.util.ArrayList" %>
+    <%@ page import="connection.*" %>
+      <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<% UtenteBean auth = (UtenteBean) request.getSession().getAttribute("auth");
-        if(auth!=null){
-                request.setAttribute("auth", auth);
-        }
-        %>
-        <!DOCTYPE html>
-        <html lang="en">
+        <% UtenteBean auth=(UtenteBean) request.getSession().getAttribute("auth"); if(auth!=null){
+          request.setAttribute("auth", auth); } %>
+          <!DOCTYPE html>
+          <html lang="en">
 
-        <head>
-                <meta charset="UTF-8">
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>GameOver|Prodotto</title>
-                <link rel="stylesheet" type="text/css" href="style.css">
-                <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+          <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>GameOver|Prodotto</title>
+            <link rel="stylesheet" type="text/css" href="style.css">
+            <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-        </head>
+          </head>
 
-        <body>
-                <!--Header-->
-                <%@ include file="includes/header.jsp" %>
-                <!--Postation -->
-                <!--Footer-->
-                <%@ include file="includes/footer.jsp" %>
+          <body>
+            <!--Header-->
+            <%@ include file="includes/header.jsp" %>
+              <!---------seat Select--------->
+              <div class="bodycontain">
+                <div class="type-container">
+                  <label> Seleziona il tipo di Postazione: </label>
+                  <select id="type">
+                    <option value="10">PC ( 10 €)</option>
+                    <option value="8">PlayStation 5 ( 8 €)</option>
+                    <option value="8">XBox One ( 8 €)</option>
+                  </select>
+                </div>
+                <br>
+                <br>
+                <ul class="showcase">
+                  <li>
+                    <div class="seat"></div>
+                    <small>Available</small>
+                  </li>
+                  <li>
+                    <div class="seat selected"></div>
+                    <small>Selected</small>
+                  </li>
+                  <li>
+                    <div class="seat sold"></div>
+                    <small>Sold</small>
+                  </li>
+                </ul>
+                <div class="container">
+                  <div class="row">
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat sold"></div>
+                    <div class="seat sold"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                  </div>
+                  <div class="row">
+                   	<br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                  </div>
+                  <div class="row">
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                  </div>
+                  <div class="row">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                  </div>
+                  <div class="row">
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat sold"></div>
+                    <div class="seat sold"></div>
+                    <div class="seat sold"></div>
+                    <div class="seat"></div>
+                  </div>
+                </div>
+                <p class="text">
+                <div class="warning">Il totale viene calcolato nel CARRELLO!!</div>
+                </p>
+                <p class="text">
+                  Hai selezionato <span id="count">0</span> postazione prezzo totale <span id="total">0</span>€
+                </p>
+                <a href="AddToCartServlet"><button type="button" class="btn">
+                    Aggiungi al carrello<i class="fas fa-shopping-cart"></i>
+                  </button></a>
+              </div>
+              <!--Footer-->
+              <%@ include file="includes/footer.jsp" %>
                 <script src="scripts/script.js"></script>
                 <script>
-                /*Select Table*/
 
-                const container = document.querySelector(".container");
-                      const tables = document.querySelectorAll(".row .table:not(.sold)");
-                      const count = document.getElementById("count");
-                      const total = document.getElementById("total");
-                      const typeSelect = document.getElementById("type");
+                  const container = document.querySelector(".container");
+                  const seats = document.querySelectorAll(".row .seat:not(.sold)");
+                  const count = document.getElementById("count");
+                  const total = document.getElementById("total");
+                  const typeSelect = document.getElementById("type");
 
-                      populateUI();
+                  populateUI();
 
-                      let ticketPrice = +typeSelect.value;
+                  let ticketPrice = +typeSelect.value;
 
-                      // Save selected type index and price
-                      function settypeData(typeIndex, typePrice) {
-                        localStorage.setItem("selectedtypeIndex", typeIndex);
-                        localStorage.setItem("selectedtypePrice", typePrice);
-                      }
+                  // Save selected type index and price
+                  function settypeData(typeIndex, typePrice) {
+                    localStorage.setItem("selectedtypeIndex", typeIndex);
+                    localStorage.setItem("selectedtypePrice", typePrice);
+                  }
 
-                      // Update total and count
-                      function updateSelectedCount() {
-                        const selectedtables = document.querySelectorAll(".row .table.selected");
+                  // Update total and count
+                  function updateSelectedCount() {
+                    const selectedseats = document.querySelectorAll(".row .seat.selected");
 
-                        const tablesIndex = [...selectedtables].map((table) => [...tables].indexOf(table));
+                    const seatsIndex = [...selectedseats].map((seat) => [...seats].indexOf(seat));
 
-                        localStorage.setItem("selectedtables", JSON.stringify(tablesIndex));
+                    localStorage.setItem("selectedseats", JSON.stringify(seatsIndex));
 
-                        const selectedtablesCount = selectedtables.length;
+                    const selectedseatsCount = selectedseats.length;
 
-                        count.innerText = selectedtablesCount;
-                        total.innerText = selectedtablesCount * ticketPrice;
+                    count.innerText = selectedseatsCount;
+                    total.innerText = selectedseatsCount * ticketPrice;
 
-                        settypeData(typeSelect.selectedIndex, typeSelect.value);
-                      }
+                    settypeData(typeSelect.selectedIndex, typeSelect.value);
+                  }
 
 
-                      // Get data from localstorage and populate UI
-                      function populateUI() {
-                        const selectedtables = JSON.parse(localStorage.getItem("selectedtables"));
+                  // Get data from localstorage and populate UI
+                  function populateUI() {
+                    const selectedseats = JSON.parse(localStorage.getItem("selectedseats"));
 
-                        if (selectedtables !== null && selectedtables.length > 0) {
-                          tables.forEach((table, index) => {
-                            if (selectedtables.indexOf(index) > -1) {
-                              console.log(table.classList.add("selected"));
-                            }
-                          });
-                        }
-
-                        const selectedtypeIndex = localStorage.getItem("selectedtypeIndex");
-
-                        if (selectedtypeIndex !== null) {
-                          typeSelect.selectedIndex = selectedtypeIndex;
-                          console.log(selectedtypeIndex)
-                        }
-                      }
-                      console.log(populateUI())
-                      // type select event
-                      typeSelect.addEventListener("change", (e) => {
-                        ticketPrice = +e.target.value;
-                        settypeData(e.target.selectedIndex, e.target.value);
-                        updateSelectedCount();
-                      });
-
-                      // table click event
-                      container.addEventListener("click", (e) => {
-                        if (
-                          e.target.classList.contains("table") &&
-                          !e.target.classList.contains("sold")
-                        ) {
-                          e.target.classList.toggle("selected");
-
-                          updateSelectedCount();
+                    if (selectedseats !== null && selectedseats.length > 0) {
+                      seats.forEach((seat, index) => {
+                        if (selectedseats.indexOf(index) > -1) {
+                          console.log(seat.classList.add("selected"));
                         }
                       });
+                    }
 
-                      // Initial count and total set
+                    const selectedtypeIndex = localStorage.getItem("selectedtypeIndex");
+
+                    if (selectedtypeIndex !== null) {
+                      typeSelect.selectedIndex = selectedtypeIndex;
+                      console.log(selectedtypeIndex)
+                    }
+                  }
+                  console.log(populateUI())
+                  // type select event
+                  typeSelect.addEventListener("change", (e) => {
+                    ticketPrice = +e.target.value;
+                    settypeData(e.target.selectedIndex, e.target.value);
+                    updateSelectedCount();
+                  });
+
+                  // seat click event
+                  container.addEventListener("click", (e) => {
+                    if (
+                      e.target.classList.contains("seat") &&
+                      !e.target.classList.contains("sold")
+                    ) {
+                      e.target.classList.toggle("selected");
+
                       updateSelectedCount();
+                    }
+                  });
+                </script>
+          </body>
 
-
-                      // Get the elements we need
-                      const numPeopleEl = document.getElementById('numPeople');
-                      const priceEl = document.querySelector('.price');
-
-                      // Set the initial price to 0
-                      let price = 0;
-
-                      // Calculate the price based on the number of people selected
-                      function calculatePrice() {
-                        const numPeople = numPeopleEl.value;
-                        price = numPeople * 5; // Assume the price is $5 per person
-                        priceEl.textContent = price;
-                      }
-
-                      // Calculate the price when the page loads
-                      calculatePrice();
-
-                      // Calculate the price when the number of people changes
-                      numPeopleEl.addEventListener('change', calculatePrice);
-                      </script>
-        </body>
-
-        </html>
+          </html>

@@ -15,8 +15,32 @@ public class UtenteBean implements Serializable {
     private boolean amm1;
     private boolean amm2;
     private boolean amm3;
+    private String domanda;
+    public String getDomanda() {
+		return domanda;
+	}
 
-    private String sex;
+	public void setDomanda(String domanda) {
+		this.domanda = domanda;
+	}
+
+	public UtenteBean(String username, String password, String email, String nome, String cognome, Date bday,
+			String risposta, boolean amm1, boolean amm2, boolean amm3, String sex) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.bday = bday;
+		this.risposta = risposta;
+		this.amm1 = amm1;
+		this.amm2 = amm2;
+		this.amm3 = amm3;
+		this.sex = sex;
+	}
+
+	private String sex;
 
     public String getSex() {
         return sex;
@@ -127,7 +151,6 @@ public class UtenteBean implements Serializable {
 
             if (is_Numeric(ch)) numCount++;
             else if (is_LetterSp(ch)) charCount++;
-            else return false;
         }
 
 
@@ -146,10 +169,32 @@ public class UtenteBean implements Serializable {
     }
 
     public boolean mailIsValid(String m){
-        String pttrn = "^(.+)@(\\S+)$";
-        return Pattern.compile(pttrn)
-                .matcher(m)
-                .matches();
+        //String pttrn = "^(.+)@(\\S+)$";
+        return m.contains("@") && m.contains(".");
+    }
+    
+    public boolean isValid(String g) {
+    	for(int i=0; i<g.length(); i++) {
+    		if(is_Numeric(g.charAt(i))) return false;
+    		if(is_LetterSp(g.charAt(i))) return false;
+    	}
+    	
+    	return true;
+    }
+    
+    public boolean existLetterSp(String f) {
+    	for(int i =0; i<f.length(); i++) {
+    		if((f.charAt(i) >= '!' && f.charAt(i) <= '/') || (f.charAt(i)>= ':' && f.charAt(i) <= '@') || (f.charAt(i)>= '-' && f.charAt(i)<='.')) return true; 
+    	}
+    	
+    	return false;
+    }
+    
+    public boolean existLetter(String f) {
+    	for(int i =0; i<f.length(); i++) {
+    		if((f.charAt(i)>='a' && f.charAt(i)<='z') || (f.charAt(i)>='A' && f.charAt(i)<='Z')) return true;
+    	}
+    	return false;
     }
 
 

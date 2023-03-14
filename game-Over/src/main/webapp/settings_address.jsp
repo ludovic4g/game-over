@@ -7,6 +7,8 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
+        HaDAO hdao = new HaDAO();
+        ArrayList<IndirizzoBean> indirizzi = hdao.getIndirizziByUsername(auth.getUsername());
         %>
   <!DOCTYPE html>
   <html lang="en">
@@ -15,7 +17,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard User|Modifica informazioni profilo</title>
+    <title>Dashboard User| Modifica Informazioni Profilo</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="dashboard.css">
@@ -23,119 +25,57 @@
 
   <body>
     <!---------SideBar--------->
-    <div class="sidebar close">
-      <div class="logo-details">
-        <i class='bx bxs-joystick'></i>
-        <span class="logo_name">GameOver</span>
-      </div>
-      <ul class="nav-links">
-        <li>
-          <a href="#">
-            <i class='bx bx-grid-alt'></i>
-            <span class="link_name">Dashboard</span>
-          </a>
-          <ul class="sub-menu blank">
-            <li><a class="link_name" href="dashboard_user.jsp">Dashboard</a></li>
-          </ul>
-        </li>
-        <li>
-          <div class="iocn-link">
-            <a href="#">
-              <i class='bx bx-lock'></i>
-              <span class="link_name">Impostazioni profilo</span>
-            </a>
-            <i class='bx bxs-chevron-down arrow'></i>
-          </div>
-          <ul class="sub-menu">
-            <li><a class="link_name" href="#">Impostazioni</a></li>
-            <li><a href="settings.jsp">Modica informazioni</a></li>
-            <li><a href="settings_address.jsp">Modifica Indirizzo</a></li>
-            <li><a href="settings_psw.jsp">Modifica Password</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="index.jsp">
-            <i class='bx bx-home'></i>
-            <span class="link_name">Home</span>
-          </a>
-          <ul class="sub-menu blank">
-            <li><a class="link_name" href="index.jsp">Home</a></li>
-          </ul>
-        </li>
-      </ul>
-      <!---------Home Section--------->
-    </div>
+    <%@ include file="includes/sidebar-user.jsp" %>
+    <!--  -->
     <section class="home-section">
       <div class="home-content">
         <i class='bx bx-menu'></i>
-        <span class="text">Benvenuto|Admin Dashboard</span>
+        <span class="text">Benvenuto|User Dashboard</span>
       </div>
+      <% for(IndirizzoBean b : indirizzi){
+      int i=1;%>
       <div class="wrapper">
         <div class="collapsible">
           <input class="check" type="checkbox" id="collapsible-head">
-          <label class="collapsible-head" for="collapsible-head">Modifica Indirizzo (1)</label>
+      
+          <label class="collapsible-head" for="collapsible-head">Modifica Indirizzo (<%out.println(i++); %>)</label>
           <div class="collapsible-text">
             <div class="card-body">
+             <form action="ModificaInfoServlet?action=nome&id=<%=auth.getUsername()%>&add=<%=b.getId() %>" method="post">
               <div class="form-group">
-                <label for="inputName">Nome</label>
-                <input type="text" id="inputName" class="form-control">
-                <div class="row">
-                  <div class="col-12">
-                    <input type="submit" value="Conferma" class="right button">
-                  </div>
-                </div>
+                <label for="inputName">Nome e Cognome</label>
+                <input type="text" id="inputName"  name="nomeind" class="form-control" placeholder="<%=auth.getNome()%> <%=auth.getCognome()%>" required>
               </div>
-              <div class="form-group">
-                <label for="inputName">Cognome</label>
-                <input type="text" id="inputName" class="form-control">
-                <div class="row">
-                  <div class="col-12">
-                    <input type="submit" value="Conferma" class="right button">
-                  </div>
-                </div>
-              </div>
+              </form>
+               <form action="ModificaInfoServlet?action=indirizzo&id=<%=auth.getUsername()%>&add=<%=b.getId() %>" method="post" required>
               <div class="form-group">
                 <label for="inputPrice">Città</label>
-                <input type="text" id="inputName" class="form-control">
-
-              </div>
-              <div class="form-group">
-                <label for="inputPrice">Paese</label>
-                <input type="text" id="inputName" class="form-control">
-
-              </div>
+                <input type="text" id="inputName" name="citta" class="form-control"  placeholder="<%=b.getCitta()%>" required>
               <div class="form-group">
                 <label for="inputPrice">Provincia</label>
-                <input type="text" id="inputName" class="form-control">
+                <input type="text" id="inputName" name="provincia" class="form-control"  placeholder="<%=b.getProvincia ()%>" required>
 
               </div>
               <div class="form-group">
                 <label for="inputPrice">CAP</label>
-                <input type="text" id="inputName" class="form-control">
+                <input type="text" id="inputName" name="cap" class="form-control" placeholder="<%=b.getCAP()%>" required>
 
               </div>
               <div class="form-group">
                 <label for="inputPrice">Indirizzo</label>
-                <input type="text" id="inputName" class="form-control">
+                <input type="text" id="inputName"  name="via" class="form-control"  placeholder="<%=b.getVia()%>" required>
 				<div class="row">
                     <div class="col-12">
                       <input type="submit" value="Conferma" class="right button">
-                    </div>
+                      </div>
+                      </div>
               </div>
-              
-                <div class="form-group">
-                  <label for="inputProjectLeader">Telefono</label>
-                  <input type="text" id="inputName" class="form-control">
-                  <div class="row">
-                    <div class="col-12">
-                      <input type="submit" value="Conferma" class="right button">
-                    </div>
-                  </div>
-                </div>
+              </form>
               </div>
             </div>
           </div>
         </div>
+        <%} %>
       </div>
     </section>
     <script>

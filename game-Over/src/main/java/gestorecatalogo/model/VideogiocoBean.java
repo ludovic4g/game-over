@@ -17,7 +17,31 @@ public class VideogiocoBean implements Serializable {
     	return magazzino;
     }
     
-    public void updateMagazzino(int q) {
+    public VideogiocoBean() {
+    	
+    }
+    
+    public VideogiocoBean(int id, String nome, int quantita, double prezzo, int anno, String tipo, int magazzino,
+			String descrizione, String img1, String img2, String img3, String img4, String img5) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.quantita = quantita;
+		this.prezzo = prezzo;
+		this.anno = anno;
+		this.tipo = tipo;
+		this.magazzino = magazzino;
+		this.descrizione = descrizione;
+		this.img1 = img1;
+		this.img2 = img2;
+		this.img3 = img3;
+		this.img4 = img4;
+		this.img5 = img5;
+	}
+
+
+
+	public void updateMagazzino(int q) {
     	magazzino=q;
     }
     

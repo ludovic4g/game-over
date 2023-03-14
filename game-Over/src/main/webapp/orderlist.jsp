@@ -1,4 +1,6 @@
 <%@ page import= "utente.model.*" %>
+<%@ page import= "gestoreordini.model.*" %>
+<%@ page import= "java.text.*" %>
 <%@ page import= "java.util.ArrayList" %>
 <%@ page import= "connection.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -7,6 +9,9 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
+        
+        OrdineDAO odao = new OrdineDAO();
+        ArrayList<OrdineBean> ordini = odao.doRetrieveAll();
         %>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,138 +29,108 @@
 
 <body>
 <!---------SideBar--------->
-<div class="sidebar close">
-  <div class="logo-details">
-    <i class='bx bxs-joystick'></i>
-    <span class="logo_name">GameOver</span>
-  </div>
-  <ul class="nav-links">
-    <li>
-      <a href="#">
-        <i class='bx bx-grid-alt'></i>
-        <span class="link_name">Dashboard</span>
-      </a>
-      <ul class="sub-menu blank">
-        <li><a class="link_name" href="dashboard_admin.jsp">Dashboard</a></li>
-      </ul>
-    </li>
-    <li>
-      <div class="iocn-link">
-        <a href="#">
-          <i class='bx bx-collection'></i>
-          <span class="link_name">Prodotti</span>
-        </a>
-        <i class='bx bxs-chevron-down arrow'></i>
-      </div>
-      <ul class="sub-menu">
-        <li><a class="link_name" href="#">Prodotto</a></li>
-        <li><a href="addproduct.jsp">Aggiungi Prodotto</a></li>
-        <li><a href="catalogo.jsp">Modifica Prodotto</a></li>
-        <li><a href="rimuoviprodotto.jsp">Rimuovi Prodotto</a></li>
-      </ul>
-    </li>
-    <li>
-    <li>
-      <a href="orderlist.jsp">
-        <i class='bx bx-cart'></i>
-        <span class="link_name">Lista Ordini</span>
-      </a>
-      <ul class="sub-menu blank">
-        <li><a class="link_name" href="orderlist.jsp">Ordini</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="index.jsp">
-        <i class='bx bx-home'></i>
-        <span class="link_name">Home</span>
-      </a>
-      <ul class="sub-menu blank">
-        <li><a class="link_name" href="index.jsp">Home</a></li>
-      </ul>
-    </li>
-  </ul>
-  <!---------Home Section--------->
-</div>
+<%@ include file="includes/sidebar-admin.jsp" %>
+<!-- - -->
 <section class="home-section">
   <div class="home-content">
     <i class='bx bx-menu'></i>
     <span class="text">Benvenuto|Admin Dashboard</span>
   </div>
-  <div class="input-box">
-            <input type="text" placeholder="Cerca...">
+   <div class="input-box">
+                        <form action ="RicercaCatalogoServlet" method="post">
+            <input type="text" placeholder="Cerca..." name="cerca">
             <span class="icon">
                 <i class="uil uil-search search-icon"></i>
             </span>
             <i class="uil uil-times close-icon"></i>
+            </form>
         </div>
         
         <div class="filter_container"> 
         <div class="filter_title">Filtra per utente</div>
-        <select id="sort-users">
+    <form action ="FiltraOrdiniServlet?action=alfabetico" method="post">
+    
+        <select id="sort-users" name="tipo">
         <option selected="selected">-</option>
-  <option value="az">Utenti dalla A-Z</option>
-  <option value="za">Utenti dalla Z-A</option>
-</select>
+ 		 <option value="az">Utenti dalla A-Z</option>
+  		<option value="za">Utenti dalla Z-A</option>
+		</select>
+	<button type="submit" class="btn btn-danger btn-sm">-></button>
+	</form>
+<form action ="FiltraOrdiniServlet?action=data" method="post">
 <div class="filter_title">Data da:</div>
-<input class="data_filter" type="date" id="sort-date">
+<input class="data_filter" type="date" id="sort-date" name="inizio" required>
 <div class="filter_title">Data a:</div>
-<input class="data_filter" type="date" id="sort-date">
+<input class="data_filter" type="date" id="sort-date" name="fine" required>
+<button type="submit" class="btn btn-danger btn-sm">-></button>
+</form>
 </div>
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Lista Prenotazioni</h3>
+      <h3 class="card-title">Lista Ordini</h3>
     </div>
-    
     <table>
+     <%for(OrdineBean b : ordini){%>
       <tr>
         <th>N. Ordine</th>
         <th>Utente</th>
         <th>Data</th>
         <th>Totale</th>
+        <th></th>
         <th>Stato</th>
+        <th></th>
       </tr>
       <tr>
         <td>
           <div class="cart-info">
             <div>
-              <p>100</p>
+              <p><%=b.getIdOrdine() %></p>
             </div>
           </div>
         </td>
         <td>
           <div class="cart-info">
             <div>
-              <p>Tizio</p>
+              <p><%=b.getUtente() %></p>
             </div>
           </div>
         </td>
         <td>
           <div class="cart-info">
             <div>
-              <p>DD/MM/YY</p>
+              <p><%Format f = new SimpleDateFormat("dd/MM/yy");
+              String strDate = f.format(b.getDataAcquisto()); 
+              out.print(strDate);%></p>
             </div>
           </div>
         </td>
         <td>
           <div class="cart-info">
             <div>
-              <p>9,99$</p>
+              <p>€<%=b.getPrezzoTotale() %></p>
             </div>
           </div>
+         </td>
+         <%if(b.getStato().equals("Annullato")){ %>
+         <td><select class="stato" name="stato"  required>
+        	<option value="" disabled selected>Annullato</option> </select>
+         <%}else{ %>
+        <td><form action="ModificaOrdineServlet?id=<%=b.getIdOrdine()%>" method="post">
+        <td><select class="stato" name="stato"  required>
+        	<option value="" disabled selected><%=b.getStato() %></option>
+          <option value="Stato di conferma">Stato di conferma</option>
+          <option value="Spedito">Spedito</option>
+          <option value="In fase di consegna">In fase di consegna</option>
+        </select>
+        <td><input type="submit" class="btn btn-danger btn-sm" value ="Modifica"></td>
+        </form>
         </td>
-        <td><select class="stato">
-          <option value="" selected="selected">Stato di conferma</option>
-          <option value="">Spedito</option>
-          <option value="">In fase di consegna</option>
-        </select></td>
-        </td>
-        <td><a class="btn btn-danger btn-sm" href="#">
-          </i>
-          Modifica
-        </a></td>
+        <% }%>
       </tr>
       </tr>
+      <%} %>
     </table>
+    </div>
 </section>
 <script>
   /* Js For Animated SideBar */
@@ -179,6 +154,7 @@
 
 searchIcon.addEventListener("click", () => inputBox.classList.add("open"));
 closeIcon.addEventListener("click", () => inputBox.classList.remove("open"));
+
 </script>
 </body>
 

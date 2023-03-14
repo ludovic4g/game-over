@@ -1,4 +1,5 @@
 <%@ page import= "utente.model.*" %>
+<%@ page import= "gestorecatalogo.model.*" %>
 <%@ page import= "java.util.ArrayList" %>
 <%@ page import= "connection.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -7,6 +8,16 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
+        Carrello carrello = (Carrello) session.getAttribute("carrello");
+        ArrayList<VideogiocoBean> games =null;
+        
+        if(carrello== null){
+        	carrello = new Carrello();
+        }
+        boolean ctrl= carrello==null;
+        games= carrello.getGames();
+        
+        request.setAttribute("carrello", carrello);
         %>
     <!DOCTYPE html>
     <html lang="en">
@@ -74,7 +85,6 @@
                         </tr>
                     </table>
                 </div>             
-            <form action="">
                 <div class="inputCheckOut">
                     <span class="span_checkout">Numero Carta</span>
                     <input type="text" maxlength="16" class="card-number-input">
@@ -123,8 +133,7 @@
                         <input type="text" maxlength="3" class="cvv-input">
                     </div>
                 </div>
-                <input type="submit" value="Procedi all'acquisto" class="submit-btn">
-            </form>
+                <a href="acquito.jsp"><input type="submit" value="Procedi all'acquisto" class="submit-btn"></a>
     
         </div>    
         <!--Footer-->

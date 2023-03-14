@@ -81,4 +81,19 @@ public class OrdineBean implements Serializable {
     public OrdineBean() {
 
     }
+
+	public OrdineBean(int idOrdine, String utente, Date dataAcquisto, double prezzoTotale, double iva, String lista,
+			String stato, int numeroProdotti) {
+		super();
+		this.idOrdine = idOrdine;
+		this.utente = utente;
+		this.dataAcquisto = dataAcquisto;
+		this.prezzoTotale = prezzoTotale;
+		this.iva = iva;
+		this.lista = lista;
+		this.stato = stato;
+		this.numeroProdotti = numeroProdotti;
+	}
+    
+    
 }

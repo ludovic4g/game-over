@@ -26,19 +26,12 @@
                 <%@ include file="includes/header.jsp" %>
                 <!---------Table Select--------->
                 <div class="bodycontain">
-      <div class="type-container">
+                <h2 class="h2_title">Scegli il tuo tavolo</h2>
+                <div class="type-container">
         <label> Seleziona il tipo di giochi: </label>
         <select id="type">
           <option value="5">Giochi da tavolo ( 5 €)</option>
           <option value="3">Giochi di carte ( 3 €)</option>
-        </select>
-      </div>
-
-      <div class="clock-container">
-        <label> Seleziona orario: </label>
-        <select id="clock">
-          <option>10:30</option>
-          <option>11:30</option>
         </select>
       </div>
       <br>

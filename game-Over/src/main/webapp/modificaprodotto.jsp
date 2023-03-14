@@ -1,4 +1,5 @@
 <%@ page import= "utente.model.*" %>
+<%@ page import= "gestorecatalogo.model.*" %>
 <%@ page import= "java.util.ArrayList" %>
 <%@ page import= "connection.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -23,58 +24,15 @@
 
   <body>
     <!---------SideBar--------->
-    <div class="sidebar close">
-      <div class="logo-details">
-        <i class='bx bxs-joystick'></i>
-        <span class="logo_name">GameOver</span>
-      </div>
-      <ul class="nav-links">
-        <li>
-          <a href="#">
-            <i class='bx bx-grid-alt'></i>
-            <span class="link_name">Dashboard</span>
-          </a>
-          <ul class="sub-menu blank">
-            <li><a class="link_name" href="dashboard_admin.jsp">Dashboard</a></li>
-          </ul>
-        </li>
-        <li>
-          <div class="iocn-link">
-            <a href="#">
-              <i class='bx bx-collection'></i>
-              <span class="link_name">Prodotti</span>
-            </a>
-            <i class='bx bxs-chevron-down arrow'></i>
-          </div>
-          <ul class="sub-menu">
-            <li><a class="link_name" href="#">Prodotto</a></li>
-            <li><a href="addproduct.jsp">Aggiungi Prodotto</a></li>
-            <li><a href="catalogo.jsp">Modifica Prodotto</a></li>
-            <li><a href="rimuoviprodotto.jsp">Rimuovi Prodotto</a></li>
-          </ul>
-        </li>
-        <li>
-        <li>
-          <a href="orderlist.jsp">
-            <i class='bx bx-cart'></i>
-            <span class="link_name">Lista Ordini</span>
-          </a>
-          <ul class="sub-menu blank">
-            <li><a class="link_name" href="orderlist.jsp">Ordini</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="index.jsp">
-            <i class='bx bx-home'></i>
-            <span class="link_name">Home</span>
-          </a>
-          <ul class="sub-menu blank">
-            <li><a class="link_name" href="index.jsp">Home</a></li>
-          </ul>
-        </li>
-      </ul>
-      <!---------Home Section--------->
-    </div>
+   <%@ include file="includes/sidebar-admin.jsp" %>
+   <!--  -->
+   
+   <% String id= request.getParameter("id");
+	int i = Integer.parseInt(id);
+	VideogiocoBean b = new VideogiocoBean();
+	VideogiocoDAO pdao= new VideogiocoDAO();
+	b= pdao.doRetriveByKey(i);
+   %>
     <section class="home-section">
       <div class="home-content">
         <i class='bx bx-menu'></i>
@@ -86,48 +44,68 @@
           <label class="collapsible-head" for="collapsible-head">Modifica Prodotto</label>
           <div class="collapsible-text">
             <div class="card-body">
+            <form action="ModificaGiocoServlet?action=nome&id=<%=b.getId() %>" method="post">
               <div class="form-group">
                 <label for="inputName">Nome Prodotto</label>
-                <input type="text" id="inputName" class="form-control">
+                <input type="text" id="inputName" class="form-control"  placeholder ="<%=b.getNome() %>" name="nome" required>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
                   </div>
                 </div>
               </div>
+              </form>
+              <form action="ModificaGiocoServlet?action=anno&id=<%=b.getId() %>" method="post">
               <div class="form-group">
-                <label for="inputName">ID Prodotto</label>
-                <input type="text" id="inputName" class="form-control">
+                <label for="inputName">Anno Prodotto</label>
+                <input type="number" id="inputName" class="form-control" name="anno" placeholder=<%=b.getAnno() %> required>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
                   </div>
                 </div>
               </div>
+              </form>
+               <form action="ModificaGiocoServlet?action=magazzino&id=<%=b.getId() %>" method="post">
+              <div class="form-group">
+                <label for="inputName">Quantità in Magazzino</label>
+                <input type="number" id="inputName" class="form-control" name="magazzino" placeholder=<%=b.getMagazzino()%> required>
+                <div class="row">
+                  <div class="col-12">
+                    <input type="submit" value="Conferma" class="right button">
+                  </div>
+                </div>
+              </div>
+              </form>
+              <form action="ModificaGiocoServlet?action=descrizione&id=<%=b.getId() %>" method="post">
               <div class="form-group">
                 <label for="inputDescription">Descrizione Prodotto</label>
-                <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                <textarea id="inputDescription" class="form-control" rows="4" name="desc" placeholder="<%=b.getDescrizione()%>" required></textarea>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
                   </div>
                 </div>
               </div>
+              </form>
+              <form action="ModificaGiocoServlet?action=prezzo&id=<%=b.getId() %>" method="post">
               <div class="form-group">
                 <label for="inputPrice">Prezzo</label>
-                <input type="number" id="inputPrice" class="form-control">
+                <input type="number" id="inputPrice" class="form-control" name="prezzo" placeholder="<%=b.getPrezzo()%>" required>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
                   </div>
                 </div>
               </div>
+              </form>
+              <form action="ModificaGiocoServlet?action=piattaforma&id=<%=b.getId() %>" method="post">
               <div class="form-group">
                 <label for="inputName">Piattaforma</label>
                 <select name="piattaforma" class="option">
                   <option value="PC">PC</option>
-                  <option value="PC">PlayStation 5</option>
-                  <option value="PC">Xbox One</option>
+                  <option value="Console">PlayStation 5</option>
+                  <option value="Console">Xbox One</option>
                 </select>
                 <div class="row">
                   <div class="col-12">
@@ -135,27 +113,33 @@
                   </div>
                 </div>
               </div>
+              </form>
+              <form action="ModificaGiocoServlet?action=img&id=<%=b.getId() %>" method="post">
               <div class="form-group">
                 <label for="inputProjectLeader">Immagine Principale</label>
                 <br>
-                <input type="link" id="inputName" class="form-control">
-                <input type="link" id="inputName" class="form-control">
+                <input type="link" id="inputName" class="form-control" name="img1" required>
+                <input type="link" id="inputName" class="form-control" name="img2" required>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
                   </div>
                 </div>
+               </div>
+               </form>
+               <form action="ModificaGiocoServlet?action=img2&id=<%=b.getId() %>" method="post">
                 <div class="form-group">
                   <label for="inputProjectLeader">Immagini Secondarie</label>
-                  <input type="link" id="inputName" class="form-control">
-                  <input type="link" id="inputName" class="form-control">
-                  <input type="link" id="inputName" class="form-control">
+                  <input type="link" id="inputName" class="form-control" name="img3" required>
+                  <input type="link" id="inputName" class="form-control" name="img4" required>
+                  <input type="link" id="inputName" class="form-control" name="img5" required>
                   <div class="row">
                     <div class="col-12">
                       <input type="submit" value="Conferma" class="right button">
                     </div>
                   </div>
                 </div>
+                </form>
               </div>
             </div>
           </div>

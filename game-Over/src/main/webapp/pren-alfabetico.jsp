@@ -1,4 +1,6 @@
 <%@ page import= "utente.model.*" %>
+<%@ page import= "gestorepren.model.*" %>
+<%@ page import= "java.text.*" %>
 <%@ page import= "java.util.ArrayList" %>
 <%@ page import= "connection.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -7,6 +9,8 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
+        ArrayList<PrenotazioneBean> prenotazioni = (ArrayList<PrenotazioneBean>) session.getAttribute("lista");
+        
         %>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +19,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Admin|Catalogo Prodotti</title>
+  <title>Dashboard Admin|Prenotazioni</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
   <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -24,95 +28,54 @@
 
 <body>
 <!---------SideBar--------->
-<div class="sidebar close">
-  <div class="logo-details">
-    <i class='bx bxs-joystick'></i>
-    <span class="logo_name">GameOver</span>
-  </div>
-  <ul class="nav-links">
-    <li>
-      <a href="#">
-        <i class='bx bx-grid-alt'></i>
-        <span class="link_name">Dashboard</span>
-      </a>
-      <ul class="sub-menu blank">
-        <li><a class="link_name" href="dashboard_admin.jsp">Dashboard</a></li>
-      </ul>
-    </li>
-    <li>
-      <div class="iocn-link">
-        <a href="#">
-          <i class='bx bx-collection'></i>
-          <span class="link_name">Prodotti</span>
-        </a>
-        <i class='bx bxs-chevron-down arrow'></i>
-      </div>
-      <ul class="sub-menu">
-        <li><a class="link_name" href="#">Prodotto</a></li>
-        <li><a href="addproduct.jsp">Aggiungi Prodotto</a></li>
-        <li><a href="catalogo.jsp">Modifica Prodotto</a></li>
-        <li><a href="rimuoviprodotto.jsp">Rimuovi Prodotto</a></li>
-      </ul>
-    </li>
-    <li>
-    <li>
-      <a href="orderlist.jsp">
-        <i class='bx bx-cart'></i>
-        <span class="link_name">Lista Ordini</span>
-      </a>
-      <ul class="sub-menu blank">
-        <li><a class="link_name" href="orderlist.jsp">Ordini</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="index.jsp">
-        <i class='bx bx-home'></i>
-        <span class="link_name">Home</span>
-      </a>
-      <ul class="sub-menu blank">
-        <li><a class="link_name" href="index.jsp">Home</a></li>
-      </ul>
-    </li>
-  </ul>
-  <!---------Home Section--------->
-</div>
+<%@ include file="includes/sidebar-admin.jsp" %>
+<!--  -->
 <section class="home-section">
   <div class="home-content">
     <i class='bx bx-menu'></i>
     <span class="text">Benvenuto|Admin Dashboard</span>
   </div>
   <div class="input-box">
-            <input type="text" placeholder="Cerca...">
+                        <form action ="RicercaCatalogoServlet" method="post">
+            <input type="text" placeholder="Cerca..." name="cerca">
             <span class="icon">
                 <i class="uil uil-search search-icon"></i>
             </span>
             <i class="uil uil-times close-icon"></i>
+            </form>
         </div>
         
         <div class="filter_container"> 
         <div class="filter_title">Filtra per utente</div>
-        <select id="sort-users">
+     <form action ="FiltraPrenotazioniServlet?action=alfabetico" method="post">   
+        <select id="sort-users" name="tipo">
         <option selected="selected">-</option>
   <option value="az">Utenti dalla A-Z</option>
   <option value="za">Utenti dalla Z-A</option>
 </select>
+<button type="submit" class="btn btn-danger btn-sm">-></button>
+</form>
+<form action ="FiltraPrenotazioniServlet?action=data" method="post">
 <div class="filter_title">Data da:</div>
-<input class="data_filter" type="date" id="sort-date">
+<input class="data_filter" type="date" id="sort-date" name="inizio">
 <div class="filter_title">Data a:</div>
-<input class="data_filter" type="date" id="sort-date">
+<input class="data_filter" type="date" id="sort-date" name="fine">
+<button type="submit" class="btn btn-danger btn-sm">-></button>
+</form>
 </div>
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Lista Prenotazioni</h3>
+      <h3 class="card-title">Gestisci Prenotazione</h3>
     </div>
     
     <table>
+    <%for(PrenotazioneBean b : prenotazioni){ %>
       <tr>
         <th>ID Prenotazione</th>
         <th>Utente</th>
         <th>Data</th>
         <th>Prezzo</th>
-        <th>Quantità</th>
+        <th>Posti Prenotati</th>
         <th>Orario</th>
         <th>Stato</th>
       </tr>
@@ -120,55 +83,61 @@
         <td>
           <div class="cart-info">
             <div>
-              <p>100</p>
+              <p><%=b.getIdPrenotazione() %></p>
             </div>
           </div>
         </td>
         <td>
           <div class="cart-info">
             <div>
-              <p>Tizio</p>
+              <p><%=b.getUtente() %></p>
             </div>
           </div>
         </td>
         <td>
           <div class="cart-info">
             <div>
-              <p>DD/MM/YY</p>
+              <p><%Format f = new SimpleDateFormat("MM/dd/yy");
+              String strDate = f.format(b.getDataprenotazione()); 
+              out.print(strDate);%></p>
             </div>
           </div>
         </td>
         <td>
           <div class="cart-info">
             <div>
-              <p>9,99$</p>
+              <p>€<%out.println(b.getPrezzo()* b.getPostiPrenotati()); %></p>
+              <h5>Prezzo per posto: <%=b.getPrezzo() %></h5>
             </div>
           </div>
         </td>
         <td>
           <div class="cart-info">
             <div>
-              <p>5</p>
+              <p><%=b.getPostiPrenotati() %></p>
             </div>
           </div>
         </td>
-        <td><select class="orario">
-          <option value="" selected="selected">17:30</option>
-          <option value="">18:30</option>
-          <option value="">19:30</option>
-        </select></td>
-        <td><select class="stato">
-          <option value="" selected="selected">Stato di conferma</option>
-          <option value="">Conferma Prenotazione</option>
-          <option value="">Cambio Orario</option>
-        </select></td>
+        <td><div class="cart-info">
+            <div>
+              <p><%=b.getOra() %></p>
+            </div>
+          </div></td>
+          <td>
+          <td><form action="ModificaOrdineServlet?id=<%=b.getIdPrenotazione()%>" method="post">
+        <td><select class="stato" name="stato"  required>
+        	<option value="" disabled selected><%=b.getStato() %></option>
+          <option value="In attesa di Conferma">In attesa di conferma</option>
+          <option value="Confermato">Confermato</option>
+          <option value="Annullato">Annullato</option>
+        </select>
+        <td><input type="submit" class="btn btn-danger btn-sm" value ="Modifica"></td>
+        </form>
         </td>
-        <td><a class="btn btn-danger btn-sm" href="#">
-          </i>
-          Modifica
-        </a></td>
+  
       </tr>
       </tr>
+      <%}%>
     </table>
 </section>
 <script>

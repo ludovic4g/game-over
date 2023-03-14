@@ -88,7 +88,7 @@ public class UtenteDAO {
         return ab;
     }
 
-    public void doSave(UtenteBean utente) throws SQLException {
+    public boolean doSave(UtenteBean utente) throws SQLException {
         String query = "insert into utente values(?,?,?,?,?,?,?,?,?,?,?);";
 
         Connection con = null;
@@ -114,13 +114,17 @@ public class UtenteDAO {
             ps.executeUpdate();
 
 
-        } finally {
+        }catch(Exception e) {
+        	e.printStackTrace();
+        	return false;
+    }finally {
             try {
                 if (ps != null) ps.close();
             } finally {
                 DriverManagerConnectionPool.releaseConnection(con);
             }
         }
+        return true;
     }
 
     public void doUpdate(UtenteBean utente) throws SQLException {
@@ -199,5 +203,283 @@ public class UtenteDAO {
 
         return utente;
     }
+ ////////////////////////////////////////////////////////////////////////////////////////////   
+ 
+    
+    public UtenteBean doRetrieveByMail(String codice) throws SQLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        String query = "select * from " + UtenteDAO.TABLE_NAME + " where email=?";
+        UtenteBean b = new UtenteBean();
+
+        try {
+            con = DriverManagerConnectionPool.getConnection();
+
+            ps = con.prepareStatement(query);
+            ps.setString(1, codice);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                b.setUsername(rs.getString("username"));
+                b.setPassword(rs.getString("password"));
+                b.setEmail(rs.getString("email"));
+                b.setNome(rs.getString("nome"));
+                b.setCognome(rs.getString("cognome"));
+                b.setBday(rs.getDate("ddn"));
+                b.setSex((rs.getString("sex")));
+                b.setRisposta(rs.getString("risposta"));
+                b.setGestoreCatalogo(rs.getBoolean("ammin1"));
+                b.setGestorePrenotazioni(rs.getBoolean("ammin2"));
+                b.setGestoreOrdini(rs.getBoolean("ammin3"));
+                    }
+            rs.close();
+        } finally {
+            try {
+                if (ps != null) ps.close();
+            } finally {
+                DriverManagerConnectionPool.releaseConnection(con);
+            }
+
+        }
+        return b;
+    }
+    
+    public String doRetrieveRisposta(String email) throws SQLException{
+    	        Connection con = null;
+    	        PreparedStatement ps = null;
+    	        String query = "select risposta from " + UtenteDAO.TABLE_NAME + " where username=?";
+    	        String risposta=null;
+
+    	        try {
+    	            con = DriverManagerConnectionPool.getConnection();
+
+    	            ps = con.prepareStatement(query);
+    	            ps.setString(1, email);
+    	            ResultSet rs = ps.executeQuery();
+
+    	            while (rs.next()) {
+    	                risposta=rs.getString("risposta");
+    	            }
+    	            rs.close();
+    	        } finally {
+    	            try {
+    	                if (ps != null) ps.close();
+    	            } finally {
+    	                DriverManagerConnectionPool.releaseConnection(con);
+    	            }
+
+    	        }
+    	        return risposta;
+  }
+    
+    public void ModifyPassword(String id, String nome) throws SQLException{
+		String query="update utente set password=? where username=?"; 
+		Connection con=null; 
+		PreparedStatement ps=null; 
+		
+		try {
+			con= DriverManagerConnectionPool.getConnection(); 
+			
+			ps=con.prepareStatement(query); 
+			ps.setString(2, id);
+			ps.setString(1, nome);
+			ps.executeUpdate();
+
+		}finally {
+			try {
+				if(ps!=null) ps.close(); 
+			}finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		}
+		
+		public void ModifyNome(String id, String nome) throws SQLException{
+			String query="update utente set nome=? where username=?"; 
+			Connection con=null; 
+			PreparedStatement ps=null; 
+			
+			try {
+				con= DriverManagerConnectionPool.getConnection(); 
+				
+				ps=con.prepareStatement(query); 
+				ps.setString(2, id);
+				ps.setString(1, nome);
+				ps.executeUpdate();
+
+			}finally {
+				try {
+					if(ps!=null) ps.close(); 
+				}finally {
+					DriverManagerConnectionPool.releaseConnection(con);
+				}
+			}
+			
+		
+	}
+		
+		public void ModifyCognome(String id, String nome) throws SQLException{
+			String query="update utente set cognome=? where username=?"; 
+			Connection con=null; 
+			PreparedStatement ps=null; 
+			
+			try {
+				con= DriverManagerConnectionPool.getConnection(); 
+				
+				ps=con.prepareStatement(query); 
+				ps.setString(2, id);
+				ps.setString(1, nome);
+				ps.executeUpdate();
+
+			}finally {
+				try {
+					if(ps!=null) ps.close(); 
+				}finally {
+					DriverManagerConnectionPool.releaseConnection(con);
+				}
+			}
+	}
+		
+		public void ModifyMail(String id, String nome) throws SQLException{
+			String query="update utente set email=? where username=?"; 
+			Connection con=null; 
+			PreparedStatement ps=null; 
+			
+			try {
+				con= DriverManagerConnectionPool.getConnection(); 
+				
+				ps=con.prepareStatement(query); 
+				ps.setString(2, id);
+				ps.setString(1, nome);
+				ps.executeUpdate();
+
+			}finally {
+				try {
+					if(ps!=null) ps.close(); 
+				}finally {
+					DriverManagerConnectionPool.releaseConnection(con);
+				}
+			}
+	}
+		public void ModifyDDn(String id, java.util.Date nome) throws SQLException{
+			String query="update utente set ddn=? where username=?"; 
+			Connection con=null; 
+			PreparedStatement ps=null; 
+			
+			try {
+				con= DriverManagerConnectionPool.getConnection(); 
+				
+				ps=con.prepareStatement(query); 
+				ps.setString(2, id);
+				ps.setDate(1,(java.sql.Date) nome);
+				ps.executeUpdate();
+
+			}finally {
+				try {
+					if(ps!=null) ps.close(); 
+				}finally {
+					DriverManagerConnectionPool.releaseConnection(con);
+				}
+			}
+	}
+		
+		public void ModifyGender(String id, String nome) throws SQLException{
+			String query="update utente set sex=? where username=?"; 
+			Connection con=null; 
+			PreparedStatement ps=null; 
+			
+			try {
+				con= DriverManagerConnectionPool.getConnection(); 
+				
+				ps=con.prepareStatement(query); 
+				ps.setString(2, id);
+				ps.setString(1, nome);
+				ps.executeUpdate();
+
+			}finally {
+				try {
+					if(ps!=null) ps.close(); 
+				}finally {
+					DriverManagerConnectionPool.releaseConnection(con);
+				}
+			}
+	}
+		
+		public void ModifyDomanda(String id, String nome) throws SQLException{
+			String query="update utente set domanda=? where username=?"; 
+			Connection con=null; 
+			PreparedStatement ps=null; 
+			
+			try {
+				con= DriverManagerConnectionPool.getConnection(); 
+				
+				ps=con.prepareStatement(query); 
+				ps.setString(2, id);
+				ps.setString(1, nome);
+				ps.executeUpdate();
+
+			}finally {
+				try {
+					if(ps!=null) ps.close(); 
+				}finally {
+					DriverManagerConnectionPool.releaseConnection(con);
+				}
+			}
+	}
+		
+		public void ModifyRisposta(String id, String nome) throws SQLException{
+			String query="update utente set risposta=? where username=?"; 
+			Connection con=null; 
+			PreparedStatement ps=null; 
+			
+			try {
+				con= DriverManagerConnectionPool.getConnection(); 
+				
+				ps=con.prepareStatement(query); 
+				ps.setString(2, id);
+				ps.setString(1, nome);
+				ps.executeUpdate();
+
+			}finally {
+				try {
+					if(ps!=null) ps.close(); 
+				}finally {
+					DriverManagerConnectionPool.releaseConnection(con);
+				}
+			}
+	}
+		
+		public String doRetrievePassword(String email) {
+		  	  Connection con = null;
+		        PreparedStatement ps = null;
+		        String query = "select password from " + UtenteDAO.TABLE_NAME + " where username=?";
+		        String risposta=null;
+
+		        try {
+		            con = DriverManagerConnectionPool.getConnection();
+
+		            ps = con.prepareStatement(query);
+		            ps.setString(1, email);
+		            ResultSet rs = ps.executeQuery();
+
+		            while (rs.next()) {
+		                risposta=rs.getString("password");
+		               
+		            }
+		            rs.close();
+		        }catch(Exception e) {
+		      	  e.printStackTrace();
+		  }finally {
+		            try {
+		                if (ps != null) ps.close();
+		            }catch(Exception e) {
+		          	  e.printStackTrace();
+		            } finally {
+		            }
+		                DriverManagerConnectionPool.releaseConnection(con);
+		            }
+
+		        return risposta;
+		  }
 
 }

@@ -19,7 +19,8 @@ public class RedirectServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UtenteBean auth = (UtenteBean) request.getSession().getAttribute("auth");
 		if(auth==null) response.sendRedirect("login.jsp");
-		response.sendRedirect("checkout_final.jsp");
+		else
+			response.sendRedirect("checkout_address.jsp");
 	}
 
 

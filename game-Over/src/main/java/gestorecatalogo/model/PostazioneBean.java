@@ -1,10 +1,42 @@
 package gestorecatalogo.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class PostazioneBean implements Serializable {
     private int idPostazione;
-    private String ora;
+    private String tipo;
+    public String getTipo() {
+		return tipo;
+	}
+
+
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+
+
+
+    
+
+	public PostazioneBean(int idPostazione, String ora, boolean disp, double prezzo,String tipo, String img) {
+		super();
+		this.idPostazione = idPostazione;
+
+		this.ora = ora;
+		this.disp = disp;
+		this.prezzo = prezzo;
+		this.tipo=tipo;
+		this.img = img;
+	}
+
+
+
+
+
+	private String ora;
 
     public boolean isDisp() {
         return disp;

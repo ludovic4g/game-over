@@ -1,4 +1,5 @@
 <%@ page import= "utente.model.*" %>
+<%@ page import= "gestorecatalogo.model.*" %>
 <%@ page import= "java.util.ArrayList" %>
 <%@ page import= "connection.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -7,6 +8,9 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
+        
+        VideogiocoDAO vdao = new VideogiocoDAO();
+        ArrayList<VideogiocoBean> lista = vdao.doRetrieveAll();
         %>
         <!DOCTYPE html>
         <html lang="en">
@@ -30,10 +34,10 @@
                                 <div class="content">
                                         <h2 class="glitch">A New Era of<br>
                                                 E-Sport Commerce</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor
-                                                incidunt ut labore et
-                                                dolore magna aliqua.</p>
-                                        <a href="#" class="btn">Explore</a>
+                                        <p> La forma di competizione che coinvolge videogiochi competitivi, dove i giocatori si sfidano tra loro per raggiungere gli obiettivi del gioco e divertirsi con gli amici.
+                                        Per chi non ha possibilità di permettersi un PC da gaming o vuole passare del tempo con dei propri amici in compagnia attorno a un tavolo da giochi.
+                                        In più avrai la possibilità di acquistare direttamente i giochi offerti nelle postazioni da gaming direttamente sul nostro sito!</p>
+                                        <a href="shopgame.jsp" class="btn">Esplora</a>
                                 </div>
                                 <div class="imgBx">
                                         <div class="ball"></div>
@@ -48,20 +52,9 @@
                         </div>
                         <div class="contentBx">
                                 <h2>About Us</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eleifend diam a nisl
-                                        viverra, non
-                                        dignissim tortor molestie. Sed eget mi maximus, venenatis risus dignissim,
-                                        placerat nunc.
-                                        Maecenas placerat nibh tortor, in blandit arcu tempus non. Sed cursus ante sed
-                                        est gravida, eget
-                                        volutpat purus finibus.
-                                        Maecenas dapibus dapibus faucibus. Mauris non euismod lorem.
-                                        Phasellus ornare, nunc a aliquet posuere, ligula metus dapibus sapien, in
-                                        aliquet erat purus nec dolor.
-                                        Nulla facilisi. Etiam arcu sem, ultrices quis dolor vel, fringilla ultrices
-                                        augue.
+                                <p>GameOver è un progetto dedicato agli appassionati di videogiochi e giochi da tavolo, che mira a creare uno spazio accogliente dove incontrarsi, socializzare e divertirsi insieme. Offriamo un ambiente confortevole, dotato di postazioni di gioco attrezzate con computer o adatte a giochi da tavolo, accompagnate da snack e bevande per rendere l'esperienza ancora più piacevole. Inoltre, proponiamo la vendita e la prenotazione di videogiochi, giochi da tavolo e bustine di carte collezionabili per coloro che vogliono provare i nuovi titoli sul mercato. Siamo il punto d'incontro perfetto per tutti gli appassionati di videogiochi e giochi da tavolo, indipendentemente dall'età, dal genere o dalla classe sociale. Venite a trovarci per vivere insieme la passione per i giochi!
                                 </p>
-                                <a href="#">Read More</a>
+                              <a href="aboutus.jsp">Leggi di più</a>
                         </div>
                 </div>
                 <!-- Games -->
@@ -73,94 +66,50 @@
                                 <li class="list" data-filter="console">Console Games</li>
                         </ul>
                         <div class="cardBx">
-                                <div class="card" data-item="pc">
-                                        <img src="https://upload.wikimedia.org/wikipedia/en/5/5e/Fall_Guys_cover.jpg"
-                                                alt="">
-                                        <div class="content">
-                                                <h4>Fall Guys</h4>
-                                                <div class="info">
-                                                        <p>Pricing<br><span>$10</span></p>
-                                                        <a href=""><i class='bx bx-cart-add'></i></a>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div class="card" data-item="pc">
-                                        <img src="game1.png" alt="">
-                                        <div class="content">
-                                                <h4>Game Name</h4>
-                                                <div class="info">
-                                                        <p>Pricing<br><span>$10</span></p>
-                                                        <a href=""><i class='bx bx-cart-add'></i></a>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div class="card" data-item="pc">
-                                        <img src="game1.png" alt="">
-                                        <div class="content">
-                                                <h4>Game Name</h4>
-                                                <div class="info">
-                                                        <p>Pricing<br><span>$10</span></p>
-                                                        <a href=""><i class='bx bx-cart-add'></i></a>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div class="card" data-item="pc">
-                                        <img src="game1.png" alt="">
-                                        <div class="content">
-                                                <h4>Game Name</h4>
-                                                <div class="info">
-                                                        <p>Pricing<br><span>$10</span></p>
-                                                        <a href=""><i class='bx bx-cart-add'></i></a>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div class="card" data-item="console">
-                                        <img src="game1.png" alt="">
-                                        <div class="content">
-                                                <h4>Game Name</h4>
-                                                <div class="info">
-                                                        <p>Pricing<br><span>$10</span></p>
-                                                        <a href=""><i class='bx bx-cart-add'></i></a>
-                                                </div>
-                                        </div>
-                                </div>
-
-                                <div class="card" data-item="console">
-                                        <img src="game1.png" alt="">
-                                        <div class="content">
-                                                <h4>Game Name</h4>
-                                                <div class="info">
-                                                        <p>Pricing<br><span>$10</span></p>
-                                                        <a href=""><i class='bx bx-cart-add'></i></a>
-                                                </div>
-                                        </div>
-                                </div>
-
-                                <div class="card" data-item="console">
-                                        <img src="game1.png" alt="">
-                                        <div class="content">
-                                                <h4>Game Name</h4>
-                                                <div class="info">
-                                                        <p>Pricing<br><span>$10</span></p>
-                                                        <a href=""><i class='bx bx-cart-add'></i></a>
-                                                </div>
-                                        </div>
-                                </div>
-
-                                <div class="card" data-item="console">
-                                        <img src="game1.png" alt="">
-                                        <div class="content">
-                                                <h4>Game Name</h4>
-                                                <div class="info">
-                                                        <p>Pricing<br><span>$10</span></p>
-                                                        <a href=""><i class='bx bx-cart-add'></i></a>
-                                                </div>
-                                        </div>
-                                </div>
+            <%if(!lista.isEmpty()){
+		    		for(VideogiocoBean b: lista){
+		    			if(b.getTipo().contains("PS4")||b.getTipo().contains("Nintendo")){%>
+                <div class="card" data-item="console">
+                     <img src="<%=b.getImg1() %>" alt="game1.png">
+                    <div class="content">
+                        <h4><%=b.getNome()%></h4>
+                        <p class="price">Pricing<span> €<%=b.getPrezzo()%></span></p>
+                        <div class="info">
+                         <%if(auth!= null && (auth.isGestoreCatalogo()|| auth.isGestorePrenotazioni()|| auth.isGestoreOrdini())==false) {%>
+                            <a href="AddToCartServlet?id=<%=b.getId()%>&action=lista"><i class='bx bx-cart-add'></i></a>
+                            <%} %>
+                            <a href="productdetails.jsp?id=<%=b.getId()%>">Dettagli</a>
+                        </div>
+                    </div>
+                </div>              
+            <%}
+		    		}
+            }%>
+                       </div>
+              <div class="cardBx">
+            <%if(!lista.isEmpty()){
+		    		for(VideogiocoBean b: lista){
+		    			if(b.getTipo().contains("PC")){%>
+                <div class="card" data-item="pc">
+                    <img src="<%=b.getImg1() %>" alt="game1.png">
+                    <div class="content">
+                        <h4><%=b.getNome()%></h4>
+                        <p class="price">Pricing<span> €<%=b.getPrezzo()%></span></p>
+                        <div class="info">
+                         <%if(auth!= null && (auth.isGestoreCatalogo()|| auth.isGestorePrenotazioni()|| auth.isGestoreOrdini())==false) {%>
+                            <a href="AddToCartServlet?id=<%=b.getId()%>&action=lista"><i class='bx bx-cart-add'></i></a>
+                            <%} %>
+                            <a href="productdetails.jsp?id=<%=b.getId()%>">Dettagli</a>
+                        </div>
+                    </div>
+                </div>              
+            <%}
+		    		}
+            }%>
                         </div>
                 </div>
                 <!-- Card Banner -->
-                <div class="containercard animeX" id="cards">
+                <!-- <div class="containercard animeX" id="cards">
                         <div class="cards">
                                 <div class="contentcards">
                                         <h2>Title</h2>
@@ -197,7 +146,7 @@
                                 </div>
                                 <img src="images/casa.png"></img>
                         </div>
-                </div>
+                </div> -->
                 <!-- Tournaments -->
                 <!-- <div class="tournaments animeX" id="tournaments">
 <h2>Live Tournaments</h2>

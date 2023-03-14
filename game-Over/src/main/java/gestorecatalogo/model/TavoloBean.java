@@ -1,9 +1,20 @@
 package gestorecatalogo.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class TavoloBean implements Serializable {
-    public int getIdTavolo() {
+	private String tipo;
+	public Date data;
+    public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public int getIdTavolo() {
         return idTavolo;
     }
 
@@ -55,6 +66,14 @@ public class TavoloBean implements Serializable {
     public void setImg(String img) {
         this.img = img;
     }
+    
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
     private double prezzoPosto;
     private String ora;
@@ -63,5 +82,20 @@ public class TavoloBean implements Serializable {
     public TavoloBean() {
 
     }
+
+	public TavoloBean(String tipo, Date data, int idTavolo, int numeroPosti, boolean disp, double prezzoPosto,
+			String ora, String img) {
+		super();
+		this.tipo = tipo;
+		this.data = data;
+		this.idTavolo = idTavolo;
+		this.numeroPosti = numeroPosti;
+		this.disp = disp;
+		this.prezzoPosto = prezzoPosto;
+		this.ora = ora;
+		this.img = img;
+	}
+    
+    
 
 }
