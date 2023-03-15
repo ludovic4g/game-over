@@ -239,4 +239,24 @@
     <servlet-name>FilterServlet</servlet-name>
     <url-pattern>/FilterServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RedirectPrenotazioniServlet</display-name>
+    <servlet-name>RedirectPrenotazioniServlet</servlet-name>
+    <servlet-class>utente.control.RedirectPrenotazioniServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RedirectPrenotazioniServlet</servlet-name>
+    <url-pattern>/RedirectPrenotazioniServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AcquistoRedirectServlet</display-name>
+    <servlet-name>AcquistoRedirectServlet</servlet-name>
+    <servlet-class>utente.model.AcquistoRedirectServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AcquistoRedirectServlet</servlet-name>
+    <url-pattern>/AcquistoRedirectServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

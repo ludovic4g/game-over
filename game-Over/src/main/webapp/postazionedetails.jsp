@@ -1,10 +1,17 @@
 <%@ page import="utente.model.*" %>
+<%@ page import="gestorecatalogo.model.*" %>
   <%@ page import="java.util.ArrayList" %>
     <%@ page import="connection.*" %>
       <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-        <% UtenteBean auth=(UtenteBean) request.getSession().getAttribute("auth"); if(auth!=null){
-          request.setAttribute("auth", auth); } %>
+        <% UtenteBean auth=(UtenteBean) request.getSession().getAttribute("auth"); 
+        if(auth!=null){
+          request.setAttribute("auth", auth);
+          } 
+        
+        ArrayList<PostazioneBean> lista = (ArrayList<PostazioneBean>) request.getSession().getAttribute("lista");
+        request.getSession().setAttribute("lista", lista);
+          %>
           <!DOCTYPE html>
           <html lang="en">
 
@@ -23,12 +30,13 @@
             <%@ include file="includes/header.jsp" %>
               <!---------seat Select--------->
               <div class="bodycontain">
+              <form action="AddToCartServlet?action=postazioni" method="post">
                 <div class="type-container">
                   <label> Seleziona il tipo di Postazione: </label>
-                  <select id="type">
-                    <option value="10">PC ( 10 €)</option>
-                    <option value="8">PlayStation 5 ( 8 €)</option>
-                    <option value="8">XBox One ( 8 €)</option>
+                  <select id="type" name="tipo">
+                    <option value="PC">PC ( 10 €)</option>
+                    <option value="PS5">PlayStation 5 ( 8 €)</option>
+                    <option value="XBox">XBox One ( 8 €)</option>
                   </select>
                 </div>
                 <br>
@@ -47,67 +55,32 @@
                     <small>Sold</small>
                   </li>
                 </ul>
-                <div class="container">
-                  <div class="row">
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat sold"></div>
-                    <div class="seat sold"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                  </div>
-                  <div class="row">
-                   	<br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                  </div>
-                  <div class="row">
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                  </div>
-                  <div class="row">
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                  </div>
-                  <div class="row">
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat sold"></div>
-                    <div class="seat sold"></div>
-                    <div class="seat sold"></div>
-                    <div class="seat"></div>
-                  </div>
+                <div class="container"> 
+                <!-- <div class="row"> -->
+                <div class="cardBX">
+                 <%if(lista!=null){
+                 for(PostazioneBean b: lista){
+                	 if(!b.isDisp()){
+                 %>
+                  <button type="submit" class="seat sold" disabled></button>
+                                  <%}else{ %>
+                   <button type="submit" class="seat" name="button"  value="<%=b.getIdPostazione()%>"></button>
+                   <% }
+                 }
+                 }%>       
                 </div>
-                <p class="text">
+                <!-- </div> -->
+                </div>
+               <!--  <p class="text">
                 <div class="warning">Il totale viene calcolato nel CARRELLO!!</div>
                 </p>
                 <p class="text">
                   Hai selezionato <span id="count">0</span> postazione prezzo totale <span id="total">0</span>€
                 </p>
-                <a href="AddToCartServlet"><button type="button" class="btn">
-                    Aggiungi al carrello<i class="fas fa-shopping-cart"></i>
-                  </button></a>
+                <a href="AddToCartServlet"> 
+                <input type="submit" class="btn" value="Aggiungi al carrello"> -->
+                  
+                  </form>
               </div>
               <!--Footer-->
               <%@ include file="includes/footer.jsp" %>

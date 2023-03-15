@@ -10,12 +10,16 @@
         }
         Carrello carrello = (Carrello) session.getAttribute("carrello");
         ArrayList<VideogiocoBean> games =null;
+        ArrayList<PostazioneBean> postazioni = null;
+        ArrayList<TavoloBean> tavoli = null;
         
         if(carrello== null){
         	carrello = new Carrello();
         }
         boolean ctrl= carrello==null;
         games= carrello.getGames();
+        postazioni = carrello.getPostazioni();
+        tavoli = carrello.getTavoli();
         
         request.setAttribute("carrello", carrello);
         %>
@@ -72,16 +76,8 @@
             <div class="total-price_checkout">
                     <table class="checkout_table">
                         <tr>
-                            <td class="subtitle-checkout">Subtotal</td>
-                            <td class="subtotal-product-price-checkout">$200.00</td>
-                        </tr>
-                        <tr>
-                            <td class="subtitle-checkout">Tax</td>
-                            <td class="tax-product-price-checkout">$35.00</td>
-                        </tr>
-                        <tr>
                             <td class="subtitle-checkout">Totale</td>
-                            <td class="total-product-price-checkout">$230,00</td>
+                            <td class="total-product-price-checkout"><%out.println(String.format("%.2f&euro;", carrello.getTotal()));%></td>
                         </tr>
                     </table>
                 </div>             
@@ -133,7 +129,7 @@
                         <input type="text" maxlength="3" class="cvv-input">
                     </div>
                 </div>
-                <a href="acquito.jsp"><input type="submit" value="Procedi all'acquisto" class="submit-btn"></a>
+                <a href="AcquistoRedirectServlet"><input type="submit" value="Procedi all'acquisto" class="submit-btn"></a>
     
         </div>    
         <!--Footer-->

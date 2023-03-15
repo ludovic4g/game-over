@@ -3,6 +3,8 @@ package utente.control;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import gestorecatalogo.model.PostazioneBean;
+import gestorecatalogo.model.TavoloBean;
 import gestorecatalogo.model.VideogiocoBean;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -24,6 +26,8 @@ public class RemoveFromCartServlet extends HttpServlet {
 		carrello = (Carrello) request.getSession().getAttribute("carrello");
 		
 		ArrayList<VideogiocoBean> games = carrello.getGames();
+		ArrayList<PostazioneBean> postazioni = carrello.getPostazioni();
+		ArrayList<TavoloBean> tavoli = carrello.getTavoli();
 		
 		String i = request.getParameter("id");
 		int id=0;
@@ -33,6 +37,26 @@ public class RemoveFromCartServlet extends HttpServlet {
 			for(VideogiocoBean v: games) {
 				if(id==v.getId()) {
 					carrello.removeGame(v);
+					break;
+				}
+			}
+			response.sendRedirect("cart.jsp");
+		}
+		
+		else if(action.equals("postazioni")) {
+			for(PostazioneBean v: postazioni) {
+				if(id==v.getIdPostazione()) {
+					carrello.removePostazione(v);
+					break;
+				}
+			}
+			response.sendRedirect("cart.jsp");
+		}
+		
+		else if(action.equals("tavoli")) {
+			for(TavoloBean v: tavoli) {
+				if(id==v.getIdTavolo()) {
+					carrello.removeTavolo(v);
 					break;
 				}
 			}

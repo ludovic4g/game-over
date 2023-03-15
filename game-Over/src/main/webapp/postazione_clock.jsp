@@ -23,19 +23,19 @@
             <%@ include file="includes/header.jsp" %>
               <!---------seat Select--------->
               <div class="bodycontain">
+              <form action="RedirectPrenotazioniServlet?action=postazioni" method="post">
                 <div class="clock-container">
                   <label> Seleziona fascia oraria: </label>
-                  <select id="clock">
-                    <option>9:30 - 11:30</option>
-                    <option>14:30 - 16:30</option>
-                    <option>18:30 - 20:30</option>
+                  <select id="clock" name="orario">
+                    <option value="9:30 - 11:30">9:30 - 11:30</option>
+                    <option value="14:30 - 16:30">14:30 - 16:30</option>
+                    <option value="18:30 - 20:30">18:30 - 20:30</option>
                   </select>
                 </div>
                 <br>
                 <br>
-                <a href="postazionedetails.jsp"><button type="button" class="btn">
-                                                                Avanti
-                                                        </button></a>
+                <input type="submit" class="btn" value="Avanti"> 
+               </form>
               </div>
               <!--Footer-->
               <%@ include file="includes/footer.jsp" %>

@@ -5,14 +5,6 @@ import java.util.Date;
 
 public class TavoloBean implements Serializable {
 	private String tipo;
-	public Date data;
-    public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
-	}
 
 	public int getIdTavolo() {
         return idTavolo;
@@ -83,11 +75,10 @@ public class TavoloBean implements Serializable {
 
     }
 
-	public TavoloBean(String tipo, Date data, int idTavolo, int numeroPosti, boolean disp, double prezzoPosto,
+	public TavoloBean(String tipo,  int idTavolo, int numeroPosti, boolean disp, double prezzoPosto,
 			String ora, String img) {
 		super();
 		this.tipo = tipo;
-		this.data = data;
 		this.idTavolo = idTavolo;
 		this.numeroPosti = numeroPosti;
 		this.disp = disp;

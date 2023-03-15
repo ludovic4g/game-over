@@ -29,7 +29,6 @@ public class TavoloDAO {
                 b.setNumeroPosti(rs.getInt("numeroPosti"));
                 b.setPrezzoPosto(rs.getDouble("prezzoPosto"));
                 b.setOra(rs.getString("ora"));
-                b.setData(rs.getDate("data"));
                 b.setDisp(rs.getBoolean("disp"));
                 b.setImg(rs.getString("img"));
 
@@ -64,7 +63,6 @@ public class TavoloDAO {
                 b.setNumeroPosti(rs.getInt("numeroPosti"));
                 b.setPrezzoPosto(rs.getDouble("prezzoPosto"));
                 b.setOra(rs.getString("ora"));
-                b.setData(rs.getDate("data"));
                 b.setTipo(rs.getString("tipo"));
                 b.setDisp(rs.getBoolean("disp"));
                 b.setImg(rs.getString("img"));
@@ -97,7 +95,6 @@ public class TavoloDAO {
             ps.setInt(1, utente.getNumeroPosti());
             ps.setDouble(2, utente.getPrezzoPosto());
             ps.setString(3, utente.getOra());
-            ps.setDate(4, new java.sql.Date(utente.getData().getTime()));
             ps.setString(5, utente.getTipo());
             ps.setBoolean(6, utente.isDisp());
             ps.setString(7, utente.getImg());

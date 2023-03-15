@@ -11,13 +11,18 @@
         
         Carrello carrello = (Carrello) session.getAttribute("carrello");
         ArrayList<VideogiocoBean> games =null;
+        ArrayList<TavoloBean> tavoli = null;
+        ArrayList<PostazioneBean> postazioni = null;
         
         if(carrello== null){
         	carrello = new Carrello();
         }
         boolean ctrl= carrello==null;
+        tavoli = carrello.getTavoli();
+        postazioni = carrello.getPostazioni();
         games= carrello.getGames();
         request.setAttribute("carrello", carrello);
+        request.setAttribute("auth", auth);
         %>
 
     <!DOCTYPE html>
@@ -40,33 +45,74 @@
             <h2 class="title-page">Carrello</h2>
             <div class="small-container cart-page">
                 <table>
+                <%if(!tavoli.isEmpty()){ %>
+                    <tr class="column">
+                        <th>Prodotti</th>
+                        <th>Tipo</th>
+                     
+                        <th>Totale</th>
+                    </tr>
+                    <%for(TavoloBean v: tavoli) {
+                    %>
+                    <tr>
+                        <td>
+                            <div class="cart-info">
+                                <img
+                                    src="<%=v.getImg()%>">
+                                <div class="resume">
+                                    <p>Tavolo n.<%=v.getIdTavolo() %></p>
+                                    <small class="single-product-price">Prezzo:<%out.println(String.format("%.2f&euro;", v.getPrezzoPosto()));%></small>
+                                    <br>
+                                    <small class="single-product-price">Orario:<%=v.getOra()%></small>
+                                    <small class="single-product-price">N.Persone:<%=v.getNumeroPosti() %></small>
+                                    <br>
+                                    <a class="remove" href="RemoveFromCartServlet?action=tavolo&id=<%=v.getIdTavolo()%>">Remove</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="platform">Gioco di <%=v.getTipo() %></td>
+                        <td class="product-price"><%out.println(String.format("%.2f&euro;", v.getPrezzoPosto()*v.getNumeroPosti()));%></td>
+                    </tr>
+                    <%}
+                    }%>
+                    <%if(!postazioni.isEmpty()) { %>
+                    <tr class="column">
+                        <th>Prodotti</th>
+                        <th>Tipo</th>
+                        
+                        <th>Totale</th>
+                    </tr>
+                    <%
+                    for(PostazioneBean v: postazioni) {
+                    %>
+                    <tr>
+                        <td>
+                            <div class="cart-info">
+                                <img
+                                    src="<%=v.getImg()%>">
+                                <div class="resume">
+                                    <p>Postazione n.<%=v.getIdPostazione() %></p>
+                                    <small class="single-product-price">Prezzo:<%out.println(String.format("%.2f&euro;", v.getPrezzo()));%></small>
+                                    <br>
+                                    <small class="single-product-price">Orario:<%=v.getOra() %></small>
+                                    <br>
+                                    <a class="remove" href="RemoveFromCartServlet?action=postazione&id=<%=v.getIdPostazione()%>">Remove</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="platform"><%=v.getTipo() %></td>
+                        <td class="product-price"><%out.println(String.format("%.2f&euro;", v.getPrezzo()));%></td>
+                    </tr>
+                    <%}
+                    }%>
+                    <%if(!games.isEmpty()) { %>
                     <tr class="column">
                         <th>Prodotti</th>
                         <th>Quantità</th>
                         <th>Piattaforma</th>
                         <th>Totale</th>
                     </tr>
-                    <tr>
-                        <td>
-                            <div class="cart-info">
-                                <img
-                                    src="https://i.etsystatic.com/27612067/r/il/f086b9/3983570447/il_794xN.3983570447_95oe.jpg">
-                                <div class="resume">
-                                    <p>Bracciale tormalina nera grezza</p>
-                                    <small class="single-product-price">Prezzo:$50.00</small>
-                                    <br>
-                                    <small class="single-product-price">Orario:17:30</small>
-                                    <small class="single-product-price">N.Persone:3</small>
-                                    <br>
-                                    <a class="remove" href="">Remove</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td><input type="number" min="1" value="1"></td>
-                        <td class="platform">//</td>
-                        <td class="product-price">$50.00</td>
-                    </tr>
-                    <%if(games!=null) {
+                    <%
                     for(VideogiocoBean v: games) {
                     %>
                     <tr>

@@ -26,18 +26,19 @@
                 <%@ include file="includes/header.jsp" %>
                 <!---------Table Select--------->
                 <div class="bodycontain">
+                <form action="RedirectPrenotazioniServlet?action=tavoli" method="post">
       <div class="clock-container">
         <label> Seleziona orario: </label>
-        <select id="clock">
-          <option>10:30</option>
-          <option>11:30</option>
+        <select id="clock" name="orario">
+          <option value="10:30">10:30</option>
+          <option value="16:30">16:30</option>
+          <option value="18:30">18:30</option>
         </select>
       </div>
       <br>
       <br>
-      <a href="tavolodetails.jsp"><button type="button" class="btn">
-                                                                Avanti
-                                                        </button></a>
+      <input type="submit" class="btn" value="Avanti">
+      </form>
     </div>
                 <!--Footer-->
                 <%@ include file="includes/footer.jsp" %>

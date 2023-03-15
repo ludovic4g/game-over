@@ -1,3 +1,4 @@
+<%@ page import= "gestorecatalogo.model.*" %>
 <%@ page import= "utente.model.*" %>
 <%@ page import= "java.util.ArrayList" %>
 <%@ page import= "connection.*" %>
@@ -7,6 +8,9 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
+        
+        ArrayList<TavoloBean> lista = (ArrayList<TavoloBean>) request.getSession().getAttribute("lista");
+        request.getSession().setAttribute("lista", lista);
         %>
         <!DOCTYPE html>
         <html lang="en">
@@ -26,18 +30,19 @@
                 <%@ include file="includes/header.jsp" %>
                 <!---------Table Select--------->
                 <div class="bodycontain">
+                <form action="AddToCartServlet?action=tavoli" method="post">
                 <h2 class="h2_title">Scegli il tuo tavolo</h2>
                 <div class="type-container">
         <label> Seleziona il tipo di giochi: </label>
-        <select id="type">
-          <option value="5">Giochi da tavolo ( 5 €)</option>
-          <option value="3">Giochi di carte ( 3 €)</option>
+        <select id="type" name="tipo">
+          <option value="Tavolo">Giochi da tavolo ( 5 €)</option>
+          <option value="Carte">Giochi di carte ( 3 €)</option>
         </select>
       </div>
       <br>
       <div class="price-container">
         <label for="numPeople">Numero di persone:</label>
-        <select id="numPeople">
+        <select id="numPeople" name="persone">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -61,69 +66,23 @@
         </li>
       </ul>
       <div class="container">
-
-        <div class="row">
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
+	<div class="cardBx">
+        <!-- <div class="row"> -->
+          <%if(lista!=null){
+                 for(TavoloBean b: lista){
+                	 if(!b.isDisp()){
+                 %>
+                 <button type="submit" class="table sold" disabled></button>
+                                  <%}else{ %>
+                   <button type="submit" class="table" name="button"  value="<%=b.getIdTavolo()%>"></button>
+                   <% }
+                 }
+                 }%>       
+            </div>
         </div>
-
-        <div class="row">
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table sold"></div>
-          <div class="table sold"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-        </div>
-        <div class="row">
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table sold"></div>
-          <div class="table sold"></div>
-        </div>
-        <div class="row">
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-        </div>
-        <div class="row">
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table sold"></div>
-          <div class="table sold"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-        </div>
-        <div class="row">
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table"></div>
-          <div class="table sold"></div>
-          <div class="table sold"></div>
-          <div class="table sold"></div>
-          <div class="table"></div>
-        </div>
+        </form>
       </div>
+      <!-- 
             <p class="text">
         <div class="warning">Il totale viene calcolato nel CARRELLO!!</div>
       </p>
@@ -136,7 +95,8 @@
       <a href="AddToCartServlet"><button type="button" class="btn">
                                                                 Aggiungi al carrello<i class="fas fa-shopping-cart"></i>
                                                         </button></a>
-    </div>
+ 
+    </div>   -->
                 <!--Footer-->
                 <%@ include file="includes/footer.jsp" %>
                 <script src="scripts/script.js"></script>
