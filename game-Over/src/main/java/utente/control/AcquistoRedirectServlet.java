@@ -1,7 +1,8 @@
-package utente.model;
+package utente.control;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import gestorecatalogo.model.PostazioneBean;
 import gestorecatalogo.model.TavoloBean;
@@ -42,12 +43,24 @@ public class AcquistoRedirectServlet extends HttpServlet {
 		OrdineBean ordine = new OrdineBean();
 		PrenotazioneBean prenotazione = new PrenotazioneBean();
 		PrenotazioneDAO pdao = new PrenotazioneDAO();
+		Date date = new Date();
 		
 		ArrayList<VideogiocoBean> games= carrello.getGames();
 		ArrayList<PostazioneBean> postazioni= carrello.getPostazioni();
 		ArrayList<TavoloBean> tavoli= carrello.getTavoli();
 		
 		//setting ordine
+		ordine.setDataAcquisto(date);
+		ordine.setIva(0.22);
+		for(VideogiocoBean b : games) {
+			
+		}
+		ordine.setListaProdotti();
+		ordine.setNumeroProdotti(0);
+		ordine.setPrezzoTotale(carrello.getTotal());
+		ordine.setStato("In attesa di conferma.");
+		ordine.setUtente(auth.getUsername());
+		
 		//setting pren
 		
 		carrello.clear();
