@@ -66,7 +66,7 @@ create table Prenotazione(
     utente varchar(30) not null,
     prezzoTotale double not null,
     postiPrenotati int not null,
-    ora varchar(20) not null,
+    ora varchar(20),
     dataprenotazione date not null,
     stato varchar(20) not null
  

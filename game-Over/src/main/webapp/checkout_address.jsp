@@ -41,32 +41,14 @@
 
 <body>
     <!-- Header -->
-    <header>
-        <a href="#" class="logo"><span aria-hidden="true">GameOver</span>GameOver<span
-                aria-hidden="true">GameOver</span></a>
-        <ul class="nav">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">E-Sport</a></li>
-            <li><a href="#">Games</a></li>
-            <li><a href="#">Carrello</a></li>
-            <li><a href="#">Prenotazioni</a></li>
-            <li><a href="#">Ordini</a></li>
-            <li><a href="login.jsp">Login</a></li>
-        </ul>
-        <div class="action">
-            <div class="searchBx">
-                <a href="#"><i class='bx bx-search'></i></a>
-                <input type="text" placeholder="Search Games">
-            </div>
-        </div>
-        <div class="toggleMenu" onclick="toggleMenu();"></div>
-    </header>
+     <%@ include file="includes/header.jsp" %>
     <div class="container_address">
         <div class="box_address" id="box-address">
         <div class="address_form">
+
             <div class="center">
                 <div class="address-box">
-                    <p class="address_title">Indirizzo<span style="float: right;position: relative;top: 15px;">
+                    <p class="address_title">Indirizzo: <span style="float: right;position: relative;top: 15px;">
                             <input type="checkbox" id="address-checkbox">
                         </span></p>
                     <button id="show-address">Modifica</button>
@@ -74,7 +56,7 @@
             </div>
             <div class="center">
                 <div class="address-box">
-                    <p class="address_title">Indirizzo<span style="float: right;position: relative;top: 15px;">
+                    <p class="address_title">Indirizzo: <span style="float: right;position: relative;top: 15px;">
                             <input type="checkbox" id="address-checkbox">
                         </span></p>
                     <button id="show-address2">Modifica</button>
@@ -82,7 +64,7 @@
             </div>
             <div class="center">
                 <div class="address-box">
-                    <p class="address_title">Indirizzo<span style="float: right;position: relative;top: 15px;">
+                    <p class="address_title">Indirizzo: <span style="float: right;position: relative;top: 15px;">
                             <input type="checkbox" id="address-checkbox">
                         </span></p>
                     <button id="show-address3">Modifica</button>
@@ -94,6 +76,7 @@
                 </div>
             </div>
             <a href="checkout_final.jsp"><button class="address-box-submit">Avanti</button></a>
+ 
         </div>
 </div>
         <div class="popup">
@@ -176,19 +159,7 @@
             
         </div>
     </div>
-    <footer>
-        <div class="info">
-            <a href="#" class="logo"><span aria-hidden="true">GameOver</span>GameOver<span
-                    aria-hidden="true">GameOver</span></a>
-            <p><i class="bx bx-copyright"></i>2022 All Rights Reserved</p>
-            <ul>
-                <li><a href=""><i class="bx bxl-facebook"></i></a></li>
-                <li><a href=""><i class="bx bxl-instagram"></i></a></li>
-                <li><a href=""><i class="bx bxl-twitter"></i></a></li>
-                <li><a href=""><i class="bx bxl-youtube"></i></a></li>
-            </ul>
-        </div>
-    </footer>
+     <%@ include file="includes/footer.jsp" %>
     <script>
         document.querySelector("#show-address").addEventListener("click", function () {
             document.querySelector(".popup").classList.add("active");
