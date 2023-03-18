@@ -125,7 +125,11 @@
                             <div class="label">
                                 Genere
                             </div>
+<<<<<<< Updated upstream
                             <select name="sesso">
+=======
+                            <select name="sesso" required>
+>>>>>>> Stashed changes
                                 <option selected="selected" value="">Preferisco non specificarlo</option>
                                 <option value="Maschio">Maschio</option>
                                 <option value ="Femmina">Femmina</option>
