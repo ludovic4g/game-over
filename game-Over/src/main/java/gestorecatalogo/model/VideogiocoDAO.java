@@ -332,7 +332,7 @@ public class VideogiocoDAO {
 		
 	}
     public void ModifyImg345(int idpf, String nome, String nome2, String nome3) throws SQLException{
-		String query="update videogioco set img1=?, img2=?, img3=? where id=?"; 
+		String query="update videogioco set img3=?, img4=?, img5=? where id=?"; 
 		Connection con=null; 
 		PreparedStatement ps=null; 
 		

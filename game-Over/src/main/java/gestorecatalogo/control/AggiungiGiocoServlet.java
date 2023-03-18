@@ -41,12 +41,14 @@ public class AggiungiGiocoServlet extends HttpServlet {
 		g=vdao.doRetriveByName(nome);
 		if(g.getNome()!=null) {
 			out.print("Nome del gioco già esistente.");
+			response.sendRedirect("addproduct.jsp");
 			return;
 		}else {
 			game.setNome(nome);
 		}
 		if(quantita==0) {
 			out.print("Aumentare la quantità di prodotto nel magazzino.");
+			response.sendRedirect("addproduct.jsp");
 			return;
 		}else {
 			game.updateMagazzino(quantita);
@@ -56,6 +58,7 @@ public class AggiungiGiocoServlet extends HttpServlet {
 			
 			if(!(img1.startsWith("http") && img2.startsWith("http") && img3.startsWith("http") && img4.startsWith("http") && img5.startsWith("http"))) {
 				out.print("Formato immagine non supportato.");
+				response.sendRedirect("addproduct.jsp");
 				return;
 			}else {
 				game.setImg1(img1);
@@ -71,7 +74,8 @@ public class AggiungiGiocoServlet extends HttpServlet {
 			game.setTipo(plat);
 			out.print("Aggiunta del gioco avvenuta correttamente.");
 			vdao.doSave(game);
-			response.sendRedirect("addproduct.jsp");	
+			response.sendRedirect("dashboard_admin.jsp");
+			
 		
 		}catch(Exception e) {
 			e.printStackTrace();

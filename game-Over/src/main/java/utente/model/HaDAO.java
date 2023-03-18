@@ -28,7 +28,7 @@ public class HaDAO {
 
             while (rs.next()) {
                 b.setUsername(rs.getString("username"));
-                b.setIdIndirizzo(rs.getInt("idIndirizzo"));
+                b.setIdIndirizzo(rs.getInt("id"));
             }
             rs.close();
         } finally {
@@ -42,11 +42,11 @@ public class HaDAO {
         return b;
     }
 
-    public HaBean doRetrieveByUsername(String codice) throws SQLException {
+    public ArrayList<HaBean> doRetrieveByUsername(String codice) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
         String query = "select * from " + HaDAO.TABLE_NAME + " where username=?";
-        HaBean b = new HaBean();
+        ArrayList<HaBean> ab = new ArrayList<HaBean>();
 
         try {
             con = DriverManagerConnectionPool.getConnection();
@@ -54,10 +54,12 @@ public class HaDAO {
             ps = con.prepareStatement(query);
             ps.setString(1, codice);
             ResultSet rs = ps.executeQuery();
+            HaBean b = new HaBean();
 
             while (rs.next()) {
                 b.setUsername(rs.getString("username"));
-                b.setIdIndirizzo(rs.getInt("idIndirizzo"));
+                b.setIdIndirizzo(rs.getInt("id"));
+                ab.add(b);
             }
             rs.close();
         } finally {
@@ -68,7 +70,7 @@ public class HaDAO {
             }
 
         }
-        return b;
+        return ab;
     }
 
     public ArrayList<HaBean> doRetrieveAll() throws SQLException {
@@ -85,7 +87,7 @@ public class HaDAO {
             HaBean b = new HaBean();
             while (rs.next()) {
                 b.setUsername(rs.getString("username"));
-                b.setIdIndirizzo(rs.getInt("idIndirizzo"));
+                b.setIdIndirizzo(rs.getInt("id"));
 
                 ab.add(b);
             }
@@ -116,7 +118,7 @@ public class HaDAO {
             HaBean b = new HaBean();
             while (rs.next()) {
                 b.setUsername(rs.getString("username"));
-                b.setIdIndirizzo(rs.getInt("idIndirizzo"));
+                b.setIdIndirizzo(rs.getInt("id"));
 
                 ab.add(b);
             }
@@ -133,7 +135,7 @@ public class HaDAO {
     }
     
     public void doSave(HaBean utente) throws SQLException {
-        String query = "insert into utente values(?,?)";
+        String query = "insert into ha values(?,?)";
 
         Connection con = null;
         PreparedStatement ps = null;

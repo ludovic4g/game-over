@@ -18,7 +18,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameOver</title>
+    <title>GameOver|Registrati</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -126,7 +126,7 @@
                                 Genere
                             </div>
                             <select name="sesso" required>
-                                <option selected="selected">Preferisco non specificarlo</option>
+                                <option selected="selected" value="">Preferisco non specificarlo</option>
                                 <option value="Maschio">Maschio</option>
                                 <option value ="Femmina">Femmina</option>
                                 <option value ="Altro">Altro</option>

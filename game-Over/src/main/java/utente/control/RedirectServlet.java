@@ -1,12 +1,15 @@
 package utente.control;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
+import gestorecatalogo.model.VideogiocoBean;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import utente.model.Carrello;
 import utente.model.UtenteBean;
 
 /**
@@ -18,9 +21,18 @@ public class RedirectServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UtenteBean auth = (UtenteBean) request.getSession().getAttribute("auth");
+		Carrello carrello = (Carrello) request.getSession().getAttribute("carrello");
 		if(auth==null) response.sendRedirect("login.jsp");
-		else
+		else {
+			ArrayList<VideogiocoBean> games = carrello.getGames();
+			for(VideogiocoBean b: games) {
+				if(b.getMagazzino()==0) {
+					carrello.removeGame(b);
+					response.sendRedirect("cart.jsp");
+				}
+			}
 			response.sendRedirect("checkout_address.jsp");
+		}
 	}
 
 

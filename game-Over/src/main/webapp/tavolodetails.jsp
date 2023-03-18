@@ -30,9 +30,10 @@
                 <%@ include file="includes/header.jsp" %>
                 <!---------Table Select--------->
                 <div class="bodycontain">
+                <div class="type-container">
                 <form action="AddToCartServlet?action=tavoli" method="post">
                 <h2 class="h2_title">Scegli il tuo tavolo</h2>
-                <div class="type-container">
+                
         <label> Seleziona il tipo di giochi: </label>
         <select id="type" name="tipo">
           <option value="Tavolo">Giochi da tavolo ( 5 €)</option>

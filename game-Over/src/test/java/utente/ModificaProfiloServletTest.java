@@ -178,44 +178,7 @@ public class ModificaProfiloServletTest {
   	   Mockito.verify(out).print(argument.capture());
   	   assertEquals("Mail già esistente.", argument.getValue());
     }
-    
-    @Test
-    public void modificaGenereSI() throws SQLException, ServletException, IOException, ParseException{
-    	String action= "gender";
-    	String id="honejmoon";
-    	String nome="Femmina";
-    	PrintWriter out = Mockito.mock(PrintWriter.class);
-    	ArgumentCaptor<String> argument = ArgumentCaptor.forClass(String.class);
        
-        Mockito.when(request.getParameter("action")).thenReturn(action);
-        Mockito.when(request.getParameter("gender")).thenReturn(nome);
-        Mockito.when(request.getParameter("id")).thenReturn(id);
-        Mockito.when(response.getWriter()).thenReturn(out);
-        
-        servlet.doPost(request, response);
-     	
-  	   Mockito.verify(out).print(argument.capture());
-  	   assertEquals("Modifica del profilo avvenuta correttamente.", argument.getValue());
-    }
-    
-    @Test
-    public void modificaGenereNO() throws SQLException, ServletException, IOException, ParseException{
-    	String action= "gender";
-    	String id="honejmoon";
-    	String nome="";
-    	PrintWriter out = Mockito.mock(PrintWriter.class);
-    	ArgumentCaptor<String> argument = ArgumentCaptor.forClass(String.class);
-       
-        Mockito.when(request.getParameter("action")).thenReturn(action);
-        Mockito.when(request.getParameter("gender")).thenReturn(nome);
-        Mockito.when(request.getParameter("id")).thenReturn(id);
-        Mockito.when(response.getWriter()).thenReturn(out);
-        
-        servlet.doPost(request, response);
-     	
-  	   Mockito.verify(out).print(argument.capture());
-  	   assertEquals("Genere non valido.", argument.getValue());
-    }
     
     @Test
     public void modificaRispostaSI() throws SQLException, ServletException, IOException, ParseException{

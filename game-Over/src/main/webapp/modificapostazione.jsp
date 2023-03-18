@@ -47,7 +47,7 @@
               <form action="ModificaPostazioneServlet?action=prezzo&id=<%=b.getIdPostazione() %>" method="post">
               <div class="form-group">
                 <label for="inputPrice">Prezzo</label>
-                <input type="number" id="inputPrice" class="form-control" name="prezzo" placeholder="<%=b.getPrezzo()%>" required>
+                <input type="text" id="inputPrice" class="form-control" name="prezzo" placeholder="<%=b.getPrezzo()%>" required>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">

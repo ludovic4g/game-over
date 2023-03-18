@@ -33,24 +33,23 @@
         <span class="text">Benvenuto|User Dashboard</span>
       </div>
       <% for(IndirizzoBean b : indirizzi){
-      int i=1;%>
+      int i=0;%>
       <div class="wrapper">
         <div class="collapsible">
           <input class="check" type="checkbox" id="collapsible-head">
       
-          <label class="collapsible-head" for="collapsible-head">Modifica Indirizzo (<%out.println(i++); %>)</label>
+          <label class="collapsible-head" for="collapsible-head">Modifica Indirizzo (<%out.println(++i); %>)</label>
           <div class="collapsible-text">
             <div class="card-body">
-             <form action="ModificaInfoServlet?action=nome&id=<%=auth.getUsername()%>&add=<%=b.getId() %>" method="post">
+             <form action="ModificaInfoServlet?action=indirizzo&id=<%=auth.getUsername()%>&add=<%=b.getId() %>&num=<%=i %>&det=dashboard" method="post">
               <div class="form-group">
                 <label for="inputName">Nome e Cognome</label>
                 <input type="text" id="inputName"  name="nomeind" class="form-control" placeholder="<%=auth.getNome()%> <%=auth.getCognome()%>" required>
               </div>
-              </form>
-               <form action="ModificaInfoServlet?action=indirizzo&id=<%=auth.getUsername()%>&add=<%=b.getId() %>" method="post" required>
               <div class="form-group">
                 <label for="inputPrice">Città</label>
                 <input type="text" id="inputName" name="citta" class="form-control"  placeholder="<%=b.getCitta()%>" required>
+                </div>
               <div class="form-group">
                 <label for="inputPrice">Provincia</label>
                 <input type="text" id="inputName" name="provincia" class="form-control"  placeholder="<%=b.getProvincia ()%>" required>

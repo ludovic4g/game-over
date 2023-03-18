@@ -91,7 +91,7 @@
               <form action="ModificaGiocoServlet?action=prezzo&id=<%=b.getId() %>" method="post">
               <div class="form-group">
                 <label for="inputPrice">Prezzo</label>
-                <input type="number" id="inputPrice" class="form-control" name="prezzo" placeholder="<%=b.getPrezzo()%>" required>
+                <input type="prezzo" id="inputPrice" class="form-control" name="prezzo" placeholder="<%=b.getPrezzo()%>" required>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
@@ -102,11 +102,7 @@
               <form action="ModificaGiocoServlet?action=piattaforma&id=<%=b.getId() %>" method="post">
               <div class="form-group">
                 <label for="inputName">Piattaforma</label>
-                <select name="piattaforma" class="option">
-                  <option value="PC">PC</option>
-                  <option value="Console">PlayStation 5</option>
-                  <option value="Console">Xbox One</option>
-                </select>
+                <input type="text" id="inputName" class="form-control" name="magazzino" placeholder=<%=b.getTipo()%> required>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
@@ -118,8 +114,8 @@
               <div class="form-group">
                 <label for="inputProjectLeader">Immagine Principale</label>
                 <br>
-                <input type="link" id="inputName" class="form-control" name="img1" required>
-                <input type="link" id="inputName" class="form-control" name="img2" required>
+                <input type="text" id="inputName" class="form-control" name="img1" required>
+                <input type="text" id="inputName" class="form-control" name="img2" required>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
@@ -130,9 +126,9 @@
                <form action="ModificaGiocoServlet?action=img2&id=<%=b.getId() %>" method="post">
                 <div class="form-group">
                   <label for="inputProjectLeader">Immagini Secondarie</label>
-                  <input type="link" id="inputName" class="form-control" name="img3" required>
-                  <input type="link" id="inputName" class="form-control" name="img4" required>
-                  <input type="link" id="inputName" class="form-control" name="img5" required>
+                  <input type="text" id="inputName" class="form-control" name="img3" required>
+                  <input type="text" id="inputName" class="form-control" name="img4" required>
+                  <input type="text" id="inputName" class="form-control" name="img5" required>
                   <div class="row">
                     <div class="col-12">
                       <input type="submit" value="Conferma" class="right button">

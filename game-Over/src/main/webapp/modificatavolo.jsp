@@ -58,7 +58,7 @@
               <form action="ModificaTavoloServlet?action=prezzoposto&id=<%=b.getIdTavolo() %>" method="post">
               <div class="form-group">
                 <label for="inputPrice">Prezzo per Posto</label>
-                <input type="number" id="inputPrice" class="form-control" name="prezzo" placeholder="<%=b.getPrezzoPosto()%>" required>
+                <input type="text" id="inputPrice" class="form-control" name="prezzo" placeholder="<%=b.getPrezzoPosto()%>" required>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">

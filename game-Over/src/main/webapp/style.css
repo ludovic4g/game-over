@@ -1972,6 +1972,7 @@ select.option:focus {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 10px 0;
+    text-align: center;
 }
 
 .price-container select:focus,

@@ -5,8 +5,6 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import utente.model.HaBean;
 import utente.model.HaDAO;
+import utente.model.IndirizzoBean;
 import utente.model.IndirizzoDAO;
 import utente.model.UtenteBean;
 import utente.model.UtenteDAO;
@@ -34,6 +33,7 @@ public class ModificaInfoServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String action = request.getParameter("action");
 		String nome = request.getParameter("nome");
+		ArrayList<IndirizzoBean> indirizzi = (ArrayList<IndirizzoBean>) request.getSession().getAttribute("indirizzi");
 		String nomeind = request.getParameter("nomeind");
 		String cognome = request.getParameter("cognome");
 		String mail = request.getParameter("mail");
@@ -48,6 +48,8 @@ public class ModificaInfoServlet extends HttpServlet {
 		String old = request.getParameter("old");
 		String new1 = request.getParameter("new1");
 		String new2= request.getParameter("new2");
+		String ind= request.getParameter("num");
+		String det= request.getParameter("det");
 		UtenteDAO udao = new UtenteDAO();
 		UtenteBean utente = new UtenteBean();
 		IndirizzoDAO idao = new IndirizzoDAO();
@@ -126,32 +128,71 @@ public class ModificaInfoServlet extends HttpServlet {
 			}
 		}
 		if(action.equals("indirizzo")) {
-			if(nome==null || !utente.isValid(nome)) {
+			if(nomeind==null || !utente.isValid(nomeind)) {
 				out.print("Nome non valido.");
+				if(det.equals("dashboard")) {
+				response.sendRedirect("settings_address.jsp");	
 				return;
+				}else if(det.equals("checkout")){
+					response.sendRedirect("checkout_address.jsp");	
+					return;
+				}
 			}else {
 		    if(utente.existLetterSp(via)) {
 		    	out.print("Indirizzo non valido.");
+		    	if(det.equals("dashboard")) {
+		    	response.sendRedirect("settings_address.jsp");
 				return;
+		    	}else if(det.equals("checkout")){
+		    		response.sendRedirect("checkout_address.jsp");	
+					return;
+		    	}
 		    }else {
 		    if(utente.existLetter(c) || utente.existLetterSp(c)) {
 		    	out.print("CAP non valido.");
+		    	if(det.equals("dashboard")) {
+		    	response.sendRedirect("settings_address.jsp");
 		    	return;
+		    	}else if(det.equals("checkout")){
+		    		response.sendRedirect("checkout_address.jsp");	
+					return;
+		    	}
 		    }else {
-		    	if(citta==null || citta.equals("")) {
+		    	if(citta==null || citta.equals("") || !utente.isValid(citta)) {
 		    		out.print("Citta' non valida.");
+		    		if(det.equals("dashboard")) {
+		    		response.sendRedirect("settings_address.jsp");
 		    		return;
+		    		}else if(det.equals("checkout")){
+		    			response.sendRedirect("checkout_address.jsp");	
+						return;
+		    		}
 		    	}else {
 		    		if(provincia==null || provincia.equals("") || provincia.length()!=2) {
 		    			out.print("Provincia non valida.");
+		    			if(det.equals("dashboard")) {
+		    			response.sendRedirect("settings_address.jsp");
 		    			return;
+		    			}else if(det.equals("checkout")){
+		    				response.sendRedirect("checkout_address.jsp");	
+							return;
+		    			}
 		    		}else {
-		    			ha = hdao.doRetrieveByUsername(id);
+		    			if(det.equals("dashboard")) {
+		    			ha = hdao.doRetrieveByUsername(id).get(Integer.parseInt(ind)-1);
 						int addid = ha.getIdIndirizzo();
 						int cap= Integer.parseInt(c);
 						out.print("Modifica dell'indirizzo avvenuta correttamente.");
 						idao.doUpdate(addid,nomeind , via, cap, citta, provincia);							
-						response.sendRedirect("settings.jsp");	
+						response.sendRedirect("dashboard_user.jsp");	
+		    			}else if(det.equals("checkout")){
+		    				ha = hdao.doRetrieveByUsername(id).get(Integer.parseInt(ind)-1);
+							int addid = ha.getIdIndirizzo();
+							int cap= Integer.parseInt(c);
+							out.print("Modifica dell'indirizzo avvenuta correttamente.");
+							idao.doUpdate(addid,nomeind , via, cap, citta, provincia);							
+							response.sendRedirect("checkout_address.jsp");	
+		    			}
 		    		}
 		    	}
 		    }

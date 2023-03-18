@@ -371,7 +371,7 @@ public class UtenteDAO {
 				
 				ps=con.prepareStatement(query); 
 				ps.setString(2, id);
-				ps.setDate(1,(java.sql.Date) nome);
+				ps.setDate(1, new java.sql.Date(nome.getTime()));
 				ps.executeUpdate();
 
 			}finally {

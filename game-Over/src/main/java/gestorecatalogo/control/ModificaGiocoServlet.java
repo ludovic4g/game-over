@@ -45,6 +45,7 @@ public class ModificaGiocoServlet extends HttpServlet {
 				
 				}else if(vdao.doRetriveByName(nome).getNome()!=null){
 					out.print("Nome già esistente.");
+					response.sendRedirect("catalogo.jsp");
 					return;
 				}
 		}
@@ -74,9 +75,10 @@ public class ModificaGiocoServlet extends HttpServlet {
 				vdao.ModifyPiattaforma(id, plat);
 				response.sendRedirect("catalogo.jsp");
 			}
-			if(action.equals("img1")) {
-				if(!(img1.startsWith("http") && img1.startsWith("http"))) {
+			if(action.equals("img")) {
+				if(!(img1.startsWith("http") && img2.startsWith("http"))) {
 					out.print("Formato immagine non corretto.");
+					response.sendRedirect("catalogo.jsp");
 					return;
 				}else {
 					out.print("Modifica del gioco avvenuta correttamente.");
@@ -87,6 +89,7 @@ public class ModificaGiocoServlet extends HttpServlet {
 			if(action.equals("img2")) {
 				if(!(img3.startsWith("http") && img4.startsWith("http") && img5.startsWith("http"))) {
 					out.print("Formato immagine non corretto.");
+					response.sendRedirect("catalogo.jsp");
 					return;
 				}else {
 					out.print("Modifica del gioco avvenuta correttamente.");

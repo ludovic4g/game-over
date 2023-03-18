@@ -57,26 +57,22 @@
               </div>
               <div class="form-group">
                 <label for="inputPrice">Prezzo</label>
-                <input type="number" id="inputPrice" class="form-control" name="prezzo">
+                <input type="text" id="inputPrice" class="form-control" name="prezzo">
               </div>
               <div class="form-group">
                 <label for="inputName">Piattaforma</label>
-                <select name="piattaforma" class="option">
-                  <option value="PC">PC</option>
-                  <option value="Console">PlayStation 5</option>
-                  <option value="Console">Xbox One</option>
-                </select>
+                <input type="text" id="inputName" class="form-control" name="piattaforma">
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">Immagine Principale</label>
                 <br>
-                <input type="link" id="inputName" class="form-control" name="img1">
-                <input type="link" id="inputName" class="form-control" name="img2">
+                <input type="text" id="inputName" class="form-control" name="img1">
+                <input type="text" id="inputName" class="form-control" name="img2">
                 <div class="form-group">
                   <label for="inputProjectLeader">Immagini Secondarie</label>
-                  <input type="link" id="inputName" class="form-control" name="img3">
-                  <input type="link" id="inputName" class="form-control" name="img4">
-                  <input type="link" id="inputName" class="form-control" name="img5">
+                  <input type="text" id="inputName" class="form-control" name="img3">
+                  <input type="text" id="inputName" class="form-control" name="img4">
+                  <input type="text" id="inputName" class="form-control" name="img5">
                 </div>
               </div>
               <div class="row">
@@ -99,7 +95,7 @@
             <form action="AggiungiPostazioneServlet" method="post">
               <div class="form-group">
                 <label for="inputPrice">Prezzo</label>
-                <input type="number" id="inputPrice" class="form-control" name="prezzo">
+                <input type="text" id="inputPrice" class="form-control" name="prezzo">
               </div>
               <div class="form-group">
                 <label for="inputName">Ora</label>
@@ -112,7 +108,7 @@
               <div class="form-group">
                 <label for="inputProjectLeader">Immagine Principale</label>
                 <br>
-                <input type="link" id="inputName" class="form-control" name="img1">
+                <input type="text" id="inputName" class="form-control" name="img1">
               </div>
               <div class="row">
                 <div class="col-12">
@@ -143,7 +139,7 @@
               </div>
               <div class="form-group">
                 <label for="inputPrice">Prezzo per Posto</label>
-                <input type="number" id="inputPrice" class="form-control" name="prezzo">
+                <input type="text" id="inputPrice" class="form-control" name="prezzo">
               </div>
               <div class="form-group">
                 <label for="inputName">Ora</label>
@@ -156,7 +152,7 @@
               <div class="form-group">
                 <label for="inputProjectLeader">Immagine Principale</label>
                 <br>
-                <input type="link" id="inputName" class="form-control" name="img1">
+                <input type="text" id="inputName" class="form-control" name="img1">
               </div>
               <div class="row">
                 <div class="col-12">

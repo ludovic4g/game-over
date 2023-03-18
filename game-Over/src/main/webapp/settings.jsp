@@ -9,6 +9,8 @@
         }
         
         UtenteDAO udao = new UtenteDAO();
+        HaDAO hdao = new HaDAO();
+        ArrayList<HaBean> ha = hdao.doRetrieveByUsername(auth.getUsername());
         %>
   <!DOCTYPE html>
   <html lang="en">
@@ -114,7 +116,7 @@
                  <form action="ModificaInfoServlet?action=risposta&id=<%=auth.getUsername()%>" method="post">
                 <div class="form-group">
                   <label for="inputProjectLeader">Risposta</label>
-                  <input type="text" id="inputName" name="risposta" class="form-control" required>
+                  <input type="text" id="inputName" name="risposta" class="form-control">
                   <div class="row">
                     <div class="col-12">
                       <input type="submit" value="Conferma" class="right button">

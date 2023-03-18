@@ -1,4 +1,4 @@
-<div class="sidebar close">
+-<div class="sidebar close">
       <div class="logo-details">
         <i class='bx bxs-joystick'></i>
         <span class="logo_name">GameOver</span>

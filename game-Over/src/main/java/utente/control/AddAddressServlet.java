@@ -56,6 +56,7 @@ public class AddAddressServlet extends HttpServlet {
 		IndirizzoDAO idao = new IndirizzoDAO();
 		if(!ctrl.isValid(nome)) {
 			out.print("Nome non valido.");
+			response.sendRedirect("cart.jsp");
 			return;
 			
 		}
@@ -65,22 +66,26 @@ public class AddAddressServlet extends HttpServlet {
 			scelto.setCAP(cap);
 		}else {
 			out.print("CAP non valido.");
+			response.sendRedirect("cart.jsp");
 			return;
 		}
 		
-		if(citta==null || citta.equals("")) {
+		if(citta==null || citta.equals("") || !ctrl.isValid(citta)) {
 			out.print("Citta' non valida.");
+			response.sendRedirect("cart.jsp");
 			return;
 		}
 		scelto.setCitta(citta);
 		if(provincia==null || provincia.equals("") || provincia.length()!=2) {
 			out.print("Provincia non valida.");
+			response.sendRedirect("cart.jsp");
 			return;
 		}
 		scelto.setProvincia(provincia);
 		
 		if(ctrl.existLetterSp(indirizzo)) {
 			out.print("Indirizzo non valido.");
+			response.sendRedirect("cart.jsp");
 			return;
 		}
 		scelto.setVia(indirizzo);
@@ -92,7 +97,7 @@ public class AddAddressServlet extends HttpServlet {
 		hdao.doSave(ha);
 		
 		request.getSession().setAttribute("scelto", scelto);
-		response.sendRedirect("checkout_final.jsp");
+		response.sendRedirect("checkout_address.jsp");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

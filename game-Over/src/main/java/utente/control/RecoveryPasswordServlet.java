@@ -35,11 +35,13 @@ public class RecoveryPasswordServlet extends HttpServlet {
 			utente=udao.doRetrieveByMail(mail);
 			if(utente.getEmail()==null) {
 				out.print("Mail non esistente.");
+				response.sendRedirect("recovery_psw_first.jsp");
 				return;
 			}else {
 			if(utente!=null) {
 				if(!risposta.equals(udao.doRetrieveRisposta(utente.getUsername()))) {
 					out.print("Risposta non corrispondente.");
+					response.sendRedirect("recovery_psw_first.jsp");
 					return;
 				}else {
 					out.print("Identificazione avvenuta correttamente.");
@@ -59,10 +61,12 @@ public class RecoveryPasswordServlet extends HttpServlet {
 						response.sendRedirect("login.jsp");
 			}else {
 				out.print("Password non coincidono.");
+				response.sendRedirect("recovery_psw_field.jsp");
 				return;
 			}
 		}else {
 			out.print("Password non valida.");
+			response.sendRedirect("recovery_psw_field.jsp");
 			return;
 		}
 		}

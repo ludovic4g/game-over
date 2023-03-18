@@ -22,6 +22,7 @@
         HaDAO hdao = new HaDAO();
         ArrayList<IndirizzoBean> indirizzi = hdao.getIndirizziByUsername(auth.getUsername());
         request.setAttribute("indirizzi", indirizzi);
+        int i=0;
         
         
         %>
@@ -48,33 +49,60 @@
 
             <div class="center">
                 <div class="address-box">
-                    <p class="address_title">Indirizzo: <span style="float: right;position: relative;top: 15px;">
+                 <%if(indirizzi.size()>=1) {
+                 	i++;%>
+                    <p class="address_title">Indirizzo: <%=indirizzi.get(0).getVia() %> <span style="float: right;position: relative;top: 15px;">
                             <input type="checkbox" id="address-checkbox">
                         </span></p>
                     <button id="show-address">Modifica</button>
+                    <%}else{ %>
+                     <p class="address_title">--<span style="float: right;position: relative;top: 15px;">
+                            <input type="checkbox" id="address-checkbox" disabled>
+                        </span></p>
+                        <button id="show-address" disabled>Modifica</button>
+                    <% }%>
+                </div>
+            </div>
+           <div class="center">
+                <div class="address-box">
+                <%if(indirizzi.size()>1) {
+                i++;%>
+                    <p class="address_title">Indirizzo: <%= indirizzi.get(1).getVia()%> <span style="float: right;position: relative;top: 15px;">
+                            <input type="checkbox" id="address-checkbox">
+                        </span></p>
+                        <button id="show-address2">Modifica</button>
+                           <%}else{ %> 
+                           <p class="address_title">--<span style="float: right;position: relative;top: 15px;">
+                            <input type="checkbox" id="address-checkbox" disabled>
+                        </span></p>
+                        <button id="show-address2" disabled>Modifica</button>
+                        <%} %>
+                    
                 </div>
             </div>
             <div class="center">
                 <div class="address-box">
-                    <p class="address_title">Indirizzo: <span style="float: right;position: relative;top: 15px;">
+                <%if(indirizzi.size()>2){
+                i++;%>
+                    <p class="address_title">Indirizzo: <%=indirizzi.get(2).getVia() %> <span style="float: right;position: relative;top: 15px;">
                             <input type="checkbox" id="address-checkbox">
                         </span></p>
-                    <button id="show-address2">Modifica</button>
-                </div>
-            </div>
-            <div class="center">
-                <div class="address-box">
-                    <p class="address_title">Indirizzo: <span style="float: right;position: relative;top: 15px;">
-                            <input type="checkbox" id="address-checkbox">
+                        <button id="show-address3">Modifica</button>
+                        <%}else{ %>
+                        <p class="address_title">--<span style="float: right;position: relative;top: 15px;">
+                            <input type="checkbox" id="address-checkbox" disabled>
                         </span></p>
-                    <button id="show-address3">Modifica</button>
+                    <button id="show-address3" disabled>Modifica</button>
+                    <%} %>
                 </div>
             </div>
+            <%if(indirizzi.size()<3){ %>
             <div class="center">
                 <div class="address-box">
                     <button id="add-address">+ Aggiungi Indirizzo</button>
                 </div>
             </div>
+            <%} %>
             <a href="checkout_final.jsp"><button class="address-box-submit">Avanti</button></a>
  
         </div>
@@ -82,79 +110,59 @@
         <div class="popup">
             <div class="close-btn">&times;</div>
             <div class="form">
-                <h2>Indirizzo</h2>
+            <form action="ModificaInfoServlet?action=indirizzo&num=<%=i %>&id=<%=auth.getUsername() %>&det=checkout" method="post">
+                <h2>Modifica Indirizzo</h2>
                 <div class="form-element">
                     <label for="email">Nome</label>
-                    <input type="text" id="email">
+                    <input type="text" id="email" name="nomeind">
                 </div>
                 <div class="form-element">
-                    <label for="email">Cognome</label>
-                    <input type="text" id="email">
-                </div>
-                <div class="form-element">
-                    <label for="email">Citt�</label>
-                    <input type="text" id="email">
-                </div>
-                <div class="form-element">
-                    <label for="email">Paese</label>
-                    <input type="text" id="email">
+                    <label for="email">Citta'</label>
+                    <input type="text" id="email" name="citta">
                 </div>
                 <div class="form-element">
                     <label for="email">Provincia</label>
-                    <input type="text" id="email">
+                    <input type="text" id="email" name="provincia">
                 </div>
                 <div class="form-element">
                     <label for="email">CAP</label>
-                    <input type="text" id="email">
+                    <input type="text" id="email" name="cap">
                 </div>
                 <div class="form-element">
                     <label for="email">Indirizzo</label>
-                    <input type="text" id="email">
+                    <input type="text" id="email" name="via">
                 </div>
-                <div class="form-element">
-                    <label for="email">Telefono</label>
-                    <input type="text" id="email">
-                </div>
-                <button class="address-submit">Conferma</button>
+                <button class="address-submit" type="submit">Conferma</button>
+                </form>
             </div>
         </div>
         <div class="popup_add">
             <div class="close-btn">&times;</div>
             <div class="form">
+            <form action="AddAddressServlet" method="post">
                 <h2>Aggiungi Indirizzo</h2>
                 <div class="form-element">
                     <label for="email">Nome</label>
-                    <input type="text" id="email">
+                    <input type="text" id="email" name="nome">
                 </div>
                 <div class="form-element">
-                    <label for="email">Cognome</label>
-                    <input type="text" id="email">
-                </div>
-                <div class="form-element">
-                    <label for="email">Citt�</label>
-                    <input type="text" id="email">
-                </div>
-                <div class="form-element">
-                    <label for="email">Paese</label>
-                    <input type="text" id="email">
+                    <label for="email">Citta'</label>
+                    <input type="text" id="email" name="citta">
                 </div>
                 <div class="form-element">
                     <label for="email">Provincia</label>
-                    <input type="text" id="email">
+                    <input type="text" id="email" name="provincia">
                 </div>
                 <div class="form-element">
                     <label for="email">CAP</label>
-                    <input type="text" id="email">
+                    <input type="text" id="email" name="cap">
                 </div>
                 <div class="form-element">
                     <label for="email">Indirizzo</label>
-                    <input type="text" id="email">
+                    <input type="text" id="email" name="indirizzo">
                 </div>
-                <div class="form-element">
-                    <label for="email">Telefono</label>
-                    <input type="text" id="email">
-                </div>
-                <button class="address-submit">Conferma</button>
+                <button class="address-submit" type="submit">Conferma</button>
+                </form>
             </div>
             
         </div>

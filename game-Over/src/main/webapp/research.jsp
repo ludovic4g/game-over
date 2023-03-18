@@ -36,6 +36,9 @@
         <br>
         <!--Games-->
         <div class="games animeX" id="games">
+        <%if(games.isEmpty()){ %>
+        <h2>Nessun risultato trovato.</h2>
+        <%} else{%>
             <h2><%= "Risultati per '"+ cerca + "'" %>  </h2>
             <div class="cardBx">
             <%for(VideogiocoBean b : games){ %>
@@ -50,7 +53,8 @@
                         </div>
                     </div>
                 </div>
-                <%} %>
+                <%}
+            }%>
             </div>
         </div>
         <!--Footer-->
