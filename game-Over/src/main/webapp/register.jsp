@@ -125,7 +125,7 @@
                             <div class="label">
                                 Genere
                             </div>
-                            <select name="sesso" required>
+                            <select name="sesso">
                                 <option selected="selected" value="">Preferisco non specificarlo</option>
                                 <option value="Maschio">Maschio</option>
                                 <option value ="Femmina">Femmina</option>
@@ -215,7 +215,7 @@
                                 Risposta
                             </div>
                             <% if(request.getAttribute("errorPassword")!=null){ %>
-                             <input type="text" class="form-control is-invalid" name="risposta" placeholder="Errore Risposta" required>
+                             <input type="text" class="form-control is-invalid" name="risposta" placeholder="Errore Risposta">
                              <%}else{ %>
                             <input type="text" name="risposta" required>
                             <%} %>
