@@ -259,4 +259,24 @@
     <servlet-name>AcquistoRedirectServlet</servlet-name>
     <url-pattern>/AcquistoRedirectServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AcquistoServlet</display-name>
+    <servlet-name>AcquistoServlet</servlet-name>
+    <servlet-class>utente.control.AcquistoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AcquistoServlet</servlet-name>
+    <url-pattern>/AcquistoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeletePrenServlet</display-name>
+    <servlet-name>DeletePrenServlet</servlet-name>
+    <servlet-class>utente.control.DeletePrenServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeletePrenServlet</servlet-name>
+    <url-pattern>/DeletePrenServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

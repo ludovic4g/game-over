@@ -41,7 +41,7 @@
         <%@ include file="includes/header.jsp" %>
         <!--Checkout-->
 		        <div class="container_checkout">
-
+ 
             <div class="card-container_checkout">
     
                 <div class="front">
@@ -80,7 +80,8 @@
                             <td class="total-product-price-checkout"><%out.println(String.format("%.2f&euro;", carrello.getTotal()));%></td>
                         </tr>
                     </table>
-                </div>             
+                </div>     
+                  <form action="AcquistoServlet" method="post">      
                 <div class="inputCheckOut">
                     <span class="span_checkout">Numero Carta</span>
                     <input type="text" maxlength="16" class="card-number-input">
@@ -129,7 +130,8 @@
                         <input type="text" maxlength="3" class="cvv-input">
                     </div>
                 </div>
-                <a href="AcquistoRedirectServlet"><input type="submit" value="Procedi all'acquisto" class="submit-btn"></a>
+                <input type="submit" value="Procedi all'acquisto" class="submit-btn">
+                </form>
     
         </div>    
         <!--Footer-->

@@ -16,10 +16,7 @@
     	ArrayList<OrdineBean> o = odao.doRetrieveAllbyUsername(auth.getUsername());
         if(auth!=null)
         	request.setAttribute("ordine", o);
-        RiguardaDAO rdao = new RiguardaDAO();
-        ArrayList<RiguardaBean> riguarda = null;
-        VideogiocoBean game=null;
-        VideogiocoDAO vdao = new VideogiocoDAO();
+  
         %>
         
   
@@ -79,32 +76,28 @@
                                                 <th>Prodotti</th>
                                                 <th>Stato</th>
                                                 <th>Quantità</th>
-                                                <th>Data</th>
                                                 <th>Prezzo</th>
                                         </tr>
                                         
-                                        <%if(o!=null){
+                                        <%if(!o.isEmpty()){
                                         	for(OrdineBean f : o){
-                                        		riguarda= rdao.doRetriveByOrdine(f.getIdOrdine());
-                                        		game = vdao.doRetriveByKey(riguarda.get(0).getId());
-                                        	%>
+                                         	%>
                                                                               <tr>
                                                 <td>
                                                         <div class="cart-info">
                                                                 <img
-                                                                        src=<%=game.getImg1()%>>
+                                                                        src=<% %>>
                                                                 <div class="resume">
-                                                                        <p><%=f.getListaProdotti() %></p>
+                                                                        <p>Ordine n.<%=f.getIdOrdine()%></p>
                                                                         <br>
+                                                                        <%if(!(f.getStato().equals("Annullato"))){ %>
                                                                         <a class="remove" href="CancelOrderServlet?id=<%=f.getIdOrdine()%>">Annulla</a>
+                                                                        <%}%>
                                                                 </div>
                                                         </div>
                                                 </td>
                                                 <td class="state"><%=f.getStato() %></td>
                                                 <td class="quantity"><%=f.getNumeroProdotti() %></td>
-                                                <td class="platform"><%Format fi = new SimpleDateFormat("dd/MM/yy");
-              String strDate = fi.format(f.getDataAcquisto()); 
-              out.print(strDate);%></td>
                                                 <td class="product-price">€ <%=f.getPrezzoTotale() %></td>
                                         </tr>
                                         <% }

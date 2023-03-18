@@ -13,7 +13,7 @@ public class RiferiscePTDAO {
     public RiferiscePTBean doRetrieveByTavolo(int codice) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
-        String query = "select * from " + RiferiscePTDAO.TABLE_NAME + " where idTavolo=?";
+        String query = "select * from " + RiferiscePTDAO.TABLE_NAME + " where numero=?";
         RiferiscePTBean b = new RiferiscePTBean();
 
         try {
@@ -24,8 +24,8 @@ public class RiferiscePTDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                b.setIdTavolo(rs.getInt("idTavolo"));
-                b.setIdPrenotazione(rs.getInt("idPrenotazione"));
+                b.setIdTavolo(rs.getInt("numero"));
+                b.setIdPrenotazione(rs.getInt("id"));
             }
             rs.close();
         } finally {
@@ -42,7 +42,7 @@ public class RiferiscePTDAO {
     public RiferiscePTBean doRetrieveByPrenotazione(int codice) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
-        String query = "select * from " + RiferiscePTDAO.TABLE_NAME + " where idPrenotazione=?";
+        String query = "select * from " + RiferiscePTDAO.TABLE_NAME + " where id=?";
         RiferiscePTBean b = new RiferiscePTBean();
 
         try {
@@ -53,8 +53,8 @@ public class RiferiscePTDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                b.setIdTavolo(rs.getInt("idTavolo"));
-                b.setIdPrenotazione(rs.getInt("idPrenotazione"));
+                b.setIdTavolo(rs.getInt("numero"));
+                b.setIdPrenotazione(rs.getInt("id"));
             }
             rs.close();
         } finally {
@@ -81,8 +81,8 @@ public class RiferiscePTDAO {
             ResultSet rs = ps.executeQuery();
             RiferiscePTBean b = new RiferiscePTBean();
             while (rs.next()) {
-                b.setIdTavolo(rs.getInt("idTavolo"));
-                b.setIdPrenotazione(rs.getInt("idPrenotazione"));
+                b.setIdTavolo(rs.getInt("numero"));
+                b.setIdPrenotazione(rs.getInt("id"));
                 ab.add(b);
             }
             rs.close();
@@ -124,7 +124,7 @@ public class RiferiscePTDAO {
     }
 
     public void doDelete(RiferiscePTBean utente) throws SQLException {
-        String query = "delete from " + RiferiscePTDAO.TABLE_NAME + " where idPrenotazione=?";
+        String query = "delete from " + RiferiscePTDAO.TABLE_NAME + " where id=?";
         Connection con = null;
         PreparedStatement ps = null;
 

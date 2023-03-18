@@ -18,7 +18,7 @@
         if(carrello== null){
         	carrello = new Carrello();
         }
-        boolean ctrl= carrello==null;
+        boolean ctrl= carrello.isEmpty();
         tavoli = carrello.getTavoli();
         postazioni = carrello.getPostazioni();
         games= carrello.getGames();

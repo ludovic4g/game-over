@@ -1,5 +1,6 @@
 <%@ page import= "utente.model.*" %>
 <%@ page import= "gestorepren.model.*" %>
+<%@ page import= "gestorepren.control.*" %>
 <%@ page import= "java.text.*" %>
 <%@ page import= "java.util.ArrayList" %>
 <%@ page import= "connection.*" %>
@@ -69,8 +70,6 @@
                     <tr class="column">
                         <th>ID Prenotazione</th>
                         <th>Stato</th>
-                         <th>Data</th>
-                        <th>Orario</th>
                         <th>N.A Sedere</th>
                         <th>Prezzo</th>
                     </tr>
@@ -82,15 +81,13 @@
                                 <div class="resume">
                                     <p><%=b.getIdPrenotazione() %></p>
                                     <br>
-                                    <a class="remove" href="CancelPrenotazioneServlet?id=<%=b.getIdPrenotazione()%>">Annulla</a>
+                                    <% if(!(b.getStato().equals("Annullato"))){%>
+                                    <a class="remove" href="DeletePrenServlet?id=<%=b.getIdPrenotazione()%>">Annulla</a>
+                                    <%} %>
                                 </div>
                             </div>
                         </td>
                         <td class="state"><%=b.getStato() %></td>
-                        <td class="clock"><%=b.getOra() %></td>
-                        <td class="date"><%Format f = new SimpleDateFormat("dd/MM/yy");
-              String strDate = f.format(b.getDataprenotazione()); 
-              out.print(strDate);%></td>
                         <td class="quantity"><%=b.getPostiPrenotati() %></td>
                         <td class="product-price"><%=b.getPrezzo() %></td>
                     </tr>

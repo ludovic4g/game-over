@@ -8,9 +8,7 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
-        
-        VideogiocoDAO vdao = new VideogiocoDAO();
-        ArrayList<VideogiocoBean> lista = vdao.doRetrieveAll();
+
         %>
         <!DOCTYPE html>
         <html lang="en">

@@ -88,4 +88,8 @@ public class Carrello {
 		
 		return fisici;
 	}
+	
+	public boolean isEmpty() {
+		return games.isEmpty() &&postazioni.isEmpty() && tavoli.isEmpty();
+	}
 }

@@ -24,7 +24,7 @@ public class RiferiscePPDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                b.setIdPrenotazione(rs.getInt("idPrenotazione"));
+                b.setIdPrenotazione(rs.getInt("id"));
                 b.setIdPostazione(rs.getInt("idPostazione"));
             }
             rs.close();
@@ -42,7 +42,7 @@ public class RiferiscePPDAO {
     public RiferiscePPBean doRetrieveByPrenotazione(int codice) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
-        String query = "select * from " + RiferiscePPDAO.TABLE_NAME + " where idPrenotazione=?";
+        String query = "select * from " + RiferiscePPDAO.TABLE_NAME + " where id=?";
         RiferiscePPBean b = new RiferiscePPBean();
 
         try {
@@ -53,7 +53,7 @@ public class RiferiscePPDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                b.setIdPrenotazione(rs.getInt("idPrenotazione"));
+                b.setIdPrenotazione(rs.getInt("id"));
                 b.setIdPostazione(rs.getInt("idPostazione"));
             }
             rs.close();
@@ -81,7 +81,7 @@ public class RiferiscePPDAO {
             ResultSet rs = ps.executeQuery();
             RiferiscePPBean b = new RiferiscePPBean();
             while (rs.next()) {
-                b.setIdPrenotazione(rs.getInt("idPrenotazione"));
+                b.setIdPrenotazione(rs.getInt("id"));
                 b.setIdPostazione(rs.getInt("idPostazione"));
                 ab.add(b);
             }
@@ -124,7 +124,7 @@ public class RiferiscePPDAO {
     }
 
     public void doDelete(RiferiscePPBean utente) throws SQLException {
-        String query = "delete from " + RiferiscePPDAO.TABLE_NAME + " where idPrenotazione=?";
+        String query = "delete from " + RiferiscePPDAO.TABLE_NAME + " where id=?";
         Connection con = null;
         PreparedStatement ps = null;
 

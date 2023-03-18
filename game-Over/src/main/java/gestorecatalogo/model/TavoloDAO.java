@@ -152,7 +152,7 @@ public class TavoloDAO {
     
     /////////////////////////////////////7
     public void ModifyNumeroPosti(int idpf, int nome) throws SQLException{
-		String query="update tavolo set numeroposti=? where id=?"; 
+		String query="update tavolo set numeroposti=? where numero=?"; 
 		Connection con=null; 
 		PreparedStatement ps=null; 
 		
@@ -175,7 +175,7 @@ public class TavoloDAO {
 	}
     
     public void ModifyPrezzoPosto(int idpf, double nome) throws SQLException{
-		String query="update tavolo set prezzoposto=? where id=?"; 
+		String query="update tavolo set prezzoposto=? where numero=?"; 
 		Connection con=null; 
 		PreparedStatement ps=null; 
 		
@@ -198,7 +198,7 @@ public class TavoloDAO {
 	}
     
     public void ModifyOra(int idpf, String nome) throws SQLException{
-		String query="update tavolo set ora=? where id=?"; 
+		String query="update tavolo set ora=? where numero=?"; 
 		Connection con=null; 
 		PreparedStatement ps=null; 
 		
@@ -221,7 +221,7 @@ public class TavoloDAO {
 	}
     
     public void ModifyTipo(int idpf, String nome) throws SQLException{
-		String query="update tavolo set tipo=? where id=?"; 
+		String query="update tavolo set tipo=? where numero=?"; 
 		Connection con=null; 
 		PreparedStatement ps=null; 
 		
@@ -244,7 +244,7 @@ public class TavoloDAO {
 	}
     
     public void ModifyDisponibilita(int idpf, boolean nome) throws SQLException{
-		String query="update tavolo set disp=? where id=?"; 
+		String query="update tavolo set disp=? where numero=?"; 
 		Connection con=null; 
 		PreparedStatement ps=null; 
 		
@@ -267,7 +267,7 @@ public class TavoloDAO {
 	}
     
     public void ModifyImg(int idpf, String nome) throws SQLException{
-		String query="update tavolo set img=? where id=?"; 
+		String query="update tavolo set img=? where numero=?"; 
 		Connection con=null; 
 		PreparedStatement ps=null; 
 		

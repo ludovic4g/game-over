@@ -166,8 +166,9 @@ public class OrdineDAO {
             ps = con.prepareStatement(query);
             ps.setString(1, user);
             ResultSet rs = ps.executeQuery();
-            OrdineBean b = new OrdineBean();
+            
             while (rs.next()) {
+            	OrdineBean b = new OrdineBean();
                 b.setIdOrdine(rs.getInt("idOrdine"));
                 b.setUtente(rs.getString("utente"));
                 b.setDataAcquisto(new java.util.Date(rs.getDate("dataAcquisto").getTime()));

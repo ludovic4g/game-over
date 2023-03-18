@@ -24,7 +24,7 @@ public class IncludeDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                b.setIdPrenotazione(rs.getInt("idPrenotazione"));
+                b.setIdPrenotazione(rs.getInt("id"));
                 b.setIdOrdine(rs.getInt("idOrdine"));
             }
             rs.close();
@@ -42,7 +42,7 @@ public class IncludeDAO {
     public IncludeBean doRetrieveByPrenotazione(int codice) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
-        String query = "select * from " + IncludeDAO.TABLE_NAME + " where idPrenotazione=?";
+        String query = "select * from " + IncludeDAO.TABLE_NAME + " where id=?";
         IncludeBean b = new IncludeBean();
 
         try {
@@ -53,7 +53,7 @@ public class IncludeDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                b.setIdPrenotazione(rs.getInt("idPrenotazione"));
+                b.setIdPrenotazione(rs.getInt("id"));
                 b.setIdOrdine(rs.getInt("idOrdine"));
             }
             rs.close();
@@ -81,7 +81,7 @@ public class IncludeDAO {
             ResultSet rs = ps.executeQuery();
             IncludeBean b = new IncludeBean();
             while (rs.next()) {
-                b.setIdPrenotazione(rs.getInt("idPrenotazione"));
+                b.setIdPrenotazione(rs.getInt("id"));
                 b.setIdOrdine(rs.getInt("idOrdine"));
                 ab.add(b);
             }
@@ -124,7 +124,7 @@ public class IncludeDAO {
     }
 
     public void doDelete(IncludeBean utente) throws SQLException {
-        String query = "delete from " + IncludeDAO.TABLE_NAME + " where idPrenotazione=?";
+        String query = "delete from " + IncludeDAO.TABLE_NAME + " where id=?";
         Connection con = null;
         PreparedStatement ps = null;
 
