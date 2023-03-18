@@ -25,7 +25,16 @@
         <body>
                 <!--Header-->
                  <%@ include file="includes/header.jsp" %>
-                 <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
                 <br>
                 <br>
                 
@@ -39,6 +48,15 @@
 			String[] tipi = b.getTipo().split(",");
 
                 %>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
                 <div class="card-wrapper">
                         <div class="card-details">
                                 <!--card left-->
@@ -127,6 +145,24 @@
                         </div>
                 </div>
                 </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
                 <!--Footer-->
                 
 <%@ include file="includes/footer.jsp" %>

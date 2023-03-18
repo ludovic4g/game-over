@@ -30,7 +30,7 @@
          <%@ include file="includes/header.jsp" %>
         <br>
         <!--Games-->
-        <div class="games animeX" id="games">
+        <div class="games" id="games">
             <h2>Games</h2>
             <ul>
                 <li class="list active" data-filter="all">All</li>
