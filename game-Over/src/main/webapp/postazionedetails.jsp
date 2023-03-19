@@ -30,16 +30,17 @@
             <%@ include file="includes/header.jsp" %>
               <!---------seat Select--------->
               <div class="bodycontain">
+              <div class="type-container">
               <form action="AddToCartServlet?action=postazioni" method="post">
-                <div class="type-container">
-                  <label> Seleziona il tipo di Postazione: </label>
+              <h2 class="h2_title">Scegli la tua postazione</h2>
+              <br>
+                  <label> Seleziona il tipo di Postazione:</label>
                   <select id="type" name="tipo">
                     <option value="PC">PC ( 10 €)</option>
                     <option value="PS5">PlayStation 5 ( 8 €)</option>
                     <option value="XBox">XBox One ( 8 €)</option>
                   </select>
                 </div>
-                <br>
                 <br>
                 <ul class="showcase">
                   <li>
@@ -55,8 +56,8 @@
                     <small>Sold</small>
                   </li>
                 </ul>
+                <br>
                 <div class="container"> 
-                <!-- <div class="row"> -->
                 <div class="cardBX">
                  <%if(lista!=null){
                  for(PostazioneBean b: lista){
@@ -67,20 +68,11 @@
                    <button type="submit" class="seat" name="button"  value="<%=b.getIdPostazione()%>"></button>
                    <% }
                  }
-                 }%>       
+                 }%>
+                 <br>    
                 </div>
-                <!-- </div> -->
                 </div>
-               <!--  <p class="text">
-                <div class="warning">Il totale viene calcolato nel CARRELLO!!</div>
-                </p>
-                <p class="text">
-                  Hai selezionato <span id="count">0</span> postazione prezzo totale <span id="total">0</span>€
-                </p>
-                <a href="AddToCartServlet"> 
-                <input type="submit" class="btn" value="Aggiungi al carrello"> -->
-                  
-                  </form>
+               </form>
               </div>
               <!--Footer-->
               <%@ include file="includes/footer.jsp" %>

@@ -30,7 +30,7 @@
     <section class="home-section">
       <div class="home-content">
         <i class='bx bx-menu'></i>
-        <span class="text">Benvenuto|User Dashboard</span>
+        <span class="text">Modifica Indirizzo</span>
       </div>
       <% for(IndirizzoBean b : indirizzi){
       int i=0;%>

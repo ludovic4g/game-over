@@ -29,7 +29,7 @@
     <section class="home-section">
       <div class="home-content">
         <i class='bx bx-menu'></i>
-        <span class="text">Aggiungi Prodotto|Admin Dashboard</span>
+        <span class="text">Aggiungi Prodotto</span>
       </div>
       <!---------AddProduct Section--------->
       <div class="wrapper">
