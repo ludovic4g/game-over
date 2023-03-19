@@ -83,21 +83,7 @@
         </div>
         </form>
       </div>
-      <!-- 
-            <p class="text">
-        <div class="warning">Il totale viene calcolato nel CARRELLO!!</div>
-      </p>
-      <p class="text">
-        Hai selezionato <span id="count">0</span> tavoli prezzo totale <span id="total">0</span>€
-      </p>
-      <p class="text">
-        Prezzo totale persone <span class="price">0</span>€
-      </p>
-      <a href="AddToCartServlet"><button type="button" class="btn">
-                                                                Aggiungi al carrello<i class="fas fa-shopping-cart"></i>
-                                                        </button></a>
- 
-    </div>   -->
+  
                 <!--Footer-->
                 <%@ include file="includes/footer.jsp" %>
                 <script src="scripts/script.js"></script>
