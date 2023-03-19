@@ -87,8 +87,7 @@ create table Tavolo(
     prezzoPosto double not null,
     ora varchar(20) not null,
     tipo varchar(20) not null,
-    disp boolean not null,
-    img varchar(50) not null
+    disp boolean not null
 );
 
 create table PrenotazioneTavolo(
@@ -124,8 +123,7 @@ create table Postazione(
     ora varchar(20) not null,
     tipo varchar(20) not null,
     prezzo double not null,
-    disp boolean not null,
-    img varchar(50) not null
+    disp boolean not null
     );
     
 create table PrenotazionePostazione(
@@ -164,8 +162,8 @@ INSERT INTO Utente VALUES ("ross_", "Rossella2.", "rossella@gmail.com", "Rossell
 INSERT INTO Utente VALUES ("ilarya", "Ilariasalvo0.", "ilaria@gmail.com", "Ilaria", "Salvo", "1999-09-26", "Femmina","", false, false, false);
 
 /*modifica immagini*/
-INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("FIFA 23 Legacy Edition", 40, 2022, 2, 50, "Nintendo Switch", "FIFA 23 Legacy Edition include divise, club e rose originali di alcuni dei principali campionati del mondo. Conterra' inoltre diverse tra le migliori squadre di club femminili e alcuni dei piu' famosi stadi al mondo, compresi alcuni inediti, una veste grafica rinnovata e un nuovo pacchetto che comprende telecronaca e grafiche aggiornate durante le partite. FIFA 23 Legacy Edition presentera' le stesse modalita'  e caratteristiche a livello di gameplay gia'  viste in FIFA 22 Legacy Edition, senza novita'  o migliorie di rilievo.", "https://tinypic.host/images/2023/03/18/Fifa.png", "https://tinypic.host/images/2023/03/18/Nuovo-progetto-25.png", "https://tinypic.host/images/2023/03/18/Nuovo-progetto-24.png", "https://tinypic.host/images/2023/03/18/2-1.png", "");
-INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("Gran Turismo 7", 80, 2022, 1, 50, "PS4, PS5", "Piloti competitivi e occasionali, collezionisti, amanti della messa a punto, progettisti di livree e fotografi: tutti troveranno la loro traiettoria grazie alle fantastiche modalita' di gioco offerte, incluse le popolari modalita' campagna, Arcade e Accademia di guida. Grazie al ritorno della leggendaria modalita' GT Simulation, acquista, metti a punto e gareggia nel corso dell'appagante campagna per giocatore singolo man mano che sblocchi nuove auto e sfide. Se ami la competizione diretta, affina le tue abilita'  e gareggia nella modalita'  Sport. Con oltre 420 auto disponibili in Brand Central e nel concessionario di auto usate fin dal primo giorno, Gran Turismo 7 ricrea l'aspetto e le sensazioni di guida di auto classiche e moderne supercar con un livello di dettaglio senza precedenti. Ogni auto si comporta diversamente sugli oltre 90 tracciati, inclusi alcuni circuiti classici della storia di GT, con condizioni climatiche dinamiche.", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T223131.853.png", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T223535.728.png", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T223427.828.png", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T223206.301.png", "");
+INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("FIFA 23 Legacy Edition", 40, 2022, 2, 50, "Nintendo Switch", "FIFA 23 Legacy Edition include divise, club e rose originali di alcuni dei principali campionati del mondo. Conterra' inoltre diverse tra le migliori squadre di club femminili e alcuni dei piu' famosi stadi al mondo, compresi alcuni inediti, una veste grafica rinnovata e un nuovo pacchetto che comprende telecronaca e grafiche aggiornate durante le partite. FIFA 23 Legacy Edition presentera' le stesse modalita'Â  e caratteristiche a livello di gameplay gia'Â  viste in FIFA 22 Legacy Edition, senza novita'Â  o migliorie di rilievo.", "https://tinypic.host/images/2023/03/18/Fifa.png", "https://tinypic.host/images/2023/03/18/Nuovo-progetto-25.png", "https://tinypic.host/images/2023/03/18/Nuovo-progetto-24.png", "https://tinypic.host/images/2023/03/18/2-1.png", "");
+INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("Gran Turismo 7", 80, 2022, 1, 50, "PS4, PS5", "Piloti competitivi e occasionali, collezionisti, amanti della messa a punto, progettisti di livree e fotografi: tutti troveranno la loro traiettoria grazie alle fantastiche modalita'Â di gioco offerte, incluse le popolari modalita' campagna, Arcade e Accademia di guida. Grazie al ritorno della leggendaria modalita' GT Simulation, acquista, metti a punto e gareggia nel corso dell'appagante campagna per giocatore singolo man mano che sblocchi nuove auto e sfide. Se ami la competizione diretta, affina le tue abilita'Â  e gareggia nella modalita'Â  Sport. Con oltre 420 auto disponibili in Brand Central e nel concessionario di auto usate fin dal primo giorno, Gran Turismo 7 ricrea l'aspetto e le sensazioni di guida di auto classiche e moderne supercar con un livello di dettaglio senza precedenti. Ogni auto si comporta diversamente sugli oltre 90 tracciati, inclusi alcuni circuiti classici della storia di GT, con condizioni climatiche dinamiche.", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T223131.853.png", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T223535.728.png", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T223427.828.png", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T223206.301.png", "");
 INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("Horizon Forbidden West", 80, 2022, 1, 50, "PS4, PS5", "Esplora terre remote, combatti contro macchine ancora piu' grandi e terrificanti e incontra nuove e stupefacenti tribu' al tuo ritorno nel lontano futuro post-apocalittico di Horizon. La terra sta morendo. Violente tempeste e una piaga inarrestabile funestano quel poco che resta dell'umanita', mentre nuove e tremende macchine vanno a caccia lungo i confini. La vita sulla Terra sembra destinata a una nuova estinzione e nessuno ne conosce il motivo. Tocchera' ad Aloy scoprire i segreti che si celano dietro queste insidie per riportare ordine ed equilibrio nel mondo. In questo viaggio incontrera' vecchie conoscenze, stringera' alleanze con nuove fazioni in guerra e fara' luce sull'eredita' dell'antico passato, tutto questo cercando di avere la meglio su un nemico apparentemente invincibile.", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T223730.743.png", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T223801.648.png", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T223923.570.png", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T223857.325.png", "");
 INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("Marvel's Spider-Man: Miles Morales", 60, 2020, 1, 50, "PS4, PS5, PC", "Nell'ultima avventura della serie Marvel's Spider-Man, l'adolescente Miles Morales cerca di ambientarsi in un nuovo quartiere mentre segue le orme del suo mentore, Peter Parker, come nuovo Spider-Man. Ma quando una feroce lotta per il potere minaccia di distruggere la sua nuova casa, l'aspirante eroe capisce che da grandi poteri derivano grandi responsabilita'. Per salvare la New York della Marvel, Miles deve raccogliere il testimone di Spider-Man e dimostrarsi all'altezza.", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T224221.762.png", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T224304.938.png", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T224333.704.png", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T224404.562.png", "");
 INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("Pokemon Violetto", 60, 2022, 0, 50, "Nintendo Switch", "La serie Pokemon si evolve in un modo tutto nuovo con Pokemon Violetto per Nintendo Switch. Parti all'avventura con i tuoi amici ed esplora liberamente un ricco e vasto mondo.", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T224653.873.png", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T224718.405.png", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T224741.779.png", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T224806.742.png", "");
@@ -174,10 +172,10 @@ INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1
 INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("Crash Bandicoot N. Sane Trilogy", 40, 2018, 1, 50, "Nintendo Switch", "Crash Bandicoot, il tuo marsupiale preferito, e' tornato! Piu' bello e scatenato che mai, e' pronto a lanciarsi nelle danze nella collezione Trilogia N. Sane. Un Crash Bandicoot come non l'avevi mai visto prima! Gira, salta e balla affrontando sfide e avventure epiche nei tre giochi che hanno dato inizio alla leggenda: Crash Bandicoot. Crash Bandicoot 2: Il Ritorno di Cortex e Crash Bandicoot 3: Teletrasportato. Rivivi i tuoi momenti preferiti in tutto lo splendore grafico dell'HD completamente rimasterizzato per un divertimento in grande stile!","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T225806.064.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T230015.597.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T225836.518.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T225857.579.png","");
 INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("The Witcher 3: Wild Hunt", 40, 2021,  1, 50,"Nintendo Switch", "Vincitore di piu' di 250 premi Game of the Year, The Witcher 3: Wild Hunt e' un gioco narrativo con un mondo aperto ambientato in un cupo universo fantasy. Sei Geralt di Rivia, cacciatore di mostri mercenario. Hai a disposizione tutti i ferri del mestiere: spade affiliate come rasoi, letali pozioni, balestre silenziose e potenti magie di combattimento. Davanti a te si stende un continente devastato dalla guerra e infestato dai mostri, che potrai esplorare a piacimento. Il tuo incarico? Trovare una ragazza oggetto di una profezia, un'arma vivente che puo' cambiare il mondo.","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T230132.204.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T230230.061.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T230151.562.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T230214.609.png","");
 INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("Ratchet & Clank: Rift Apart", 50, 2020, 1, 50, "PS5", "Viaggia tra le dimensioni con Ratchet e Clank e affronta un malvagio imperatore proveniente da un'altra realta'. Salta come un fulmine tra mondi ricchi d'azione, tutti immersi in panorami mozzafiato e completi di un arsenale totalmente folle, quando l'avventura fara' il suo arrivo sulla console PS5.","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231119.638.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231203.117.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231142.326.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231226.108.png","");
-INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("UNCHARTED: Raccolta L'eredit� dei ladri", 50, 2022, 1, 50, "PS5, PC", "Diventa una leggenda e lascia il segno in UNCHARTED: Raccolta L'eredita'  dei ladri. Vivi il pathos, la narrazione cinematografica e l'iconico franchise dei titoli campioni di incassi piu' elettrizzanti di Naughty Dog. Scopri le imprese del passato con i ladri Nathan Drake e Chloe Frazer, personaggi tanto carismatici quanto complessi, mentre viaggiano per il mondo in cerca di avventure e storie straordinarie.","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231338.744.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231446.815.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231424.989.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231359.223.png","");
-INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("DEATH STRANDING DIRECTOR'S CUT", 40, 2022, 1, 50, "PS5", "Dal leggendario creatore di giochi Hideo Kojima arriva un'esperienza che sfida il genere, ora ampliata e rimasterizzata per PS5 in questa DIRECTOR'S CUT definitiva.Nel futuro, un misterioso evento noto come Death Stranding ha aperto un varco tra il regno dei vivi e quello dei morti, permettendo alle creature dell'aldilÃ  di vagare in un mondo ormai segnato da una societa' in declino.Nei panni di Sam Bridges, la tua missione sara' quella di portare speranza all'umanita' mettendo in contatto gli ultimi sopravvissuti di un'America decimata.Riuscirai a riunificare un mondo in frantumi, un passo alla volta?","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231556.363.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231653.004.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231631.830.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231614.077.png","");
+INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("UNCHARTED: Raccolta L'eredità dei ladri", 50, 2022, 1, 50, "PS5, PC", "Diventa una leggenda e lascia il segno in UNCHARTED: Raccolta L'eredita'Â  dei ladri. Vivi il pathos, la narrazione cinematografica e l'iconico franchise dei titoli campioni di incassi piu' elettrizzanti di Naughty Dog. Scopri le imprese del passato con i ladri Nathan Drake e Chloe Frazer, personaggi tanto carismatici quanto complessi, mentre viaggiano per il mondo in cerca di avventure e storie straordinarie.","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231338.744.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231446.815.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231424.989.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231359.223.png","");
+INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("DEATH STRANDING DIRECTOR'S CUT", 40, 2022, 1, 50, "PS5", "Dal leggendario creatore di giochi Hideo Kojima arriva un'esperienza che sfida il genere, ora ampliata e rimasterizzata per PS5 in questa DIRECTOR'S CUT definitiva.Nel futuro, un misterioso evento noto come Death Stranding ha aperto un varco tra il regno dei vivi e quello dei morti, permettendo alle creature dell'aldilÃƒÂ  di vagare in un mondo ormai segnato da una societa' in declino.Nei panni di Sam Bridges, la tua missione sara' quella di portare speranza all'umanita' mettendo in contatto gli ultimi sopravvissuti di un'America decimata.Riuscirai a riunificare un mondo in frantumi, un passo alla volta?","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231556.363.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231653.004.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231631.830.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231614.077.png","");
 INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("Sackboy: Una Grande Avventura", 30, 2020,  1, 50,"PS4, PS5, PC", "Sackboy, l'iconico eroe dell'universo PlayStation, torna a vivere avventure mozzafiato in un gigantesco, appassionante e frenetico platform 3D multigiocatore... con nuove e pupazzose abilita'!","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T230359.110.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T230601.182.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T230432.600.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T230458.301.png","");
-INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("The Last of Us Part I", 80, 2022,  1, 50,"PS5", "Riscopri la straordinaria narrazione e gli indimenticabili personaggi di The Last of Us, vincitore di oltre 200 premi Game of the Year. In una civiltÃ  senza futuro, dove imperversano infetti e criminali, un uomo ormai segnato dalla vita, Joel, viene ingaggiato per condurre una ragazzina di 14 anni, Ellie, fino a una zona di quarantena militare. Ma quello che in principio sembra un incarico irrilevante, diventa presto un logorante viaggio attraverso l'intera nazione","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231830.231.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231957.491.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231936.518.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231850.956.png","");
+INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("The Last of Us Part I", 80, 2022,  1, 50,"PS5", "Riscopri la straordinaria narrazione e gli indimenticabili personaggi di The Last of Us, vincitore di oltre 200 premi Game of the Year. In una civiltÃƒÂ  senza futuro, dove imperversano infetti e criminali, un uomo ormai segnato dalla vita, Joel, viene ingaggiato per condurre una ragazzina di 14 anni, Ellie, fino a una zona di quarantena militare. Ma quello che in principio sembra un incarico irrilevante, diventa presto un logorante viaggio attraverso l'intera nazione","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231830.231.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231957.491.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231936.518.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T231850.956.png","");
 INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("God of War Ragnarok", 80, 2022, 1, 50, "PS4, PS5", "E' in arrivo dagli sviluppatori di Santa Monica Studio il sequel dell'apprezzatissimo God of War (2018). Il Fimbulwinter si fa gia' sentire. Kratos e Atreus devono esplorare ognuno dei nove regni alla ricerca di risposte, mentre le milizie di Asgard si preparano a un'annunciata battaglia che segnera' la fine del mondo.Nel loro cammino si immergeranno in splendidi panorami mitici e affronteranno temibili nemici sotto forma di dei norreni e mostri. La minaccia del Ragnarok si avvicina sempre di piu'. Kratos e Atreus devono scegliere tra la salvezza della loro famiglia e quella dei regni.", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T230815.234.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T230833.587.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T230856.432.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T230922.526.png","");
 INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("EA SPORTS FIFA 23", 90, 2022, 1, 50, "PS4, PS5", "EA SPORTS FIFA 23 porta il gioco piu' bello del mondo sul campo, con i tornei della Coppa del Mondo FIFA maschile e femminile, l'aggiunta di squadre di club femminili e nuovi modi di giocare le tue modalita' preferite. I progressi della tecnologia HyperMotion2 portano in campo un'azione e un realismo sempre piu' sorprendenti su PS5. Con il doppio della quantita' di acquisizione di movimento reale, ora le animazioni calcistiche sono piu' numerose che mai in ogni partita.","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T232113.823.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T232217.981.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T232136.630.png","https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T232152.921.png","");
 INSERT INTO Videogioco(nome,prezzo,anno,quantita,magazzino,tipo,descrizione,img1,img2,img3,img4,img5) VALUES ("The Callisto Protocol", 70, 2022, 0, 50, "PS4, PS5", "In questo gioco horror narrativo in terza persona, ambientato 300 anni nel futuro, il giocatore veste i panni di Jacob Lee, uno sfortunato prigioniero rinchiuso nella prigione di Black Iron, carcere di massima sicurezza situato su Callisto, la luna morta di Giove. Quando gli altri detenuti iniziano a trasformarsi in creature da incubo, la prigione piomba nel caos. Per sopravvivere, Jacob dovra' farsi strada con la forza verso la liberta' e scoprire gli oscuri e inquietanti segreti sepolti sotto la superficie di Callisto.", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T232340.910.png", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T232541.980.png", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T232451.981.png", "https://tinypic.host/images/2023/03/18/Prodotto---2023-03-18T232609.746.png", "");
@@ -276,26 +274,26 @@ INSERT INTO OrdinePrenotazione VALUES (13, 14);
 INSERT INTO OrdinePrenotazione VALUES (14, 15);
 
 /*modifica img */
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (0, 0.00, "10:30","", false,"");
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (0, 0.00, "18:30","", true,"");
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (0, 0.00, "16:00","", true,"");
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (0, 0.00, "10:30","", true,"");
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (0, 0.00, "10:30","", true,"");
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (0, 0.00, "16:30","", true,"");
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (0, 0.00, "18:30","", true,"");
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (0, 0.00, "18:30","", true,"");
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (0, 0.00, "16:30","", true,"");
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (0, 0.00, "16:30","", false,"");
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (0, 0.00, "16:30","", true,"");
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (0, 0.00, "18:30","", true,"");
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (0, 0.00, "18:30","", true,"");
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (0, 0.00, "10:30","", true,"");
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (0, 0.00, "18:30","", true,"");
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (0, 0.00, "18:00","", true,"");
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (0, 0.00, "16:30","", true,"");
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (0, 0.00, "10:30","", true,"");
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (0, 0.00, "10:30","", true,"");
-INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp, img) VALUES (0, 0.00, "16:30","", true,"");
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp)VALUES (0, 0.00, "10:30","", false);
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp) VALUES (0, 0.00, "18:30","", true);
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp) VALUES (0, 0.00, "16:00","", true);
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp) VALUES (0, 0.00, "10:30","", true);
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp) VALUES (0, 0.00, "10:30","", true);
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp) VALUES (0, 0.00, "16:30","", true);
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp) VALUES (0, 0.00, "18:30","", true);
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp) VALUES (0, 0.00, "18:30","", true);
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp) VALUES (0, 0.00, "16:30","", true);
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp) VALUES (0, 0.00, "16:30","", false);
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp) VALUES (0, 0.00, "16:30","", true);
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp) VALUES (0, 0.00, "18:30","", true);
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp) VALUES (0, 0.00, "18:30","", true);
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp) VALUES (0, 0.00, "10:30","", true);
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp) VALUES (0, 0.00, "18:30","", true);
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp) VALUES (0, 0.00, "18:00","", true);
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp) VALUES (0, 0.00, "16:30","", true);
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp) VALUES (0, 0.00, "10:30","", true);
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp) VALUES (0, 0.00, "10:30","", true);
+INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, tipo, disp) VALUES (0, 0.00, "16:30","", true);
 
 INSERT INTO PrenotazioneTavolo VALUES (2, 1);
 INSERT INTO PrenotazioneTavolo VALUES (1, 19);
@@ -349,38 +347,38 @@ INSERT INTO Ha VALUES (19, "ross_");
 INSERT INTO Ha VALUES (10, "ilarya");
 
 /*modifica img*/
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","", 0.00 , true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","", 0.00, false,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","", 0.00 , false,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","", 0.00, false,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","", 0.00, false,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","", 0.00, false,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("18:30 - 20:30", "", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("14:30 - 16:30", "", 0.00, false,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("18:30 - 20:30", "", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("18:30 - 20:30", "", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30", "", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("18:30 - 20:30", "", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","", 0.00, false,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("14:30 - 16:30","", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","",0.00,true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("9:30 - 11:30","", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","", 0.00, true,"");
-INSERT INTO Postazione(ora, tipo, prezzo, disp, img) VALUES("18:30 - 20:30","", 0.00, true,"");
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("9:30 - 11:30","", 0.00 , true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("14:30 - 16:30","", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("14:30 - 16:30","", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("9:30 - 11:30","", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("9:30 - 11:30","", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("14:30 - 16:30","", 0.00, false);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("9:30 - 11:30","", 0.00 , false);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("18:30 - 20:30","", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("9:30 - 11:30","", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("9:30 - 11:30","", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("14:30 - 16:30","", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("9:30 - 11:30","", 0.00, false);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("9:30 - 11:30","", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("9:30 - 11:30","", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("14:30 - 16:30","", 0.00, false);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("9:30 - 11:30","", 0.00, false);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("18:30 - 20:30", "", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("14:30 - 16:30", "", 0.00, false);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("18:30 - 20:30", "", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("18:30 - 20:30", "", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("9:30 - 11:30", "", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("18:30 - 20:30", "", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("14:30 - 16:30","", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("18:30 - 20:30","", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("18:30 - 20:30","", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("14:30 - 16:30","", 0.00, false);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("14:30 - 16:30","", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("18:30 - 20:30","", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("9:30 - 11:30","",0.00,true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("9:30 - 11:30","", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("18:30 - 20:30","", 0.00, true);
+INSERT INTO Postazione(ora, tipo, prezzo, disp) VALUES("18:30 - 20:30","", 0.00, true);
 
 INSERT INTO PrenotazionePostazione VALUES(8, 1);
 INSERT INTO PrenotazionePostazione VALUES(9, 2);

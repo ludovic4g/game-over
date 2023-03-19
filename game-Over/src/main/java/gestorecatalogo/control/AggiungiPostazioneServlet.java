@@ -18,18 +18,18 @@ public class AggiungiPostazioneServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-		String p = request.getParameter("prezzo");
-		double prezzo = Double.parseDouble(p);
 		String ora = request.getParameter("ora");
-		String img = request.getParameter("img1");
+		String tipo = request.getParameter("piattaforma");
+		
 		
 		PostazioneBean postazione = new PostazioneBean();
 		PostazioneDAO pdao = new PostazioneDAO();
 		
 		postazione.setDisp(true);
-		postazione.setImg(img);
 		postazione.setOra(ora);
-		postazione.setPrezzo(prezzo);
+		postazione.setTipo(tipo);
+		if(tipo.equals("PC")) postazione.setPrezzo(10.00);
+		else postazione.setPrezzo(8.00);
 		pdao.doSave(postazione);
 		response.sendRedirect("addproduct.jsp");
 		

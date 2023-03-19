@@ -25,4 +25,12 @@ public class RiferiscePTBean implements Serializable {
     public RiferiscePTBean() {
 
     }
+
+	public RiferiscePTBean(int idPrenotazione, int idTavolo) {
+		super();
+		this.idPrenotazione = idPrenotazione;
+		this.idTavolo = idTavolo;
+	}
+    
+    
 }

@@ -9,8 +9,18 @@ public class CompraBean implements Serializable {
     public CompraBean() {
 
     }
+    
+    
 
-    public String getUsername() {
+    public CompraBean(String username, int idVideogioco) {
+		super();
+		this.username = username;
+		this.idVideogioco = idVideogioco;
+	}
+
+
+
+	public String getUsername() {
         return username;
     }
 

@@ -33,24 +33,20 @@
                                 <div class="cards1">
                                         <div class="contentcards">
                                                 <h2>Postazioni Gioco</h2>
-                                                <p>Lorem ipsum dolor sit amet,consectetur adipiscing elit.Proin eleifend
-                                                        diam a nisl viverra,non
-                                                        dignissim tortor molestie.
-                                                        Sed eget mi maximus,venenatis risus dignissim,placerat nunc.
+                                                <p>Cimentati nel mondo videoludico, giocando ai tuoi videogiochi online preferiti
+                                                grazie alle nostre postazioni di ultima generazione!
                                                 </p>
-                                                <a href="postazione_clock.jsp">Dettagli</a>
+                                                <a href="postazione_clock.jsp">Prenota</a>
                                         </div>
                                         <img src="images/computer.png"></img>
                                 </div>
                                 <div class="cards">
                                         <div class="contentcards">
                                                 <h2>Tavolo da Gioco</h2>
-                                                <p>Lorem ipsum dolor sit amet,consectetur adipiscing elit.Proin eleifend
-                                                        diam a nisl viverra,non
-                                                        dignissim tortor molestie.
-                                                        Sed eget mi maximus,venenatis risus dignissim,placerat nunc.
+                                                <p>Voglia di tornare come ai vecchi tempi e di giocare tutti insieme davanti ad un bel gioco da tavolo? 
+                                                Allora questo è ciò che fa a caso vostro!
                                                 </p>
-                                                <a href="tavolo_clock.jsp">Read More</a>
+                                                <a href="tavolo_clock.jsp">Prenota</a>
                                         </div>
                                         <img src="images/casa.png"></img>
                                 </div>

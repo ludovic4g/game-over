@@ -13,7 +13,7 @@ import gestorecatalogo.model.TavoloDAO;
 
 public class TavoloDAOTest {
 	private TavoloDAO  dao=new TavoloDAO();
-	private TavoloBean bean = new TavoloBean("Gioco di carte", 34, 4, false, 4.99, "11:30 - 13:30", "https://immagine.jpg") ; 
+	private TavoloBean bean = new TavoloBean("Gioco di carte", 34, 4, false, 4.99, "11:30 - 13:30") ; 
 	
 	@BeforeEach
 	public void setUp() throws Exception{

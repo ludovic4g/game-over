@@ -279,4 +279,14 @@
     <servlet-name>DeletePrenServlet</servlet-name>
     <url-pattern>/DeletePrenServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CollegamentiDBServlet</display-name>
+    <servlet-name>CollegamentiDBServlet</servlet-name>
+    <servlet-class>utente.control.CollegamentiDBServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CollegamentiDBServlet</servlet-name>
+    <url-pattern>/CollegamentiDBServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

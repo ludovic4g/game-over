@@ -59,7 +59,7 @@
                         <td>
                             <div class="cart-info">
                                 <img
-                                    src="<%=v.getImg()%>">
+                                    src="images/casa.png">
                                 <div class="resume">
                                     <p>Tavolo n.<%=v.getIdTavolo() %></p>
                                     <small class="single-product-price">Prezzo:<%out.println(String.format("%.2f&euro;", v.getPrezzoPosto()));%></small>
@@ -90,7 +90,7 @@
                         <td>
                             <div class="cart-info">
                                 <img
-                                    src="<%=v.getImg()%>">
+                                    src="images/computer.png">
                                 <div class="resume">
                                     <p>Postazione n.<%=v.getIdPostazione() %></p>
                                     <small class="single-product-price">Prezzo:<%out.println(String.format("%.2f&euro;", v.getPrezzo()));%></small>

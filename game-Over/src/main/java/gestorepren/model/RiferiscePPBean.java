@@ -25,4 +25,12 @@ public class RiferiscePPBean implements Serializable {
     public RiferiscePPBean() {
 
     }
+
+	public RiferiscePPBean(int idPrenotazione, int idPostazione) {
+		super();
+		this.idPrenotazione = idPrenotazione;
+		this.idPostazione = idPostazione;
+	}
+    
+    
 }

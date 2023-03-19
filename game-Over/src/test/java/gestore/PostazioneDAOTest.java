@@ -13,7 +13,7 @@ import gestorecatalogo.model.PostazioneDAO;
 
 public class PostazioneDAOTest {
 	private PostazioneDAO  dao=new PostazioneDAO();
-	private PostazioneBean bean = new PostazioneBean(56, "9:30 - 11:30",true, 30.00,"Console",""); 
+	private PostazioneBean bean = new PostazioneBean(56, "9:30 - 11:30",true, 30.00,"Console"); 
 	
 	@BeforeEach
 	public void setUp() throws Exception{

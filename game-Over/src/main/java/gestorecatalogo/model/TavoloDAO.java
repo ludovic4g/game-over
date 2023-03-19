@@ -30,7 +30,6 @@ public class TavoloDAO {
                 b.setPrezzoPosto(rs.getDouble("prezzoPosto"));
                 b.setOra(rs.getString("ora"));
                 b.setDisp(rs.getBoolean("disp"));
-                b.setImg(rs.getString("img"));
 
             }
             rs.close();
@@ -65,7 +64,6 @@ public class TavoloDAO {
                 b.setOra(rs.getString("ora"));
                 b.setTipo(rs.getString("tipo"));
                 b.setDisp(rs.getBoolean("disp"));
-                b.setImg(rs.getString("img"));
 
                 ab.add(b);
             }
@@ -82,7 +80,7 @@ public class TavoloDAO {
     }
 
     public void doSave(TavoloBean utente) throws SQLException {
-        String query = "INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora, data,  tipo, disp, img) VALUES (?,?,?,?,?,?,?);";
+        String query = "INSERT INTO Tavolo(numeroPosti, prezzoPosto, ora,  tipo, disp) VALUES (?,?,?,?,?);";
 
         Connection con = null;
         PreparedStatement ps = null;
@@ -95,9 +93,8 @@ public class TavoloDAO {
             ps.setInt(1, utente.getNumeroPosti());
             ps.setDouble(2, utente.getPrezzoPosto());
             ps.setString(3, utente.getOra());
-            ps.setString(5, utente.getTipo());
-            ps.setBoolean(6, utente.isDisp());
-            ps.setString(7, utente.getImg());
+            ps.setString(4, utente.getTipo());
+            ps.setBoolean(5, utente.isDisp());
 
 
             ps.executeUpdate();
@@ -266,27 +263,6 @@ public class TavoloDAO {
 		
 	}
     
-    public void ModifyImg(int idpf, String nome) throws SQLException{
-		String query="update tavolo set img=? where numero=?"; 
-		Connection con=null; 
-		PreparedStatement ps=null; 
-		
-		try {
-			con= DriverManagerConnectionPool.getConnection(); 
-			
-			ps=con.prepareStatement(query); 
-			ps.setInt(2, idpf);
-			ps.setString(1, nome);
-			ps.executeUpdate();
-
-		}finally {
-			try {
-				if(ps!=null) ps.close(); 
-			}finally {
-				DriverManagerConnectionPool.releaseConnection(con);
-			}
-		}
-		
-	}
+	
 
 }

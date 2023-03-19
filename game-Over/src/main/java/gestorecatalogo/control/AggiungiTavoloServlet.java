@@ -18,24 +18,21 @@ public class AggiungiTavoloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-		String pos = request.getParameter("posto");
-		int posto = Integer.parseInt(pos);
-		String tipo = request.getParameter("tavolo");
-		String p = request.getParameter("prezzo");
-		double prezzo = Double.parseDouble(p);
+		String tipo = request.getParameter("tipo");
 		String ora = request.getParameter("ora");
-		String img = request.getParameter("img1");	
 		
 		TavoloBean tavolo = new TavoloBean();
 		TavoloDAO tdao= new TavoloDAO();
 		
 		tavolo.setDisp(true);
-		tavolo.setImg(img);
-		tavolo.setNumeroPosti(posto);
+
+
 		tavolo.setOra(ora);
-		tavolo.setPrezzoPosto(prezzo);
+		if(tipo.equals("Carte")) tavolo.setPrezzoPosto(3.00);
+		else tavolo.setPrezzoPosto(5.00);
 		tavolo.setTipo(tipo);
 		tdao.doSave(tavolo);
+		response.sendRedirect("catalogo.jsp");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

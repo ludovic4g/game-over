@@ -44,35 +44,13 @@
           <label class="collapsible-head" for="collapsible-head">Modifica Informazioni Tavolo</label>
           <div class="collapsible-text">
             <div class="card-body">
-            <form action="ModificaTavoloServlet?action=nposti&id=<%=b.getIdTavolo() %>" method="post">
-              <div class="form-group">
-                <label for="inputName">Numero Posti per Tavolo</label>
-                <input type="number" id="inputName" class="form-control"  placeholder ="<%=b.getNumeroPosti() %>" name="posti" required>
-                <div class="row">
-                  <div class="col-12">
-                    <input type="submit" value="Conferma" class="right button">
-                  </div>
-                </div>
-              </div>
-              </form>
-              <form action="ModificaTavoloServlet?action=prezzoposto&id=<%=b.getIdTavolo() %>" method="post">
-              <div class="form-group">
-                <label for="inputPrice">Prezzo per Posto</label>
-                <input type="text" id="inputPrice" class="form-control" name="prezzo" placeholder="<%=b.getPrezzoPosto()%>" required>
-                <div class="row">
-                  <div class="col-12">
-                    <input type="submit" value="Conferma" class="right button">
-                  </div>
-                </div>
-              </div>
-              </form>
               <form action="ModificaTavoloServlet?action=ora&id=<%=b.getIdTavolo() %>" method="post">
               <div class="form-group">
                 <label for="inputName">Ora</label>
                 <select name="ora" class="option">
-                  <option value="9:30 - 11:30">9:30 - 11:30</option>
-                  <option value="14:30 - 16:30">14:30 - 16:30</option>
-                  <option value="18:30 - 20:30">18:30 - 20:30</option>
+                  <option value="10:30">10:30</option>
+                  <option value="16:30">16:30</option>
+                  <option value="18:30">18:30</option>
                 </select>
                 <div class="row">
                   <div class="col-12">
@@ -85,8 +63,8 @@
               <div class="form-group">
                 <label for="inputName">Tipo Tavolo</label>
                 <select name="tipo" class="option">
-                  <option value="Giochi da Tavolo">Giochi da Tavolo</option>
-                  <option value="Giochi di Carte">Giochi di Carte</option>
+                  <option value="Tavolo">Giochi da Tavolo</option>
+                  <option value="Carte">Giochi di Carte</option>
                 </select>
                 <div class="row">
                   <div class="col-12">
@@ -109,17 +87,7 @@
                 </div>
               </div>
                </form>
-               <form action="ModificaGiocoServlet?action=img&id=<%=b.getIdTavolo() %>" method="post">
-                <div class="form-group">
-                  <label for="inputProjectLeader">Immagine</label>
-                  <input type="link" id="inputName" class="form-control" name="img" required>
-                  <div class="row">
-                    <div class="col-12">
-                      <input type="submit" value="Conferma" class="right button">
-                    </div>
-                  </div>
-                </div>
-                </form>
+       
               </div>
             </div>
           </div>

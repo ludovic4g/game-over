@@ -44,10 +44,14 @@
           <label class="collapsible-head" for="collapsible-head">Modifica Informazioni Postazione</label>
           <div class="collapsible-text">
             <div class="card-body">
-              <form action="ModificaPostazioneServlet?action=prezzo&id=<%=b.getIdPostazione() %>" method="post">
+              <form action="ModificaPostazioneServlet?action=piattaforma&id=<%=b.getIdPostazione() %>" method="post">
               <div class="form-group">
-                <label for="inputPrice">Prezzo</label>
-                <input type="text" id="inputPrice" class="form-control" name="prezzo" placeholder="<%=b.getPrezzo()%>" required>
+                <label for="inputPrice">Piattaforma</label>
+                <select name="piattaforma" class="option">
+                  <option value="PC">PC</option>
+                  <option value="PS5">PS5</option>
+                  <option value="XBox">XBox</option>
+                </select>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
@@ -84,17 +88,6 @@
                 </div>
               </div>
               </form>
-               <form action="ModificaPostazioneServlet?action=img&id=<%=b.getIdPostazione() %>" method="post">
-                <div class="form-group">
-                  <label for="inputProjectLeader">Immagine</label>
-                  <input type="link" id="inputName" class="form-control" name="img" required>
-                  <div class="row">
-                    <div class="col-12">
-                      <input type="submit" value="Conferma" class="right button">
-                    </div>
-                  </div>
-                </div>
-                </form>
               </div>
             </div>
           </div>

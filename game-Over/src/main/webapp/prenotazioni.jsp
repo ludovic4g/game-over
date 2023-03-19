@@ -77,7 +77,7 @@
                         <td>
                             <div class="cart-info">
                                 <img
-                                    src="">
+                                    src="images/cart.png">
                                 <div class="resume">
                                     <p><%=b.getIdPrenotazione() %></p>
                                     <br>

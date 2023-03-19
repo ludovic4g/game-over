@@ -32,7 +32,6 @@ public class PostazioneDAO {
                 b.setPrezzo(rs.getDouble("prezzo"));
                 b.setDisp(rs.getBoolean("disp"));
                 b.setTipo(rs.getString("tipo"));
-                b.setImg(rs.getString("img"));
 
             }
             rs.close();
@@ -67,7 +66,6 @@ public class PostazioneDAO {
                 b.setPrezzo(rs.getDouble("prezzo"));
                 b.setDisp(rs.getBoolean("disp"));
                 b.setTipo(rs.getString("tipo"));
-                b.setImg(rs.getString("img"));
 
                 ab.add(b);
             }
@@ -84,7 +82,7 @@ public class PostazioneDAO {
     }
 
     public void doSave(PostazioneBean utente) throws SQLException {
-        String query = "INSERT INTO Postazione(ora,tipo, prezzo, disp, img) values(?,?,?,?,?);";
+        String query = "INSERT INTO Postazione(ora,tipo, prezzo, disp) values(?,?,?,?);";
 
         Connection con = null;
         PreparedStatement ps = null;
@@ -98,7 +96,6 @@ public class PostazioneDAO {
             ps.setString(2, utente.getTipo());
             ps.setDouble(3, utente.getPrezzo());
             ps.setBoolean(4, utente.isDisp());
-            ps.setString(5, utente.getImg());
 
             ps.executeUpdate();
 
@@ -221,8 +218,8 @@ public class PostazioneDAO {
 		
 	}
     
-    public void ModifyImg(int idpf, String nome) throws SQLException{
-		String query="update postazione set img=? where id=?"; 
+    public void ModifyTipo(int idpf, String nome) throws SQLException{
+		String query="update postazione set tipo=? where id=?"; 
 		Connection con=null; 
 		PreparedStatement ps=null; 
 		

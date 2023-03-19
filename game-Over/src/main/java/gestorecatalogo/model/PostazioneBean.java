@@ -21,7 +21,7 @@ public class PostazioneBean implements Serializable {
 
     
 
-	public PostazioneBean(int idPostazione, String ora, boolean disp, double prezzo,String tipo, String img) {
+	public PostazioneBean(int idPostazione, String ora, boolean disp, double prezzo,String tipo) {
 		super();
 		this.idPostazione = idPostazione;
 
@@ -29,7 +29,6 @@ public class PostazioneBean implements Serializable {
 		this.disp = disp;
 		this.prezzo = prezzo;
 		this.tipo=tipo;
-		this.img = img;
 	}
 
 

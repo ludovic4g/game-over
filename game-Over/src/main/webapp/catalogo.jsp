@@ -123,7 +123,6 @@
                                                 <th></th>
                                                 <th>ID Postazione</th>
                                                 <th>Ora</th>
-                                                <th>Prezzo</th>
                                                 <th>Disponibilità</th>
                                                 <th></th>
                                         </tr>
@@ -133,7 +132,7 @@
                                                 <td>
                                                         <div class="cart-info">
                                                                 <img
-                                                                        src="<%=b.getImg()%>">
+                                                                        src="images/computer.png">
                                                         </div>
                                                 </td>
                                                 <td>
@@ -150,13 +149,7 @@
                                                                 </div>
                                                         </div>
                                                 </td>
-                                                <td>
-                                                        <div class="cart-info">
-                                                                <div>
-                                                                        <p>€<%=b.getPrezzo() %></p>
-                                                                </div>
-                                                        </div>
-                                                </td>
+                                            
                                                 <td>
                                                         <div class="cart-info">
                                                                 <div>
@@ -185,10 +178,9 @@
                                         <tr>
                                                 <th></th>
                                                 <th>ID Postazione</th>
-                                                <th>Numero Posti</th>
-                                                <th>Prezzo Posto</th>
+
                                                 <th>Ora</th>
-                                                <th>Tipo</th>
+                                                
                                                 <th>Disponibilità</th>
                                                 <th></th>
                                         </tr>
@@ -198,7 +190,7 @@
                                                 <td>
                                                         <div class="cart-info">
                                                                 <img
-                                                                        src="<%=b.getImg()%>">
+                                                                        src="images/casa.png">
                                                         </div>
                                                 </td>
                                                 <td>
@@ -208,20 +200,7 @@
                                                                 </div>
                                                         </div>
                                                 </td>
-                                                <td>
-                                                        <div class="cart-info">
-                                                                <div>
-                                                                        <p><%=b.getNumeroPosti() %></p>
-                                                                </div>
-                                                        </div>
-                                                </td>
-                                                <td>
-                                                        <div class="cart-info">
-                                                                <div>
-                                                                        <p>€<%=b.getPrezzoPosto()%></p>
-                                                                </div>
-                                                        </div>
-                                                </td>
+                                               
                                                 <td>
                                                         <div class="cart-info">
                                                                 <div>
@@ -229,13 +208,7 @@
                                                                 </div>
                                                         </div>
                                                 </td>
-                                                 <td>
-                                                        <div class="cart-info">
-                                                                <div>
-                                                                        <p><%=b.getTipo() %></p>
-                                                                </div>
-                                                        </div>
-                                                </td>
+                                                
                                                 <td>
                                                         <div class="cart-info">
                                                                 <div>

@@ -26,5 +26,13 @@ public class IncludeBean implements Serializable {
 
     }
 
+	public IncludeBean(int idPrenotazione, int idOrdine) {
+		super();
+		this.idPrenotazione = idPrenotazione;
+		this.idOrdine = idOrdine;
+	}
+    
+    
+
 
 }

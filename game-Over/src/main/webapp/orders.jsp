@@ -86,7 +86,7 @@
                                                 <td>
                                                         <div class="cart-info">
                                                                 <img
-                                                                        src=<% %>>
+                                                                        src="images/cart.png">
                                                                 <div class="resume">
                                                                         <p>Ordine n.<%=f.getIdOrdine()%></p>
                                                                         <br>

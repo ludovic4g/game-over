@@ -94,10 +94,6 @@
             <div class="card-body">
             <form action="AggiungiPostazioneServlet" method="post">
               <div class="form-group">
-                <label for="inputPrice">Prezzo</label>
-                <input type="text" id="inputPrice" class="form-control" name="prezzo">
-              </div>
-              <div class="form-group">
                 <label for="inputName">Ora</label>
                 <select name="ora" class="option">
                   <option value="9:30 - 11:30">9:30 - 11:30</option>
@@ -106,9 +102,12 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="inputProjectLeader">Immagine Principale</label>
-                <br>
-                <input type="text" id="inputName" class="form-control" name="img1">
+                <label for="inputName">Piattaforma</label>
+                <select name="piattaforma" class="option">
+                  <option value="PC">PC</option>
+                  <option value="PS5">PS5</option>
+                  <option value="XBox">XBox</option>
+                </select>
               </div>
               <div class="row">
                 <div class="col-12">
@@ -129,30 +128,21 @@
           <div class="collapsible-text3">
             <div class="card-body">
             <form action="AggiungiTavoloServlet" method="post">
-              <div class="form-group">
-                <label for="inputPrice">Numero Posti</label>
-                <input type="number" id="inputPrice" class="form-control" name="posto">
-              </div>
                <div class="form-group">
                 <label for="inputName">Tipo Tavolo</label>
-                <input type="text" id="inputPrice" class="form-control" name="tavolo">
-              </div>
-              <div class="form-group">
-                <label for="inputPrice">Prezzo per Posto</label>
-                <input type="text" id="inputPrice" class="form-control" name="prezzo">
+               <select name="tipo" class="option">
+                  <option value="Carte">Gioco di Carte</option>
+                  <option value="Tavolo">Gioco da Tavolo</option>
+               
+                </select>
               </div>
               <div class="form-group">
                 <label for="inputName">Ora</label>
                 <select name="ora" class="option">
-                  <option value="9:30 - 11:30">9:30 - 11:30</option>
-                  <option value="14:30 - 16:30">14:30 - 16:30</option>
-                  <option value="18:30 - 20:30">18:30 - 20:30</option>
+                  <option value="10:30">10:30</option>
+                  <option value="16:30">16:30</option>
+                  <option value="18:30">18:30</option>
                 </select>
-              </div>
-              <div class="form-group">
-                <label for="inputProjectLeader">Immagine Principale</label>
-                <br>
-                <input type="text" id="inputName" class="form-control" name="img1">
               </div>
               <div class="row">
                 <div class="col-12">

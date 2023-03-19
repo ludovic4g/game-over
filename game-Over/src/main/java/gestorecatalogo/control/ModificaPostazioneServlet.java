@@ -20,7 +20,7 @@ public class ModificaPostazioneServlet extends HttpServlet {
 		String i = request.getParameter("id");
 		int id = Integer.parseInt(i);
 		String action = request.getParameter("action");
-		String p = request.getParameter("prezzo");
+		String p = request.getParameter("piattaforma");
 		String ora = request.getParameter("ora");
 		String d = request.getParameter("disp");
 		String img = request.getParameter("img");
@@ -28,9 +28,8 @@ public class ModificaPostazioneServlet extends HttpServlet {
 
 		
 		PostazioneDAO pdao = new PostazioneDAO();
-		if(action.equals("prezzo")) {
-			double prezzo = Double.parseDouble(p);
-			pdao.ModifyPrezzo(id, prezzo);
+		if(action.equals("piattaforma")) {
+			pdao.ModifyTipo(id, p);
 			response.sendRedirect("catalogo.jsp");
 			
 		}
@@ -42,11 +41,9 @@ public class ModificaPostazioneServlet extends HttpServlet {
 		
 		if(action.equals("disp")) {
 			if(d.equals("false")) disp=false;
+			else disp=true;
 			pdao.ModifyDisp(id, disp);
 			response.sendRedirect("catalogo.jsp");
-		}
-		if(action.equals("img")) {
-			pdao.ModifyImg(id, img);
 		}
 		
 		}catch(Exception e) {

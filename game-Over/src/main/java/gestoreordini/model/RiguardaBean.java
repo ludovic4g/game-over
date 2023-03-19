@@ -27,5 +27,13 @@ public class RiguardaBean implements Serializable {
 
     }
 
+	public RiguardaBean(int id, int idOrdine) {
+		super();
+		this.id = id;
+		this.idOrdine = idOrdine;
+	}
+    
+    
+
 
 }
