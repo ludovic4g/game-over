@@ -104,6 +104,7 @@
                                                 <div class="purchase-info">
                                                 <form action="AddToCartServlet?id=<%=b.getId()%>&action=details" method="post">
                                                         <input type="number" min="1" placeholder="1" name="quantita" required>
+                                                        <br>
                                                         <select name="piattaforma" class="option">
                                                         <%for(int k=0; k<tipi.length ; k++ ){ %>
                                                                 <option value=<%=tipi[k] %>> <%=tipi[k]%></option>

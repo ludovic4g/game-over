@@ -83,6 +83,8 @@
                         
                         <th>Totale</th>
                     </tr>
+                    
+                    <br>
                     <%
                     for(PostazioneBean v: postazioni) {
                     %>
@@ -113,6 +115,7 @@
                         <th>Piattaforma</th>
                         <th>Totale</th>
                     </tr>
+                    <br>
                     <%
                     for(VideogiocoBean v: games) {
                     %>

@@ -1911,7 +1911,7 @@ select.option {
     letter-spacing: 1px;
     -webkit-box-reflect: below 0px linear-gradient(transparent, #0002);
     background: transparent;
-    width: 160px;
+    width: 250px;
     cursor: pointer;
     padding: 10px 10px 10px;
     text-align: center;
