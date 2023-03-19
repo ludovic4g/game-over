@@ -318,7 +318,7 @@ a {
 
 }
 
-.card {
+.card2 ,.card {
     box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
     margin-bottom: 1rem;
 }
@@ -340,19 +340,32 @@ a {
 
 }
 
-.card-title {
+.card2{
+	position: relative;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0, 0, 0, .125);
+    border-radius: 0.25rem;
+}
+
+.card-title2, .card-title {
 
     color: #fff;
 
 }
 
-.card-primary .card-header {
+.card-header2, .card-primary .card-header {
 
     background-color: #1b2141;
 
 }
 
-.card-header {
+.card-header2, .card-header {
 
     background-color: transparent;
     border-bottom: 1px solid rgba(0, 0, 0, .125);
@@ -363,7 +376,7 @@ a {
 
 }
 
-.card-header {
+.card-header2, .card-header {
 
     padding: 0.75rem 1.25rem;
     margin-bottom: 0;
@@ -522,7 +535,7 @@ small {
     padding: 8px;
 }
 /*--------- OrderList Part ---------*/
-.card-header {
+.card-header2,.card-header {
     background-color: #1b2141;
     border-bottom: 1px solid rgba(0, 0, 0, .125);
     padding: 0.75rem 1.25rem;
@@ -646,10 +659,32 @@ p {
 }
 
 .btn-danger {
-    color: #fff;
-    background-color: #dc3545;
-    border-color: #dc3545;
+    color: #050e2d;
     box-shadow: none;
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 20px 0;
+    border: 2px solid #dc3545;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    -webkit-box-reflect: below 0px linear-gradient(transparent, #0002);
+    cursor: pointer;
+     width: 110px;
+}
+
+.btn-danger:hover{
+	
+	transition: 0.5s;
+    color: #fff;
+    box-shadow: 0 0 10px #dc3545,
+        0 0 20px #dc3545,
+        0 0 40px #dc3545,
+        0 0 80px #dc3545,
+        0 0 1600px #dc3545;
+    background: #dc3545;
 }
 
 .btn-sm {
@@ -814,6 +849,13 @@ p {
     border-top: 2px solid transparent;
     transition: all 0.2s ease;
 
+}
+small.error_input {
+    position: relative;
+    /* top: 0px; */
+    left: -7px;
+    display: flex;
+    color: #e74c3c;
 }
 
 .input-field i {
@@ -985,7 +1027,6 @@ input{
 
 .filter_title {
     display: inline-block;
-    float: left;
     background: -webkit-linear-gradient(88deg, rgba(255, 0, 208, 1) 0%, rgba(140, 53, 232, 1) 40%, rgba(27, 105, 255, 1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -995,7 +1036,17 @@ input{
     position: relative;
     right: -10px;
 }
-
+.filter_title_utente {
+    display: inline-block;
+    background: -webkit-linear-gradient(88deg, rgba(255, 0, 208, 1) 0%, rgba(140, 53, 232, 1) 40%, rgba(27, 105, 255, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    margin-right: 10px;
+    position: relative;
+    top: 12px;
+}
 select#sort-users {
     font-size: 16px;
     margin-left: 10px;

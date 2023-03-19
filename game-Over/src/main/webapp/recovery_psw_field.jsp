@@ -76,7 +76,8 @@
                 </div>
                 <input type="password" id="password-field" name="pass2" required>
             </div>
-                          
+                  <small class="error_input">Errore Password - Non valida</small>
+                <small class="error_input">Errore Password - Le Password non coincidono</small>        
             <div class="field">
               <button class="">Reset</button>
             </div>

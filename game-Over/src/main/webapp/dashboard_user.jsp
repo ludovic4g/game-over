@@ -29,7 +29,7 @@
     <section class="home-section">
       <div class="home-content">
         <i class='bx bx-menu'></i>
-        <span class="text">Benvenuto| User Dashboard</span>
+        <span class="text">Bentornato | User Dashboard</span>
       </div>
     </section>
     <script>

@@ -44,6 +44,7 @@
                                 
                         </div>
                         <div class="input-box">
+                        <br>
                         <form action ="RicercaCatalogoServlet" method="post">
             <input type="text" placeholder="Cerca..." name="cerca">
             <span class="icon">

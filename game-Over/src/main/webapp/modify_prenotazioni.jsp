@@ -34,7 +34,7 @@
 <section class="home-section">
   <div class="home-content">
     <i class='bx bx-menu'></i>
-    <span class="text">Benvenuto|Admin Dashboard</span>
+    <span class="text">Modifica Prenotazioni</span>
   </div>
   <div class="input-box">
                         <form action ="RicercaCatalogoServlet" method="post">

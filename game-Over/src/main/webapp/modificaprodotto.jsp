@@ -36,7 +36,7 @@
     <section class="home-section">
       <div class="home-content">
         <i class='bx bx-menu'></i>
-        <span class="text">Benvenuto|Admin Dashboard</span>
+        <span class="text">Modifica Prodotto</span>
       </div>
       <div class="wrapper">
         <div class="collapsible">
@@ -48,28 +48,33 @@
               <div class="form-group">
                 <label for="inputName">Nome Prodotto</label>
                 <input type="text" id="inputName" class="form-control"  placeholder ="<%=b.getNome() %>" name="nome" required>
+                <small class="error_input">Errore Nome - Formato Non valido</small>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
                   </div>
                 </div>
               </div>
+               
               </form>
               <form action="ModificaGiocoServlet?action=anno&id=<%=b.getId() %>" method="post">
               <div class="form-group">
                 <label for="inputName">Anno Prodotto</label>
                 <input type="number" id="inputName" class="form-control" name="anno" placeholder=<%=b.getAnno() %> required>
+                <small class="error_input">Errore Anno - Formato Non valido</small>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
                   </div>
                 </div>
               </div>
+               
               </form>
                <form action="ModificaGiocoServlet?action=magazzino&id=<%=b.getId() %>" method="post">
               <div class="form-group">
                 <label for="inputName">Quantità in Magazzino</label>
                 <input type="number" id="inputName" class="form-control" name="magazzino" placeholder=<%=b.getMagazzino()%> required>
+                <small class="error_input">Errore Quantità - Formato Non valido</small>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
@@ -92,12 +97,14 @@
               <div class="form-group">
                 <label for="inputPrice">Prezzo</label>
                 <input type="prezzo" id="inputPrice" class="form-control" name="prezzo" placeholder="<%=b.getPrezzo()%>" required>
+                <small class="error_input">Errore Prezzo - Formato Non valido</small>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
                   </div>
                 </div>
               </div>
+               
               </form>
               <form action="ModificaGiocoServlet?action=piattaforma&id=<%=b.getId() %>" method="post">
               <div class="form-group">
@@ -129,6 +136,7 @@
                   <input type="text" id="inputName" class="form-control" name="img3" required>
                   <input type="text" id="inputName" class="form-control" name="img4" required>
                   <input type="text" id="inputName" class="form-control" name="img5" required>
+                  <small class="error_input">Errore nelle Immagini - Formato Non valido</small>
                   <div class="row">
                     <div class="col-12">
                       <input type="submit" value="Conferma" class="right button">

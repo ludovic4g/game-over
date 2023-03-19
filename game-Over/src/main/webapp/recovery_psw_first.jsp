@@ -64,6 +64,8 @@
               </div>
               <input type="text" name="mail" required>
             </div>
+            <small class="error_input">Errore Email - Non Valida</small>
+            <small class="error_input">Errore Email - Non esistente</small>
             <div class="field">
               <button class="firstNext next" id="sub" type="submit">Avanti</button>
             </div>
@@ -75,6 +77,8 @@
               </div>
               <input type="text" name="risposta" required>
             </div>
+            <small class="error_input">Risposta non valida</small>
+            <small class="error_input">Risposta errata</small>
             <div class="field btns">
               <button class="" type="submit">Conferma</button>
             </div>

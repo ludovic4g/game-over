@@ -28,6 +28,10 @@
 <body>
     <!-- Header -->
        <%@ include file="includes/header.jsp" %>
+       <br>
+       <br>
+       <br>
+       <br>
     <!-- Register -->
     <div class="fakebody">
         <div class="containerbody">
@@ -82,6 +86,7 @@
                              <input type="text" name="nome" required>
                              <%} %>
                         </div>
+                        <small class="error_input">Errore Nome - Non valido</small>
                         <div class="field">
                             <div class="label">
                                 Cognome
@@ -92,6 +97,7 @@
                             <input type="text" name="cognome" required>
                             <%} %>
                         </div>
+                        <small class="error_input">Errore Cognome - Non valido</small>
                         <div class="field">
                             <div class="label">
                                 Username
@@ -104,6 +110,7 @@
                             <input type="text" name="username" required>
                             <%} %>
                         </div>
+                        <small class="error_input">Errore Username - Già esistente</small>
                         <div class="field">
                             <div class="label">
                                 E-mail
@@ -116,6 +123,8 @@
                             <input type="text" name="mail" required>
                             <%} %>
                         </div>
+                       <small class="error_input">Errore Email - Non Valida</small>
+                        <small class="error_input">Errore Email - Già esistente</small>
                         <div class="field">
                             <button class="firstNext next">Avanti</button>
                         </div>
@@ -142,6 +151,8 @@
                             <input type="date" name="ddn" required>
                             <%} %>
                         </div>
+                        <small class="error_input">Errore Data - Seleziona una data</small>
+                        <small class="error_input">Errore Data - Seleziona una data valida</small>
                         <div class="field btns">
                             <button class="prev-1 prev">Indietro</button>
                             <button class="next-1 next">Avanti</button>
@@ -193,6 +204,8 @@
                             <input type="password" id="password-field" name="pass2" required>
                             <%} %>
                         </div>
+                        <small class="error_input">Errore Password - Non valida</small>
+                        <small class="error_input">Errore Password - Le Password non coincidono</small>
                         <div class="field btns">
                             <button class="prev-2 prev">Indietro</button>
                             <button class="next-2 next">Avanti</button>
@@ -220,6 +233,7 @@
                             <input type="text" name="risposta" required>
                             <%} %>
                         </div>
+                        <small class="error_input">Errore Risposta - Formato non valido</small>
                         <div class="field btns">
                             <button class="prev-3 prev">Indietro</button>
                             <button class="submit">Registrati</button>
@@ -230,6 +244,11 @@
         </div>
     </div>
     <!-- Footer -->
+    <br>
+    <br>
+    <br>
+    <br>
+       
     <footer>
         <div class="info">
             <a href="#" class="logo"><span aria-hidden="true">GameOver</span>GameOver<span

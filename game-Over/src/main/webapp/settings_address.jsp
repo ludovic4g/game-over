@@ -45,24 +45,29 @@
               <div class="form-group">
                 <label for="inputName">Nome e Cognome</label>
                 <input type="text" id="inputName"  name="nomeind" class="form-control" placeholder="<%=auth.getNome()%> <%=auth.getCognome()%>" required>
+                <small class="error_input">Errore Nome e/o Cognome - Formato non valido</small>
               </div>
               <div class="form-group">
                 <label for="inputPrice">Città</label>
                 <input type="text" id="inputName" name="citta" class="form-control"  placeholder="<%=b.getCitta()%>" required>
+                <small class="error_input">Errore Città - Formato non valido</small>
                 </div>
               <div class="form-group">
                 <label for="inputPrice">Provincia</label>
                 <input type="text" id="inputName" name="provincia" class="form-control"  placeholder="<%=b.getProvincia ()%>" required>
+                <small class="error_input">Errore Provincia - Formato non valido</small>
 
               </div>
               <div class="form-group">
                 <label for="inputPrice">CAP</label>
                 <input type="text" id="inputName" name="cap" class="form-control" placeholder="<%=b.getCAP()%>" required>
+                <small class="error_input">Errore CAP - Formato non valido</small>
 
               </div>
               <div class="form-group">
                 <label for="inputPrice">Indirizzo</label>
                 <input type="text" id="inputName"  name="via" class="form-control"  placeholder="<%=b.getVia()%>" required>
+                <small class="error_input">Errore Indirizzo - Formato non valido</small>
 				<div class="row">
                     <div class="col-12">
                       <input type="submit" value="Conferma" class="right button">

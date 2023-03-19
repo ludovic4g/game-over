@@ -1094,6 +1094,20 @@ footer .info ul li:hover a i {
     letter-spacing: 0.1em;
 } */
 
+small.error_input{
+    position: relative;
+    top: -25px;
+    left: 2px;
+    display: flex;
+    color: #e74c3c;
+}
+
+small.error_login {
+    position: relative;
+    display: flex;
+    color: #e74c3c;
+}
+
 .inputBox {
     position: relative;
     width: 300px;
@@ -2150,6 +2164,13 @@ h2.title-page {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+small.error_cart {
+    position: relative;
+    top: 165px;
+    left: 270px;
+    display: flex;
+    color: #e74c3c;
+}
 
 table {
 
@@ -2345,7 +2366,13 @@ th:last-child {
     box-shadow: 0 0 10px #1b2141, 0 0 20px #1b2141, 0 0 40px #1b2141, 0 0 80px #1c1c1c, 0 0 1600px #1b2141;
 
 }
-
+small.error_checkout {
+    position: relative;
+    top: 8px;
+    left: 2px;
+    display: flex;
+    color: #e74c3c;
+}
 .address_form {
 	
     position: absolute;
@@ -2937,7 +2964,7 @@ td.subtotal-product-price-checkout, td.tax-product-price-checkout, td.total-prod
         position: relative;
         width: 30px;
         height: 30px;
-        background: url(menu.png);
+        background: url(images/menu.png);
         background-position: center;
         background-size: 30px;
         background-repeat: no-repeat;
@@ -2950,7 +2977,7 @@ td.subtotal-product-price-checkout, td.tax-product-price-checkout, td.total-prod
     }
 
     .toggleMenu.active {
-        background: url(close.png);
+        background: url(images/close.png);
         background-position: center;
         background-size: 30px;
         background-repeat: no-repeat;

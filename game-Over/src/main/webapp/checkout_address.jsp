@@ -114,23 +114,28 @@
                 <h2>Modifica Indirizzo</h2>
                 <div class="form-element">
                     <label for="email">Nome</label>
-                    <input type="text" id="email" name="nomeind">
+                    <input type="text" id="nome" name="nomeind">
+                	<small class="error_checkout">Errore Nome - Formato non valido</small>
                 </div>
                 <div class="form-element">
                     <label for="email">Citta'</label>
-                    <input type="text" id="email" name="citta">
+                    <input type="text" id="citta'" name="citta">
+                    <small class="error_checkout">Errore Città - Formato non valido</small>
                 </div>
                 <div class="form-element">
                     <label for="email">Provincia</label>
-                    <input type="text" id="email" name="provincia">
+                    <input type="text" id="provincia" name="provincia">
+                    <small class="error_checkout">Errore Provincia - Formato non valido</small>
                 </div>
                 <div class="form-element">
                     <label for="email">CAP</label>
-                    <input type="text" id="email" name="cap">
+                    <input type="text" id="cap" name="cap">
+                    <small class="error_checkout">Errore CAP - Formato non valido</small>
                 </div>
                 <div class="form-element">
                     <label for="email">Indirizzo</label>
                     <input type="text" id="email" name="via">
+                    <small class="error_checkout">Errore Indirizzo - Formato non valido</small>
                 </div>
                 <button class="address-submit" type="submit">Conferma</button>
                 </form>
@@ -143,23 +148,28 @@
                 <h2>Aggiungi Indirizzo</h2>
                 <div class="form-element">
                     <label for="email">Nome</label>
-                    <input type="text" id="email" name="nome">
+                    <input type="text" id="nome" name="nome">
+                    <small class="error_checkout">Errore Nome - Formato non valido</small>
                 </div>
                 <div class="form-element">
                     <label for="email">Citta'</label>
-                    <input type="text" id="email" name="citta">
+                    <input type="text" id="citta'" name="citta">
+                    <small class="error_checkout">Errore Città - Formato non valido</small>
                 </div>
                 <div class="form-element">
                     <label for="email">Provincia</label>
-                    <input type="text" id="email" name="provincia">
+                    <input type="text" id="provincia" name="provincia">
+                    <small class="error_checkout">Errore Provincia - Formato non valido</small>
                 </div>
                 <div class="form-element">
                     <label for="email">CAP</label>
-                    <input type="text" id="email" name="cap">
+                    <input type="text" id="cap" name="cap">
+                    <small class="error_checkout">Errore CAP - Formato non valido</small>
                 </div>
                 <div class="form-element">
                     <label for="email">Indirizzo</label>
-                    <input type="text" id="email" name="indirizzo">
+                    <input type="text" id="indirizzo" name="indirizzo">
+                    <small class="error_checkout">Errore Indirizzo - Formato non valido</small>
                 </div>
                 <button class="address-submit" type="submit">Conferma</button>
                 </form>

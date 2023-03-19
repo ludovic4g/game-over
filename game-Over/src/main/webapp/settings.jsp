@@ -44,6 +44,7 @@
               <div class="form-group">
                 <label for="inputName">Nome</label>
                 <input type="text" id="inputName" name="nome" class="form-control" placeholder="<%=auth.getNome()%>" required>
+                <small class="error_input">Errore Nome - Non valido</small>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
@@ -51,11 +52,11 @@
                 </div>
               </div>
               </form>
-
               <form action="ModificaInfoServlet?action=cognome&id=<%=auth.getUsername()%>" method="post">
               <div class="form-group">
                 <label for="inputName">Cognome</label>
                 <input type="text" id="inputName" name="cognome" class="form-control" placeholder="<%=auth.getCognome()%>" required>
+                <small class="error_input">Errore Cognome - Non valido</small>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
@@ -67,6 +68,8 @@
               <div class="form-group">
                 <label for="inputDescription">Data di nascita</label>
                 <input type="date" name="ddn" class="setting_date" placeholder="<%=auth.getBday() %>" required>
+                <small class="error_input">Errore Data - Seleziona una data</small>
+                <small class="error_input">Errore Data - Seleziona una data valida</small>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
@@ -94,6 +97,8 @@
                 <div class="form-group">
                   <label for="inputProjectLeader">E-mail</label>
                   <input type="email" id="inputName" name="mail" class="form-control" placeholder="<%=auth.getEmail() %>"required>
+                  <small class="error_input">Errore Email - Non Valida</small>
+                  <small class="error_input">Errore Email - Già esistente</small>
                   <div class="row">
                     <div class="col-12">
                       <input type="submit" value="Conferma" class="right button">
@@ -117,6 +122,7 @@
                 <div class="form-group">
                   <label for="inputProjectLeader">Risposta</label>
                   <input type="text" id="inputName" name="risposta" class="form-control">
+                  <small class="error_input">Errore Risposta - Formato non valido</small>
                   <div class="row">
                     <div class="col-12">
                       <input type="submit" value="Conferma" class="right button">

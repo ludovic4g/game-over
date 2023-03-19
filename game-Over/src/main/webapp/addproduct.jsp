@@ -43,14 +43,17 @@
                 <label for="inputName">Nome Prodotto</label>
                 <input type="text" id="inputName" class="form-control" name="name">
               </div>
+              <small class="error_input">Errore Nome - Formato Non valido</small>
                <div class="form-group">
                 <label for="inputName">Quantita' da Aggiungere</label>
                 <input type="text" id="inputName" class="form-control" name="quantita">
               </div>
+              <small class="error_input">Errore Quantità - Formato Non valido</small>
               <div class="form-group">
                 <label for="inputName">Anno</label>
                 <input type="text" id="inputName" class="form-control" name="anno">
               </div>
+              <small class="error_input">Errore Anno - Formato Non valido</small>
               <div class="form-group">
                 <label for="inputDescription">Descrizione Prodotto</label>
                 <textarea id="inputDescription" class="form-control" rows="4" name="descrizione"></textarea>
@@ -59,6 +62,7 @@
                 <label for="inputPrice">Prezzo</label>
                 <input type="text" id="inputPrice" class="form-control" name="prezzo">
               </div>
+              <small class="error_input">Errore Prezzo - Formato Non valido</small>
               <div class="form-group">
                 <label for="inputName">Piattaforma</label>
                 <input type="text" id="inputName" class="form-control" name="piattaforma">
@@ -75,6 +79,7 @@
                   <input type="text" id="inputName" class="form-control" name="img5">
                 </div>
               </div>
+              <small class="error_input">Errore nelle Immagini - Formato Non valido</small>
               <div class="row">
                 <div class="col-12">
                   <input type="submit" value="Aggiungi Prodotto" class="right button">

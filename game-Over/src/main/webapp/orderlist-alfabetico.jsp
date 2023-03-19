@@ -32,9 +32,10 @@
 <section class="home-section">
   <div class="home-content">
     <i class='bx bx-menu'></i>
-    <span class="text">Benvenuto|Admin Dashboard</span>
+    <span class="text">Lista Ordini | In ordine alfabetico</span>
   </div>
    <div class="input-box">
+   <br>
                         <form action ="RicercaCatalogoServlet" method="post">
             <input type="text" placeholder="Cerca..." name="cerca">
             <span class="icon">
@@ -45,7 +46,7 @@
         </div>
         
         <div class="filter_container"> 
-        <div class="filter_title">Filtra per utente</div>
+        <div class="filter_title_utente">Filtra per utente</div>
     <form action ="FiltraOrdiniServlet?action=alfabetico" method="post">
     
         <select id="sort-users" name="tipo">
@@ -53,14 +54,13 @@
  		 <option value="az">Utenti dalla A-Z</option>
   		<option value="za">Utenti dalla Z-A</option>
 		</select>
-	<button type="submit" class="btn btn-danger btn-sm">-></button>
+	<button type="submit" class="btn btn-danger btn-sm">Applica</button>
 	</form>
 <form action ="FiltraOrdiniServlet?action=data" method="post">
-<div class="filter_title">Data da:</div>
+<div class="filter_title">Data da/a:</div>
 <input class="data_filter" type="date" id="sort-date" name="inizio">
-<div class="filter_title">Data a:</div>
 <input class="data_filter" type="date" id="sort-date" name="fine">
-<button type="submit" class="btn btn-danger btn-sm">-></button>
+<button type="submit" class="btn btn-danger btn-sm">Applica</button>
 </form>
 </div>
   <div class="card">

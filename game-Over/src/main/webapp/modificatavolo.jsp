@@ -36,7 +36,7 @@
     <section class="home-section">
       <div class="home-content">
         <i class='bx bx-menu'></i>
-        <span class="text">Benvenuto|Admin Dashboard</span>
+        <span class="text">Modifica Tavolo</span>
       </div>
       <div class="wrapper">
         <div class="collapsible">

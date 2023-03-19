@@ -26,6 +26,7 @@
                 <title>Dashboard Admin|Rimuovi Prodotto</title>
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
                 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+                <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
                 <link rel="stylesheet" href="dashboard.css">
         </head>
 
@@ -39,6 +40,7 @@
                                 <span class="text">Benvenuto|Admin Dashboard</span>
                         </div>
                          <div class="input-box">
+                         <br>
                         <form action ="RicercaCatalogoServlet" method="post">
             <input type="text" placeholder="Cerca..." name="cerca">
             <span class="icon">
@@ -267,6 +269,13 @@
                         sidebarBtn.addEventListener("click", () => {
                                 sidebar.classList.toggle("close");
                         });
+                        /* Js For Animated Search Bar Open/Close */
+                        let inputBox = document.querySelector(".input-box"),
+                        searchIcon = document.querySelector(".icon"),
+                        closeIcon = document.querySelector(".close-icon");
+
+                    searchIcon.addEventListener("click", () => inputBox.classList.add("open"));
+                    closeIcon.addEventListener("click", () => inputBox.classList.remove("open"));
                 </script>
         </body>
 

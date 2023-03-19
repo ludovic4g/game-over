@@ -163,6 +163,9 @@
                         }
                         %></td>
                         </tr>
+                         <small class="error_cart">Il carrello è vuoto!</small>
+                         <br>
+                         <br>
                         <tr>
                         	 <%if(ctrl){ %>
                             <td><br><a href="cart.jsp" class="btn">Acquista</a></td>
@@ -171,7 +174,7 @@
                             <%} %>
                             <td><br><a href="RemoveFromCartServlet?action=clear" class="btn">Svuota</a></td>
                         </tr>
-
+						
                     </table>
                 </div>
             </div>

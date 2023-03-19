@@ -33,6 +33,7 @@
                                 aria-hidden="true"></span></a>
                     </h2>
                     </h2>
+                <small class="error_login">Username e/o Password errati!</small>
                 <form action="LoginServlet" method="post">
                 <%if(request.getSession().getAttribute("errorUsername")!=null){ %>
                     <div class="inputBox">

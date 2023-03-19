@@ -84,6 +84,9 @@
                                 Conferma Password
                             </div>
                             <input type="password" id="password-field" name="new2" required>
+                            <small class="error_input">Errore Vecchia Password - Formato non valido</small>
+                            <small class="error_input">Errore Password - Le Password non coincidono</small>
+                            <small class="error_input">Errore Password - Formato non valido</small>
                         </div>
               <div class="row">
                 <div class="col-12">
