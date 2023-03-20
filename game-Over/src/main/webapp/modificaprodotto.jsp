@@ -8,6 +8,10 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
+        
+        Boolean nm = (Boolean) request.getSession().getAttribute("nm");
+        Boolean i1 = (Boolean) request.getSession().getAttribute("i1");
+        Boolean i2 = (Boolean) request.getSession().getAttribute("i2");
         %>
   <!DOCTYPE html>
   <html lang="en">
@@ -48,7 +52,9 @@
               <div class="form-group">
                 <label for="inputName">Nome Prodotto</label>
                 <input type="text" id="inputName" class="form-control"  placeholder ="<%=b.getNome() %>" name="nome" required>
+                <%if(nm!=null && nm==true){ %>
                 <small class="error_input">Errore Nome - Formato Non valido</small>
+                <%} %>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
@@ -61,7 +67,7 @@
               <div class="form-group">
                 <label for="inputName">Anno Prodotto</label>
                 <input type="number" id="inputName" class="form-control" name="anno" placeholder=<%=b.getAnno() %> required>
-                <small class="error_input">Errore Anno - Formato Non valido</small>
+           
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
@@ -74,7 +80,8 @@
               <div class="form-group">
                 <label for="inputName">Quantità in Magazzino</label>
                 <input type="number" id="inputName" class="form-control" name="magazzino" placeholder=<%=b.getMagazzino()%> required>
-                <small class="error_input">Errore Quantità - Formato Non valido</small>
+                
+   
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
@@ -96,8 +103,8 @@
               <form action="ModificaGiocoServlet?action=prezzo&id=<%=b.getId() %>" method="post">
               <div class="form-group">
                 <label for="inputPrice">Prezzo</label>
-                <input type="prezzo" id="inputPrice" class="form-control" name="prezzo" placeholder="<%=b.getPrezzo()%>" required>
-                <small class="error_input">Errore Prezzo - Formato Non valido</small>
+                <input type="number" id="inputPrice" class="form-control" name="prezzo" placeholder="<%=b.getPrezzo()%>" required>
+              
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
@@ -136,7 +143,9 @@
                   <input type="text" id="inputName" class="form-control" name="img3" required>
                   <input type="text" id="inputName" class="form-control" name="img4" required>
                   <input type="text" id="inputName" class="form-control" name="img5" required>
+                  <%if((i1!=null && i1==true) || (i2!=null && i2==true)){ %>
                   <small class="error_input">Errore nelle Immagini - Formato Non valido</small>
+                  <%} %>
                   <div class="row">
                     <div class="col-12">
                       <input type="submit" value="Conferma" class="right button">

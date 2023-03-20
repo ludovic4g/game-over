@@ -18,7 +18,7 @@
         if(carrello== null){
         	carrello = new Carrello();
         }
-        boolean ctrl= carrello.isEmpty();
+	Boolean ctrl = (Boolean) request.getSession().getAttribute("ctrl");
         tavoli = carrello.getTavoli();
         postazioni = carrello.getPostazioni();
         games= carrello.getGames();
@@ -146,7 +146,7 @@
                     <table>
                         <tr>
                             <td class="subtitle">Subtotal</td>
-                            <td class="total-product-price"><%if(!ctrl){
+                            <td class="total-product-price"><%if(carrello!=null && !carrello.isEmpty()){
                         out.println(String.format("%.2f&euro;", carrello.getTotal()));
                         }else{
                         	out.println("0.00");
@@ -159,22 +159,22 @@
                         </tr>
                         <tr>
                             <td class="subtitle">Total</td>
-                            <td class="total-product-price"><%if(!ctrl){
+                            <td class="total-product-price"><%if(carrello!=null && !carrello.isEmpty()){
                         out.println(String.format("%.2f&euro;", carrello.getTotal()*0.22+carrello.getTotal()));
                         }else{
                         	out.println("0.00");
                         }
                         %></td>
                         </tr>
+                        <%if(ctrl!=null && ctrl==true){%>
                          <small class="error_cart">Il carrello è vuoto!</small>
+                         <%} %>
                          <br>
                          <br>
                         <tr>
-                        	 <%if(ctrl){ %>
-                            <td><br><a href="cart.jsp" class="btn">Acquista</a></td>
-                            <%}else{ %>
+                        	
                             <td><br><a href="RedirectServlet" class="btn">Acquista</a></td>
-                            <%} %>
+                          
                             <td><br><a href="RemoveFromCartServlet?action=clear" class="btn">Svuota</a></td>
                         </tr>
 						

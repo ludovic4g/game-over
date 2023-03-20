@@ -24,6 +24,16 @@
         request.setAttribute("indirizzi", indirizzi);
         int i=0;
         
+        Boolean n1 = (Boolean) request.getSession().getAttribute("nm");
+        Boolean v = (Boolean) request.getSession().getAttribute("v");
+        Boolean pr = (Boolean) request.getSession().getAttribute("pr");
+        Boolean cp = (Boolean) request.getSession().getAttribute("cp");
+        Boolean ct = (Boolean) request.getSession().getAttribute("ct");
+        Boolean nm1 = (Boolean) request.getSession().getAttribute("nm1");
+        Boolean v1 = (Boolean) request.getSession().getAttribute("v1");
+        Boolean pr1 = (Boolean) request.getSession().getAttribute("pr1");
+        Boolean cp1 = (Boolean) request.getSession().getAttribute("cp1");
+        Boolean ct1 = (Boolean) request.getSession().getAttribute("ct1");
         
         %>
 <!DOCTYPE html>
@@ -52,7 +62,7 @@
                  <%if(indirizzi.size()>=1) {
                  	i++;%>
                     <p class="address_title">Indirizzo: <%=indirizzi.get(0).getVia() %> <span style="float: right;position: relative;top: 15px;">
-                            <input type="checkbox" id="address-checkbox">
+                            <input type="checkbox" id="address-checkbox" >
                         </span></p>
                     <button id="show-address">Modifica</button>
                     <%}else{ %>
@@ -68,7 +78,7 @@
                 <%if(indirizzi.size()>1) {
                 i++;%>
                     <p class="address_title">Indirizzo: <%= indirizzi.get(1).getVia()%> <span style="float: right;position: relative;top: 15px;">
-                            <input type="checkbox" id="address-checkbox">
+                            <input type="checkbox" id="address-checkbox" required>
                         </span></p>
                         <button id="show-address2">Modifica</button>
                            <%}else{ %> 
@@ -85,7 +95,7 @@
                 <%if(indirizzi.size()>2){
                 i++;%>
                     <p class="address_title">Indirizzo: <%=indirizzi.get(2).getVia() %> <span style="float: right;position: relative;top: 15px;">
-                            <input type="checkbox" id="address-checkbox">
+                            <input type="checkbox" id="address-checkbox" required>
                         </span></p>
                         <button id="show-address3">Modifica</button>
                         <%}else{ %>
@@ -115,27 +125,37 @@
                 <div class="form-element">
                     <label for="email">Nome</label>
                     <input type="text" id="nome" name="nomeind">
+                	<%if(n1!=null && n1==true){ %>
                 	<small class="error_checkout">Errore Nome - Formato non valido</small>
+                	<%} %>
                 </div>
                 <div class="form-element">
                     <label for="email">Citta'</label>
                     <input type="text" id="citta'" name="citta">
+                    <%if(ct!=null && ct==true){ %>
                     <small class="error_checkout">Errore Città - Formato non valido</small>
+                    <%} %>
                 </div>
                 <div class="form-element">
                     <label for="email">Provincia</label>
                     <input type="text" id="provincia" name="provincia">
+                   <%if(pr!=null && pr==true){ %>
                     <small class="error_checkout">Errore Provincia - Formato non valido</small>
+                    <%} %>
                 </div>
                 <div class="form-element">
                     <label for="email">CAP</label>
                     <input type="text" id="cap" name="cap">
+                    <%if(cp!=null && cp==true){ %>
                     <small class="error_checkout">Errore CAP - Formato non valido</small>
+                    <%} %>
                 </div>
                 <div class="form-element">
                     <label for="email">Indirizzo</label>
                     <input type="text" id="email" name="via">
+                    <%if(v!=null && v==true){ %>
                     <small class="error_checkout">Errore Indirizzo - Formato non valido</small>
+                    <%}%>
                 </div>
                 <button class="address-submit" type="submit">Conferma</button>
                 </form>
@@ -149,27 +169,37 @@
                 <div class="form-element">
                     <label for="email">Nome</label>
                     <input type="text" id="nome" name="nome">
+                    <%if(nm1!=null && nm1==true){ %>
                     <small class="error_checkout">Errore Nome - Formato non valido</small>
+                    <%} %>
                 </div>
                 <div class="form-element">
                     <label for="email">Citta'</label>
                     <input type="text" id="citta'" name="citta">
+                    <%if(ct1!=null && ct1==true){ %>
                     <small class="error_checkout">Errore Città - Formato non valido</small>
+                    <%} %>
                 </div>
                 <div class="form-element">
                     <label for="email">Provincia</label>
                     <input type="text" id="provincia" name="provincia">
+                    <%if(pr1!=null && pr1==true){ %>
                     <small class="error_checkout">Errore Provincia - Formato non valido</small>
+                    <%}%>
                 </div>
                 <div class="form-element">
                     <label for="email">CAP</label>
                     <input type="text" id="cap" name="cap">
+                    <%if(cp1!=null && cp1==true){ %>
                     <small class="error_checkout">Errore CAP - Formato non valido</small>
+                    <%} %>
                 </div>
                 <div class="form-element">
                     <label for="email">Indirizzo</label>
                     <input type="text" id="indirizzo" name="indirizzo">
+                    <%if(v1!=null && v1==true){ %>
                     <small class="error_checkout">Errore Indirizzo - Formato non valido</small>
+                    <%} %>
                 </div>
                 <button class="address-submit" type="submit">Conferma</button>
                 </form>
@@ -211,6 +241,17 @@
             document.querySelector(".popup_add").classList.remove("active");
             document.querySelector("#box-address").style.display = "block";
         })
+        
+        $(function(){
+    var requiredCheckboxes = $('.browsers :checkbox[required]');
+    requiredCheckboxes.change(function(){
+        if(requiredCheckboxes.is(':checked')) {
+            requiredCheckboxes.removeAttr('required');
+        } else {
+            requiredCheckboxes.attr('required', 'required');
+        }
+    });
+});
     </script>
     <script src="scripts/anime.min.js"></script>
     <script src="scripts/script.js"></script>

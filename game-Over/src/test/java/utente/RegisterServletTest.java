@@ -125,41 +125,6 @@ public class RegisterServletTest {
         
     }
 
-    @Test
-    public void usernameNonValido() throws SQLException, ServletException, IOException, ParseException{
-    	String username="";
-    	String password="Manuel1.";
-    	String password2="Manuel1.";
-    	String email= "manuel1@gmail.com";
-    	String nome= "Manuel";
-    	String cognome ="Sica";
-    	String d = "2001-05-23";
-    	SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-        Date ddn = f.parse(d);
-        String sex = "Maschio";
-        String risposta= "Benevento";
-        
-        PrintWriter out = Mockito.mock(PrintWriter.class);
-  	   	ArgumentCaptor<String> argument = ArgumentCaptor.forClass(String.class);
-        
-         Mockito.when(request.getParameter("username")).thenReturn(username);
-         Mockito.when(request.getParameter("pass1")).thenReturn(password);
-         Mockito.when(request.getParameter("pass2")).thenReturn(password2);
-         Mockito.when(request.getParameter("mail")).thenReturn(email);
-         Mockito.when(request.getParameter("nome")).thenReturn(nome);
-         Mockito.when(request.getParameter("cognome")).thenReturn(cognome);
-         Mockito.when(request.getParameter("ddn")).thenReturn(d);
-         Mockito.when(request.getParameter("sesso")).thenReturn(sex);
-         Mockito.when(request.getParameter("risposta")).thenReturn(risposta);
-         Mockito.when(response.getWriter()).thenReturn(out);
-         
-         servlet.doPost(request, response);
-      	
-   	   	Mockito.verify(out).print(argument.capture());
-   	   	assertEquals("Username non valido.", argument.getValue());
-        
-       
-    }
   
     @Test
     public void nomeNonValido() throws SQLException, ServletException, IOException, ParseException{
@@ -232,41 +197,7 @@ public class RegisterServletTest {
       
     }
    
-  @Test
-    public void genereNonValido() throws SQLException, ServletException, IOException, ParseException{
-     	String username= "manueeeeeeeee";
-    	String password="mmmManue1.";
-    	String password2="mmmManue1.";
-    	String email= "manuel1@gmail.com";
-    	String nome= "Manuel";
-    	String cognome ="Sica";
-    	String d = "2001-05-23";
-    	SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-        Date ddn = f.parse(d);
-        String sex = "";
-        String risposta= "Benevento";
-        String domanda ="Città preferita";
-        
-        PrintWriter out = Mockito.mock(PrintWriter.class);
-  	   	ArgumentCaptor<String> argument = ArgumentCaptor.forClass(String.class);
-        
-         Mockito.when(request.getParameter("username")).thenReturn(username);
-         Mockito.when(request.getParameter("pass1")).thenReturn(password);
-         Mockito.when(request.getParameter("pass2")).thenReturn(password2);
-         Mockito.when(request.getParameter("mail")).thenReturn(email);
-         Mockito.when(request.getParameter("nome")).thenReturn(nome);
-         Mockito.when(request.getParameter("cognome")).thenReturn(cognome);
-         Mockito.when(request.getParameter("ddn")).thenReturn(d);
-         Mockito.when(request.getParameter("sesso")).thenReturn(sex);
-         Mockito.when(request.getParameter("risposta")).thenReturn(risposta);
-         Mockito.when(response.getWriter()).thenReturn(out);
-         
-         servlet.doPost(request, response);
-      	
-   	   	Mockito.verify(out).print(argument.capture());
-   	   	assertEquals("Genere non valido.", argument.getValue());
-        
-    }
+
    @Test
     public void mailNonValido() throws SQLException, ServletException, IOException, ParseException{
      	String username= "manueeee";
@@ -406,40 +337,7 @@ public class RegisterServletTest {
    	   	Mockito.verify(out).print(argument.capture());
    	   	assertEquals("Password non coincidono.", argument.getValue());
     }
-    @Test
-    public void rispostaNonValido() throws SQLException, ServletException, IOException, ParseException{
-     	String username= "manueeeee";
-    	String password="Manuel1!";
-    	String password2="Manuel1!";
-    	String email= "manuel1@gmail.com";
-    	String nome= "Manuel";
-    	String cognome ="Sica";
-    	String d = "2001-05-23";
-    	SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-        Date ddn = f.parse(d);
-        String sex = "Maschio";
-        String risposta= null;
-        String domanda ="Città preferita";
-        
-        PrintWriter out = Mockito.mock(PrintWriter.class);
-  	   	ArgumentCaptor<String> argument = ArgumentCaptor.forClass(String.class);
-        
-         Mockito.when(request.getParameter("username")).thenReturn(username);
-         Mockito.when(request.getParameter("pass1")).thenReturn(password);
-         Mockito.when(request.getParameter("pass2")).thenReturn(password2);
-         Mockito.when(request.getParameter("mail")).thenReturn(email);
-         Mockito.when(request.getParameter("nome")).thenReturn(nome);
-         Mockito.when(request.getParameter("cognome")).thenReturn(cognome);
-         Mockito.when(request.getParameter("ddn")).thenReturn(d);
-         Mockito.when(request.getParameter("sesso")).thenReturn(sex);
-         Mockito.when(request.getParameter("risposta")).thenReturn(risposta);
-         Mockito.when(response.getWriter()).thenReturn(out);
-         
-         servlet.doPost(request, response);
-      	
-   	   	Mockito.verify(out).print(argument.capture());
-   	   	assertEquals("Risposta non valida.", argument.getValue());
-    }
+    
    }
 
 

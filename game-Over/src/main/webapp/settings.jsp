@@ -11,6 +11,10 @@
         UtenteDAO udao = new UtenteDAO();
         HaDAO hdao = new HaDAO();
         ArrayList<HaBean> ha = hdao.doRetrieveByUsername(auth.getUsername());
+        Boolean nm = (Boolean) request.getSession().getAttribute("nm");
+        Boolean cn = (Boolean) request.getSession().getAttribute("cn");
+        Boolean m1 = (Boolean) request.getSession().getAttribute("m1");
+        Boolean m2 = (Boolean) request.getSession().getAttribute("m2");
         %>
   <!DOCTYPE html>
   <html lang="en">
@@ -44,7 +48,9 @@
               <div class="form-group">
                 <label for="inputName">Nome</label>
                 <input type="text" id="inputName" name="nome" class="form-control" placeholder="<%=auth.getNome()%>" required>
+                <%if(nm!=null && nm==true){ %>
                 <small class="error_input">Errore Nome - Non valido</small>
+                <%} %>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
@@ -56,7 +62,9 @@
               <div class="form-group">
                 <label for="inputName">Cognome</label>
                 <input type="text" id="inputName" name="cognome" class="form-control" placeholder="<%=auth.getCognome()%>" required>
+                <%if(nm!=null && nm==true){ %>
                 <small class="error_input">Errore Cognome - Non valido</small>
+                <%} %>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
@@ -68,8 +76,6 @@
               <div class="form-group">
                 <label for="inputDescription">Data di nascita</label>
                 <input type="date" name="ddn" class="setting_date" placeholder="<%=auth.getBday() %>" required>
-                <small class="error_input">Errore Data - Seleziona una data</small>
-                <small class="error_input">Errore Data - Seleziona una data valida</small>
                 <div class="row">
                   <div class="col-12">
                     <input type="submit" value="Conferma" class="right button">
@@ -82,7 +88,7 @@
                 <label for="inputPrice">Genere</label>
                 <select name="gender" class="option" >
                 <option value="" disabled selected><%=auth.getSex() %></option>
-                  <option value="//">Preferisco non specificarlo</option>
+                  <option value="Preferisco Non specificarlo">Preferisco non specificarlo</option>
                   <option value="male">Maschio</option>
                   <option value="woman">Femmina</option>
                 </select>
@@ -97,8 +103,12 @@
                 <div class="form-group">
                   <label for="inputProjectLeader">E-mail</label>
                   <input type="email" id="inputName" name="mail" class="form-control" placeholder="<%=auth.getEmail() %>"required>
-                  <small class="error_input">Errore Email - Non Valida</small>
+                  <%if(m1!=null && m1==true){ %>
+                  <small class="error_input" >Errore Email - Non Valida</small>
+                  <%} %>
+                  <%if(m2!=null && m2==true){ %>
                   <small class="error_input">Errore Email - Già esistente</small>
+                  <%} %>
                   <div class="row">
                     <div class="col-12">
                       <input type="submit" value="Conferma" class="right button">
@@ -122,7 +132,7 @@
                 <div class="form-group">
                   <label for="inputProjectLeader">Risposta</label>
                   <input type="text" id="inputName" name="risposta" class="form-control">
-                  <small class="error_input">Errore Risposta - Formato non valido</small>
+   
                   <div class="row">
                     <div class="col-12">
                       <input type="submit" value="Conferma" class="right button">

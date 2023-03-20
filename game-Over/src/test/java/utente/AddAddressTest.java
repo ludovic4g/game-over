@@ -151,7 +151,7 @@ public class AddAddressTest {
  	   String nome="Manuel Sica";
  	   String indirizzo="Via Umberto I";
  	   String cap = "84099";
- 	   String citta="";
+ 	   String citta="S4lerno";
  	   String provincia ="SA";
         
        PrintWriter out = Mockito.mock(PrintWriter.class);

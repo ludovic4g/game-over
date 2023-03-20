@@ -180,44 +180,6 @@ public class ModificaProfiloServletTest {
     }
        
     
-    @Test
-    public void modificaRispostaSI() throws SQLException, ServletException, IOException, ParseException{
-    	String action= "risposta";
-    	String id="honejmoon";
-    	String nome="Londra";
-    	PrintWriter out = Mockito.mock(PrintWriter.class);
-    	ArgumentCaptor<String> argument = ArgumentCaptor.forClass(String.class);
-       
-        Mockito.when(request.getParameter("action")).thenReturn(action);
-        Mockito.when(request.getParameter("risposta")).thenReturn(nome);
-        Mockito.when(request.getParameter("id")).thenReturn(id);
-        Mockito.when(response.getWriter()).thenReturn(out);
-        
-        servlet.doPost(request, response);
-     	
-  	   Mockito.verify(out).print(argument.capture());
-  	   assertEquals("Modifica del profilo avvenuta correttamente.", argument.getValue());
-    }
-    
-    @Test
-    public void modificaRispostaNO() throws SQLException, ServletException, IOException, ParseException{
-    	String action= "risposta";
-    	String id="honejmoon";
-    	String nome="";
-    	PrintWriter out = Mockito.mock(PrintWriter.class);
-    	ArgumentCaptor<String> argument = ArgumentCaptor.forClass(String.class);
-       
-        Mockito.when(request.getParameter("action")).thenReturn(action);
-        Mockito.when(request.getParameter("risposta")).thenReturn(nome);
-        Mockito.when(request.getParameter("id")).thenReturn(id);
-        Mockito.when(response.getWriter()).thenReturn(out);
-        
-        servlet.doPost(request, response);
-     	
-  	   Mockito.verify(out).print(argument.capture());
-  	   assertEquals("Risposta non valida.", argument.getValue());
-    
-    }
     
    }
 

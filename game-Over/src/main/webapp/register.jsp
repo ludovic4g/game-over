@@ -8,7 +8,16 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
-        
+
+        Boolean nm = (Boolean) request.getSession().getAttribute("nm");
+        Boolean cn = (Boolean) request.getSession().getAttribute("cn");
+        Boolean m1 = (Boolean) request.getSession().getAttribute("m1");
+        Boolean m2 = (Boolean) request.getSession().getAttribute("m2");
+        Boolean u = (Boolean) request.getSession().getAttribute("u");
+     
+        Boolean p1 = (Boolean) request.getSession().getAttribute("p1");
+        Boolean p2 = (Boolean) request.getSession().getAttribute("p2");
+        Boolean rs = (Boolean) request.getSession().getAttribute("rs");
         
         %>
 <!DOCTYPE html>
@@ -86,7 +95,10 @@
                              <input type="text" name="nome" required>
                              <%} %>
                         </div>
+                        <%if(nm!=null && nm==true){ %>
                         <small class="error_input">Errore Nome - Non valido</small>
+                        <%} 
+                        nm=false;%>
                         <div class="field">
                             <div class="label">
                                 Cognome
@@ -97,7 +109,9 @@
                             <input type="text" name="cognome" required>
                             <%} %>
                         </div>
+                        <%if(cn!=null && cn==true){ %>
                         <small class="error_input">Errore Cognome - Non valido</small>
+                        <%} cn=false;%>
                         <div class="field">
                             <div class="label">
                                 Username
@@ -110,7 +124,11 @@
                             <input type="text" name="username" required>
                             <%} %>
                         </div>
+                        <%if(u!=null && u==true){ %>
                         <small class="error_input">Errore Username - Già esistente</small>
+                        <%u=false;
+                        } %>
+               
                         <div class="field">
                             <div class="label">
                                 E-mail
@@ -123,8 +141,12 @@
                             <input type="text" name="mail" required>
                             <%} %>
                         </div>
+                        <%if(m2!=null && m2==true){ %>
                        <small class="error_input">Errore Email - Non Valida</small>
+                       <%} m2=false;%>
+                       <%if(m1!=null && m1==true){ %>
                         <small class="error_input">Errore Email - Già esistente</small>
+                        <%} m1=false;%>
                         <div class="field">
                             <button class="firstNext next">Avanti</button>
                         </div>
@@ -151,8 +173,6 @@
                             <input type="date" name="ddn" required>
                             <%} %>
                         </div>
-                        <small class="error_input">Errore Data - Seleziona una data</small>
-                        <small class="error_input">Errore Data - Seleziona una data valida</small>
                         <div class="field btns">
                             <button class="prev-1 prev">Indietro</button>
                             <button class="next-1 next">Avanti</button>
@@ -202,10 +222,14 @@
                              <input type="password" class="form-control is-invalid" name="pass2" placeholder="Password non Coincidono" required>
                              <%}else{ %>
                             <input type="password" id="password-field" name="pass2" required>
-                            <%} %>
+                            <%} %> 
                         </div>
+                        <% if(p2!=null && p2==true){ %>
                         <small class="error_input">Errore Password - Non valida</small>
+                        <%}  p2=false;%>
+                        <%if(p1!=null && p1==true){ %>%>
                         <small class="error_input">Errore Password - Le Password non coincidono</small>
+                        <%}  p1=false;%>
                         <div class="field btns">
                             <button class="prev-2 prev">Indietro</button>
                             <button class="next-2 next">Avanti</button>
@@ -233,7 +257,9 @@
                             <input type="text" name="risposta" required>
                             <%} %>
                         </div>
+                        <%if(rs!=null && rs==true){ %>
                         <small class="error_input">Errore Risposta - Formato non valido</small>
+                        <%} rs=false;%>
                         <div class="field btns">
                             <button class="prev-3 prev">Indietro</button>
                             <button class="submit">Registrati</button>

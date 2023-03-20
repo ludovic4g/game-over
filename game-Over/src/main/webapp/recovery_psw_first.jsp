@@ -7,6 +7,9 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
+        Boolean m = (Boolean) request.getSession().getAttribute("m");
+        Boolean rs = (Boolean) request.getSession().getAttribute("rs");
+        
         %>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,8 +67,9 @@
               </div>
               <input type="text" name="mail" required>
             </div>
-            <small class="error_input">Errore Email - Non Valida</small>
+            <% if(m!=null && m==true){%>
             <small class="error_input">Errore Email - Non esistente</small>
+            <% }%>
             <div class="field">
               <button class="firstNext next" id="sub" type="submit">Avanti</button>
             </div>
@@ -77,8 +81,9 @@
               </div>
               <input type="text" name="risposta" required>
             </div>
-            <small class="error_input">Risposta non valida</small>
+<% if(rs!=null && rs==true){%>
             <small class="error_input">Risposta errata</small>
+            <%} %>
             <div class="field btns">
               <button class="" type="submit">Conferma</button>
             </div>

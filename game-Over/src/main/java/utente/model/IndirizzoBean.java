@@ -5,9 +5,9 @@ import java.io.Serializable;
 public class IndirizzoBean implements Serializable {
     private int id;
     private String via;
-    private int CAP;
+    private int cap;
     private String citta;
-    private String Provincia;
+    private String provincia;
     private String nome;
 
     public String getNome() {
@@ -15,13 +15,13 @@ public class IndirizzoBean implements Serializable {
 	}
 
    
-	public IndirizzoBean(int id, String via, int cAP, String citta, String provincia, String nome) {
+	public IndirizzoBean(int id, String via, int cap, String citta, String provincia, String nome) {
 		super();
 		this.id = id;
 		this.via = via;
-		CAP = cAP;
+		this.cap = cap;
 		this.citta = citta;
-		Provincia = provincia;
+		this.provincia = provincia;
 		this.nome = nome;
 	}
 
@@ -51,11 +51,11 @@ public class IndirizzoBean implements Serializable {
     }
 
     public int getCAP() {
-        return CAP;
+        return cap;
     }
 
-    public void setCAP(int CAP) {
-        this.CAP = CAP;
+    public void setCAP(int cap) {
+        this.cap = cap;
     }
 
     public String getCitta() {
@@ -67,11 +67,11 @@ public class IndirizzoBean implements Serializable {
     }
 
     public String getProvincia() {
-        return Provincia;
+        return provincia;
     }
 
     public void setProvincia(String provincia) {
-        Provincia = provincia;
+        this.provincia = provincia;
     }
 
 

@@ -74,6 +74,8 @@
                 	 if(!b.isDisp()){
                  %>
                  <button type="submit" class="table sold" disabled></button>
+                 <%}else if(auth!=null && (auth.isGestoreCatalogo()|| auth.isGestorePrenotazioni()|| auth.isGestoreOrdini())==true){ %>
+                  <button type="submit" class="table" disabled></button>
                                   <%}else{ %>
                    <button type="submit" class="table" name="button"  value="<%=b.getIdTavolo()%>"></button>
                    <% }

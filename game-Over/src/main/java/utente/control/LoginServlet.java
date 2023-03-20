@@ -21,9 +21,13 @@ public class LoginServlet extends HttpServlet {
         UtenteDAO udao= new UtenteDAO();
         UtenteBean utente = new UtenteBean();
         PrintWriter out = response.getWriter();
+        boolean un = false;
+        boolean pw=false;
         
         if(udao.doRetrieveByKey(username).getUsername()==null) {
-        	out.print("Username non valido.");
+        	un=true;
+        	request.getSession().setAttribute("un", un);
+        	request.getSession().setAttribute("pw", pw);
         	 response.sendRedirect("login.jsp");
         	 return;
         }
@@ -31,7 +35,9 @@ public class LoginServlet extends HttpServlet {
         utente= udao.login(username,password);
 
         if(utente==null){
-        	request.setAttribute("errorPassword",true);
+        	pw=true;
+        	request.getSession().setAttribute("un", un);
+        	request.getSession().setAttribute("pw", pw);
         	out.print("Password non valida.");
             response.sendRedirect("login.jsp");
             return;
@@ -40,6 +46,8 @@ public class LoginServlet extends HttpServlet {
         request.getSession().setAttribute("auth", utente);
         if(utente.isGestoreCatalogo() || utente.isGestoreOrdini() || utente.isGestorePrenotazioni()) response.sendRedirect("dashboard_admin.jsp");
         else {
+        	request.getSession().setAttribute("un", un);
+        	request.getSession().setAttribute("pw", pw);
         	out.print("Login effettuato con successo.");
         	response.sendRedirect("index.jsp");
         }

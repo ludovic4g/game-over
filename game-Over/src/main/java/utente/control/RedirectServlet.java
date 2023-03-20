@@ -22,6 +22,14 @@ public class RedirectServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UtenteBean auth = (UtenteBean) request.getSession().getAttribute("auth");
 		Carrello carrello = (Carrello) request.getSession().getAttribute("carrello");
+		
+		boolean ctrl=false;
+		if(carrello==null || carrello.isEmpty()) {
+			ctrl=true;
+			request.getSession().setAttribute("ctrl", ctrl);
+			response.sendRedirect("cart.jsp");
+			return;
+		}
 		if(auth==null) response.sendRedirect("login.jsp");
 		else {
 			ArrayList<VideogiocoBean> games = carrello.getGames();

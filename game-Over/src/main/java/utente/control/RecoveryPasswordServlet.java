@@ -30,21 +30,33 @@ public class RecoveryPasswordServlet extends HttpServlet {
 		UtenteDAO udao = new UtenteDAO();
 		String u =null;
 		PrintWriter out = response.getWriter();
+		boolean m =false;
+		boolean rs=false;
+		boolean p1=false;
+		boolean p2=false;
 		
 		if(action.equals("first")) {
 			utente=udao.doRetrieveByMail(mail);
 			if(utente.getEmail()==null) {
 				out.print("Mail non esistente.");
+				m=true;
+				request.getSession().setAttribute("m", m);
+				request.getSession().setAttribute("rs", rs);
 				response.sendRedirect("recovery_psw_first.jsp");
 				return;
 			}else {
 			if(utente!=null) {
 				if(!risposta.equals(udao.doRetrieveRisposta(utente.getUsername()))) {
+					rs=true;
 					out.print("Risposta non corrispondente.");
+					request.getSession().setAttribute("m", m);
+					request.getSession().setAttribute("rs", rs);
 					response.sendRedirect("recovery_psw_first.jsp");
 					return;
 				}else {
 					out.print("Identificazione avvenuta correttamente.");
+					request.getSession().setAttribute("m", m);
+					request.getSession().setAttribute("rs", rs);
 					request.getSession().setAttribute("utente", utente);
 					response.sendRedirect("recovery_psw_field.jsp");
 				}
@@ -61,11 +73,17 @@ public class RecoveryPasswordServlet extends HttpServlet {
 						response.sendRedirect("login.jsp");
 			}else {
 				out.print("Password non coincidono.");
+				p1=true;
+				request.getSession().setAttribute("p1", p1);
+				request.getSession().setAttribute("p2", p2);
 				response.sendRedirect("recovery_psw_field.jsp");
 				return;
 			}
 		}else {
 			out.print("Password non valida.");
+			p2=true;
+			request.getSession().setAttribute("p1", p1);
+			request.getSession().setAttribute("p2", p2);
 			response.sendRedirect("recovery_psw_field.jsp");
 			return;
 		}

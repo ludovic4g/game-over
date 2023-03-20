@@ -36,7 +36,6 @@ create table Compra(
 	username varchar(30) not null,
     id integer not null,
     
-    primary key(username, id),
     foreign key(username) references Utente(username) on update cascade on delete cascade,
     foreign key(id) references Videogioco(id) on update cascade on delete cascade
 );
@@ -49,7 +48,7 @@ create table Ordine(
     prezzoTotale double not null,
     iva int not null,
     numeroProdotti int not null,
-    stato varchar(20) not null
+    stato varchar(50) not null
 );
 
 create table Riguarda(
@@ -68,7 +67,7 @@ create table Prenotazione(
     postiPrenotati int not null,
     ora varchar(20) ,
     dataprenotazione date not null,
-    stato varchar(20) not null
+    stato varchar(50) not null
  
 );
 

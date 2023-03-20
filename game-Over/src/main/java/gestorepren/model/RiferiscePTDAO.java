@@ -108,8 +108,8 @@ public class RiferiscePTDAO {
             con = DriverManagerConnectionPool.getConnection();
 
             ps = con.prepareStatement(query);
-            ps.setInt(1, utente.getIdTavolo());
-            ps.setInt(2, utente.getIdPrenotazione());
+            ps.setInt(1, utente.getIdPrenotazione());
+            ps.setInt(2, utente.getIdTavolo());
 
             ps.executeUpdate();
 

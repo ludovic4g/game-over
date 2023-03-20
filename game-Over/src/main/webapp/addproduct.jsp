@@ -7,6 +7,10 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
+        
+        Boolean nm = (Boolean) request.getSession().getAttribute("nm");
+        Boolean mg = (Boolean) request.getSession().getAttribute("mg");
+        Boolean i1 = (Boolean) request.getSession().getAttribute("i1");
         %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
   <!DOCTYPE html>
@@ -29,7 +33,9 @@
     <section class="home-section">
       <div class="home-content">
         <i class='bx bx-menu'></i>
+
         <span class="text">Aggiungi Prodotto</span>
+
       </div>
       <!---------AddProduct Section--------->
       <div class="wrapper">
@@ -43,29 +49,33 @@
                 <label for="inputName">Nome Prodotto</label>
                 <input type="text" id="inputName" class="form-control" name="name">
               </div>
-              <small class="error_input">Errore Nome - Formato Non valido</small>
+              <%if(nm!=null && nm==true){ %>
+              <small class="error_input">Errore Nome - Nome già esistente</small>
+              <%} %>
                <div class="form-group">
                 <label for="inputName">Quantita' da Aggiungere</label>
                 <input type="text" id="inputName" class="form-control" name="quantita">
               </div>
-              <small class="error_input">Errore Quantità - Formato Non valido</small>
+              <%if(mg!=null && mg==true){ %>
+              <small class="error_input">Errore Quantità - Numero Troppo Basso</small>
+              <% } %>
               <div class="form-group">
                 <label for="inputName">Anno</label>
-                <input type="text" id="inputName" class="form-control" name="anno">
+                <input type="number" id="inputName" class="form-control" name="anno" required>
               </div>
-              <small class="error_input">Errore Anno - Formato Non valido</small>
+              
               <div class="form-group">
                 <label for="inputDescription">Descrizione Prodotto</label>
                 <textarea id="inputDescription" class="form-control" rows="4" name="descrizione"></textarea>
               </div>
               <div class="form-group">
                 <label for="inputPrice">Prezzo</label>
-                <input type="text" id="inputPrice" class="form-control" name="prezzo">
+                <input type="number" id="inputPrice" class="form-control" name="prezzo" required>
               </div>
-              <small class="error_input">Errore Prezzo - Formato Non valido</small>
+            
               <div class="form-group">
                 <label for="inputName">Piattaforma</label>
-                <input type="text" id="inputName" class="form-control" name="piattaforma">
+                <input type="text" id="inputName" class="form-control" name="piattaforma" required>
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">Immagine Principale</label>
@@ -79,7 +89,9 @@
                   <input type="text" id="inputName" class="form-control" name="img5">
                 </div>
               </div>
+              <%if(i1!=null && i1==true){ %>
               <small class="error_input">Errore nelle Immagini - Formato Non valido</small>
+              <%} %>
               <div class="row">
                 <div class="col-12">
                   <input type="submit" value="Aggiungi Prodotto" class="right button">

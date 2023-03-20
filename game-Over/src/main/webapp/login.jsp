@@ -7,6 +7,10 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
+        
+        Boolean un = (Boolean) request.getSession().getAttribute("un");
+        Boolean pw = (Boolean) request.getSession().getAttribute("pw");
+        
         %>
     <!DOCTYPE html>
     <html lang="en">
@@ -33,7 +37,12 @@
                                 aria-hidden="true"></span></a>
                     </h2>
                     </h2>
-                <small class="error_login">Username e/o Password errati!</small>
+                    <%if(un!=null && un==true){ %>
+                <small class="error_login">Username errato!</small>
+                <%} %>
+                <%if(pw!=null && pw==true){ %>
+                <small class="error_login">Password errata!</small>
+                <%} %>
                 <form action="LoginServlet" method="post">
                 <%if(request.getSession().getAttribute("errorUsername")!=null){ %>
                     <div class="inputBox">

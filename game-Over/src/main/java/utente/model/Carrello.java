@@ -31,10 +31,19 @@ public class Carrello {
 	}
 	
 	public void addPostazione(PostazioneBean p) {
+		for(PostazioneBean o : postazioni) {
+		if(p.getIdPostazione()==o.getIdPostazione())
+			return;
+		}
 		postazioni.add(p);
+		
 	}
 	
 	public void addTavolo(TavoloBean p) {
+		for(TavoloBean o : tavoli) {
+			if(p.getIdTavolo()==o.getIdTavolo())
+				return;
+			}
 		tavoli.add(p);
 	}
 	
@@ -69,24 +78,24 @@ public class Carrello {
 	}
 	
 	public double getTotal() {
-		double fisici= 0.00;
+		double total= 0.00;
 		
 		
 		for(VideogiocoBean f : games) {
-			fisici+=f.getPrezzo()*f.getQuantita();
+			total+=f.getPrezzo()*f.getQuantita();
 		}
 		
 		for(PostazioneBean f : postazioni) {
-			fisici+=f.getPrezzo();
+			total+=f.getPrezzo();
 		}
 		
 		for(TavoloBean f : tavoli) {
-			fisici+=f.getPrezzoPosto()*f.getNumeroPosti();
+			total+=f.getPrezzoPosto()*f.getNumeroPosti();
 		}
 		
 		
 		
-		return fisici;
+		return total;
 	}
 	
 	public boolean isEmpty() {

@@ -9,6 +9,8 @@
         }
         
        UtenteBean utente = (UtenteBean) request.getSession().getAttribute("utente");
+       Boolean p1 = (Boolean) request.getSession().getAttribute("p1");
+       Boolean p2 = (Boolean) request.getSession().getAttribute("p2");
         %>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,8 +78,12 @@
                 </div>
                 <input type="password" id="password-field" name="pass2" required>
             </div>
+             <% if(p2!=null && p2==true){%>
                   <small class="error_input">Errore Password - Non valida</small>
-                <small class="error_input">Errore Password - Le Password non coincidono</small>        
+                  <%} %>
+                   <% if(p1!=null && p1==true){%>
+                <small class="error_input">Errore Password - Le Password non coincidono</small>   
+                <%} %>     
             <div class="field">
               <button class="">Reset</button>
             </div>

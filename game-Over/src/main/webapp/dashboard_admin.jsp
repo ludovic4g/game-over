@@ -7,6 +7,8 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
+        
+        
         %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
   <!DOCTYPE html>
@@ -29,7 +31,7 @@
     <section class="home-section">
       <div class="home-content">
         <i class='bx bx-menu'></i>
-        <span class="text">Bentornato | Admin Dashboard</span>
+        <span class="text">Bentornato | Gestore Dashboard</span>
       </div>
     </section>
     <script>

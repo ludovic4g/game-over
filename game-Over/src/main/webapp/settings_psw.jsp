@@ -7,6 +7,9 @@
         if(auth!=null){
                 request.setAttribute("auth", auth);
         }
+        Boolean p1= (Boolean) request.getSession().getAttribute("p1");
+        Boolean p2= (Boolean) request.getSession().getAttribute("p2");
+        Boolean p3= (Boolean) request.getSession().getAttribute("p3");
         %>
   <!DOCTYPE html>
   <html lang="en">
@@ -15,7 +18,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Admin| Modifica Informazioni Profilo</title>
+    <title>Dashboard User| Modifica Informazioni Profilo</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -84,9 +87,15 @@
                                 Conferma Password
                             </div>
                             <input type="password" id="password-field" name="new2" required>
-                            <small class="error_input">Errore Vecchia Password - Formato non valido</small>
+                             <%if(p1!=null && p1==true){ %>
+                            <small class="error_input">Errore Vecchia Password - Password Non Corretta</small>
+                            <%} %>
+                             <%if(p3!=null && p3==true){ %>
                             <small class="error_input">Errore Password - Le Password non coincidono</small>
+                            <%} %>
+                             <%if(p2!=null && p2==true){ %>
                             <small class="error_input">Errore Password - Formato non valido</small>
+                            <%} %>
                         </div>
               <div class="row">
                 <div class="col-12">

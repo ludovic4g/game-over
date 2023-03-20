@@ -9,6 +9,11 @@
         }
         HaDAO hdao = new HaDAO();
         ArrayList<IndirizzoBean> indirizzi = hdao.getIndirizziByUsername(auth.getUsername());
+        Boolean n1 = (Boolean) request.getSession().getAttribute("n1");
+        Boolean v = (Boolean) request.getSession().getAttribute("v");
+        Boolean pr = (Boolean) request.getSession().getAttribute("pr");
+        Boolean cp = (Boolean) request.getSession().getAttribute("cp");
+        Boolean ct = (Boolean) request.getSession().getAttribute("ct");
         %>
   <!DOCTYPE html>
   <html lang="en">
@@ -45,29 +50,37 @@
               <div class="form-group">
                 <label for="inputName">Nome e Cognome</label>
                 <input type="text" id="inputName"  name="nomeind" class="form-control" placeholder="<%=auth.getNome()%> <%=auth.getCognome()%>" required>
+                <%if(n1!=null && n1==true){ %>
                 <small class="error_input">Errore Nome e/o Cognome - Formato non valido</small>
+                <%} %>
               </div>
               <div class="form-group">
                 <label for="inputPrice">Città</label>
                 <input type="text" id="inputName" name="citta" class="form-control"  placeholder="<%=b.getCitta()%>" required>
+                <%if(ct!=null && ct==true){ %>
                 <small class="error_input">Errore Città - Formato non valido</small>
+                <%} %>
                 </div>
               <div class="form-group">
                 <label for="inputPrice">Provincia</label>
                 <input type="text" id="inputName" name="provincia" class="form-control"  placeholder="<%=b.getProvincia ()%>" required>
+               <%if(pr!=null && pr==true){ %>
                 <small class="error_input">Errore Provincia - Formato non valido</small>
-
+			<%} %>
               </div>
               <div class="form-group">
                 <label for="inputPrice">CAP</label>
                 <input type="text" id="inputName" name="cap" class="form-control" placeholder="<%=b.getCAP()%>" required>
+                <%if(cp!=null && cp==true){ %>
                 <small class="error_input">Errore CAP - Formato non valido</small>
-
+				<%} %>
               </div>
               <div class="form-group">
                 <label for="inputPrice">Indirizzo</label>
                 <input type="text" id="inputName"  name="via" class="form-control"  placeholder="<%=b.getVia()%>" required>
+                <%if(v!=null && v==true){ %>
                 <small class="error_input">Errore Indirizzo - Formato non valido</small>
+                <%} %>
 				<div class="row">
                     <div class="col-12">
                       <input type="submit" value="Conferma" class="right button">

@@ -38,8 +38,15 @@ public class AggiungiGiocoServlet extends HttpServlet {
 		VideogiocoBean game = new VideogiocoBean();
 		VideogiocoDAO vdao = new VideogiocoDAO();
 		VideogiocoBean g = new VideogiocoBean();
+		boolean nm = false;
+		boolean mg=false;
+		boolean i1=false;
 		g=vdao.doRetriveByName(nome);
 		if(g.getNome()!=null) {
+			nm=true;
+			request.getSession().setAttribute("nm", nm);
+			request.getSession().setAttribute("mg", mg);
+			request.getSession().setAttribute("i1", i1);
 			out.print("Nome del gioco già esistente.");
 			response.sendRedirect("addproduct.jsp");
 			return;
@@ -47,6 +54,10 @@ public class AggiungiGiocoServlet extends HttpServlet {
 			game.setNome(nome);
 		}
 		if(quantita==0) {
+			mg=true;
+			request.getSession().setAttribute("nm", nm);
+			request.getSession().setAttribute("mg", mg);
+			request.getSession().setAttribute("i1", i1);
 			out.print("Aumentare la quantità di prodotto nel magazzino.");
 			response.sendRedirect("addproduct.jsp");
 			return;
@@ -57,6 +68,10 @@ public class AggiungiGiocoServlet extends HttpServlet {
 			game.setDescrizione(descrizione);
 			
 			if(!(img1.startsWith("http") && img2.startsWith("http") && img3.startsWith("http") && img4.startsWith("http") && img5.startsWith("http"))) {
+				i1=true;
+				request.getSession().setAttribute("nm", nm);
+				request.getSession().setAttribute("mg", mg);
+				request.getSession().setAttribute("i1", i1);
 				out.print("Formato immagine non supportato.");
 				response.sendRedirect("addproduct.jsp");
 				return;
@@ -68,7 +83,9 @@ public class AggiungiGiocoServlet extends HttpServlet {
 				game.setImg5(img5);
 			}
 			
-			
+			request.getSession().setAttribute("nm", nm);
+			request.getSession().setAttribute("mg", mg);
+			request.getSession().setAttribute("i1", i1);
 			game.setPrezzo(prezzo);
 			game.setQuantita(0);
 			game.setTipo(plat);

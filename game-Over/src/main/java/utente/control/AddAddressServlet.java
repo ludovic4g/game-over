@@ -54,9 +54,21 @@ public class AddAddressServlet extends HttpServlet {
 		
 		IndirizzoBean scelto = new IndirizzoBean();
 		IndirizzoDAO idao = new IndirizzoDAO();
+		boolean nm1 =false;
+		boolean v1 = false;
+		boolean cp1=false;
+		boolean ct1 =false;
+		boolean pr1=false;
+		
 		if(!ctrl.isValid(nome)) {
+			nm1=true;
+			request.getSession().setAttribute("nm1", nm1);
+			request.getSession().setAttribute("v1", v1);
+			request.getSession().setAttribute("cp1", cp1);
+			request.getSession().setAttribute("ct1", ct1);
+			request.getSession().setAttribute("pr1", pr1);
 			out.print("Nome non valido.");
-			response.sendRedirect("cart.jsp");
+			response.sendRedirect("checkout_address.jsp");
 			return;
 			
 		}
@@ -65,27 +77,51 @@ public class AddAddressServlet extends HttpServlet {
 			int cap = Integer.parseInt(c);
 			scelto.setCAP(cap);
 		}else {
+			cp1=true;
+			request.getSession().setAttribute("nm1", nm1);
+			request.getSession().setAttribute("v1", v1);
+			request.getSession().setAttribute("cp1", cp1);
+			request.getSession().setAttribute("ct1", ct1);
+			request.getSession().setAttribute("pr1", pr1);
 			out.print("CAP non valido.");
-			response.sendRedirect("cart.jsp");
+			response.sendRedirect("checkout_address.jsp");
 			return;
 		}
 		
 		if(citta==null || citta.equals("") || !ctrl.isValid(citta)) {
+			ct1=true;
+			request.getSession().setAttribute("nm1", nm1);
+			request.getSession().setAttribute("v1", v1);
+			request.getSession().setAttribute("cp1", cp1);
+			request.getSession().setAttribute("ct1", ct1);
+			request.getSession().setAttribute("pr1", pr1);
 			out.print("Citta' non valida.");
-			response.sendRedirect("cart.jsp");
+			response.sendRedirect("checkout_address.jsp");
 			return;
 		}
 		scelto.setCitta(citta);
-		if(provincia==null || provincia.equals("") || provincia.length()!=2) {
+		if(provincia==null || provincia.equals("") || !ctrl.isValid(provincia) || provincia.length()!=2) {
+			pr1=true;
+			request.getSession().setAttribute("nm1", nm1);
+			request.getSession().setAttribute("v1", v1);
+			request.getSession().setAttribute("cp1", cp1);
+			request.getSession().setAttribute("ct1", ct1);
+			request.getSession().setAttribute("pr1", pr1);
 			out.print("Provincia non valida.");
-			response.sendRedirect("cart.jsp");
+			response.sendRedirect("checkout_address.jsp");
 			return;
 		}
 		scelto.setProvincia(provincia);
 		
 		if(ctrl.existLetterSp(indirizzo)) {
+			v1=true;
+			request.getSession().setAttribute("nm1", nm1);
+			request.getSession().setAttribute("v1", v1);
+			request.getSession().setAttribute("cp1", cp1);
+			request.getSession().setAttribute("ct1", ct1);
+			request.getSession().setAttribute("pr1", pr1);
 			out.print("Indirizzo non valido.");
-			response.sendRedirect("cart.jsp");
+			response.sendRedirect("checkout_address.jsp");
 			return;
 		}
 		scelto.setVia(indirizzo);
